@@ -1,0 +1,6 @@
+<div class="notice {{ .Get 0 }}">
+    <p class="notice-title">{{ .Get 1 | default (.Get 0 | humanize) }}</p>
+    <div class="notice-content">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>

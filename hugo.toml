@@ -1,0 +1,45 @@
+baseURL = 'https://cegepmv.github.io/420-413/'
+languageCode = 'fr-ca'
+title = "Développement d'applications pour entreprises"
+theme = 'relearn'
+enableEmoji = true
+
+
+[params]  
+  additionalCSS = ["css/custom.css"]
+  disableInlineCopyToClipBoard = true
+
+
+  [[params.themeVariant]]
+    auto = []
+    identifier = 'relearn-auto'
+    name = 'Relearn Light/Dark'
+
+  [[params.themeVariant]]
+    identifier = 'zen-light'
+
+  [[params.themeVariant]]
+    identifier = 'zen-dark'
+
+  [[params.themeVariant]]
+    identifier = 'neon'
+
+  [[params.themeVariant]]
+    identifier = 'learn'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    noClasses = false
+    style = "dracula"  # or any theme you like
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+
+  

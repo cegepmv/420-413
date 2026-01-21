@@ -1,0 +1,35 @@
+/* .inline-copy-to-clipboard-button{
+    display: none !important;
+}
+
+.copy-to-clipboard-code::after {
+  content: none !important;
+  display: none !important;
+} */
+
+details {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--PRIMARY-color) !important;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  width: fit-content;
+  overflow: hidden;
+}
+
+details[open] {
+  width: 100%;
+  background-color: var(--SECONDARY-color) !important;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* Keep summary clickable and visible at the top */
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
