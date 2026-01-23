@@ -43,7 +43,7 @@ Visual Studio 2022 est l'**Environnement de Développement Intégré (IDE)** de 
 L'interface est entièrement personnalisable : thèmes, raccourcis clavier et extensions. Pour un environnement complet, il est recommandé d'installer **Git** pour la gestion de versions.
 
 > [!CAUTION]
-> **Note sur l'IA :** Des outils comme *GitHub Copilot* et *IntelliCode* sont disponibles, mais ils **ne doivent pas être utilisés** dans le cadre de ce cours afin de ne pas nuire à l'apprentissage des concepts fondamentaux.
+> **Note sur l'IA :** Des outils comme *GitHub Copilot* sont disponibles, mais ils **ne doivent pas être utilisés** dans le cadre de ce cours afin de ne pas nuire à l'apprentissage des concepts fondamentaux.
 
 ---
 

@@ -30,7 +30,7 @@ mémoire, la sécurité, et la gestion des exceptions.
 machine natif par le CLR.
 * **Gestion de la mémoire** : Le CLR gère automatiquement la mémoire via la garbage collection (collecte des objets non
 utilisés).
-Sécurité : Le CLR applique des règles de sécurité pour exécuter les programmes de manière sécurisée.
+* **Sécurité** : Le CLR applique des règles de sécurité pour exécuter les programmes de manière sécurisée.
 * **BCL (Base Class Library) :** Une immense bibliothèque de classes réutilisables qui fournit les fonctionnalités de base (gestion des fichiers, réseau, dates, collections, etc.).
 
 ## 2. Le Mécanisme de Compilation du Code Source C#
