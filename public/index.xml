@@ -3,9 +3,23 @@
   <channel>
     <title>Développement d&#39;applications pour entreprises</title>
     <link>http://localhost:1313/420-413/index.html</link>
-    <description>Plans de cours 📋 Samuel Fostiné : Plan de cours&#xA;Horaire et disponibilités des enseignants ✔️ Samuel Fostiné : Lien vers mon horaire et mes disponibilités&#xA;Samuel Fostiné Nom de l’évaluation Pondération Semaine de l’évaluation 10 quiz (8 meilleures notes) 15 % Semaine 2 à 14 Examen 1 20% Semaine 4 Examen 2 26 % Semaine 12 Projet remise 1 5 % Semaine 6 Projet remise 2 5 % Semaine 8 Projet remise 3 5 % Semaine 10 Projet remise 4 5 % Semaine 13 Projet remise final 20 % Semaine 15</description>
+    <description>Plans de cours 📋 Samuel Fostiné : Plan de cours&#xA;Horaire et disponibilités des enseignants ✔️ Samuel Fostiné : Lien vers mon horaire et mes disponibilités&#xA;Samuel Fostiné Nom de l’évaluation Pondération Semaine de l’évaluation 10 quiz (8 meilleures notes) 15 % Semaine 2 à 14 Examen 1 20% Semaine 4 Examen 2 25 % Semaine 12 Projet remise 1 5 % Semaine 6 Projet remise 2 5 % Semaine 8 Projet remise 3 5 % Semaine 10 Projet remise 4 5 % Semaine 13 Projet remise final 20 % Semaine 15</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
     <atom:link href="http://localhost:1313/420-413/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction</title>
+      <link>http://localhost:1313/420-413/intro/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/intro/index.html</guid>
+      <description>1. Introduction à Visual Studio 2022 Qu’est-ce que Visual Studio ? Visual Studio 2022 est l’Environnement de Développement Intégré (IDE) de Microsoft dédié au développement d’applications sur les plateformes .NET. Il offre un ensemble complet d’outils pour coder, tester, déboguer, déployer et collaborer efficacement.</description>
+    </item>
+    <item>
+      <title>Architecture .NET</title>
+      <link>http://localhost:1313/420-413/architecture/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/architecture/index.html</guid>
+      <description>Introduction C# : Langage de programmation développé par Microsoft, principalement utilisé pour le développement dʼapplications sous Windows, mobiles, web, jeux, etc.&#xA;.NET : Un écosystème pour le développement dʼapplications qui prend en charge plusieurs langages, dont C#, F#, et VB.NET. Il fournit des outils, des bibliothèques, et un environnement dʼexécution pour faciliter le développement d’applications.&#xA;La plateforme .NET La plateforme .NET repose sur une architecture en couches qui permet l’exécution de code écrit dans différents langages (C#, F#, VB.NET) de manière unifiée et performante.</description>
+    </item>
   </channel>
 </rss>

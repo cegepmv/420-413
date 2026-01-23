@@ -1,7 +1,239 @@
 @media screen {
-:root:not([data-r-output-format='print']):not([data-r-theme-variant^='my-custom-']):not([data-r-theme-variant='relearn-auto']):not([data-r-theme-variant='zen-light']):not([data-r-theme-variant='zen-dark']):not([data-r-theme-variant='neon']):not([data-r-theme-variant='learn']),
+:root:not([data-r-output-format='print']):not([data-r-theme-variant^='my-custom-']):not([data-r-theme-variant='learn']):not([data-r-theme-variant='relearn-auto']):not([data-r-theme-variant='zen-light']):not([data-r-theme-variant='zen-dark']):not([data-r-theme-variant='neon']),
+:root:not([data-r-output-format='print'])[data-r-theme-variant='learn'] {
+&:root {
+  /* learn */
+  --MENU-HEADER-color: rgba( 255, 255, 255, 1 ); /* color of menu header */
+  --MENU-HEADER-BG-color: rgba( 132, 81, 161, 1 ); /* background color of menu header */
+  --MENU-HEADER-BORDER-color: rgba( 156, 111, 182, 1 ); /* border color between menu header and menu */
+  --MENU-SEARCH-color: rgba( 255, 255, 255, 1 ); /* text and icon color of search box */
+  --MENU-SEARCH-BG-color: rgba( 118, 72, 144, 1 ); /* background color of search box */
+  --MENU-SEARCH-BORDER-color: rgba( 145, 94, 174, 1 ); /* border color of search box */
+  --MENU-HOME-LINK-color: rgba( 224, 224, 224, 1 ); /* home button color if configured */
+  --MENU-HOME-LINK-HOVER-color: rgba( 240, 240, 240, 1 ); /* hovered home button color if configured */
+  --MENU-HOME-TOP-SEPARATOR-color: var( --MENU-HEADER-BORDER-color ); /* separator color between menu search box and home menu */
+  --MENU-SECTIONS-BG-color: rgba( 50, 42, 56, 1 ); /* background of the menu; this is NOT just a color value but can be a complete CSS background definition including gradients, etc. */
+  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 37, 31, 41, 1 ); /* background color of the active menu section */
+  --MENU-SECTIONS-LINK-color: rgba( 204, 204, 204, 1 ); /* link color of menu topics */
+  --MENU-SECTIONS-LINK-HOVER-color: rgba( 230, 230, 230, 1 ); /* hovered link color of menu topics */
+  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 119, 119, 119, 1 ); /* text color of the displayed menu topic */
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 255, 255, 255, 1 ); /* background color of the displayed menu topic */
+  --MENU-SECTION-SEPARATOR-color: rgba( 42, 35, 47, 1 ); /* separator color between menus */
+  --MENU-VISITED-color: rgba( 0, 189, 243, 1 ); /* icon color of visited menu topics if configured */
+  --MAIN-LINK-color: rgba( 0, 189, 243, 1 ); /* link color of content */
+  --MAIN-LINK-HOVER-color: rgba( 0, 130, 167, 1 ); /* hovered link color of content */
+  --MAIN-BG-color: rgba( 255, 255, 255, 1 ); /* background color of content */
+  --MAIN-TEXT-color: rgba( 50, 50, 50, 1 ); /* text color of content and titles */
+  --MAIN-TITLES-TEXT-color: rgba( 94, 94, 94, 1 ); /* text color of titles and transparent box titles */
+  --MAIN-TITLES-H1-TEXT-color: rgba( 34, 34, 34, 1 ); /* text color of h1 titles */
+  --CODE-theme: learn; /* name of the chroma stylesheet file */
+  --CODE-BLOCK-color: rgba( 226, 228, 229, 1 ); /* fallback text color of block code; should be adjusted to your selected chroma style */
+  --CODE-BLOCK-BG-color: rgba( 40, 42, 54, 1 ); /* fallback background color of block code; should be adjusted to your selected chroma style */
+  --CODE-BLOCK-BORDER-color: rgba( 40, 42, 54, 1 ); /* border color of block code */
+  --CODE-INLINE-color: rgba( 94, 94, 94, 1 ); /* text color of inline code */
+  --CODE-INLINE-BG-color: rgba( 255, 247, 221, 1 ); /* background color of inline code */
+  --CODE-INLINE-BORDER-color: rgba( 251, 240, 203, 1 ); /* border color of inline code */
+  --BOX-CAPTION-color: rgba( 255, 255, 255, 1 ); /* text color of colored box titles */
+  --BOX-BG-color: rgba( 255, 255, 255, .833 ); /* background color of colored boxes */
+  --BOX-TEXT-color: rgba( 16, 16, 16, 1 ); /* text color of colored box content */
+}
+
+/* Generated using: hugo gen chromastyles chroma-learn --style base16-snazzy --highlightStyle bg:#505050 */
+
+/* Background */ .bg { color:#e2e4e5;background-color:#282a36; }
+/* PreWrapper */ .chroma { color:#e2e4e5;background-color:#282a36; }
+/* Error */ .chroma .err { color:#ff5c57 }
+/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */ .chroma .hl { background-color:#505050 }
+/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+/* Line */ .chroma .line { display:flex; }
+/* Keyword */ .chroma .k { color:#ff6ac1 }
+/* KeywordConstant */ .chroma .kc { color:#ff6ac1 }
+/* KeywordDeclaration */ .chroma .kd { color:#ff5c57 }
+/* KeywordNamespace */ .chroma .kn { color:#ff6ac1 }
+/* KeywordPseudo */ .chroma .kp { color:#ff6ac1 }
+/* KeywordReserved */ .chroma .kr { color:#ff6ac1 }
+/* KeywordType */ .chroma .kt { color:#9aedfe }
+/* NameAttribute */ .chroma .na { color:#57c7ff }
+/* NameClass */ .chroma .nc { color:#f3f99d }
+/* NameConstant */ .chroma .no { color:#ff9f43 }
+/* NameDecorator */ .chroma .nd { color:#ff9f43 }
+/* NameLabel */ .chroma .nl { color:#ff5c57 }
+/* NameTag */ .chroma .nt { color:#ff6ac1 }
+/* NameBuiltin */ .chroma .nb { color:#ff5c57 }
+/* NameVariable */ .chroma .nv { color:#ff5c57 }
+/* NameVariableClass */ .chroma .vc { color:#ff5c57 }
+/* NameVariableGlobal */ .chroma .vg { color:#ff5c57 }
+/* NameVariableInstance */ .chroma .vi { color:#ff5c57 }
+/* NameVariableMagic */ .chroma .vm { color:#ff5c57 }
+/* NameFunction */ .chroma .nf { color:#57c7ff }
+/* NameFunctionMagic */ .chroma .fm { color:#57c7ff }
+/* LiteralString */ .chroma .s { color:#5af78e }
+/* LiteralStringAffix */ .chroma .sa { color:#5af78e }
+/* LiteralStringBacktick */ .chroma .sb { color:#5af78e }
+/* LiteralStringChar */ .chroma .sc { color:#5af78e }
+/* LiteralStringDelimiter */ .chroma .dl { color:#5af78e }
+/* LiteralStringDoc */ .chroma .sd { color:#5af78e }
+/* LiteralStringDouble */ .chroma .s2 { color:#5af78e }
+/* LiteralStringEscape */ .chroma .se { color:#5af78e }
+/* LiteralStringHeredoc */ .chroma .sh { color:#5af78e }
+/* LiteralStringInterpol */ .chroma .si { color:#5af78e }
+/* LiteralStringOther */ .chroma .sx { color:#5af78e }
+/* LiteralStringRegex */ .chroma .sr { color:#5af78e }
+/* LiteralStringSingle */ .chroma .s1 { color:#5af78e }
+/* LiteralStringSymbol */ .chroma .ss { color:#5af78e }
+/* LiteralNumber */ .chroma .m { color:#ff9f43 }
+/* LiteralNumberBin */ .chroma .mb { color:#ff9f43 }
+/* LiteralNumberFloat */ .chroma .mf { color:#ff9f43 }
+/* LiteralNumberHex */ .chroma .mh { color:#ff9f43 }
+/* LiteralNumberInteger */ .chroma .mi { color:#ff9f43 }
+/* LiteralNumberIntegerLong */ .chroma .il { color:#ff9f43 }
+/* LiteralNumberOct */ .chroma .mo { color:#ff9f43 }
+/* Operator */ .chroma .o { color:#ff6ac1 }
+/* OperatorWord */ .chroma .ow { color:#ff6ac1 }
+/* Comment */ .chroma .c { color:#78787e }
+/* CommentHashbang */ .chroma .ch { color:#78787e }
+/* CommentMultiline */ .chroma .cm { color:#78787e }
+/* CommentSingle */ .chroma .c1 { color:#78787e }
+/* CommentSpecial */ .chroma .cs { color:#78787e }
+/* CommentPreproc */ .chroma .cp { color:#78787e }
+/* CommentPreprocFile */ .chroma .cpf { color:#78787e }
+/* GenericDeleted */ .chroma .gd { color:#ff5c57 }
+/* GenericEmph */ .chroma .ge { text-decoration:underline }
+/* GenericError */ .chroma .gr { color:#ff5c57 }
+/* GenericHeading */ .chroma .gh { font-weight:bold }
+/* GenericInserted */ .chroma .gi { font-weight:bold }
+/* GenericOutput */ .chroma .go { color:#43454f }
+/* GenericStrong */ .chroma .gs { font-style:italic }
+/* GenericSubheading */ .chroma .gu { font-weight:bold }
+/* GenericUnderline */ .chroma .gl { text-decoration:underline }
+
+}
+:root:not([data-r-output-format='print'])[data-r-theme-variant$='learn'] {
+  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='learn'])):not(:has(> .logo-title)) { display: none; }
+  #R-logo.R-default > .logo-image[data-r-logo-variant~='learn'] { display: initial; }
+  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='learn']) + search { margin-bottom: 1rem; }
+}
 :root:not([data-r-output-format='print'])[data-r-theme-variant='relearn-auto'] {
 @media screen and (prefers-color-scheme: light) {
+&:root {
+  /* learn */
+  --MENU-HEADER-color: rgba( 255, 255, 255, 1 ); /* color of menu header */
+  --MENU-HEADER-BG-color: rgba( 132, 81, 161, 1 ); /* background color of menu header */
+  --MENU-HEADER-BORDER-color: rgba( 156, 111, 182, 1 ); /* border color between menu header and menu */
+  --MENU-SEARCH-color: rgba( 255, 255, 255, 1 ); /* text and icon color of search box */
+  --MENU-SEARCH-BG-color: rgba( 118, 72, 144, 1 ); /* background color of search box */
+  --MENU-SEARCH-BORDER-color: rgba( 145, 94, 174, 1 ); /* border color of search box */
+  --MENU-HOME-LINK-color: rgba( 224, 224, 224, 1 ); /* home button color if configured */
+  --MENU-HOME-LINK-HOVER-color: rgba( 240, 240, 240, 1 ); /* hovered home button color if configured */
+  --MENU-HOME-TOP-SEPARATOR-color: var( --MENU-HEADER-BORDER-color ); /* separator color between menu search box and home menu */
+  --MENU-SECTIONS-BG-color: rgba( 50, 42, 56, 1 ); /* background of the menu; this is NOT just a color value but can be a complete CSS background definition including gradients, etc. */
+  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 37, 31, 41, 1 ); /* background color of the active menu section */
+  --MENU-SECTIONS-LINK-color: rgba( 204, 204, 204, 1 ); /* link color of menu topics */
+  --MENU-SECTIONS-LINK-HOVER-color: rgba( 230, 230, 230, 1 ); /* hovered link color of menu topics */
+  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 119, 119, 119, 1 ); /* text color of the displayed menu topic */
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 255, 255, 255, 1 ); /* background color of the displayed menu topic */
+  --MENU-SECTION-SEPARATOR-color: rgba( 42, 35, 47, 1 ); /* separator color between menus */
+  --MENU-VISITED-color: rgba( 0, 189, 243, 1 ); /* icon color of visited menu topics if configured */
+  --MAIN-LINK-color: rgba( 0, 189, 243, 1 ); /* link color of content */
+  --MAIN-LINK-HOVER-color: rgba( 0, 130, 167, 1 ); /* hovered link color of content */
+  --MAIN-BG-color: rgba( 255, 255, 255, 1 ); /* background color of content */
+  --MAIN-TEXT-color: rgba( 50, 50, 50, 1 ); /* text color of content and titles */
+  --MAIN-TITLES-TEXT-color: rgba( 94, 94, 94, 1 ); /* text color of titles and transparent box titles */
+  --MAIN-TITLES-H1-TEXT-color: rgba( 34, 34, 34, 1 ); /* text color of h1 titles */
+  --CODE-theme: learn; /* name of the chroma stylesheet file */
+  --CODE-BLOCK-color: rgba( 226, 228, 229, 1 ); /* fallback text color of block code; should be adjusted to your selected chroma style */
+  --CODE-BLOCK-BG-color: rgba( 40, 42, 54, 1 ); /* fallback background color of block code; should be adjusted to your selected chroma style */
+  --CODE-BLOCK-BORDER-color: rgba( 40, 42, 54, 1 ); /* border color of block code */
+  --CODE-INLINE-color: rgba( 94, 94, 94, 1 ); /* text color of inline code */
+  --CODE-INLINE-BG-color: rgba( 255, 247, 221, 1 ); /* background color of inline code */
+  --CODE-INLINE-BORDER-color: rgba( 251, 240, 203, 1 ); /* border color of inline code */
+  --BOX-CAPTION-color: rgba( 255, 255, 255, 1 ); /* text color of colored box titles */
+  --BOX-BG-color: rgba( 255, 255, 255, .833 ); /* background color of colored boxes */
+  --BOX-TEXT-color: rgba( 16, 16, 16, 1 ); /* text color of colored box content */
+}
+
+/* Generated using: hugo gen chromastyles chroma-learn --style base16-snazzy --highlightStyle bg:#505050 */
+
+/* Background */ .bg { color:#e2e4e5;background-color:#282a36; }
+/* PreWrapper */ .chroma { color:#e2e4e5;background-color:#282a36; }
+/* Error */ .chroma .err { color:#ff5c57 }
+/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */ .chroma .hl { background-color:#505050 }
+/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+/* Line */ .chroma .line { display:flex; }
+/* Keyword */ .chroma .k { color:#ff6ac1 }
+/* KeywordConstant */ .chroma .kc { color:#ff6ac1 }
+/* KeywordDeclaration */ .chroma .kd { color:#ff5c57 }
+/* KeywordNamespace */ .chroma .kn { color:#ff6ac1 }
+/* KeywordPseudo */ .chroma .kp { color:#ff6ac1 }
+/* KeywordReserved */ .chroma .kr { color:#ff6ac1 }
+/* KeywordType */ .chroma .kt { color:#9aedfe }
+/* NameAttribute */ .chroma .na { color:#57c7ff }
+/* NameClass */ .chroma .nc { color:#f3f99d }
+/* NameConstant */ .chroma .no { color:#ff9f43 }
+/* NameDecorator */ .chroma .nd { color:#ff9f43 }
+/* NameLabel */ .chroma .nl { color:#ff5c57 }
+/* NameTag */ .chroma .nt { color:#ff6ac1 }
+/* NameBuiltin */ .chroma .nb { color:#ff5c57 }
+/* NameVariable */ .chroma .nv { color:#ff5c57 }
+/* NameVariableClass */ .chroma .vc { color:#ff5c57 }
+/* NameVariableGlobal */ .chroma .vg { color:#ff5c57 }
+/* NameVariableInstance */ .chroma .vi { color:#ff5c57 }
+/* NameVariableMagic */ .chroma .vm { color:#ff5c57 }
+/* NameFunction */ .chroma .nf { color:#57c7ff }
+/* NameFunctionMagic */ .chroma .fm { color:#57c7ff }
+/* LiteralString */ .chroma .s { color:#5af78e }
+/* LiteralStringAffix */ .chroma .sa { color:#5af78e }
+/* LiteralStringBacktick */ .chroma .sb { color:#5af78e }
+/* LiteralStringChar */ .chroma .sc { color:#5af78e }
+/* LiteralStringDelimiter */ .chroma .dl { color:#5af78e }
+/* LiteralStringDoc */ .chroma .sd { color:#5af78e }
+/* LiteralStringDouble */ .chroma .s2 { color:#5af78e }
+/* LiteralStringEscape */ .chroma .se { color:#5af78e }
+/* LiteralStringHeredoc */ .chroma .sh { color:#5af78e }
+/* LiteralStringInterpol */ .chroma .si { color:#5af78e }
+/* LiteralStringOther */ .chroma .sx { color:#5af78e }
+/* LiteralStringRegex */ .chroma .sr { color:#5af78e }
+/* LiteralStringSingle */ .chroma .s1 { color:#5af78e }
+/* LiteralStringSymbol */ .chroma .ss { color:#5af78e }
+/* LiteralNumber */ .chroma .m { color:#ff9f43 }
+/* LiteralNumberBin */ .chroma .mb { color:#ff9f43 }
+/* LiteralNumberFloat */ .chroma .mf { color:#ff9f43 }
+/* LiteralNumberHex */ .chroma .mh { color:#ff9f43 }
+/* LiteralNumberInteger */ .chroma .mi { color:#ff9f43 }
+/* LiteralNumberIntegerLong */ .chroma .il { color:#ff9f43 }
+/* LiteralNumberOct */ .chroma .mo { color:#ff9f43 }
+/* Operator */ .chroma .o { color:#ff6ac1 }
+/* OperatorWord */ .chroma .ow { color:#ff6ac1 }
+/* Comment */ .chroma .c { color:#78787e }
+/* CommentHashbang */ .chroma .ch { color:#78787e }
+/* CommentMultiline */ .chroma .cm { color:#78787e }
+/* CommentSingle */ .chroma .c1 { color:#78787e }
+/* CommentSpecial */ .chroma .cs { color:#78787e }
+/* CommentPreproc */ .chroma .cp { color:#78787e }
+/* CommentPreprocFile */ .chroma .cpf { color:#78787e }
+/* GenericDeleted */ .chroma .gd { color:#ff5c57 }
+/* GenericEmph */ .chroma .ge { text-decoration:underline }
+/* GenericError */ .chroma .gr { color:#ff5c57 }
+/* GenericHeading */ .chroma .gh { font-weight:bold }
+/* GenericInserted */ .chroma .gi { font-weight:bold }
+/* GenericOutput */ .chroma .go { color:#43454f }
+/* GenericStrong */ .chroma .gs { font-style:italic }
+/* GenericSubheading */ .chroma .gu { font-weight:bold }
+/* GenericUnderline */ .chroma .gl { text-decoration:underline }
+
+  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='learn'])):not(:has(> .logo-title)) { display: none; }
+  #R-logo.R-default > .logo-image[data-r-logo-variant~='learn'] { display: initial; }
+  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='learn']) + search { margin-bottom: 1rem; }
+}
+@media screen and (prefers-color-scheme: dark) {
 &:root {
   /* zen-light */
   --PRIMARY-color: rgba( 26, 115, 232, 1 ); /* brand primary color */
@@ -129,125 +361,6 @@
   #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='zen-light'])):not(:has(> .logo-title)) { display: none; }
   #R-logo.R-default > .logo-image[data-r-logo-variant~='zen-light'] { display: initial; }
   #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='zen-light']) + search { margin-bottom: 1rem; }
-}
-@media screen and (prefers-color-scheme: dark) {
-&:root {
-  /* zen-dark */
-  --PRIMARY-color: rgba( 47, 129, 235, 1 ); /* brand primary color */
-  --PRIMARY-HOVER-color: rgba( 112, 174, 245, 1 ); /* brand primary hover color */
-  --SECONDARY-color: var( --PRIMARY-color ); /* brand secondary color */
-  --SECONDARY-HOVER-color: var( --PRIMARY-HOVER-color ); /* brand secondary hover color */
-  --MENU-BORDER-color: rgba( 71, 71, 71, 1 ); /* border color between menu and content */
-  --MENU-TOPBAR-BORDER-color: rgba( 39, 39, 39, 1 ); /* border color of vertical line between menu and topbar */
-  --MENU-TOPBAR-SEPARATOR-color: rgba( 71, 71, 71, 1 ); /* separator color of vertical line between menu and topbar */
-  --MENU-HEADER-BG-color: rgba( 39, 39, 39, 1 ); /* background color of menu header */
-  --MENU-HEADER-BORDER-color: rgba( 39, 39, 39, 1 ); /* border color between menu header and menu */
-  --MENU-SEARCH-color: var( --PRIMARY-color ); /* text and icon color of search box */
-  --MENU-SEARCH-BG-color: rgba( 32, 32, 32, 1 ); /* background color of search box */
-  --MENU-SEARCH-BORDER-color: rgba( 58, 58, 58, 1 ); /* border color of search box */
-  --MENU-HOME-LINK-color: rgba( 240, 240, 240, 1 ); /* home button color if configured */
-  --MENU-HOME-LINK-HOVER-color: var( --PRIMARY-color ); /* hovered home button color if configured */
-  --MENU-HOME-TOP-SEPARATOR-color: rgba( 58, 58, 58, 1 ); /* separator color between menu search box and home menu */
-  --MENU-HOME-SEPARATOR-color: rgba( 58, 58, 58, 1 ); /* separator color between home menus */
-  --MENU-HOME-BOTTOM-SEPARATOR-color: rgba( 58, 58, 58, 1 ); /* separator color between home menu and menu */
-  --MENU-SECTIONS-BG-color: rgba( 39, 39, 39, 1 ); /* background of the menu; this is NOT just a color value but can be a complete CSS background definition including gradients, etc. */
-  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 39, 39, 39, 0 ); /* background color of the active menu section */
-  --MENU-SECTIONS-LINK-color: rgba( 192, 192, 192, 1 ); /* link color of menu topics */
-  --MENU-SECTIONS-LINK-HOVER-color: var( --PRIMARY-color ); /* hovered link color of menu topics */
-  --MENU-SECTION-ACTIVE-CATEGORY-color: var( --PRIMARY-color ); /* text color of the displayed menu topic */
-  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 32, 32, 32, 1 ); /* background color of the displayed menu topic */
-  --MENU-SECTION-SEPARATOR-color: rgba( 58, 58, 58, 1 ); /* separator color between menus */
-  --TOPBAR-BG-color: rgba( 39, 39, 39, 1 ); /* background color of topbar */
-  --MAIN-TOPBAR-BORDER-color: rgba( 71, 71, 71, 1 ); /* border color between topbar and content */
-  --MAIN-BG-color: rgba( 32, 32, 32, 1 ); /* background color of content */
-  --MAIN-TEXT-color: rgba( 224, 224, 224, 1 ); /* text color of content and titles */
-  --MAIN-TITLES-TEXT-color: rgba( 255, 255, 255, 1 ); /* text color of titles and transparent box titles */
-  --CODE-theme: relearn-dark; /* name of the chroma stylesheet file */
-  --CODE-BLOCK-color: rgba( 248, 248, 242, 1 ); /* fallback text color of block code; should be adjusted to your selected chroma style */
-  --CODE-BLOCK-BG-color: rgba( 43, 43, 43, 1 ); /* fallback background color of block code; should be adjusted to your selected chroma style */
-  --CODE-BLOCK-BORDER-color: rgba( 71, 71, 71, 1 ); /* border color of block code */
-  --CODE-INLINE-color: rgba( 130, 229, 80, 1 ); /* text color of inline code */
-  --CODE-INLINE-BG-color: rgba( 45, 45, 45, 1 ); /* background color of inline code */
-  --CODE-INLINE-BORDER-color: rgba( 71, 71, 71, 1 ); /* border color of inline code */
-  --BROWSER-theme: dark; /* name of the theme for browser scrollbars of the main section */
-  --MERMAID-theme: dark; /* name of the default Mermaid theme for this variant, can be overridden in hugo.toml */
-  --OPENAPI-theme: dark; /* name of the default OpenAPI theme for this variant, can be overridden in hugo.toml */
-  --OPENAPI-CODE-theme: obsidian; /* name of the default OpenAPI code theme for this variant, can be overridden in hugo.toml */
-  --BOX-CAPTION-color: rgba( 240, 240, 240, 1 ); /* text color of colored box titles */
-  --BOX-BG-color: rgba( 20, 20, 20, 1 ); /* background color of colored boxes */
-  --BOX-TEXT-color: rgba( 240, 240, 240, 1 ); /* text color of colored box content */
-  --BOX-GREY-color: rgba( 71, 71, 71, 1 ); /* background color of grey boxes */
-}
-
-/* Generated using: hugo gen chromastyles chroma-relearn-dark --style monokai --highlightStyle bg:#404042 */
-
-/* Background */ .bg { color:#f8f8f2;background-color:#2b2b2b; }
-/* PreWrapper */ .chroma { color:#f8f8f2;background-color:#2b2b2b; }
-/* Error */ .chroma .err { color:#cc66cc }
-/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
-/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
-/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
-/* LineHighlight */ .chroma .hl { background-color:#404042 }
-/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
-/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
-/* Line */ .chroma .line { display:flex; }
-/* Keyword */ .chroma .k { color:#66d9ef }
-/* KeywordConstant */ .chroma .kc { color:#66d9ef }
-/* KeywordDeclaration */ .chroma .kd { color:#66d9ef }
-/* KeywordNamespace */ .chroma .kn { color:#f92672 }
-/* KeywordPseudo */ .chroma .kp { color:#66d9ef }
-/* KeywordReserved */ .chroma .kr { color:#66d9ef }
-/* KeywordType */ .chroma .kt { color:#66d9ef }
-/* NameAttribute */ .chroma .na { color:#a6e22e }
-/* NameClass */ .chroma .nc { color:#a6e22e }
-/* NameConstant */ .chroma .no { color:#66d9ef }
-/* NameDecorator */ .chroma .nd { color:#a6e22e }
-/* NameException */ .chroma .ne { color:#a6e22e }
-/* NameOther */ .chroma .nx { color:#a6e22e }
-/* NameTag */ .chroma .nt { color:#f92672 }
-/* NameFunction */ .chroma .nf { color:#a6e22e }
-/* NameFunctionMagic */ .chroma .fm { color:#a6e22e }
-/* Literal */ .chroma .l { color:#ae81ff }
-/* LiteralDate */ .chroma .ld { color:#e6db74 }
-/* LiteralString */ .chroma .s { color:#e6db74 }
-/* LiteralStringAffix */ .chroma .sa { color:#e6db74 }
-/* LiteralStringBacktick */ .chroma .sb { color:#e6db74 }
-/* LiteralStringChar */ .chroma .sc { color:#e6db74 }
-/* LiteralStringDelimiter */ .chroma .dl { color:#e6db74 }
-/* LiteralStringDoc */ .chroma .sd { color:#e6db74 }
-/* LiteralStringDouble */ .chroma .s2 { color:#e6db74 }
-/* LiteralStringEscape */ .chroma .se { color:#ae81ff }
-/* LiteralStringHeredoc */ .chroma .sh { color:#e6db74 }
-/* LiteralStringInterpol */ .chroma .si { color:#e6db74 }
-/* LiteralStringOther */ .chroma .sx { color:#e6db74 }
-/* LiteralStringRegex */ .chroma .sr { color:#e6db74 }
-/* LiteralStringSingle */ .chroma .s1 { color:#e6db74 }
-/* LiteralStringSymbol */ .chroma .ss { color:#e6db74 }
-/* LiteralNumber */ .chroma .m { color:#ae81ff }
-/* LiteralNumberBin */ .chroma .mb { color:#ae81ff }
-/* LiteralNumberFloat */ .chroma .mf { color:#ae81ff }
-/* LiteralNumberHex */ .chroma .mh { color:#ae81ff }
-/* LiteralNumberInteger */ .chroma .mi { color:#ae81ff }
-/* LiteralNumberIntegerLong */ .chroma .il { color:#ae81ff }
-/* LiteralNumberOct */ .chroma .mo { color:#ae81ff }
-/* Operator */ .chroma .o { color:#f92672 }
-/* OperatorWord */ .chroma .ow { color:#f92672 }
-/* Comment */ .chroma .c { color:#75715e }
-/* CommentHashbang */ .chroma .ch { color:#75715e }
-/* CommentMultiline */ .chroma .cm { color:#75715e }
-/* CommentSingle */ .chroma .c1 { color:#75715e }
-/* CommentSpecial */ .chroma .cs { color:#75715e }
-/* CommentPreproc */ .chroma .cp { color:#75715e }
-/* CommentPreprocFile */ .chroma .cpf { color:#75715e }
-/* GenericDeleted */ .chroma .gd { color:#f92672 }
-/* GenericEmph */ .chroma .ge { font-style:italic }
-/* GenericInserted */ .chroma .gi { color:#a6e22e }
-/* GenericStrong */ .chroma .gs { font-weight:bold }
-/* GenericSubheading */ .chroma .gu { color:#75715e }
-
-  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='zen-dark'])):not(:has(> .logo-title)) { display: none; }
-  #R-logo.R-default > .logo-image[data-r-logo-variant~='zen-dark'] { display: initial; }
-  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='zen-dark']) + search { margin-bottom: 1rem; }
 }
 }
 :root:not([data-r-output-format='print'])[data-r-theme-variant='zen-light'] {
@@ -837,123 +950,6 @@ body .box.cstyle.transparent {
   #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='neon'])):not(:has(> .logo-title)) { display: none; }
   #R-logo.R-default > .logo-image[data-r-logo-variant~='neon'] { display: initial; }
   #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='neon']) + search { margin-bottom: 1rem; }
-}
-:root:not([data-r-output-format='print'])[data-r-theme-variant='learn'] {
-&:root {
-  /* learn */
-  --MENU-HEADER-color: rgba( 255, 255, 255, 1 ); /* color of menu header */
-  --MENU-HEADER-BG-color: rgba( 132, 81, 161, 1 ); /* background color of menu header */
-  --MENU-HEADER-BORDER-color: rgba( 156, 111, 182, 1 ); /* border color between menu header and menu */
-  --MENU-SEARCH-color: rgba( 255, 255, 255, 1 ); /* text and icon color of search box */
-  --MENU-SEARCH-BG-color: rgba( 118, 72, 144, 1 ); /* background color of search box */
-  --MENU-SEARCH-BORDER-color: rgba( 145, 94, 174, 1 ); /* border color of search box */
-  --MENU-HOME-LINK-color: rgba( 224, 224, 224, 1 ); /* home button color if configured */
-  --MENU-HOME-LINK-HOVER-color: rgba( 240, 240, 240, 1 ); /* hovered home button color if configured */
-  --MENU-HOME-TOP-SEPARATOR-color: var( --MENU-HEADER-BORDER-color ); /* separator color between menu search box and home menu */
-  --MENU-SECTIONS-BG-color: rgba( 50, 42, 56, 1 ); /* background of the menu; this is NOT just a color value but can be a complete CSS background definition including gradients, etc. */
-  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 37, 31, 41, 1 ); /* background color of the active menu section */
-  --MENU-SECTIONS-LINK-color: rgba( 204, 204, 204, 1 ); /* link color of menu topics */
-  --MENU-SECTIONS-LINK-HOVER-color: rgba( 230, 230, 230, 1 ); /* hovered link color of menu topics */
-  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 119, 119, 119, 1 ); /* text color of the displayed menu topic */
-  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 255, 255, 255, 1 ); /* background color of the displayed menu topic */
-  --MENU-SECTION-SEPARATOR-color: rgba( 42, 35, 47, 1 ); /* separator color between menus */
-  --MENU-VISITED-color: rgba( 0, 189, 243, 1 ); /* icon color of visited menu topics if configured */
-  --MAIN-LINK-color: rgba( 0, 189, 243, 1 ); /* link color of content */
-  --MAIN-LINK-HOVER-color: rgba( 0, 130, 167, 1 ); /* hovered link color of content */
-  --MAIN-BG-color: rgba( 255, 255, 255, 1 ); /* background color of content */
-  --MAIN-TEXT-color: rgba( 50, 50, 50, 1 ); /* text color of content and titles */
-  --MAIN-TITLES-TEXT-color: rgba( 94, 94, 94, 1 ); /* text color of titles and transparent box titles */
-  --MAIN-TITLES-H1-TEXT-color: rgba( 34, 34, 34, 1 ); /* text color of h1 titles */
-  --CODE-theme: learn; /* name of the chroma stylesheet file */
-  --CODE-BLOCK-color: rgba( 226, 228, 229, 1 ); /* fallback text color of block code; should be adjusted to your selected chroma style */
-  --CODE-BLOCK-BG-color: rgba( 40, 42, 54, 1 ); /* fallback background color of block code; should be adjusted to your selected chroma style */
-  --CODE-BLOCK-BORDER-color: rgba( 40, 42, 54, 1 ); /* border color of block code */
-  --CODE-INLINE-color: rgba( 94, 94, 94, 1 ); /* text color of inline code */
-  --CODE-INLINE-BG-color: rgba( 255, 247, 221, 1 ); /* background color of inline code */
-  --CODE-INLINE-BORDER-color: rgba( 251, 240, 203, 1 ); /* border color of inline code */
-  --BOX-CAPTION-color: rgba( 255, 255, 255, 1 ); /* text color of colored box titles */
-  --BOX-BG-color: rgba( 255, 255, 255, .833 ); /* background color of colored boxes */
-  --BOX-TEXT-color: rgba( 16, 16, 16, 1 ); /* text color of colored box content */
-}
-
-/* Generated using: hugo gen chromastyles chroma-learn --style base16-snazzy --highlightStyle bg:#505050 */
-
-/* Background */ .bg { color:#e2e4e5;background-color:#282a36; }
-/* PreWrapper */ .chroma { color:#e2e4e5;background-color:#282a36; }
-/* Error */ .chroma .err { color:#ff5c57 }
-/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
-/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
-/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
-/* LineHighlight */ .chroma .hl { background-color:#505050 }
-/* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
-/* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
-/* Line */ .chroma .line { display:flex; }
-/* Keyword */ .chroma .k { color:#ff6ac1 }
-/* KeywordConstant */ .chroma .kc { color:#ff6ac1 }
-/* KeywordDeclaration */ .chroma .kd { color:#ff5c57 }
-/* KeywordNamespace */ .chroma .kn { color:#ff6ac1 }
-/* KeywordPseudo */ .chroma .kp { color:#ff6ac1 }
-/* KeywordReserved */ .chroma .kr { color:#ff6ac1 }
-/* KeywordType */ .chroma .kt { color:#9aedfe }
-/* NameAttribute */ .chroma .na { color:#57c7ff }
-/* NameClass */ .chroma .nc { color:#f3f99d }
-/* NameConstant */ .chroma .no { color:#ff9f43 }
-/* NameDecorator */ .chroma .nd { color:#ff9f43 }
-/* NameLabel */ .chroma .nl { color:#ff5c57 }
-/* NameTag */ .chroma .nt { color:#ff6ac1 }
-/* NameBuiltin */ .chroma .nb { color:#ff5c57 }
-/* NameVariable */ .chroma .nv { color:#ff5c57 }
-/* NameVariableClass */ .chroma .vc { color:#ff5c57 }
-/* NameVariableGlobal */ .chroma .vg { color:#ff5c57 }
-/* NameVariableInstance */ .chroma .vi { color:#ff5c57 }
-/* NameVariableMagic */ .chroma .vm { color:#ff5c57 }
-/* NameFunction */ .chroma .nf { color:#57c7ff }
-/* NameFunctionMagic */ .chroma .fm { color:#57c7ff }
-/* LiteralString */ .chroma .s { color:#5af78e }
-/* LiteralStringAffix */ .chroma .sa { color:#5af78e }
-/* LiteralStringBacktick */ .chroma .sb { color:#5af78e }
-/* LiteralStringChar */ .chroma .sc { color:#5af78e }
-/* LiteralStringDelimiter */ .chroma .dl { color:#5af78e }
-/* LiteralStringDoc */ .chroma .sd { color:#5af78e }
-/* LiteralStringDouble */ .chroma .s2 { color:#5af78e }
-/* LiteralStringEscape */ .chroma .se { color:#5af78e }
-/* LiteralStringHeredoc */ .chroma .sh { color:#5af78e }
-/* LiteralStringInterpol */ .chroma .si { color:#5af78e }
-/* LiteralStringOther */ .chroma .sx { color:#5af78e }
-/* LiteralStringRegex */ .chroma .sr { color:#5af78e }
-/* LiteralStringSingle */ .chroma .s1 { color:#5af78e }
-/* LiteralStringSymbol */ .chroma .ss { color:#5af78e }
-/* LiteralNumber */ .chroma .m { color:#ff9f43 }
-/* LiteralNumberBin */ .chroma .mb { color:#ff9f43 }
-/* LiteralNumberFloat */ .chroma .mf { color:#ff9f43 }
-/* LiteralNumberHex */ .chroma .mh { color:#ff9f43 }
-/* LiteralNumberInteger */ .chroma .mi { color:#ff9f43 }
-/* LiteralNumberIntegerLong */ .chroma .il { color:#ff9f43 }
-/* LiteralNumberOct */ .chroma .mo { color:#ff9f43 }
-/* Operator */ .chroma .o { color:#ff6ac1 }
-/* OperatorWord */ .chroma .ow { color:#ff6ac1 }
-/* Comment */ .chroma .c { color:#78787e }
-/* CommentHashbang */ .chroma .ch { color:#78787e }
-/* CommentMultiline */ .chroma .cm { color:#78787e }
-/* CommentSingle */ .chroma .c1 { color:#78787e }
-/* CommentSpecial */ .chroma .cs { color:#78787e }
-/* CommentPreproc */ .chroma .cp { color:#78787e }
-/* CommentPreprocFile */ .chroma .cpf { color:#78787e }
-/* GenericDeleted */ .chroma .gd { color:#ff5c57 }
-/* GenericEmph */ .chroma .ge { text-decoration:underline }
-/* GenericError */ .chroma .gr { color:#ff5c57 }
-/* GenericHeading */ .chroma .gh { font-weight:bold }
-/* GenericInserted */ .chroma .gi { font-weight:bold }
-/* GenericOutput */ .chroma .go { color:#43454f }
-/* GenericStrong */ .chroma .gs { font-style:italic }
-/* GenericSubheading */ .chroma .gu { font-weight:bold }
-/* GenericUnderline */ .chroma .gl { text-decoration:underline }
-
-}
-:root:not([data-r-output-format='print'])[data-r-theme-variant$='learn'] {
-  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='learn'])):not(:has(> .logo-title)) { display: none; }
-  #R-logo.R-default > .logo-image[data-r-logo-variant~='learn'] { display: initial; }
-  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='learn']) + search { margin-bottom: 1rem; }
 }
 }
 @media print {

@@ -9,7 +9,9 @@ enableEmoji = true
   additionalCSS = ["css/custom.css"]
   disableInlineCopyToClipBoard = true
 
-
+  [[params.themeVariant]]
+    identifier = 'learn'
+    
   [[params.themeVariant]]
     auto = []
     identifier = 'relearn-auto'
@@ -23,9 +25,6 @@ enableEmoji = true
 
   [[params.themeVariant]]
     identifier = 'neon'
-
-  [[params.themeVariant]]
-    identifier = 'learn'
 
 [markup]
   [markup.goldmark]
