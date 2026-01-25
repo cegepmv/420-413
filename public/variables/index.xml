@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Variables :: Développement d&#39;applications pour entreprises</title>
+    <link>http://localhost:1313/420-413/variables/index.html</link>
+    <description>1. Déclaration de variables et types de données C# est un langage fortement typé, ce qui signifie que chaque variable doit être déclarée avec un type spécifique. Voici quelques types de base :&#xA;int age = 25; // Entier double price = 19.99; // Nombre à virgule flottante char grade = &#39;A&#39;; // Caractère unique string name = &#34;John&#34;; // Chaîne de caractères bool isActive = true; // Booléen (vrai ou faux) Une variable peut être déclarée et initialisée avec la même instruction.&#xA;string salutation = &#34;Bonjour tout le monde!&#34;;</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="http://localhost:1313/420-413/variables/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

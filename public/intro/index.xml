@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction :: Développement d&#39;applications pour entreprises</title>
+    <title>Introduction à Visual Studio 2022 :: Développement d&#39;applications pour entreprises</title>
     <link>http://localhost:1313/420-413/intro/index.html</link>
     <description>1. Introduction à Visual Studio 2022 Qu’est-ce que Visual Studio ? Visual Studio 2022 est l’Environnement de Développement Intégré (IDE) de Microsoft dédié au développement d’applications sur les plateformes .NET. Il offre un ensemble complet d’outils pour coder, tester, déboguer, déployer et collaborer efficacement.</description>
     <generator>Hugo</generator>

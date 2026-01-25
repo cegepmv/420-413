@@ -8,7 +8,7 @@
     <language>fr-ca</language>
     <atom:link href="http://localhost:1313/420-413/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction</title>
+      <title>Introduction à Visual Studio 2022</title>
       <link>http://localhost:1313/420-413/intro/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/intro/index.html</guid>
@@ -19,7 +19,21 @@
       <link>http://localhost:1313/420-413/architecture/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/architecture/index.html</guid>
-      <description>Introduction C# : Langage de programmation développé par Microsoft, principalement utilisé pour le développement dʼapplications sous Windows, mobiles, web, jeux, etc.&#xA;.NET : Un écosystème pour le développement dʼapplications qui prend en charge plusieurs langages, dont C#, F#, et VB.NET. Il fournit des outils, des bibliothèques, et un environnement dʼexécution pour faciliter le développement d’applications.&#xA;La plateforme .NET La plateforme .NET repose sur une architecture en couches qui permet l’exécution de code écrit dans différents langages (C#, F#, VB.NET) de manière unifiée et performante.</description>
+      <description>Introduction à .NET .NET : Un écosystème pour le développement dʼapplications qui prend en charge plusieurs langages, dont C#, F#, et VB.NET. Il fournit des outils, des bibliothèques, et un environnement dʼexécution pour faciliter le développement d’applications.&#xA;La plateforme .NET La plateforme .NET repose sur une architecture en couches qui permet l’exécution de code écrit dans différents langages (C#, F#, VB.NET) de manière unifiée et performante.</description>
+    </item>
+    <item>
+      <title>Introduction et syntaxe du langage C#</title>
+      <link>http://localhost:1313/420-413/intro_syntaxe_c_sharp/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/intro_syntaxe_c_sharp/index.html</guid>
+      <description>Introduction à C# C# (prononcé “C Sharp”) est un langage de programmation moderne, orienté objet et fortement typé. C# est développé par Microsoft en 2000 et est principalement utilisé pour le développement dʼapplications sous la plateforme .NET. La syntaxe de C# est influencée par C, C++ et Java, mais elle présente certaines spécificités qui lui sont propres.</description>
+    </item>
+    <item>
+      <title>Variables</title>
+      <link>http://localhost:1313/420-413/variables/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/variables/index.html</guid>
+      <description>1. Déclaration de variables et types de données C# est un langage fortement typé, ce qui signifie que chaque variable doit être déclarée avec un type spécifique. Voici quelques types de base :&#xA;int age = 25; // Entier double price = 19.99; // Nombre à virgule flottante char grade = &#39;A&#39;; // Caractère unique string name = &#34;John&#34;; // Chaîne de caractères bool isActive = true; // Booléen (vrai ou faux) Une variable peut être déclarée et initialisée avec la même instruction.&#xA;string salutation = &#34;Bonjour tout le monde!&#34;;</description>
     </item>
   </channel>
 </rss>

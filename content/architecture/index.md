@@ -6,10 +6,7 @@ author: Samuel Fostiné
 weight: 2
 ---
 
-## **Introduction**
-
-**C#** : Langage de programmation développé par Microsoft, principalement utilisé pour le développement dʼapplications sous
-Windows, mobiles, web, jeux, etc.
+## **Introduction à .NET**
 
 **.NET** : Un écosystème pour le développement dʼapplications qui prend en charge plusieurs langages, dont C#, F#, et
 VB.NET. Il fournit des outils, des bibliothèques, et un environnement dʼexécution pour faciliter le développement
