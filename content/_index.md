@@ -1,5 +1,5 @@
 +++
-title = "Développement d'applications pour entreprises"
+title = "Développement d'applications pour entreprise"
 type = "home"
 +++
 
