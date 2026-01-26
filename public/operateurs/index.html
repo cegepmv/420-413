@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Les opérateurs Les opérateurs de calcul ou arithmétiques Les opérateurs de calcul permettent, comme en mathématiques, d’effectuer des opérations.
+Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat &#43; Addition Somme de deux valeurs int x = 10 &#43; 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) &#43;&#43;x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = &#43;&#43;x; Augmenté de 1 x&#43;&#43; Post-incrémentation Après Retourne la valeur, puis incrémente int y = x&#43;&#43;; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Opérateurs :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Les opérateurs Les opérateurs de calcul ou arithmétiques Les opérateurs de calcul permettent, comme en mathématiques, d’effectuer des opérations.
+Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat &#43; Addition Somme de deux valeurs int x = 10 &#43; 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) &#43;&#43;x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = &#43;&#43;x; Augmenté de 1 x&#43;&#43; Post-incrémentation Après Retourne la valeur, puis incrémente int y = x&#43;&#43;; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :">
+    <meta property="og:url" content="http://localhost:1313/420-413/operateurs/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Opérateurs :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Les opérateurs Les opérateurs de calcul ou arithmétiques Les opérateurs de calcul permettent, comme en mathématiques, d’effectuer des opérations.
+Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat &#43; Addition Somme de deux valeurs int x = 10 &#43; 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) &#43;&#43;x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = &#43;&#43;x; Augmenté de 1 x&#43;&#43; Post-incrémentation Après Retourne la valeur, puis incrémente int y = x&#43;&#43;; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Opérateurs :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Les opérateurs Les opérateurs de calcul ou arithmétiques Les opérateurs de calcul permettent, comme en mathématiques, d’effectuer des opérations.
+Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat &#43; Addition Somme de deux valeurs int x = 10 &#43; 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) &#43;&#43;x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = &#43;&#43;x; Augmenté de 1 x&#43;&#43; Post-incrémentation Après Retourne la valeur, puis incrémente int y = x&#43;&#43;; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :">
+    <meta itemprop="wordCount" content="860">
+    <title>Opérateurs :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/operateurs/index.xml" rel="alternate" type="application/rss+xml" title="Opérateurs :: Développement d&#39;applications pour entreprises">
+    <link href="/420-413/images/favicon.png?1769453880" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1769453880" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1769453880" defer></script>
+    <script src="/420-413/js/search-lunr.js?1769453880" defer></script>
+    <script src="/420-413/js/search.js?1769453880" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1769453880";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1769453880" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1769453880" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1769453880" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1769453880" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1769453880" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1769453880" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1769453880" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1769453880" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1769453880" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/operateurs\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/operateurs/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#les-opérateurs">Les opérateurs</a>
+      <ul>
+        <li></li>
+        <li><a href="#opérateurs-arithmétiques-en-c">Opérateurs Arithmétiques en C#</a></li>
+        <li><a href="#opérateurs-dincrémentation-et-de-décrémentation">Opérateurs d&rsquo;incrémentation et de décrémentation</a></li>
+        <li><a href="#opérateurs-logiques-en-c">Opérateurs Logiques en C#</a></li>
+        <li><a href="#opérateurs-de-comparaison-en-c">Opérateurs de comparaison en C#</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Opérateurs</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/variables/index.html" title="Variables (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-chevron-right"></i></span></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable operateurs" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="opérateurs">Opérateurs</h1>
+
+<h2 id="les-opérateurs">Les opérateurs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h4 id="les-opérateurs-de-calcul-ou-arithmétiques">Les opérateurs de calcul ou arithmétiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Les opérateurs de calcul permettent, comme en mathématiques, d&rsquo;effectuer des opérations.</p>
+<h3 id="opérateurs-arithmétiques-en-c">Opérateurs Arithmétiques en C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Opérateur</th>
+          <th style="text-align: left">Nom</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Exemple</th>
+          <th style="text-align: left">Résultat</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>+</code></td>
+          <td style="text-align: left"><strong>Addition</strong></td>
+          <td style="text-align: left">Somme de deux valeurs</td>
+          <td style="text-align: left"><code>int x = 10 + 5;</code></td>
+          <td style="text-align: left"><code>15</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>-</code></td>
+          <td style="text-align: left"><strong>Soustraction</strong></td>
+          <td style="text-align: left">Différence entre deux valeurs</td>
+          <td style="text-align: left"><code>int x = 20 - 8;</code></td>
+          <td style="text-align: left"><code>12</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>*</code></td>
+          <td style="text-align: left"><strong>Multiplication</strong></td>
+          <td style="text-align: left">Produit de deux valeurs</td>
+          <td style="text-align: left"><code>double x = 5.5 * 2;</code></td>
+          <td style="text-align: left"><code>11.0</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>/</code></td>
+          <td style="text-align: left"><strong>Division</strong></td>
+          <td style="text-align: left">Quotient de la division</td>
+          <td style="text-align: left"><code>int x = 10 / 3;</code></td>
+          <td style="text-align: left"><code>3</code> (Entier)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>%</code></td>
+          <td style="text-align: left"><strong>Modulo</strong></td>
+          <td style="text-align: left">Reste de la division entière</td>
+          <td style="text-align: left"><code>int x = 10 % 3;</code></td>
+          <td style="text-align: left"><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="opérateurs-dincrémentation-et-de-décrémentation">Opérateurs d&rsquo;incrémentation et de décrémentation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Opérateur</th>
+          <th style="text-align: left">Nom</th>
+          <th style="text-align: left">Position</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Exemple</th>
+          <th style="text-align: left">Résultat (x)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>++x</code></td>
+          <td style="text-align: left"><strong>Pré-incrémentation</strong></td>
+          <td style="text-align: left">Avant</td>
+          <td style="text-align: left">Incrémente, puis retourne la valeur</td>
+          <td style="text-align: left"><code>int y = ++x;</code></td>
+          <td style="text-align: left">Augmenté de 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>x++</code></td>
+          <td style="text-align: left"><strong>Post-incrémentation</strong></td>
+          <td style="text-align: left">Après</td>
+          <td style="text-align: left">Retourne la valeur, puis incrémente</td>
+          <td style="text-align: left"><code>int y = x++;</code></td>
+          <td style="text-align: left">Augmenté de 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>--x</code></td>
+          <td style="text-align: left"><strong>Pré-décrémentation</strong></td>
+          <td style="text-align: left">Avant</td>
+          <td style="text-align: left">Décrémente, puis retourne la valeur</td>
+          <td style="text-align: left"><code>int y = --x;</code></td>
+          <td style="text-align: left">Diminué de 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>x--</code></td>
+          <td style="text-align: left"><strong>Post-décrémentation</strong></td>
+          <td style="text-align: left">Après</td>
+          <td style="text-align: left">Retourne la valeur, puis décrémente</td>
+          <td style="text-align: left"><code>int y = x--;</code></td>
+          <td style="text-align: left">Diminué de 1</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="pourquoi-la-position-est-elle-importante-">Pourquoi la position est-elle importante ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>La différence réside dans la <strong>valeur retournée</strong> par l&rsquo;expression au moment de l&rsquo;exécution :</p>
+<ul>
+<li><strong>Pré (<code>++x</code>) :</strong> C&rsquo;est le mode &ldquo;Mise à jour d&rsquo;abord&rdquo;. On change la valeur et on utilise le nouveau résultat tout de suite.</li>
+<li><strong>Post (<code>x++</code>) :</strong> C&rsquo;est le mode &ldquo;Utilisation d&rsquo;abord&rdquo;. On utilise la valeur actuelle dans le calcul, et l&rsquo;ajout de 1 se fait juste après.</li>
+</ul>
+<h4 id="exemple-de-comparaison-">Exemple de comparaison :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">resultatA</span> <span class="p">=</span> <span class="p">++</span><span class="n">a</span><span class="p">;</span> <span class="c1">// a devient 11, puis resultatA reçoit 11.</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">resultatB</span> <span class="p">=</span> <span class="n">b</span><span class="p">++;</span> <span class="c1">// resultatB reçoit 10, puis b devient 11.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// À la fin :</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// a est 11, resultatA est 11</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// b est 11, resultatB est 10</span></span></span></code></pre></div>
+<hr>
+<h3 id="opérateurs-logiques-en-c">Opérateurs Logiques en C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les opérateurs logiques permettent de tester plusieurs conditions à la fois et retournent toujours une valeur booléenne (<code>true</code> ou <code>false</code>).</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Opérateur</th>
+          <th style="text-align: left">Nom</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Exemple</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>&amp;&amp;</code></td>
+          <td style="text-align: left"><strong>ET (AND)</strong></td>
+          <td style="text-align: left">Retourne <code>true</code> si <strong>toutes</strong> les conditions sont vraies.</td>
+          <td style="text-align: left"><code>(age &gt;= 18 &amp;&amp; aPermis)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>||</code></td>
+          <td style="text-align: left"><strong>OU (OR)</strong></td>
+          <td style="text-align: left">Retourne <code>true</code> si <strong>au moins une</strong> des conditions est vraie.</td>
+          <td style="text-align: left"><code>(estSamedi || estDimanche)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>!</code></td>
+          <td style="text-align: left"><strong>NON (NOT)</strong></td>
+          <td style="text-align: left">Inverse l&rsquo;état logique (vrai devient faux et inversement).</td>
+          <td style="text-align: left"><code>!estConnecte</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>^</code></td>
+          <td style="text-align: left"><strong>OU exclusif (XOR)</strong></td>
+          <td style="text-align: left">Retourne <code>true</code> si <strong>une seule</strong> des deux conditions est vraie.</td>
+          <td style="text-align: left"><code>(estOptionA ^ estOptionB)</code></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="tables-de-vérité-résumé">Tables de vérité (Résumé)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">A</th>
+          <th style="text-align: center">B</th>
+          <th style="text-align: center">A &amp;&amp; B</th>
+          <th style="text-align: center">A || B</th>
+          <th style="text-align: center">A ^ B</th>
+          <th style="text-align: center">!A</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>false</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+          <td style="text-align: center"><code>true</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>false</code></td>
+          <td style="text-align: center"><code>true</code></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="le-concept-de-court-circuit-short-circuit">Le concept de &ldquo;Court-circuit&rdquo; (Short-circuit)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Les opérateurs <code>&amp;&amp;</code> et <code>||</code> sont dits &ldquo;intelligents&rdquo; en C# :</p>
+<ol>
+<li><strong>Avec <code>&amp;&amp;</code> :</strong> Si la première condition est <strong>fausse</strong>, C# n&rsquo;évalue même pas la deuxième (car le résultat sera forcément faux).</li>
+<li><strong>Avec <code>||</code> :</strong> Si la première condition est <strong>vraie</strong>, C# s&rsquo;arrête là (car le résultat sera forcément vrai).</li>
+</ol>
+<blockquote>
+<p><strong>Astuce :</strong> Placez toujours la condition la plus &ldquo;lourde&rdquo; ou risquée en deuxième position pour profiter du court-circuit.</p></blockquote>
+<h4 id="opérateurs-logiques--court-circuit-vs-évaluation-complète">Opérateurs logiques : Court-circuit vs Évaluation complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Il existe deux variantes pour les opérateurs <strong>ET</strong> et <strong>OU</strong>. La différence réside dans la gestion de la deuxième condition.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: center">ET</th>
+          <th style="text-align: center">OU</th>
+          <th style="text-align: left">Comportement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Court-circuit</strong></td>
+          <td style="text-align: center"><code>&amp;&amp;</code></td>
+          <td style="text-align: center"><code>||</code></td>
+          <td style="text-align: left">Évalue la 2e condition <strong>uniquement si nécessaire</strong>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Évaluation complète</strong></td>
+          <td style="text-align: center"><code>&amp;</code></td>
+          <td style="text-align: center"><code>|</code></td>
+          <td style="text-align: left">Évalue <strong>toujours</strong> les deux conditions, sans exception.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="pourquoi-utiliser-lévaluation-complète--et--">Pourquoi utiliser l&rsquo;évaluation complète (<code>&amp;</code> et <code>|</code>) ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>L&rsquo;utilisation de <code>&amp;</code> et <code>|</code> sur des booléens est plus rare, mais elle est nécessaire si la deuxième condition contient un <strong>effet de bord</strong> (une action qui doit absolument se produire, comme une incrémentation ou l&rsquo;appel d&rsquo;une méthode).</p>
+<h4 id="exemple-de-différence-">Exemple de différence :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">compteur</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">conditionFausse</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Cas 1 : Court-circuit (&amp;&amp;)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">conditionFausse</span> <span class="p">&amp;&amp;</span> <span class="p">++</span><span class="n">compteur</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">compteur</span><span class="p">);</span> <span class="c1">// Affiche 0 (le ++ n&#39;a jamais été exécuté)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Cas 2 : Évaluation complète (&amp;)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">conditionFausse</span> <span class="p">&amp;</span> <span class="p">++</span><span class="n">compteur</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">compteur</span><span class="p">);</span> <span class="c1">// Affiche 1 (le ++ a été exécuté malgré le faux)</span></span></span></code></pre></div>
+<hr>
+<h3 id="opérateurs-de-comparaison-en-c">Opérateurs de comparaison en C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les opérateurs de comparaison permettent de vérifier la relation entre deux expressions. Le résultat est toujours une valeur booléenne (<code>true</code> ou <code>false</code>).</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Opérateur</th>
+          <th style="text-align: left">Nom</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Exemple</th>
+          <th style="text-align: left">Résultat</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>==</code></td>
+          <td style="text-align: left"><strong>Égalité</strong></td>
+          <td style="text-align: left"><code>true</code> si les valeurs sont identiques</td>
+          <td style="text-align: left"><code>5 == 5</code></td>
+          <td style="text-align: left"><code>true</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>!=</code></td>
+          <td style="text-align: left"><strong>Inégalité</strong></td>
+          <td style="text-align: left"><code>true</code> si les valeurs sont différentes</td>
+          <td style="text-align: left"><code>5 != 3</code></td>
+          <td style="text-align: left"><code>true</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&gt;</code></td>
+          <td style="text-align: left"><strong>Plus grand que</strong></td>
+          <td style="text-align: left"><code>true</code> si la gauche est strictement supérieure</td>
+          <td style="text-align: left"><code>10 &gt; 5</code></td>
+          <td style="text-align: left"><code>true</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;</code></td>
+          <td style="text-align: left"><strong>Plus petit que</strong></td>
+          <td style="text-align: left"><code>true</code> si la gauche est strictement inférieure</td>
+          <td style="text-align: left"><code>2 &lt; 1</code></td>
+          <td style="text-align: left"><code>false</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&gt;=</code></td>
+          <td style="text-align: left"><strong>Plus grand ou égal</strong></td>
+          <td style="text-align: left"><code>true</code> si la gauche est supérieure ou égale</td>
+          <td style="text-align: left"><code>5 &gt;= 5</code></td>
+          <td style="text-align: left"><code>true</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;=</code></td>
+          <td style="text-align: left"><strong>Plus petit ou égal</strong></td>
+          <td style="text-align: left"><code>true</code> si la gauche est inférieure ou égale</td>
+          <td style="text-align: left"><code>4 &lt;= 3</code></td>
+          <td style="text-align: left"><code>false</code></td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="confusion-entre--et-">Confusion entre <code>=</code> et <code>==</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h5>
+<p>C&rsquo;est l&rsquo;erreur la plus fréquente chez les débutants :</p>
+<ul>
+<li><code>=</code> est l&rsquo;opérateur d&rsquo;<strong>assignation</strong> (on donne une valeur à une variable).</li>
+<li><code>==</code> est l&rsquo;opérateur de <strong>comparaison</strong> (on vérifie si deux valeurs sont égales).</li>
+</ul>
+<h5 id="comparaison-de-chaînes-de-caractères-string">Comparaison de chaînes de caractères (<code>string</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h5>
+<p>En C#, l&rsquo;opérateur <code>==</code> fonctionne pour comparer le contenu des chaînes de caractères. Attention : la comparaison est <strong>sensible à la casse</strong>.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">nomUn</span> <span class="p">=</span> <span class="s">&#34;Bob&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">nomDeux</span> <span class="p">=</span> <span class="s">&#34;bob&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">sontEgaux</span> <span class="p">=</span> <span class="p">(</span><span class="n">nomUn</span> <span class="p">==</span> <span class="n">nomDeux</span><span class="p">);</span> <span class="c1">// Résultat: false</span></span></span></code></pre></div>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Introduction à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Introduction et syntaxe du langage C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="active " data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1769453880" defer></script>
+    <script src="/420-413/js/theme.js?1769453880" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -35,5 +35,12 @@
       <guid>http://localhost:1313/420-413/variables/index.html</guid>
       <description>1. Déclaration de variables et types de données C# est un langage fortement typé, ce qui signifie que chaque variable doit être déclarée avec un type spécifique. Voici quelques types de base :&#xA;int age = 25; // Entier double price = 19.99; // Nombre à virgule flottante char grade = &#39;A&#39;; // Caractère unique string name = &#34;John&#34;; // Chaîne de caractères bool isActive = true; // Booléen (vrai ou faux) Une variable peut être déclarée et initialisée avec la même instruction.&#xA;string salutation = &#34;Bonjour tout le monde!&#34;;</description>
     </item>
+    <item>
+      <title>Opérateurs</title>
+      <link>http://localhost:1313/420-413/operateurs/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/operateurs/index.html</guid>
+      <description>Les opérateurs Les opérateurs de calcul ou arithmétiques Les opérateurs de calcul permettent, comme en mathématiques, d’effectuer des opérations.&#xA;Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat + Addition Somme de deux valeurs int x = 10 + 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) ++x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = ++x; Augmenté de 1 x++ Post-incrémentation Après Retourne la valeur, puis incrémente int y = x++; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :</description>
+    </item>
   </channel>
 </rss>
