@@ -10,9 +10,6 @@ weight: 5
 ## Les opérateurs
 
 
-#### Les opérateurs de calcul ou arithmétiques
-Les opérateurs de calcul permettent, comme en mathématiques, d'effectuer des opérations.
-
 ### Opérateurs Arithmétiques en C#
 
 | Opérateur | Nom | Description | Exemple | Résultat |
