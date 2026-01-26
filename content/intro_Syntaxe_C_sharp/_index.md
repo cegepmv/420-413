@@ -14,6 +14,8 @@ weight: 3
 
 C# est un langage sensible à la casse.
 
+**L'extension des fichiers C# est `.cs`**
+
 ## Caractéristiques principales:
 
 * **Orienté objet**: tout est basé sur des classes et des objets
@@ -65,6 +67,7 @@ namespace MyProgram   // Définition de l'espace de noms
     * 💥 développeurs en dépression
 * **class** : Un modèle pour créer des objets. Tout programme C# doit contenir au moins une classe.
 * **Main** : La méthode Main est le point de départ d'une application C#. C'est ici que l'exécution du programme commence.
+
 
 ## Les identifiants ou les identificateurs
 * Ce sont les noms donnés aux classes et à leurs membres.
