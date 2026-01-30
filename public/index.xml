@@ -42,5 +42,19 @@
       <guid>http://localhost:1313/420-413/operateurs/index.html</guid>
       <description>Les opérateurs Opérateurs Arithmétiques en C# Opérateur Nom Description Exemple Résultat + Addition Somme de deux valeurs int x = 10 + 5; 15 - Soustraction Différence entre deux valeurs int x = 20 - 8; 12 * Multiplication Produit de deux valeurs double x = 5.5 * 2; 11.0 / Division Quotient de la division int x = 10 / 3; 3 (Entier) % Modulo Reste de la division entière int x = 10 % 3; 1 Opérateurs d’incrémentation et de décrémentation Opérateur Nom Position Description Exemple Résultat (x) ++x Pré-incrémentation Avant Incrémente, puis retourne la valeur int y = ++x; Augmenté de 1 x++ Post-incrémentation Après Retourne la valeur, puis incrémente int y = x++; Augmenté de 1 --x Pré-décrémentation Avant Décrémente, puis retourne la valeur int y = --x; Diminué de 1 x-- Post-décrémentation Après Retourne la valeur, puis décrémente int y = x--; Diminué de 1 Pourquoi la position est-elle importante ? La différence réside dans la valeur retournée par l’expression au moment de l’exécution :</description>
     </item>
+    <item>
+      <title>Structures de contrôles</title>
+      <link>http://localhost:1313/420-413/structures_de_controles/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/structures_de_controles/index.html</guid>
+      <description>1. Structures Conditionnelles 1.1 If-Else Similitudes avec Java : La syntaxe de base est identique.&#xA;// Calcul de rabais selon la quantité et le montant int quantite = 15; double montantTotal = 250.50; double rabais = 0.0; if (quantite &gt;= 20 &amp;&amp; montantTotal &gt;= 500) { rabais = 0.20; // 20% pour commandes importantes } else if (quantite &gt;= 10 || montantTotal &gt;= 200) { rabais = 0.10; // 10% pour commandes moyennes } else { rabais = 0.0; // Pas de rabais } double montantFinal = montantTotal * (1 - rabais); Console.WriteLine($&#34;Montant final: {montantFinal} $&#34;); ✅ Bonne pratique - Accolades obligatoires</description>
+    </item>
+    <item>
+      <title>Tableaux et collections</title>
+      <link>http://localhost:1313/420-413/tableaux_collections/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/tableaux_collections/index.html</guid>
+      <description>En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).&#xA;Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.&#xA;1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.</description>
+    </item>
   </channel>
 </rss>

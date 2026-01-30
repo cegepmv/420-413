@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).
+Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.
+1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tableaux et collections :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).
+Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.
+1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.">
+    <meta property="og:url" content="http://localhost:1313/420-413/tableaux_collections/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Tableaux et collections :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).
+Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.
+1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Tableaux et collections :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).
+Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.
+1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.">
+    <meta itemprop="wordCount" content="1659">
+    <title>Tableaux et collections :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/tableaux_collections/index.xml" rel="alternate" type="application/rss+xml" title="Tableaux et collections :: Développement d&#39;applications pour entreprises">
+    <link href="/420-413/images/favicon.png?1769763224" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1769763224" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1769763224" defer></script>
+    <script src="/420-413/js/search-lunr.js?1769763224" defer></script>
+    <script src="/420-413/js/search.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1769763224";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1769763224" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/tableaux_collections\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/tableaux_collections/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#les-tableaux-array">Les tableaux (Array)</a>
+      <ul>
+        <li><a href="#1-déclaration-et-initialisation">1. Déclaration et initialisation</a></li>
+        <li><a href="#points-importants-à-retenir">Points importants à retenir</a></li>
+        <li><a href="#2-exemples-pratiques">2. Exemples pratiques</a></li>
+        <li><a href="#3-tableaux-multidimensionnels">3. Tableaux multidimensionnels</a></li>
+        <li><a href="#4-méthodes-utiles-pour-les-tableaux">4. Méthodes utiles pour les tableaux</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-collections">Les Collections</a>
+      <ul>
+        <li><a href="#1-list---la-collection-la-plus-utilisée">1. List<T> - La collection la plus utilisée</a></li>
+        <li><a href="#2-dictionarytkey-tvalue---paires-clé-valeur">2. Dictionary&lt;TKey, TValue&gt; - Paires clé-valeur</a></li>
+        <li><a href="#3-queue---file-dattente-fifo">3. Queue<T> - File d&rsquo;attente (FIFO)</a></li>
+        <li><a href="#4-stack---pile-lifo">4. Stack<T> - Pile (LIFO)</a></li>
+        <li><a href="#5-hashset---ensemble-pas-de-doublons">5. HashSet<T> - Ensemble (pas de doublons)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Tableaux et collections</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/structures_de_controles/index.html" title="Structures de contrôles (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/methodes/index.html" title="Les méthodes en c# (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable tableaux_collections" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="tableaux-et-collections">Tableaux et collections</h1>
+
+<p>En C#, on distingue deux grandes familles pour stocker des groupes de données : les <strong>Tableaux</strong> (taille fixe) et les <strong>Collections</strong> (taille dynamique).</p>
+<h2 id="les-tableaux-array">Les tableaux (Array)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.</p>
+<h3 id="1-déclaration-et-initialisation">1. Déclaration et initialisation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="syntaxe-de-base">Syntaxe de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Déclaration d&#39;un tableau</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Déclaration avec initialisation de la taille</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Déclaration avec initialisation des valeurs</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">50</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Syntaxe courte (recommandée)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span> <span class="p">=</span> <span class="p">{</span> <span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">50</span> <span class="p">};</span></span></span></code></pre></div>
+<blockquote>
+<p><em>Le piège de l&rsquo;immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour &ldquo;agrandir&rdquo; un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C&rsquo;est pourquoi nous utilisons les Collections pour les données dynamiques.</em></p></blockquote>
+<h3 id="points-importants-à-retenir">Points importants à retenir<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Les tableaux ont une taille fixe définie à la création</li>
+<li>Les collections (comme <code>List&lt;T&gt;</code>) peuvent changer de taille dynamiquement</li>
+<li>Les propriétés en C# (comme <code>.Length</code>, <code>.Count</code>) n&rsquo;ont pas de parenthèses</li>
+<li>C# offre LINQ (Language Integrated Query) pour manipuler les collections facilement</li>
+<li>Les collections sont dans le namespace <code>System.Collections.Generic</code></li>
+</ul>
+<hr>
+<h3 id="2-exemples-pratiques">2. Exemples pratiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="exemple-1--gestion-des-notes-détudiants">Exemple 1 : Gestion des notes d&rsquo;étudiants<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GestionNotes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Déclaration d&#39;un tableau de notes</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span><span class="p">[]</span> <span class="n">notesEtudiants</span> <span class="p">=</span> <span class="p">{</span> <span class="m">85.5</span><span class="p">,</span> <span class="m">92.0</span><span class="p">,</span> <span class="m">78.5</span><span class="p">,</span> <span class="m">88.0</span><span class="p">,</span> <span class="m">95.5</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Afficher toutes les notes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Notes des étudiants ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">notesEtudiants</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Étudiant {i + 1}: {notesEtudiants[i]}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculer la moyenne</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">somme</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">double</span> <span class="n">note</span> <span class="k">in</span> <span class="n">notesEtudiants</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">somme</span> <span class="p">+=</span> <span class="n">note</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">moyenne</span> <span class="p">=</span> <span class="n">somme</span> <span class="p">/</span> <span class="n">notesEtudiants</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nMoyenne de la classe: {moyenne:F2}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>=== Notes des étudiants ===
+Étudiant 1: 85.5%
+Étudiant 2: 92%
+Étudiant 3: 78.5%
+Étudiant 4: 88%
+Étudiant 5: 95.5%
+
+Moyenne de la classe: 87.90%</code></pre></div>
+<h4 id="exemple-2--tableau-de-chaînes-de-caractères">Exemple 2 : Tableau de chaînes de caractères<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GestionPrenoms</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Tableau de prénoms</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span><span class="p">[]</span> <span class="n">prenoms</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Bernard&#34;</span><span class="p">,</span> <span class="s">&#34;Catherine&#34;</span><span class="p">,</span> <span class="s">&#34;David&#34;</span><span class="p">,</span> <span class="s">&#34;Émilie&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Afficher les prénoms avec leur longueur</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Liste des prénoms ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">prenom</span> <span class="k">in</span> <span class="n">prenoms</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{prenom} - {prenom.Length} lettres&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Trouver le prénom le plus long</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">prenomPlusLong</span> <span class="p">=</span> <span class="n">prenoms</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">prenom</span> <span class="k">in</span> <span class="n">prenoms</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">prenom</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="n">prenomPlusLong</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">prenomPlusLong</span> <span class="p">=</span> <span class="n">prenom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nPrénom le plus long: {prenomPlusLong}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="3-tableaux-multidimensionnels">3. Tableaux multidimensionnels<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="tableau-à-deux-dimensions-matrice">Tableau à deux dimensions (matrice)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Matrice</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Déclaration d&#39;une matrice 3x3</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="p">[,]</span> <span class="n">matrice</span> <span class="p">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage de la matrice</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Matrice 3x3 ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">ligne</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">ligne</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">ligne</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">colonne</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">colonne</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">colonne</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;{matrice[ligne, colonne]}\t&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculer la somme de chaque ligne</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Somme par ligne ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">ligne</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">ligne</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">ligne</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">somme</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">colonne</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">colonne</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">colonne</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">somme</span> <span class="p">+=</span> <span class="n">matrice</span><span class="p">[</span><span class="n">ligne</span><span class="p">,</span> <span class="n">colonne</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Ligne {ligne + 1}: {somme}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="tableau-dentelé-jagged-array">Tableau dentelé (jagged array)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TableauDentele</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Tableau où chaque ligne peut avoir une longueur différente</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="p">[][]</span> <span class="n">notesParCours</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">3</span><span class="p">][];</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">notesParCours</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">85</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">78</span> <span class="p">};</span>           <span class="c1">// 3 notes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notesParCours</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">92</span><span class="p">,</span> <span class="m">88</span> <span class="p">};</span>               <span class="c1">// 2 notes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notesParCours</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">95</span><span class="p">,</span> <span class="m">87</span><span class="p">,</span> <span class="m">91</span><span class="p">,</span> <span class="m">89</span> <span class="p">};</span>       <span class="c1">// 4 notes</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Notes par cours ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">cours</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">cours</span> <span class="p">&lt;</span> <span class="n">notesParCours</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">cours</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;Cours {cours + 1}: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">note</span> <span class="k">in</span> <span class="n">notesParCours</span><span class="p">[</span><span class="n">cours</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;{note} &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="4-méthodes-utiles-pour-les-tableaux">4. Méthodes utiles pour les tableaux<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MethodesTableaux</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span> <span class="p">=</span> <span class="p">{</span> <span class="m">45</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">23</span><span class="p">,</span> <span class="m">67</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Longueur du tableau</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre d&#39;éléments: {nombres.Length}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Trier le tableau</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Array</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">nombres</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\nTableau trié:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherTableau</span><span class="p">(</span><span class="n">nombres</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Inverser l&#39;ordre</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Array</span><span class="p">.</span><span class="n">Reverse</span><span class="p">(</span><span class="n">nombres</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\nTableau inversé:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherTableau</span><span class="p">(</span><span class="n">nombres</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Rechercher un élément</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">valeurRecherchee</span> <span class="p">=</span> <span class="m">78</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="n">Array</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">nombres</span><span class="p">,</span> <span class="n">valeurRecherchee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nIndex de {valeurRecherchee}: {index}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Copier un tableau</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="p">[]</span> <span class="n">copie</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">nombres</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Array</span><span class="p">.</span><span class="n">Copy</span><span class="p">(</span><span class="n">nombres</span><span class="p">,</span> <span class="n">copie</span><span class="p">,</span> <span class="n">nombres</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\nCopie du tableau:&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherTableau</span><span class="p">(</span><span class="n">copie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherTableau</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">tableau</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span> <span class="k">in</span> <span class="n">tableau</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;{nombre} &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="les-collections">Les Collections<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les collections en C# offrent plus de flexibilité que les tableaux. Elles peuvent changer de taille dynamiquement et offrent des méthodes pratiques pour manipuler les données.</p>
+<h3 id="1-list---la-collection-la-plus-utilisée">1. List<T> - La collection la plus utilisée<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="syntaxe-de-base-1">Syntaxe de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExempleList</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création d&#39;une liste vide</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">fruits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création avec valeurs initiales</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">nombres</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Ajout d&#39;éléments</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fruits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Pomme&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fruits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Banane&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fruits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Orange&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Liste de fruits ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">fruit</span> <span class="k">in</span> <span class="n">fruits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">fruit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Nombre d&#39;éléments</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nNombre de fruits: {fruits.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="exemple-2--gestion-dun-inventaire-simple">Exemple 2 : Gestion d&rsquo;un inventaire simple<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GestionInventaire</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création de listes pour stocker les informations</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">nomsProduits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">prixProduits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">quantitesProduits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Ajout de produits</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nomsProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Ordinateur portable&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prixProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">1299.99</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">quantitesProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">nomsProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Souris sans fil&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prixProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">29.99</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">quantitesProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">nomsProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Clavier mécanique&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prixProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">149.99</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">quantitesProduits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">25</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage de l&#39;inventaire</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== INVENTAIRE ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">nomsProduits</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{nomsProduits[i]} - {prixProduits[i]:C} - Qté: {quantitesProduits[i]}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculer la valeur totale de l&#39;inventaire</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">valeurTotale</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">nomsProduits</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">valeurTotale</span> <span class="p">+=</span> <span class="n">prixProduits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">*</span> <span class="n">quantitesProduits</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nValeur totale de l&#39;inventaire: {valeurTotale:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="méthodes-importantes-de-list">Méthodes importantes de List<T><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MethodesList</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span> <span class="n">etudiants</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Bernard&#34;</span><span class="p">,</span> <span class="s">&#34;Catherine&#34;</span><span class="p">,</span> <span class="s">&#34;David&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Add - Ajouter un élément à la fin</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Émilie&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Insert - Insérer à une position spécifique</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="s">&#34;François&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Remove - Retirer un élément spécifique</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="s">&#34;Bernard&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// RemoveAt - Retirer à un index spécifique</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Contains - Vérifier si un élément existe</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">bool</span> <span class="n">existe</span> <span class="p">=</span> <span class="n">etudiants</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;Catherine&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Catherine est dans la liste: {existe}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// IndexOf - Trouver l&#39;index d&#39;un élément</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="n">etudiants</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="s">&#34;David&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Index de David: {index}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Clear - Vider la liste</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// etudiants.Clear();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Sort - Trier la liste</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">Sort</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Reverse - Inverser l&#39;ordre</span>
+</span></span><span class="line"><span class="cl">        <span class="n">etudiants</span><span class="p">.</span><span class="n">Reverse</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Count - Nombre d&#39;éléments</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre d&#39;étudiants: {etudiants.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage final</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Liste finale ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">etudiant</span> <span class="k">in</span> <span class="n">etudiants</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">etudiant</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="2-dictionarytkey-tvalue---paires-clé-valeur">2. Dictionary&lt;TKey, TValue&gt; - Paires clé-valeur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExempleDictionnaire</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création d&#39;un dictionnaire pour stocker des codes postaux</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Dictionary</span> <span class="n">codesPostaux</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Ajout d&#39;éléments</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Montréal&#34;</span><span class="p">,</span> <span class="s">&#34;H1A&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Québec&#34;</span><span class="p">,</span> <span class="s">&#34;G1A&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Laval&#34;</span><span class="p">,</span> <span class="s">&#34;H7A&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Gatineau&#34;</span><span class="p">,</span> <span class="s">&#34;J8T&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Accès à une valeur</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Code postal de Montréal: {codesPostaux[&#34;</span><span class="n">Montréal</span><span class="s">&#34;]}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si une clé existe</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">codesPostaux</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="s">&#34;Québec&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Code postal de Québec: {codesPostaux[&#34;</span><span class="n">Québec</span><span class="s">&#34;]}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Parcourir le dictionnaire</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Tous les codes postaux ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="n">KeyValuePair</span> <span class="n">paire</span> <span class="k">in</span> <span class="n">codesPostaux</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{paire.Key}: {paire.Value}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Modifier une valeur</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">[</span><span class="s">&#34;Montréal&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;H2X&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Retirer un élément</span>
+</span></span><span class="line"><span class="cl">        <span class="n">codesPostaux</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="s">&#34;Gatineau&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nNombre de villes: {codesPostaux.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="exemple-pratique--système-de-notes">Exemple pratique : Système de notes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SystemeNotes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Dictionnaire: nom de l&#39;étudiant -&gt; liste de notes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Dictionary</span><span class="p">&gt;</span> <span class="n">notesEtudiants</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Ajout des étudiants et leurs notes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notesEtudiants</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span> <span class="p">{</span> <span class="m">85.5</span><span class="p">,</span> <span class="m">92.0</span><span class="p">,</span> <span class="m">88.5</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notesEtudiants</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Bernard&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span> <span class="p">{</span> <span class="m">78.0</span><span class="p">,</span> <span class="m">82.5</span><span class="p">,</span> <span class="m">80.0</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notesEtudiants</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Catherine&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">List</span> <span class="p">{</span> <span class="m">95.0</span><span class="p">,</span> <span class="m">93.5</span><span class="p">,</span> <span class="m">97.0</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Afficher les notes et moyennes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== NOTES ET MOYENNES ===\n&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="n">KeyValuePair</span><span class="p">&gt;</span> <span class="n">etudiant</span> <span class="k">in</span> <span class="n">notesEtudiants</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">nom</span> <span class="p">=</span> <span class="n">etudiant</span><span class="p">.</span><span class="n">Key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">List</span> <span class="n">notes</span> <span class="p">=</span> <span class="n">etudiant</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Étudiant: {nom}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&#34;Notes: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">foreach</span> <span class="p">(</span><span class="kt">double</span> <span class="n">note</span> <span class="k">in</span> <span class="n">notes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;{note}% &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Calculer la moyenne</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">double</span> <span class="n">somme</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">foreach</span> <span class="p">(</span><span class="kt">double</span> <span class="n">note</span> <span class="k">in</span> <span class="n">notes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">somme</span> <span class="p">+=</span> <span class="n">note</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">double</span> <span class="n">moyenne</span> <span class="p">=</span> <span class="n">somme</span> <span class="p">/</span> <span class="n">notes</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nMoyenne: {moyenne:F2}%\n&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="3-queue---file-dattente-fifo">3. Queue<T> - File d&rsquo;attente (FIFO)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExempleQueue</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création d&#39;une file d&#39;attente</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Queue</span> <span class="n">fileAttente</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Queue</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Enqueue - Ajouter à la fin de la file</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fileAttente</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="s">&#34;Client 1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fileAttente</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="s">&#34;Client 2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fileAttente</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="s">&#34;Client 3&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fileAttente</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="s">&#34;Client 4&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre de clients: {fileAttente.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Peek - Voir le premier élément sans le retirer</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">premier</span> <span class="p">=</span> <span class="n">fileAttente</span><span class="p">.</span><span class="n">Peek</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prochain client à servir: {premier}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Dequeue - Retirer et retourner le premier élément</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Service des clients ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">fileAttente</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">client</span> <span class="p">=</span> <span class="n">fileAttente</span><span class="p">.</span><span class="n">Dequeue</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Servir: {client}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nClients restants: {fileAttente.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="4-stack---pile-lifo">4. Stack<T> - Pile (LIFO)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExempleStack</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création d&#39;une pile</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Stack</span> <span class="n">historiqueNavigation</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Push - Ajouter au sommet de la pile</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&#34;Page d&#39;accueil&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&#34;Page de recherche&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&#34;Page de résultats&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&#34;Page de détails&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre de pages visitées: {historiqueNavigation.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Peek - Voir le sommet sans retirer</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">pageActuelle</span> <span class="p">=</span> <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Peek</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Page actuelle: {pageActuelle}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Pop - Retirer et retourner l&#39;élément du sommet</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Navigation arrière ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">page</span> <span class="p">=</span> <span class="n">historiqueNavigation</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Retour à: {page}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="5-hashset---ensemble-pas-de-doublons">5. HashSet<T> - Ensemble (pas de doublons)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ExempleHashSet</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Création d&#39;un ensemble</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HashSet</span> <span class="n">tagsUniques</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Add - Ajouter un élément (ignore les doublons)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;programmation&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;csharp&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;collections&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;csharp&#34;</span><span class="p">);</span> <span class="c1">// Sera ignoré (doublon)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;dotnet&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre de tags uniques: {tagsUniques.Count}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Affichage</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Tags ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">tag</span> <span class="k">in</span> <span class="n">tagsUniques</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;- {tag}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Contains - Vérifier l&#39;existence</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">bool</span> <span class="n">existe</span> <span class="p">=</span> <span class="n">tagsUniques</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;csharp&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nLe tag &#39;csharp&#39; existe: {existe}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Opérations sur les ensembles</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HashSet</span> <span class="n">autresTags</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HashSet</span> <span class="p">{</span> <span class="s">&#34;csharp&#34;</span><span class="p">,</span> <span class="s">&#34;java&#34;</span><span class="p">,</span> <span class="s">&#34;python&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Union</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tagsUniques</span><span class="p">.</span><span class="n">UnionWith</span><span class="p">(</span><span class="n">autresTags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;\nAprès union: {tagsUniques.Count} tags&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Intersection</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HashSet</span> <span class="n">langages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HashSet</span> <span class="p">{</span> <span class="s">&#34;csharp&#34;</span><span class="p">,</span> <span class="s">&#34;java&#34;</span><span class="p">,</span> <span class="s">&#34;python&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HashSet</span> <span class="n">appris</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HashSet</span> <span class="p">{</span> <span class="s">&#34;csharp&#34;</span><span class="p">,</span> <span class="s">&#34;javascript&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">langages</span><span class="p">.</span><span class="n">IntersectWith</span><span class="p">(</span><span class="n">appris</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Langages en commun ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">langage</span> <span class="k">in</span> <span class="n">langages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">langage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Introduction à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Introduction et syntaxe du langage C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="active " data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1769763224" defer></script>
+    <script src="/420-413/js/theme.js?1769763224" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

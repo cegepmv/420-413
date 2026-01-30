@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tableaux et collections :: Développement d&#39;applications pour entreprises</title>
+    <link>http://localhost:1313/420-413/tableaux_collections/index.html</link>
+    <description>En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).&#xA;Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.&#xA;1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="http://localhost:1313/420-413/tableaux_collections/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

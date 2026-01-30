@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="1. Le Distributeur de Breuvages Intelligent Scénario : Vous gérez une machine qui vend du Café (2.50$), du Thé (2.00$) et du Chocolat (3.00$). Exigences : Créer une méthode AfficherMenu() qui montre les choix et les prix. L’utilisateur entre un montant. Si le montant est insuffisant, redemander de l’argent ou annuler. Calculer la monnaie à rendre en utilisant le moins de pièces possible (pièces de 2$, 1$, 0.25$, 0.10$). Notions : while, switch, opérateurs modulo %. 2. Analyseur de Données Météo (Statistiques) Scénario : Un centre météo a besoin d’analyser les températures d’une semaine. Exigences : Stocker 7 valeurs double dans un tableau. Méthode CalculerMoyenne(double[] temp) : retourne la moyenne. Méthode TrouverExtremes(double[] temp) : affiche la plus haute et la plus basse sans Max() ou Min(). Afficher un histogramme simple dans la console (ex: 22°C = **********). Notions : Boucles for, algorithme de recherche de minimum/maximum. 3. Gestionnaire de Contacts avec Recherche Floue Scénario : Une liste de noms simple mais interactive. Exigences : Utiliser une List&lt;string&gt; pour stocker les noms. Menu : 1. Ajouter, 2. Supprimer par nom, 3. Rechercher, 4. Quitter. La recherche doit afficher tous les noms qui contiennent la lettre ou la syllabe saisie (ex: “an” trouve “André” et “Chantal”). Notions : List&lt;T&gt;, méthode string.Contains(), foreach. 4. Système de Facturation de Magasin Scénario : Calculer le total d’un panier d’achat avec taxes. Exigences : L’utilisateur saisit des prix jusqu’à ce qu’il entre -1. Gérer un tableau de “rabais” : si le prix &gt; 100$, appliquer 10% de réduction avant taxes. Méthode CalculerTaxes(double total) : retourne le montant des taxes (TPS 5%, TVQ 9.975%). Notions : Accumulateurs, constantes, méthodes de calcul. 5. Jeu du Pendu : Le Défi des Caractères Scénario : Deviner un mot caché lettre par lettre. Exigences : Le mot secret est un char[]. Créer un second char[] rempli de _. L’étudiant doit comparer la lettre saisie avec chaque caractère du mot secret. Gérer un maximum de 6 erreurs. Notions : Tableaux de caractères, manipulation d’index. 6. Bureau de Scrutin Virtuel Scénario : Compter les votes pour une élection à 3 candidats. Exigences : Utiliser un Dictionary&lt;string, int&gt; où la clé est le nom du candidat. Boucle de vote : l’utilisateur tape le nom ou le numéro du candidat. Méthode AfficherGagnant() : parcourt le dictionnaire pour trouver la valeur la plus élevée. Notions : Dictionnaires, itération sur paires Clé/Valeur. 7. Validateur de Complexité de Mot de Passe Scénario : Sécuriser la création de compte. Exigences : Créer une méthode VerifierForce(string mdp) qui retourne un score de 1 à 5. Critères : &#43;1 si &gt; 8 car., &#43;1 si majuscule, &#43;1 si chiffre, &#43;1 si symbole (#, !, $), &#43;1 si &gt; 12 car. Utiliser des boucles pour inspecter chaque caractère. Notions : char.IsUpper, char.IsDigit, char.IsPunctuation. 8. Convertisseur de Devises avec Historique Scénario : Changer de l’argent et garder une trace des transactions. Exigences : Utiliser un tableau double[] fixe pour les taux (USD, EUR, GBP). Chaque conversion effectuée est ajoutée sous forme de chaîne (ex: “10 CAD -&gt; 7 USD”) dans une List&lt;string&gt;. Option pour afficher l’historique complet à la fin. Notions : Tableaux, listes, formatage de texte. 9. Bataille Navale : Tactique 1D Scénario : Détruire des navires cachés dans une ligne de 10 cases. Exigences : Un tableau bool[10] où 3 cases aléatoires sont true. L’utilisateur choisit un index. Afficher “Touché” ou “À l’eau”. Le jeu s’arrête quand les 3 bateaux sont coulés. Notions : Random, do-while, tableaux de booléens. 10. Calculateur de Moyennes Multidimensionnel Scénario : Gérer les notes d’une classe de 3 étudiants ayant chacun 4 examens. Exigences : Déclarer un double[3, 4]. Remplir le tableau via des saisies utilisateur. Méthode MoyenneEtudiant(int index) : calcule la moyenne d’une ligne. Méthode MoyenneExamen(int index) : calcule la moyenne d’une colonne. Notions : Tableaux 2D, boucles imbriquées. 11. Simulateur de File d’Attente (Banque) Scénario : Gérer l’ordre de passage des clients. Exigences : Une List&lt;string&gt; simulant une file d’attente. Options : “Nouveau client”, “Servir prochain”, “Afficher file”. “Servir prochain” doit afficher le nom et retirer le premier élément (index 0). Notions : List.Add(), List.RemoveAt(). 12. Créateur de Deck de Cartes et Mélangeur Scénario : Générer et mélanger un jeu de 52 cartes. Exigences : Deux tableaux : couleurs (Pique, Coeur…) et valeurs (As, 2, 3…). Générer les 52 combinaisons dans une List&lt;string&gt;. Algorithme de mélange : échanger chaque carte avec une autre à un index aléatoire. Notions : Boucles imbriquées, algorithme de permutation (Swap). 13. Détecteur de Palindromes et de “Mirroring” Scénario : Analyser si un mot est identique à l’envers. Exigences : Saisir un mot. Créer une méthode EstPalindrome(string mot). Inverser la chaîne manuellement dans un tableau de caractères pour comparer. Ne pas utiliser Array.Reverse(). Notions : Boucle for décroissante, manipulation de chaînes. 14. Inventaire de Magasin (Tableaux Dentelés) Scénario : Gérer des rayons de différentes tailles. Exigences : Un tableau dentelé string[][] rayons = new string[3][]. Rayon 1 : 2 produits, Rayon 2 : 5 produits, Rayon 3 : 3 produits. L’utilisateur peut modifier un produit en spécifiant [rayon, index]. Notions : Jagged Arrays, gestion des limites de tableaux. 15. Le Juste Prix (Multi-joueurs) Scénario : Deviner un prix secret généré aléatoirement. Exigences : Le programme génère un nombre entre 1 et 1000. Plusieurs joueurs entrent leur nom. Chacun joue à tour de rôle. Le programme indique “C’est plus !” ou “C’est moins !”. Notions : Random, listes de noms, boucle de jeu. 16. Système de Login avec Blocage Scénario : Sécuriser l’accès à une console. Exigences : Stocker les utilisateurs/mots de passe dans deux tableaux parallèles ou un dictionnaire. L’utilisateur a 3 tentatives. Après 3 erreurs, le programme se verrouille (utilise Thread.Sleep pour simuler une attente). Notions : Compteurs, conditions logiques, sécurité de base. 17. Analyseur de Texte : Compteur de Mots Scénario : Analyser la structure d’un paragraphe. Exigences : L’utilisateur entre un long texte. Compter le nombre de mots (délimités par des espaces). Compter l’occurrence d’une lettre spécifique demandée à l’utilisateur. Notions : string.Split(), foreach, compteurs. 18. Calculateur d’IMC Professionnel Scénario : Santé et nutrition. Exigences : Saisir le nom, le poids et la taille de plusieurs patients. Calculer l’IMC ($poids / taille^2$). Méthode InterpreterIMC(double imc) : retourne une chaîne (Maigreur, Normal, Obèse). Notions : Méthodes de retour, formules mathématiques. 19. Gestionnaire de Tâches avec Priorité Scénario : Une To-Do List intelligente. Exigences : Stocker les tâches dans une liste. L’utilisateur peut ajouter une tâche avec un niveau d’importance (Haute, Moyenne, Basse). Afficher les tâches filtrées manuellement : d’abord toutes les “Haute”, ensuite les autres. Notions : Filtrage par boucles, comparaisons de chaînes. 20. Le Carré Magique (Validation de Grille) Scénario : Vérifier si une grille 3x3 est un carré magique. Exigences : L’utilisateur entre 9 nombres dans un tableau int[3, 3]. Le programme doit calculer la somme de chaque ligne, chaque colonne et des deux diagonales. Si toutes les sommes sont égales, c’est un carré magique ! Notions : Algorithmique avancée sur tableaux 2D.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Série d&#39;exercices 1 :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="1. Le Distributeur de Breuvages Intelligent Scénario : Vous gérez une machine qui vend du Café (2.50$), du Thé (2.00$) et du Chocolat (3.00$). Exigences : Créer une méthode AfficherMenu() qui montre les choix et les prix. L’utilisateur entre un montant. Si le montant est insuffisant, redemander de l’argent ou annuler. Calculer la monnaie à rendre en utilisant le moins de pièces possible (pièces de 2$, 1$, 0.25$, 0.10$). Notions : while, switch, opérateurs modulo %. 2. Analyseur de Données Météo (Statistiques) Scénario : Un centre météo a besoin d’analyser les températures d’une semaine. Exigences : Stocker 7 valeurs double dans un tableau. Méthode CalculerMoyenne(double[] temp) : retourne la moyenne. Méthode TrouverExtremes(double[] temp) : affiche la plus haute et la plus basse sans Max() ou Min(). Afficher un histogramme simple dans la console (ex: 22°C = **********). Notions : Boucles for, algorithme de recherche de minimum/maximum. 3. Gestionnaire de Contacts avec Recherche Floue Scénario : Une liste de noms simple mais interactive. Exigences : Utiliser une List&lt;string&gt; pour stocker les noms. Menu : 1. Ajouter, 2. Supprimer par nom, 3. Rechercher, 4. Quitter. La recherche doit afficher tous les noms qui contiennent la lettre ou la syllabe saisie (ex: “an” trouve “André” et “Chantal”). Notions : List&lt;T&gt;, méthode string.Contains(), foreach. 4. Système de Facturation de Magasin Scénario : Calculer le total d’un panier d’achat avec taxes. Exigences : L’utilisateur saisit des prix jusqu’à ce qu’il entre -1. Gérer un tableau de “rabais” : si le prix &gt; 100$, appliquer 10% de réduction avant taxes. Méthode CalculerTaxes(double total) : retourne le montant des taxes (TPS 5%, TVQ 9.975%). Notions : Accumulateurs, constantes, méthodes de calcul. 5. Jeu du Pendu : Le Défi des Caractères Scénario : Deviner un mot caché lettre par lettre. Exigences : Le mot secret est un char[]. Créer un second char[] rempli de _. L’étudiant doit comparer la lettre saisie avec chaque caractère du mot secret. Gérer un maximum de 6 erreurs. Notions : Tableaux de caractères, manipulation d’index. 6. Bureau de Scrutin Virtuel Scénario : Compter les votes pour une élection à 3 candidats. Exigences : Utiliser un Dictionary&lt;string, int&gt; où la clé est le nom du candidat. Boucle de vote : l’utilisateur tape le nom ou le numéro du candidat. Méthode AfficherGagnant() : parcourt le dictionnaire pour trouver la valeur la plus élevée. Notions : Dictionnaires, itération sur paires Clé/Valeur. 7. Validateur de Complexité de Mot de Passe Scénario : Sécuriser la création de compte. Exigences : Créer une méthode VerifierForce(string mdp) qui retourne un score de 1 à 5. Critères : &#43;1 si &gt; 8 car., &#43;1 si majuscule, &#43;1 si chiffre, &#43;1 si symbole (#, !, $), &#43;1 si &gt; 12 car. Utiliser des boucles pour inspecter chaque caractère. Notions : char.IsUpper, char.IsDigit, char.IsPunctuation. 8. Convertisseur de Devises avec Historique Scénario : Changer de l’argent et garder une trace des transactions. Exigences : Utiliser un tableau double[] fixe pour les taux (USD, EUR, GBP). Chaque conversion effectuée est ajoutée sous forme de chaîne (ex: “10 CAD -&gt; 7 USD”) dans une List&lt;string&gt;. Option pour afficher l’historique complet à la fin. Notions : Tableaux, listes, formatage de texte. 9. Bataille Navale : Tactique 1D Scénario : Détruire des navires cachés dans une ligne de 10 cases. Exigences : Un tableau bool[10] où 3 cases aléatoires sont true. L’utilisateur choisit un index. Afficher “Touché” ou “À l’eau”. Le jeu s’arrête quand les 3 bateaux sont coulés. Notions : Random, do-while, tableaux de booléens. 10. Calculateur de Moyennes Multidimensionnel Scénario : Gérer les notes d’une classe de 3 étudiants ayant chacun 4 examens. Exigences : Déclarer un double[3, 4]. Remplir le tableau via des saisies utilisateur. Méthode MoyenneEtudiant(int index) : calcule la moyenne d’une ligne. Méthode MoyenneExamen(int index) : calcule la moyenne d’une colonne. Notions : Tableaux 2D, boucles imbriquées. 11. Simulateur de File d’Attente (Banque) Scénario : Gérer l’ordre de passage des clients. Exigences : Une List&lt;string&gt; simulant une file d’attente. Options : “Nouveau client”, “Servir prochain”, “Afficher file”. “Servir prochain” doit afficher le nom et retirer le premier élément (index 0). Notions : List.Add(), List.RemoveAt(). 12. Créateur de Deck de Cartes et Mélangeur Scénario : Générer et mélanger un jeu de 52 cartes. Exigences : Deux tableaux : couleurs (Pique, Coeur…) et valeurs (As, 2, 3…). Générer les 52 combinaisons dans une List&lt;string&gt;. Algorithme de mélange : échanger chaque carte avec une autre à un index aléatoire. Notions : Boucles imbriquées, algorithme de permutation (Swap). 13. Détecteur de Palindromes et de “Mirroring” Scénario : Analyser si un mot est identique à l’envers. Exigences : Saisir un mot. Créer une méthode EstPalindrome(string mot). Inverser la chaîne manuellement dans un tableau de caractères pour comparer. Ne pas utiliser Array.Reverse(). Notions : Boucle for décroissante, manipulation de chaînes. 14. Inventaire de Magasin (Tableaux Dentelés) Scénario : Gérer des rayons de différentes tailles. Exigences : Un tableau dentelé string[][] rayons = new string[3][]. Rayon 1 : 2 produits, Rayon 2 : 5 produits, Rayon 3 : 3 produits. L’utilisateur peut modifier un produit en spécifiant [rayon, index]. Notions : Jagged Arrays, gestion des limites de tableaux. 15. Le Juste Prix (Multi-joueurs) Scénario : Deviner un prix secret généré aléatoirement. Exigences : Le programme génère un nombre entre 1 et 1000. Plusieurs joueurs entrent leur nom. Chacun joue à tour de rôle. Le programme indique “C’est plus !” ou “C’est moins !”. Notions : Random, listes de noms, boucle de jeu. 16. Système de Login avec Blocage Scénario : Sécuriser l’accès à une console. Exigences : Stocker les utilisateurs/mots de passe dans deux tableaux parallèles ou un dictionnaire. L’utilisateur a 3 tentatives. Après 3 erreurs, le programme se verrouille (utilise Thread.Sleep pour simuler une attente). Notions : Compteurs, conditions logiques, sécurité de base. 17. Analyseur de Texte : Compteur de Mots Scénario : Analyser la structure d’un paragraphe. Exigences : L’utilisateur entre un long texte. Compter le nombre de mots (délimités par des espaces). Compter l’occurrence d’une lettre spécifique demandée à l’utilisateur. Notions : string.Split(), foreach, compteurs. 18. Calculateur d’IMC Professionnel Scénario : Santé et nutrition. Exigences : Saisir le nom, le poids et la taille de plusieurs patients. Calculer l’IMC ($poids / taille^2$). Méthode InterpreterIMC(double imc) : retourne une chaîne (Maigreur, Normal, Obèse). Notions : Méthodes de retour, formules mathématiques. 19. Gestionnaire de Tâches avec Priorité Scénario : Une To-Do List intelligente. Exigences : Stocker les tâches dans une liste. L’utilisateur peut ajouter une tâche avec un niveau d’importance (Haute, Moyenne, Basse). Afficher les tâches filtrées manuellement : d’abord toutes les “Haute”, ensuite les autres. Notions : Filtrage par boucles, comparaisons de chaînes. 20. Le Carré Magique (Validation de Grille) Scénario : Vérifier si une grille 3x3 est un carré magique. Exigences : L’utilisateur entre 9 nombres dans un tableau int[3, 3]. Le programme doit calculer la somme de chaque ligne, chaque colonne et des deux diagonales. Si toutes les sommes sont égales, c’est un carré magique ! Notions : Algorithmique avancée sur tableaux 2D.">
+    <meta property="og:url" content="http://localhost:1313/420-413/serie_exos_1/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Série d&#39;exercices 1 :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="1. Le Distributeur de Breuvages Intelligent Scénario : Vous gérez une machine qui vend du Café (2.50$), du Thé (2.00$) et du Chocolat (3.00$). Exigences : Créer une méthode AfficherMenu() qui montre les choix et les prix. L’utilisateur entre un montant. Si le montant est insuffisant, redemander de l’argent ou annuler. Calculer la monnaie à rendre en utilisant le moins de pièces possible (pièces de 2$, 1$, 0.25$, 0.10$). Notions : while, switch, opérateurs modulo %. 2. Analyseur de Données Météo (Statistiques) Scénario : Un centre météo a besoin d’analyser les températures d’une semaine. Exigences : Stocker 7 valeurs double dans un tableau. Méthode CalculerMoyenne(double[] temp) : retourne la moyenne. Méthode TrouverExtremes(double[] temp) : affiche la plus haute et la plus basse sans Max() ou Min(). Afficher un histogramme simple dans la console (ex: 22°C = **********). Notions : Boucles for, algorithme de recherche de minimum/maximum. 3. Gestionnaire de Contacts avec Recherche Floue Scénario : Une liste de noms simple mais interactive. Exigences : Utiliser une List&lt;string&gt; pour stocker les noms. Menu : 1. Ajouter, 2. Supprimer par nom, 3. Rechercher, 4. Quitter. La recherche doit afficher tous les noms qui contiennent la lettre ou la syllabe saisie (ex: “an” trouve “André” et “Chantal”). Notions : List&lt;T&gt;, méthode string.Contains(), foreach. 4. Système de Facturation de Magasin Scénario : Calculer le total d’un panier d’achat avec taxes. Exigences : L’utilisateur saisit des prix jusqu’à ce qu’il entre -1. Gérer un tableau de “rabais” : si le prix &gt; 100$, appliquer 10% de réduction avant taxes. Méthode CalculerTaxes(double total) : retourne le montant des taxes (TPS 5%, TVQ 9.975%). Notions : Accumulateurs, constantes, méthodes de calcul. 5. Jeu du Pendu : Le Défi des Caractères Scénario : Deviner un mot caché lettre par lettre. Exigences : Le mot secret est un char[]. Créer un second char[] rempli de _. L’étudiant doit comparer la lettre saisie avec chaque caractère du mot secret. Gérer un maximum de 6 erreurs. Notions : Tableaux de caractères, manipulation d’index. 6. Bureau de Scrutin Virtuel Scénario : Compter les votes pour une élection à 3 candidats. Exigences : Utiliser un Dictionary&lt;string, int&gt; où la clé est le nom du candidat. Boucle de vote : l’utilisateur tape le nom ou le numéro du candidat. Méthode AfficherGagnant() : parcourt le dictionnaire pour trouver la valeur la plus élevée. Notions : Dictionnaires, itération sur paires Clé/Valeur. 7. Validateur de Complexité de Mot de Passe Scénario : Sécuriser la création de compte. Exigences : Créer une méthode VerifierForce(string mdp) qui retourne un score de 1 à 5. Critères : &#43;1 si &gt; 8 car., &#43;1 si majuscule, &#43;1 si chiffre, &#43;1 si symbole (#, !, $), &#43;1 si &gt; 12 car. Utiliser des boucles pour inspecter chaque caractère. Notions : char.IsUpper, char.IsDigit, char.IsPunctuation. 8. Convertisseur de Devises avec Historique Scénario : Changer de l’argent et garder une trace des transactions. Exigences : Utiliser un tableau double[] fixe pour les taux (USD, EUR, GBP). Chaque conversion effectuée est ajoutée sous forme de chaîne (ex: “10 CAD -&gt; 7 USD”) dans une List&lt;string&gt;. Option pour afficher l’historique complet à la fin. Notions : Tableaux, listes, formatage de texte. 9. Bataille Navale : Tactique 1D Scénario : Détruire des navires cachés dans une ligne de 10 cases. Exigences : Un tableau bool[10] où 3 cases aléatoires sont true. L’utilisateur choisit un index. Afficher “Touché” ou “À l’eau”. Le jeu s’arrête quand les 3 bateaux sont coulés. Notions : Random, do-while, tableaux de booléens. 10. Calculateur de Moyennes Multidimensionnel Scénario : Gérer les notes d’une classe de 3 étudiants ayant chacun 4 examens. Exigences : Déclarer un double[3, 4]. Remplir le tableau via des saisies utilisateur. Méthode MoyenneEtudiant(int index) : calcule la moyenne d’une ligne. Méthode MoyenneExamen(int index) : calcule la moyenne d’une colonne. Notions : Tableaux 2D, boucles imbriquées. 11. Simulateur de File d’Attente (Banque) Scénario : Gérer l’ordre de passage des clients. Exigences : Une List&lt;string&gt; simulant une file d’attente. Options : “Nouveau client”, “Servir prochain”, “Afficher file”. “Servir prochain” doit afficher le nom et retirer le premier élément (index 0). Notions : List.Add(), List.RemoveAt(). 12. Créateur de Deck de Cartes et Mélangeur Scénario : Générer et mélanger un jeu de 52 cartes. Exigences : Deux tableaux : couleurs (Pique, Coeur…) et valeurs (As, 2, 3…). Générer les 52 combinaisons dans une List&lt;string&gt;. Algorithme de mélange : échanger chaque carte avec une autre à un index aléatoire. Notions : Boucles imbriquées, algorithme de permutation (Swap). 13. Détecteur de Palindromes et de “Mirroring” Scénario : Analyser si un mot est identique à l’envers. Exigences : Saisir un mot. Créer une méthode EstPalindrome(string mot). Inverser la chaîne manuellement dans un tableau de caractères pour comparer. Ne pas utiliser Array.Reverse(). Notions : Boucle for décroissante, manipulation de chaînes. 14. Inventaire de Magasin (Tableaux Dentelés) Scénario : Gérer des rayons de différentes tailles. Exigences : Un tableau dentelé string[][] rayons = new string[3][]. Rayon 1 : 2 produits, Rayon 2 : 5 produits, Rayon 3 : 3 produits. L’utilisateur peut modifier un produit en spécifiant [rayon, index]. Notions : Jagged Arrays, gestion des limites de tableaux. 15. Le Juste Prix (Multi-joueurs) Scénario : Deviner un prix secret généré aléatoirement. Exigences : Le programme génère un nombre entre 1 et 1000. Plusieurs joueurs entrent leur nom. Chacun joue à tour de rôle. Le programme indique “C’est plus !” ou “C’est moins !”. Notions : Random, listes de noms, boucle de jeu. 16. Système de Login avec Blocage Scénario : Sécuriser l’accès à une console. Exigences : Stocker les utilisateurs/mots de passe dans deux tableaux parallèles ou un dictionnaire. L’utilisateur a 3 tentatives. Après 3 erreurs, le programme se verrouille (utilise Thread.Sleep pour simuler une attente). Notions : Compteurs, conditions logiques, sécurité de base. 17. Analyseur de Texte : Compteur de Mots Scénario : Analyser la structure d’un paragraphe. Exigences : L’utilisateur entre un long texte. Compter le nombre de mots (délimités par des espaces). Compter l’occurrence d’une lettre spécifique demandée à l’utilisateur. Notions : string.Split(), foreach, compteurs. 18. Calculateur d’IMC Professionnel Scénario : Santé et nutrition. Exigences : Saisir le nom, le poids et la taille de plusieurs patients. Calculer l’IMC ($poids / taille^2$). Méthode InterpreterIMC(double imc) : retourne une chaîne (Maigreur, Normal, Obèse). Notions : Méthodes de retour, formules mathématiques. 19. Gestionnaire de Tâches avec Priorité Scénario : Une To-Do List intelligente. Exigences : Stocker les tâches dans une liste. L’utilisateur peut ajouter une tâche avec un niveau d’importance (Haute, Moyenne, Basse). Afficher les tâches filtrées manuellement : d’abord toutes les “Haute”, ensuite les autres. Notions : Filtrage par boucles, comparaisons de chaînes. 20. Le Carré Magique (Validation de Grille) Scénario : Vérifier si une grille 3x3 est un carré magique. Exigences : L’utilisateur entre 9 nombres dans un tableau int[3, 3]. Le programme doit calculer la somme de chaque ligne, chaque colonne et des deux diagonales. Si toutes les sommes sont égales, c’est un carré magique ! Notions : Algorithmique avancée sur tableaux 2D.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Série d&#39;exercices 1 :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="1. Le Distributeur de Breuvages Intelligent Scénario : Vous gérez une machine qui vend du Café (2.50$), du Thé (2.00$) et du Chocolat (3.00$). Exigences : Créer une méthode AfficherMenu() qui montre les choix et les prix. L’utilisateur entre un montant. Si le montant est insuffisant, redemander de l’argent ou annuler. Calculer la monnaie à rendre en utilisant le moins de pièces possible (pièces de 2$, 1$, 0.25$, 0.10$). Notions : while, switch, opérateurs modulo %. 2. Analyseur de Données Météo (Statistiques) Scénario : Un centre météo a besoin d’analyser les températures d’une semaine. Exigences : Stocker 7 valeurs double dans un tableau. Méthode CalculerMoyenne(double[] temp) : retourne la moyenne. Méthode TrouverExtremes(double[] temp) : affiche la plus haute et la plus basse sans Max() ou Min(). Afficher un histogramme simple dans la console (ex: 22°C = **********). Notions : Boucles for, algorithme de recherche de minimum/maximum. 3. Gestionnaire de Contacts avec Recherche Floue Scénario : Une liste de noms simple mais interactive. Exigences : Utiliser une List&lt;string&gt; pour stocker les noms. Menu : 1. Ajouter, 2. Supprimer par nom, 3. Rechercher, 4. Quitter. La recherche doit afficher tous les noms qui contiennent la lettre ou la syllabe saisie (ex: “an” trouve “André” et “Chantal”). Notions : List&lt;T&gt;, méthode string.Contains(), foreach. 4. Système de Facturation de Magasin Scénario : Calculer le total d’un panier d’achat avec taxes. Exigences : L’utilisateur saisit des prix jusqu’à ce qu’il entre -1. Gérer un tableau de “rabais” : si le prix &gt; 100$, appliquer 10% de réduction avant taxes. Méthode CalculerTaxes(double total) : retourne le montant des taxes (TPS 5%, TVQ 9.975%). Notions : Accumulateurs, constantes, méthodes de calcul. 5. Jeu du Pendu : Le Défi des Caractères Scénario : Deviner un mot caché lettre par lettre. Exigences : Le mot secret est un char[]. Créer un second char[] rempli de _. L’étudiant doit comparer la lettre saisie avec chaque caractère du mot secret. Gérer un maximum de 6 erreurs. Notions : Tableaux de caractères, manipulation d’index. 6. Bureau de Scrutin Virtuel Scénario : Compter les votes pour une élection à 3 candidats. Exigences : Utiliser un Dictionary&lt;string, int&gt; où la clé est le nom du candidat. Boucle de vote : l’utilisateur tape le nom ou le numéro du candidat. Méthode AfficherGagnant() : parcourt le dictionnaire pour trouver la valeur la plus élevée. Notions : Dictionnaires, itération sur paires Clé/Valeur. 7. Validateur de Complexité de Mot de Passe Scénario : Sécuriser la création de compte. Exigences : Créer une méthode VerifierForce(string mdp) qui retourne un score de 1 à 5. Critères : &#43;1 si &gt; 8 car., &#43;1 si majuscule, &#43;1 si chiffre, &#43;1 si symbole (#, !, $), &#43;1 si &gt; 12 car. Utiliser des boucles pour inspecter chaque caractère. Notions : char.IsUpper, char.IsDigit, char.IsPunctuation. 8. Convertisseur de Devises avec Historique Scénario : Changer de l’argent et garder une trace des transactions. Exigences : Utiliser un tableau double[] fixe pour les taux (USD, EUR, GBP). Chaque conversion effectuée est ajoutée sous forme de chaîne (ex: “10 CAD -&gt; 7 USD”) dans une List&lt;string&gt;. Option pour afficher l’historique complet à la fin. Notions : Tableaux, listes, formatage de texte. 9. Bataille Navale : Tactique 1D Scénario : Détruire des navires cachés dans une ligne de 10 cases. Exigences : Un tableau bool[10] où 3 cases aléatoires sont true. L’utilisateur choisit un index. Afficher “Touché” ou “À l’eau”. Le jeu s’arrête quand les 3 bateaux sont coulés. Notions : Random, do-while, tableaux de booléens. 10. Calculateur de Moyennes Multidimensionnel Scénario : Gérer les notes d’une classe de 3 étudiants ayant chacun 4 examens. Exigences : Déclarer un double[3, 4]. Remplir le tableau via des saisies utilisateur. Méthode MoyenneEtudiant(int index) : calcule la moyenne d’une ligne. Méthode MoyenneExamen(int index) : calcule la moyenne d’une colonne. Notions : Tableaux 2D, boucles imbriquées. 11. Simulateur de File d’Attente (Banque) Scénario : Gérer l’ordre de passage des clients. Exigences : Une List&lt;string&gt; simulant une file d’attente. Options : “Nouveau client”, “Servir prochain”, “Afficher file”. “Servir prochain” doit afficher le nom et retirer le premier élément (index 0). Notions : List.Add(), List.RemoveAt(). 12. Créateur de Deck de Cartes et Mélangeur Scénario : Générer et mélanger un jeu de 52 cartes. Exigences : Deux tableaux : couleurs (Pique, Coeur…) et valeurs (As, 2, 3…). Générer les 52 combinaisons dans une List&lt;string&gt;. Algorithme de mélange : échanger chaque carte avec une autre à un index aléatoire. Notions : Boucles imbriquées, algorithme de permutation (Swap). 13. Détecteur de Palindromes et de “Mirroring” Scénario : Analyser si un mot est identique à l’envers. Exigences : Saisir un mot. Créer une méthode EstPalindrome(string mot). Inverser la chaîne manuellement dans un tableau de caractères pour comparer. Ne pas utiliser Array.Reverse(). Notions : Boucle for décroissante, manipulation de chaînes. 14. Inventaire de Magasin (Tableaux Dentelés) Scénario : Gérer des rayons de différentes tailles. Exigences : Un tableau dentelé string[][] rayons = new string[3][]. Rayon 1 : 2 produits, Rayon 2 : 5 produits, Rayon 3 : 3 produits. L’utilisateur peut modifier un produit en spécifiant [rayon, index]. Notions : Jagged Arrays, gestion des limites de tableaux. 15. Le Juste Prix (Multi-joueurs) Scénario : Deviner un prix secret généré aléatoirement. Exigences : Le programme génère un nombre entre 1 et 1000. Plusieurs joueurs entrent leur nom. Chacun joue à tour de rôle. Le programme indique “C’est plus !” ou “C’est moins !”. Notions : Random, listes de noms, boucle de jeu. 16. Système de Login avec Blocage Scénario : Sécuriser l’accès à une console. Exigences : Stocker les utilisateurs/mots de passe dans deux tableaux parallèles ou un dictionnaire. L’utilisateur a 3 tentatives. Après 3 erreurs, le programme se verrouille (utilise Thread.Sleep pour simuler une attente). Notions : Compteurs, conditions logiques, sécurité de base. 17. Analyseur de Texte : Compteur de Mots Scénario : Analyser la structure d’un paragraphe. Exigences : L’utilisateur entre un long texte. Compter le nombre de mots (délimités par des espaces). Compter l’occurrence d’une lettre spécifique demandée à l’utilisateur. Notions : string.Split(), foreach, compteurs. 18. Calculateur d’IMC Professionnel Scénario : Santé et nutrition. Exigences : Saisir le nom, le poids et la taille de plusieurs patients. Calculer l’IMC ($poids / taille^2$). Méthode InterpreterIMC(double imc) : retourne une chaîne (Maigreur, Normal, Obèse). Notions : Méthodes de retour, formules mathématiques. 19. Gestionnaire de Tâches avec Priorité Scénario : Une To-Do List intelligente. Exigences : Stocker les tâches dans une liste. L’utilisateur peut ajouter une tâche avec un niveau d’importance (Haute, Moyenne, Basse). Afficher les tâches filtrées manuellement : d’abord toutes les “Haute”, ensuite les autres. Notions : Filtrage par boucles, comparaisons de chaînes. 20. Le Carré Magique (Validation de Grille) Scénario : Vérifier si une grille 3x3 est un carré magique. Exigences : L’utilisateur entre 9 nombres dans un tableau int[3, 3]. Le programme doit calculer la somme de chaque ligne, chaque colonne et des deux diagonales. Si toutes les sommes sont égales, c’est un carré magique ! Notions : Algorithmique avancée sur tableaux 2D.">
+    <meta itemprop="wordCount" content="1157">
+    <title>Série d&#39;exercices 1 :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1769763224" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1769763224" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1769763224" defer></script>
+    <script src="/420-413/js/search-lunr.js?1769763224" defer></script>
+    <script src="/420-413/js/search.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1769763224";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1769763224" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/serie_exos_1\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/serie_exos_1/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#1-le-distributeur-de-breuvages-intelligent">1. Le Distributeur de Breuvages Intelligent</a></li>
+    <li><a href="#2-analyseur-de-données-météo-statistiques">2. Analyseur de Données Météo (Statistiques)</a></li>
+    <li><a href="#3-gestionnaire-de-contacts-avec-recherche-floue">3. Gestionnaire de Contacts avec Recherche Floue</a></li>
+    <li><a href="#4-système-de-facturation-de-magasin">4. Système de Facturation de Magasin</a></li>
+    <li><a href="#5-jeu-du-pendu--le-défi-des-caractères">5. Jeu du Pendu : Le Défi des Caractères</a></li>
+    <li><a href="#6-bureau-de-scrutin-virtuel">6. Bureau de Scrutin Virtuel</a></li>
+    <li><a href="#7-validateur-de-complexité-de-mot-de-passe">7. Validateur de Complexité de Mot de Passe</a></li>
+    <li><a href="#8-convertisseur-de-devises-avec-historique">8. Convertisseur de Devises avec Historique</a></li>
+    <li><a href="#9-bataille-navale--tactique-1d">9. Bataille Navale : Tactique 1D</a></li>
+    <li><a href="#10-calculateur-de-moyennes-multidimensionnel">10. Calculateur de Moyennes Multidimensionnel</a></li>
+    <li><a href="#11-simulateur-de-file-dattente-banque">11. Simulateur de File d&rsquo;Attente (Banque)</a></li>
+    <li><a href="#12-créateur-de-deck-de-cartes-et-mélangeur">12. Créateur de Deck de Cartes et Mélangeur</a></li>
+    <li><a href="#13-détecteur-de-palindromes-et-de-mirroring">13. Détecteur de Palindromes et de &ldquo;Mirroring&rdquo;</a></li>
+    <li><a href="#14-inventaire-de-magasin-tableaux-dentelés">14. Inventaire de Magasin (Tableaux Dentelés)</a></li>
+    <li><a href="#15-le-juste-prix-multi-joueurs">15. Le Juste Prix (Multi-joueurs)</a></li>
+    <li><a href="#16-système-de-login-avec-blocage">16. Système de Login avec Blocage</a></li>
+    <li><a href="#17-analyseur-de-texte--compteur-de-mots">17. Analyseur de Texte : Compteur de Mots</a></li>
+    <li><a href="#18-calculateur-dimc-professionnel">18. Calculateur d&rsquo;IMC Professionnel</a></li>
+    <li><a href="#19-gestionnaire-de-tâches-avec-priorité">19. Gestionnaire de Tâches avec Priorité</a></li>
+    <li><a href="#20-le-carré-magique-validation-de-grille">20. Le Carré Magique (Validation de Grille)</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Série d&#39;exercices 1</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/methodes/index.html" title="Les méthodes en c# (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-chevron-right"></i></span></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="série-dexercices-1">Série d&#39;exercices 1</h1>
+
+<h2 id="1-le-distributeur-de-breuvages-intelligent">1. Le Distributeur de Breuvages Intelligent<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Vous gérez une machine qui vend du Café (2.50$), du Thé (2.00$) et du Chocolat (3.00$).</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Créer une méthode <code>AfficherMenu()</code> qui montre les choix et les prix.</li>
+<li>L&rsquo;utilisateur entre un montant. Si le montant est insuffisant, redemander de l&rsquo;argent ou annuler.</li>
+<li>Calculer la monnaie à rendre en utilisant le moins de pièces possible (pièces de 2$, 1$, 0.25$, 0.10$).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>while</code>, <code>switch</code>, opérateurs modulo <code>%</code>.</li>
+</ul>
+<h2 id="2-analyseur-de-données-météo-statistiques">2. Analyseur de Données Météo (Statistiques)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Un centre météo a besoin d&rsquo;analyser les températures d&rsquo;une semaine.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Stocker 7 valeurs <code>double</code> dans un tableau.</li>
+<li>Méthode <code>CalculerMoyenne(double[] temp)</code> : retourne la moyenne.</li>
+<li>Méthode <code>TrouverExtremes(double[] temp)</code> : affiche la plus haute et la plus basse sans <code>Max()</code> ou <code>Min()</code>.</li>
+<li>Afficher un histogramme simple dans la console (ex: 22°C = <code>**********</code>).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Boucles <code>for</code>, algorithme de recherche de minimum/maximum.</li>
+</ul>
+<h2 id="3-gestionnaire-de-contacts-avec-recherche-floue">3. Gestionnaire de Contacts avec Recherche Floue<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Une liste de noms simple mais interactive.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Utiliser une <code>List&lt;string&gt;</code> pour stocker les noms.</li>
+<li>Menu : 1. Ajouter, 2. Supprimer par nom, 3. Rechercher, 4. Quitter.</li>
+<li>La recherche doit afficher tous les noms qui <em>contiennent</em> la lettre ou la syllabe saisie (ex: &ldquo;an&rdquo; trouve &ldquo;André&rdquo; et &ldquo;Chantal&rdquo;).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>List&lt;T&gt;</code>, méthode <code>string.Contains()</code>, <code>foreach</code>.</li>
+</ul>
+<h2 id="4-système-de-facturation-de-magasin">4. Système de Facturation de Magasin<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Calculer le total d&rsquo;un panier d&rsquo;achat avec taxes.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>L&rsquo;utilisateur saisit des prix jusqu&rsquo;à ce qu&rsquo;il entre <code>-1</code>.</li>
+<li>Gérer un tableau de &ldquo;rabais&rdquo; : si le prix &gt; 100$, appliquer 10% de réduction avant taxes.</li>
+<li>Méthode <code>CalculerTaxes(double total)</code> : retourne le montant des taxes (TPS 5%, TVQ 9.975%).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Accumulateurs, constantes, méthodes de calcul.</li>
+</ul>
+<h2 id="5-jeu-du-pendu--le-défi-des-caractères">5. Jeu du Pendu : Le Défi des Caractères<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Deviner un mot caché lettre par lettre.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Le mot secret est un <code>char[]</code>. Créer un second <code>char[]</code> rempli de <code>_</code>.</li>
+<li>L&rsquo;étudiant doit comparer la lettre saisie avec chaque caractère du mot secret.</li>
+<li>Gérer un maximum de 6 erreurs.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Tableaux de caractères, manipulation d&rsquo;index.</li>
+</ul>
+<h2 id="6-bureau-de-scrutin-virtuel">6. Bureau de Scrutin Virtuel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Compter les votes pour une élection à 3 candidats.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Utiliser un <code>Dictionary&lt;string, int&gt;</code> où la clé est le nom du candidat.</li>
+<li>Boucle de vote : l&rsquo;utilisateur tape le nom ou le numéro du candidat.</li>
+<li>Méthode <code>AfficherGagnant()</code> : parcourt le dictionnaire pour trouver la valeur la plus élevée.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Dictionnaires, itération sur paires Clé/Valeur.</li>
+</ul>
+<h2 id="7-validateur-de-complexité-de-mot-de-passe">7. Validateur de Complexité de Mot de Passe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Sécuriser la création de compte.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Créer une méthode <code>VerifierForce(string mdp)</code> qui retourne un score de 1 à 5.</li>
+<li>Critères : +1 si &gt; 8 car., +1 si majuscule, +1 si chiffre, +1 si symbole (#, !, $), +1 si &gt; 12 car.</li>
+<li>Utiliser des boucles pour inspecter chaque caractère.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>char.IsUpper</code>, <code>char.IsDigit</code>, <code>char.IsPunctuation</code>.</li>
+</ul>
+<h2 id="8-convertisseur-de-devises-avec-historique">8. Convertisseur de Devises avec Historique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Changer de l&rsquo;argent et garder une trace des transactions.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Utiliser un tableau <code>double[]</code> fixe pour les taux (USD, EUR, GBP).</li>
+<li>Chaque conversion effectuée est ajoutée sous forme de chaîne (ex: &ldquo;10 CAD -&gt; 7 USD&rdquo;) dans une <code>List&lt;string&gt;</code>.</li>
+<li>Option pour afficher l&rsquo;historique complet à la fin.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Tableaux, listes, formatage de texte.</li>
+</ul>
+<h2 id="9-bataille-navale--tactique-1d">9. Bataille Navale : Tactique 1D<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Détruire des navires cachés dans une ligne de 10 cases.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Un tableau <code>bool[10]</code> où 3 cases aléatoires sont <code>true</code>.</li>
+<li>L&rsquo;utilisateur choisit un index. Afficher &ldquo;Touché&rdquo; ou &ldquo;À l&rsquo;eau&rdquo;.</li>
+<li>Le jeu s&rsquo;arrête quand les 3 bateaux sont coulés.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>Random</code>, <code>do-while</code>, tableaux de booléens.</li>
+</ul>
+<h2 id="10-calculateur-de-moyennes-multidimensionnel">10. Calculateur de Moyennes Multidimensionnel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Gérer les notes d&rsquo;une classe de 3 étudiants ayant chacun 4 examens.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Déclarer un <code>double[3, 4]</code>.</li>
+<li>Remplir le tableau via des saisies utilisateur.</li>
+<li>Méthode <code>MoyenneEtudiant(int index)</code> : calcule la moyenne d&rsquo;une ligne.</li>
+<li>Méthode <code>MoyenneExamen(int index)</code> : calcule la moyenne d&rsquo;une colonne.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Tableaux 2D, boucles imbriquées.</li>
+</ul>
+<h2 id="11-simulateur-de-file-dattente-banque">11. Simulateur de File d&rsquo;Attente (Banque)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Gérer l&rsquo;ordre de passage des clients.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Une <code>List&lt;string&gt;</code> simulant une file d&rsquo;attente.</li>
+<li>Options : &ldquo;Nouveau client&rdquo;, &ldquo;Servir prochain&rdquo;, &ldquo;Afficher file&rdquo;.</li>
+<li>&ldquo;Servir prochain&rdquo; doit afficher le nom et retirer le premier élément (index 0).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>List.Add()</code>, <code>List.RemoveAt()</code>.</li>
+</ul>
+<h2 id="12-créateur-de-deck-de-cartes-et-mélangeur">12. Créateur de Deck de Cartes et Mélangeur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Générer et mélanger un jeu de 52 cartes.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Deux tableaux : <code>couleurs</code> (Pique, Coeur&hellip;) et <code>valeurs</code> (As, 2, 3&hellip;).</li>
+<li>Générer les 52 combinaisons dans une <code>List&lt;string&gt;</code>.</li>
+<li>Algorithme de mélange : échanger chaque carte avec une autre à un index aléatoire.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Boucles imbriquées, algorithme de permutation (Swap).</li>
+</ul>
+<h2 id="13-détecteur-de-palindromes-et-de-mirroring">13. Détecteur de Palindromes et de &ldquo;Mirroring&rdquo;<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Analyser si un mot est identique à l&rsquo;envers.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Saisir un mot. Créer une méthode <code>EstPalindrome(string mot)</code>.</li>
+<li>Inverser la chaîne manuellement dans un tableau de caractères pour comparer.</li>
+<li>Ne pas utiliser <code>Array.Reverse()</code>.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Boucle <code>for</code> décroissante, manipulation de chaînes.</li>
+</ul>
+<h2 id="14-inventaire-de-magasin-tableaux-dentelés">14. Inventaire de Magasin (Tableaux Dentelés)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Gérer des rayons de différentes tailles.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Un tableau dentelé <code>string[][] rayons = new string[3][]</code>.</li>
+<li>Rayon 1 : 2 produits, Rayon 2 : 5 produits, Rayon 3 : 3 produits.</li>
+<li>L&rsquo;utilisateur peut modifier un produit en spécifiant [rayon, index].</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>Jagged Arrays</code>, gestion des limites de tableaux.</li>
+</ul>
+<h2 id="15-le-juste-prix-multi-joueurs">15. Le Juste Prix (Multi-joueurs)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Deviner un prix secret généré aléatoirement.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Le programme génère un nombre entre 1 et 1000.</li>
+<li>Plusieurs joueurs entrent leur nom. Chacun joue à tour de rôle.</li>
+<li>Le programme indique &ldquo;C&rsquo;est plus !&rdquo; ou &ldquo;C&rsquo;est moins !&rdquo;.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>Random</code>, listes de noms, boucle de jeu.</li>
+</ul>
+<h2 id="16-système-de-login-avec-blocage">16. Système de Login avec Blocage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Sécuriser l&rsquo;accès à une console.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Stocker les utilisateurs/mots de passe dans deux tableaux parallèles ou un dictionnaire.</li>
+<li>L&rsquo;utilisateur a 3 tentatives. Après 3 erreurs, le programme se verrouille (utilise <code>Thread.Sleep</code> pour simuler une attente).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Compteurs, conditions logiques, sécurité de base.</li>
+</ul>
+<h2 id="17-analyseur-de-texte--compteur-de-mots">17. Analyseur de Texte : Compteur de Mots<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Analyser la structure d&rsquo;un paragraphe.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>L&rsquo;utilisateur entre un long texte.</li>
+<li>Compter le nombre de mots (délimités par des espaces).</li>
+<li>Compter l&rsquo;occurrence d&rsquo;une lettre spécifique demandée à l&rsquo;utilisateur.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : <code>string.Split()</code>, <code>foreach</code>, compteurs.</li>
+</ul>
+<h2 id="18-calculateur-dimc-professionnel">18. Calculateur d&rsquo;IMC Professionnel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Santé et nutrition.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Saisir le nom, le poids et la taille de plusieurs patients.</li>
+<li>Calculer l&rsquo;IMC ($poids / taille^2$).</li>
+<li>Méthode <code>InterpreterIMC(double imc)</code> : retourne une chaîne (Maigreur, Normal, Obèse).</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Méthodes de retour, formules mathématiques.</li>
+</ul>
+<h2 id="19-gestionnaire-de-tâches-avec-priorité">19. Gestionnaire de Tâches avec Priorité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Une To-Do List intelligente.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>Stocker les tâches dans une liste.</li>
+<li>L&rsquo;utilisateur peut ajouter une tâche avec un niveau d&rsquo;importance (Haute, Moyenne, Basse).</li>
+<li>Afficher les tâches filtrées manuellement : d&rsquo;abord toutes les &ldquo;Haute&rdquo;, ensuite les autres.</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Filtrage par boucles, comparaisons de chaînes.</li>
+</ul>
+<h2 id="20-le-carré-magique-validation-de-grille">20. Le Carré Magique (Validation de Grille)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Scénario</strong> : Vérifier si une grille 3x3 est un carré magique.</li>
+<li><strong>Exigences</strong> :
+<ul>
+<li>L&rsquo;utilisateur entre 9 nombres dans un tableau <code>int[3, 3]</code>.</li>
+<li>Le programme doit calculer la somme de chaque ligne, chaque colonne et des deux diagonales.</li>
+<li>Si toutes les sommes sont égales, c&rsquo;est un carré magique !</li>
+</ul>
+</li>
+<li><strong>Notions</strong> : Algorithmique avancée sur tableaux 2D.</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Introduction à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Introduction et syntaxe du langage C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="active " data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1769763224" defer></script>
+    <script src="/420-413/js/theme.js?1769763224" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Table des matières Introduction Syntaxe de base Paramètres de méthodes Paramètres par référence (ref) Paramètres de sortie (out) Paramètres optionnels Surcharge de méthodes Portée des variables Exercices Introduction Les méthodes (aussi appelées fonctions) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Les méthodes en c# :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Table des matières Introduction Syntaxe de base Paramètres de méthodes Paramètres par référence (ref) Paramètres de sortie (out) Paramètres optionnels Surcharge de méthodes Portée des variables Exercices Introduction Les méthodes (aussi appelées fonctions) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :">
+    <meta property="og:url" content="http://localhost:1313/420-413/methodes/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Les méthodes en c# :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Table des matières Introduction Syntaxe de base Paramètres de méthodes Paramètres par référence (ref) Paramètres de sortie (out) Paramètres optionnels Surcharge de méthodes Portée des variables Exercices Introduction Les méthodes (aussi appelées fonctions) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Les méthodes en c# :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Table des matières Introduction Syntaxe de base Paramètres de méthodes Paramètres par référence (ref) Paramètres de sortie (out) Paramètres optionnels Surcharge de méthodes Portée des variables Exercices Introduction Les méthodes (aussi appelées fonctions) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :">
+    <meta itemprop="wordCount" content="3460">
+    <title>Les méthodes en c# :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1769763224" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1769763224" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1769763224" defer></script>
+    <script src="/420-413/js/search-lunr.js?1769763224" defer></script>
+    <script src="/420-413/js/search.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1769763224";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1769763224" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1769763224" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1769763224" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1769763224" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1769763224" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/methodes\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/methodes/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#table-des-matières">Table des matières</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#avantages-des-méthodes">Avantages des méthodes</a></li>
+      </ul>
+    </li>
+    <li><a href="#syntaxe-de-base">Syntaxe de base</a>
+      <ul>
+        <li><a href="#structure-dune-méthode">Structure d&rsquo;une méthode</a></li>
+        <li><a href="#les-modificateurs-daccès">Les modificateurs d&rsquo;accès</a></li>
+        <li><a href="#exemples-de-déclarations-de-méthodes">Exemples de déclarations de méthodes</a></li>
+        <li><a href="#exemple-simple--méthode-sans-paramètres">Exemple simple : Méthode sans paramètres</a></li>
+        <li><a href="#exemple--méthode-avec-retour">Exemple : Méthode avec retour</a></li>
+      </ul>
+    </li>
+    <li><a href="#paramètres-de-méthodes">Paramètres de méthodes</a>
+      <ul>
+        <li><a href="#passage-par-valeur-comportement-par-défaut">Passage par valeur (comportement par défaut)</a></li>
+        <li><a href="#exemple--calculer-laire-dun-rectangle">Exemple : Calculer l&rsquo;aire d&rsquo;un rectangle</a></li>
+        <li><a href="#exemple--méthode-avec-plusieurs-paramètres">Exemple : Méthode avec plusieurs paramètres</a></li>
+      </ul>
+    </li>
+    <li><a href="#paramètres-par-référence-ref">Paramètres par référence (ref)</a>
+      <ul>
+        <li><a href="#caractéristiques-de-ref">Caractéristiques de <code>ref</code></a></li>
+        <li><a href="#syntaxe">Syntaxe</a></li>
+        <li><a href="#exemple--échanger-deux-valeurs">Exemple : Échanger deux valeurs</a></li>
+        <li><a href="#exemple--doubler-une-valeur">Exemple : Doubler une valeur</a></li>
+        <li><a href="#exemple--modifier-plusieurs-valeurs">Exemple : Modifier plusieurs valeurs</a></li>
+      </ul>
+    </li>
+    <li><a href="#paramètres-de-sortie-out">Paramètres de sortie (out)</a>
+      <ul>
+        <li><a href="#différences-entre-ref-et-out">Différences entre <code>ref</code> et <code>out</code></a></li>
+        <li><a href="#caractéristiques-de-out">Caractéristiques de <code>out</code></a></li>
+        <li><a href="#syntaxe-1">Syntaxe</a></li>
+        <li><a href="#exemple--retourner-plusieurs-valeurs">Exemple : Retourner plusieurs valeurs</a></li>
+        <li><a href="#déclaration-inline-c-70">Déclaration inline (C# 7.0+)</a></li>
+        <li><a href="#exemple--statistiques-dun-tableau">Exemple : Statistiques d&rsquo;un tableau</a></li>
+        <li><a href="#exemple--validation-dentrée-avec-tryparse">Exemple : Validation d&rsquo;entrée avec TryParse</a></li>
+        <li><a href="#exemple--analyse-de-chaîne">Exemple : Analyse de chaîne</a></li>
+      </ul>
+    </li>
+    <li><a href="#paramètres-optionnels">Paramètres optionnels</a>
+      <ul>
+        <li><a href="#règles">Règles</a></li>
+        <li><a href="#syntaxe-2">Syntaxe</a></li>
+        <li><a href="#exemple--afficher-un-message-personnalisé">Exemple : Afficher un message personnalisé</a></li>
+        <li><a href="#exemple--calcul-avec-taux-par-défaut">Exemple : Calcul avec taux par défaut</a></li>
+        <li><a href="#exemple--affichage-formaté">Exemple : Affichage formaté</a></li>
+      </ul>
+    </li>
+    <li><a href="#surcharge-de-méthodes">Surcharge de méthodes</a>
+      <ul>
+        <li><a href="#quest-ce-quune-signature">Qu&rsquo;est-ce qu&rsquo;une signature?</a></li>
+        <li><a href="#exemple--calculer-laire-de-différentes-formes">Exemple : Calculer l&rsquo;aire de différentes formes</a></li>
+        <li><a href="#exemple--afficher-différents-types">Exemple : Afficher différents types</a></li>
+        <li><a href="#exemple--créer-un-message-de-bienvenue">Exemple : Créer un message de bienvenue</a></li>
+      </ul>
+    </li>
+    <li><a href="#portée-des-variables">Portée des variables</a>
+      <ul>
+        <li><a href="#variables-locales">Variables locales</a></li>
+        <li><a href="#portée-de-bloc">Portée de bloc</a></li>
+        <li><a href="#exemple--portée-et-méthodes">Exemple : Portée et méthodes</a></li>
+      </ul>
+    </li>
+    <li><a href="#bonnes-pratiques">Bonnes pratiques</a>
+      <ul>
+        <li><a href="#1-nommage-des-méthodes">1. Nommage des méthodes</a></li>
+        <li><a href="#2-une-méthode--une-tâche">2. Une méthode = une tâche</a></li>
+        <li><a href="#3-limiter-le-nombre-de-paramètres">3. Limiter le nombre de paramètres</a></li>
+        <li><a href="#4-utiliser-des-noms-de-paramètres-significatifs">4. Utiliser des noms de paramètres significatifs</a></li>
+      </ul>
+    </li>
+    <li><a href="#récapitulatif--ref-vs-out">Récapitulatif : ref vs out</a>
+      <ul>
+        <li><a href="#utilisez-ref-quand-">Utilisez <code>ref</code> quand :</a></li>
+        <li><a href="#utilisez-out-quand-">Utilisez <code>out</code> quand :</a></li>
+        <li><a href="#tableau-comparatif">Tableau comparatif</a></li>
+      </ul>
+    </li>
+    <li><a href="#exercices">Exercices</a>
+      <ul>
+        <li><a href="#exercice-1--méthode-simple">Exercice 1 : Méthode simple</a></li>
+        <li><a href="#exercice-2--méthode-avec-retour">Exercice 2 : Méthode avec retour</a></li>
+        <li><a href="#exercice-3--méthode-avec-plusieurs-paramètres">Exercice 3 : Méthode avec plusieurs paramètres</a></li>
+        <li><a href="#exercice-4--utilisation-de-ref">Exercice 4 : Utilisation de ref</a></li>
+        <li><a href="#exercice-5--utilisation-de-out---division">Exercice 5 : Utilisation de out - Division</a></li>
+        <li><a href="#exercice-6--utilisation-de-out---statistiques">Exercice 6 : Utilisation de out - Statistiques</a></li>
+        <li><a href="#exercice-7--paramètres-optionnels">Exercice 7 : Paramètres optionnels</a></li>
+        <li><a href="#exercice-8--surcharge-de-méthodes">Exercice 8 : Surcharge de méthodes</a></li>
+        <li><a href="#exercice-9--validation-avec-tryparse">Exercice 9 : Validation avec TryParse</a></li>
+        <li><a href="#exercice-10--calculatrice-simple">Exercice 10 : Calculatrice simple</a></li>
+        <li><a href="#exercice-11--analyse-de-texte">Exercice 11 : Analyse de texte</a></li>
+        <li><a href="#exercice-12--conversion-de-température">Exercice 12 : Conversion de température</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a>
+      <ul>
+        <li><a href="#concepts-clés-à-retenir">Concepts clés à retenir</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Les méthodes en c#</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/tableaux_collections/index.html" title="Tableaux et collections (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/serie_exos_1/index.html" title="Série d'exercices 1 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="les-méthodes-en-c">Les méthodes en c#</h1>
+
+<h2 id="table-des-matières">Table des matières<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ol>
+<li><a href="/420-413/methodes/index.html#introduction">Introduction</a></li>
+<li><a href="/420-413/methodes/index.html#syntaxe-de-base">Syntaxe de base</a></li>
+<li><a href="/420-413/methodes/index.html#paramètres-de-méthodes">Paramètres de méthodes</a></li>
+<li><a href="/420-413/methodes/index.html#paramètres-par-référence-ref">Paramètres par référence (ref)</a></li>
+<li><a href="/420-413/methodes/index.html#paramètres-de-sortie-out">Paramètres de sortie (out)</a></li>
+<li><a href="/420-413/methodes/index.html#paramètres-optionnels">Paramètres optionnels</a></li>
+<li><a href="/420-413/methodes/index.html#surcharge-de-méthodes">Surcharge de méthodes</a></li>
+<li><a href="/420-413/methodes/index.html#portée-des-variables">Portée des variables</a></li>
+<li><a href="/420-413/methodes/index.html#exercices">Exercices</a></li>
+</ol>
+<hr>
+<h2 id="introduction">Introduction<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les <strong>méthodes</strong> (aussi appelées <strong>fonctions</strong>) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :</p>
+<ul>
+<li>Organiser le code de manière logique</li>
+<li>Éviter la répétition de code</li>
+<li>Faciliter la maintenance et la lecture du programme</li>
+<li>Diviser un problème complexe en sous-problèmes plus simples</li>
+</ul>
+<h3 id="avantages-des-méthodes">Avantages des méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Réutilisabilité</strong> : Écrire une fois, utiliser plusieurs fois</li>
+<li><strong>Lisibilité</strong> : Code plus clair et organisé</li>
+<li><strong>Maintenance</strong> : Plus facile de corriger ou modifier le code</li>
+<li><strong>Tests</strong> : Plus facile de tester des petites unités de code</li>
+</ul>
+<hr>
+<h2 id="syntaxe-de-base">Syntaxe de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="structure-dune-méthode">Structure d&rsquo;une méthode<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">modificateurAcces</span> <span class="p">[</span><span class="kd">static</span><span class="p">]</span> <span class="n">typeRetour</span> <span class="n">NomMethode</span><span class="p">(</span><span class="n">typeParam1</span> <span class="n">param1</span><span class="p">,</span> <span class="n">typeParam2</span> <span class="n">param2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Corps de la méthode</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Instructions à exécuter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">valeur</span><span class="p">;</span> <span class="c1">// Si la méthode retourne une valeur</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Composantes :</strong></p>
+<ul>
+<li><strong>modificateurAcces</strong> : Contrôle la visibilité de la méthode (<code>public</code>, <code>private</code>, <code>protected</code>, <code>internal</code>)</li>
+<li><strong>static</strong> : Indique que la méthode appartient à la classe, pas à une instance (obligatoire pour l&rsquo;instant)</li>
+<li><strong>typeRetour</strong> : Le type de données que la méthode retourne (<code>int</code>, <code>string</code>, <code>double</code>, <code>void</code>, etc.)</li>
+<li><strong>NomMethode</strong> : Le nom de la méthode (convention : commence par une majuscule en C#)</li>
+<li><strong>Paramètres</strong> : Les données d&rsquo;entrée (optionnels)</li>
+<li><strong>Corps</strong> : Le code qui s&rsquo;exécute quand la méthode est appelée</li>
+<li><strong>return</strong> : Retourne une valeur (sauf si <code>void</code>)</li>
+</ul>
+<h3 id="les-modificateurs-daccès">Les modificateurs d&rsquo;accès<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Modificateur</th>
+          <th>Description</th>
+          <th>Utilisation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>public</code></td>
+          <td>Accessible partout</td>
+          <td>Pour les méthodes utilisées par d&rsquo;autres classes</td>
+      </tr>
+      <tr>
+          <td><code>private</code></td>
+          <td>Accessible seulement dans la classe actuelle</td>
+          <td>Pour les méthodes internes (par défaut)</td>
+      </tr>
+      <tr>
+          <td><code>protected</code></td>
+          <td>Accessible dans la classe et ses classes dérivées</td>
+          <td>Pour l&rsquo;héritage (POO)</td>
+      </tr>
+      <tr>
+          <td><code>internal</code></td>
+          <td>Accessible dans le même assembly</td>
+          <td>Pour les méthodes partagées dans un projet</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Note :</strong> Pour l&rsquo;instant, nous utilisons principalement <code>static</code> avec nos méthodes car nous ne travaillons pas encore avec la programmation orientée objet. Les méthodes <code>static</code> peuvent être appelées directement sans créer d&rsquo;objet.</p>
+<h3 id="exemples-de-déclarations-de-méthodes">Exemples de déclarations de méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Méthode publique statique qui retourne un entier</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">CalculerSomme</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Méthode privée statique qui ne retourne rien (void)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherMessage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Message privé&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Méthode publique statique avec plusieurs paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerMoyenne</span><span class="p">(</span><span class="kt">double</span> <span class="n">note1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">note2</span><span class="p">,</span> <span class="kt">double</span> <span class="n">note3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">note1</span> <span class="p">+</span> <span class="n">note2</span> <span class="p">+</span> <span class="n">note3</span><span class="p">)</span> <span class="p">/</span> <span class="m">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Méthode publique statique sans paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherBienvenue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bienvenue!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple-simple--méthode-sans-paramètres">Exemple simple : Méthode sans paramètres<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherMessage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bonjour du CÉGEP!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bienvenue dans le cours de C#&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherMessage</span><span class="p">();</span> <span class="c1">// Appel de la méthode</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherMessage</span><span class="p">();</span> <span class="c1">// On peut l&#39;appeler plusieurs fois</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Bonjour du CÉGEP!
+Bienvenue dans le cours de C#
+Bonjour du CÉGEP!
+Bienvenue dans le cours de C#</code></pre></div>
+<h3 id="exemple--méthode-avec-retour">Exemple : Méthode avec retour<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">ObtenirAnneeActuelle</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">2024</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">annee</span> <span class="p">=</span> <span class="n">ObtenirAnneeActuelle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nous sommes en {annee}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="paramètres-de-méthodes">Paramètres de méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les paramètres permettent de passer des données à une méthode.</p>
+<h3 id="passage-par-valeur-comportement-par-défaut">Passage par valeur (comportement par défaut)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Quand vous passez une variable à une méthode, C# crée une <strong>copie</strong> de la valeur. Les modifications dans la méthode n&rsquo;affectent pas la variable originale.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AugmenterNombre</span><span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nombre</span> <span class="p">=</span> <span class="n">nombre</span> <span class="p">+</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Dans la méthode: {nombre}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">valeur</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Avant l&#39;appel: {valeur}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">AugmenterNombre</span><span class="p">(</span><span class="n">valeur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Après l&#39;appel: {valeur}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Avant l&#39;appel: 5
+Dans la méthode: 15
+Après l&#39;appel: 5</code></pre></div>
+<p><strong>Explication :</strong> La variable <code>valeur</code> n&rsquo;a pas changé car la méthode a travaillé avec une copie.</p>
+<h3 id="exemple--calculer-laire-dun-rectangle">Exemple : Calculer l&rsquo;aire d&rsquo;un rectangle<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerAireRectangle</span><span class="p">(</span><span class="kt">double</span> <span class="n">longueur</span><span class="p">,</span> <span class="kt">double</span> <span class="n">largeur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">aire</span> <span class="p">=</span> <span class="n">longueur</span> <span class="p">*</span> <span class="n">largeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">aire</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">CalculerAireRectangle</span><span class="p">(</span><span class="m">5.5</span><span class="p">,</span> <span class="m">3.2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;L&#39;aire du rectangle est: {resultat:F2} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Appel avec d&#39;autres valeurs</span>
+</span></span><span class="line"><span class="cl">        <span class="n">resultat</span> <span class="p">=</span> <span class="n">CalculerAireRectangle</span><span class="p">(</span><span class="m">10.0</span><span class="p">,</span> <span class="m">7.5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;L&#39;aire du rectangle est: {resultat:F2} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--méthode-avec-plusieurs-paramètres">Exemple : Méthode avec plusieurs paramètres<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherInfoEtudiant</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> <span class="kt">double</span> <span class="n">moyenne</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== FICHE ÉTUDIANT ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nom: {nom}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prénom: {prenom}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Âge: {age} ans&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Moyenne: {moyenne:F1}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=====================&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherInfoEtudiant</span><span class="p">(</span><span class="s">&#34;Tremblay&#34;</span><span class="p">,</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">87.5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherInfoEtudiant</span><span class="p">(</span><span class="s">&#34;Lavoie&#34;</span><span class="p">,</span> <span class="s">&#34;Bernard&#34;</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">82.3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="paramètres-par-référence-ref">Paramètres par référence (ref)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Le mot-clé <strong><code>ref</code></strong> permet de passer une variable <strong>par référence</strong> plutôt que par valeur. Cela signifie que la méthode travaille directement avec la variable originale, pas avec une copie.</p>
+<h3 id="caractéristiques-de-ref">Caractéristiques de <code>ref</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>La variable <strong>DOIT</strong> être initialisée avant l&rsquo;appel</li>
+<li>Les modifications dans la méthode affectent la variable originale</li>
+<li>Le mot-clé <code>ref</code> doit apparaître à la <strong>définition</strong> ET à l&rsquo;<strong>appel</strong> de la méthode</li>
+</ul>
+<h3 id="syntaxe">Syntaxe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">NomMethode</span><span class="p">(</span><span class="k">ref</span> <span class="kt">int</span> <span class="n">parametre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parametre</span> <span class="p">=</span> <span class="n">parametre</span> <span class="p">*</span> <span class="m">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Appel</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">nombre</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">NomMethode</span><span class="p">(</span><span class="k">ref</span> <span class="n">nombre</span><span class="p">);</span> <span class="c1">// Utiliser &#39;ref&#39; lors de l&#39;appel</span></span></span></code></pre></div>
+<h3 id="exemple--échanger-deux-valeurs">Exemple : Échanger deux valeurs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">EchangerValeurs</span><span class="p">(</span><span class="k">ref</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">temporaire</span> <span class="p">=</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a</span> <span class="p">=</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b</span> <span class="p">=</span> <span class="n">temporaire</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Dans la méthode - a: {a}, b: {b}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">y</span> <span class="p">=</span> <span class="m">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Avant l&#39;échange - x: {x}, y: {y}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">EchangerValeurs</span><span class="p">(</span><span class="k">ref</span> <span class="n">x</span><span class="p">,</span> <span class="k">ref</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Après l&#39;échange - x: {x}, y: {y}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Avant l&#39;échange - x: 10, y: 20
+Dans la méthode - a: 20, b: 10
+Après l&#39;échange - x: 20, y: 10</code></pre></div>
+<h3 id="exemple--doubler-une-valeur">Exemple : Doubler une valeur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">DoublerValeur</span><span class="p">(</span><span class="k">ref</span> <span class="kt">int</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nombre</span> <span class="p">=</span> <span class="n">nombre</span> <span class="p">*</span> <span class="m">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">valeur</span> <span class="p">=</span> <span class="m">15</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Valeur initiale: {valeur}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">DoublerValeur</span><span class="p">(</span><span class="k">ref</span> <span class="n">valeur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Valeur après doublement: {valeur}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Valeur initiale: 15
+Valeur après doublement: 30</code></pre></div>
+<h3 id="exemple--modifier-plusieurs-valeurs">Exemple : Modifier plusieurs valeurs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AppliquerTaxes</span><span class="p">(</span><span class="k">ref</span> <span class="kt">double</span> <span class="n">prix</span><span class="p">,</span> <span class="kt">double</span> <span class="n">tauxTPS</span><span class="p">,</span> <span class="kt">double</span> <span class="n">tauxTVQ</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">tps</span> <span class="p">=</span> <span class="n">prix</span> <span class="p">*</span> <span class="n">tauxTPS</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">tvq</span> <span class="p">=</span> <span class="n">prix</span> <span class="p">*</span> <span class="n">tauxTVQ</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prix</span> <span class="p">=</span> <span class="n">prix</span> <span class="p">+</span> <span class="n">tps</span> <span class="p">+</span> <span class="n">tvq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">prixProduit</span> <span class="p">=</span> <span class="m">100.00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prix avant taxes: {prixProduit:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">AppliquerTaxes</span><span class="p">(</span><span class="k">ref</span> <span class="n">prixProduit</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="m">0.09975</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prix après taxes: {prixProduit:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="paramètres-de-sortie-out">Paramètres de sortie (out)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Le mot-clé <strong><code>out</code></strong> est similaire à <code>ref</code>, mais avec des différences importantes :</p>
+<h3 id="différences-entre-ref-et-out">Différences entre <code>ref</code> et <code>out</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Caractéristique</th>
+          <th><code>ref</code></th>
+          <th><code>out</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Initialisation avant appel</td>
+          <td><strong>REQUISE</strong></td>
+          <td>Pas nécessaire</td>
+      </tr>
+      <tr>
+          <td>Assignation dans la méthode</td>
+          <td>Optionnelle</td>
+          <td><strong>OBLIGATOIRE</strong></td>
+      </tr>
+      <tr>
+          <td>Utilisation principale</td>
+          <td>Modifier une valeur existante</td>
+          <td>Retourner plusieurs valeurs</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="caractéristiques-de-out">Caractéristiques de <code>out</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>La variable <strong>N&rsquo;A PAS BESOIN</strong> d&rsquo;être initialisée avant l&rsquo;appel</li>
+<li>La méthode <strong>DOIT</strong> assigner une valeur au paramètre <code>out</code></li>
+<li>Utilisé principalement pour retourner plusieurs valeurs d&rsquo;une méthode</li>
+<li>Le mot-clé <code>out</code> doit apparaître à la <strong>définition</strong> ET à l&rsquo;<strong>appel</strong></li>
+</ul>
+<h3 id="syntaxe-1">Syntaxe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CalculerStatistiques</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span><span class="p">,</span> <span class="k">out</span> <span class="kt">double</span> <span class="n">moyenne</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">maximum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// La méthode DOIT assigner des valeurs à moyenne et maximum</span>
+</span></span><span class="line"><span class="cl">    <span class="n">moyenne</span> <span class="p">=</span> <span class="p">...;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">maximum</span> <span class="p">=</span> <span class="p">...;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Appel</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">moy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">max</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">CalculerStatistiques</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="k">out</span> <span class="n">moy</span><span class="p">,</span> <span class="k">out</span> <span class="n">max</span><span class="p">);</span></span></span></code></pre></div>
+<h3 id="exemple--retourner-plusieurs-valeurs">Exemple : Retourner plusieurs valeurs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CalculerRectangle</span><span class="p">(</span><span class="kt">double</span> <span class="n">longueur</span><span class="p">,</span> <span class="kt">double</span> <span class="n">largeur</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                  <span class="k">out</span> <span class="kt">double</span> <span class="n">aire</span><span class="p">,</span> <span class="k">out</span> <span class="kt">double</span> <span class="n">perimetre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">aire</span> <span class="p">=</span> <span class="n">longueur</span> <span class="p">*</span> <span class="n">largeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">perimetre</span> <span class="p">=</span> <span class="m">2</span> <span class="p">*</span> <span class="p">(</span><span class="n">longueur</span> <span class="p">+</span> <span class="n">largeur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">surfaceResultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">perimetreResultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">CalculerRectangle</span><span class="p">(</span><span class="m">5.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">,</span> <span class="k">out</span> <span class="n">surfaceResultat</span><span class="p">,</span> <span class="k">out</span> <span class="n">perimetreResultat</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Aire: {surfaceResultat} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Périmètre: {perimetreResultat} m&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Aire: 15 m²
+Périmètre: 16 m</code></pre></div>
+<h3 id="déclaration-inline-c-70">Déclaration inline (C# 7.0+)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Depuis C# 7.0, vous pouvez déclarer les variables <code>out</code> directement dans l&rsquo;appel :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">DiviserAvecReste</span><span class="p">(</span><span class="kt">int</span> <span class="n">dividende</span><span class="p">,</span> <span class="kt">int</span> <span class="n">diviseur</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                 <span class="k">out</span> <span class="kt">int</span> <span class="n">quotient</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">reste</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">quotient</span> <span class="p">=</span> <span class="n">dividende</span> <span class="p">/</span> <span class="n">diviseur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">reste</span> <span class="p">=</span> <span class="n">dividende</span> <span class="p">%</span> <span class="n">diviseur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Déclaration inline - plus concis!</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DiviserAvecReste</span><span class="p">(</span><span class="m">17</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">q</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;17 ÷ 5 = {q} reste {r}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--statistiques-dun-tableau">Exemple : Statistiques d&rsquo;un tableau<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CalculerStatistiques</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span><span class="p">,</span> <span class="k">out</span> <span class="kt">double</span> <span class="n">moyenne</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                     <span class="k">out</span> <span class="kt">int</span> <span class="n">minimum</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">maximum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calcul de la somme et moyenne</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">somme</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span> <span class="k">in</span> <span class="n">nombres</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">somme</span> <span class="p">+=</span> <span class="n">nombre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">moyenne</span> <span class="p">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">somme</span> <span class="p">/</span> <span class="n">nombres</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Trouver min et max</span>
+</span></span><span class="line"><span class="cl">        <span class="n">minimum</span> <span class="p">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">maximum</span> <span class="p">=</span> <span class="n">nombres</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span> <span class="k">in</span> <span class="n">nombres</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">nombre</span> <span class="p">&lt;</span> <span class="n">minimum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">minimum</span> <span class="p">=</span> <span class="n">nombre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">nombre</span> <span class="p">&gt;</span> <span class="n">maximum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">maximum</span> <span class="p">=</span> <span class="n">nombre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span><span class="p">[]</span> <span class="n">notes</span> <span class="p">=</span> <span class="p">{</span> <span class="m">85</span><span class="p">,</span> <span class="m">92</span><span class="p">,</span> <span class="m">78</span><span class="p">,</span> <span class="m">95</span><span class="p">,</span> <span class="m">88</span><span class="p">,</span> <span class="m">76</span><span class="p">,</span> <span class="m">90</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">CalculerStatistiques</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="k">out</span> <span class="kt">double</span> <span class="n">moy</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">min</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">max</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== STATISTIQUES DES NOTES ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Moyenne: {moy:F2}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Note minimale: {min}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Note maximale: {max}%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--validation-dentrée-avec-tryparse">Exemple : Validation d&rsquo;entrée avec TryParse<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La méthode <code>TryParse</code> utilise <code>out</code> pour retourner le résultat de la conversion :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&#34;Entrez votre âge: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">entree</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// TryParse retourne true si la conversion réussit</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// et met le résultat dans la variable &#39;age&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">entree</span><span class="p">,</span> <span class="k">out</span> <span class="kt">int</span> <span class="n">age</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Votre âge est: {age} ans&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="p">&gt;=</span> <span class="m">18</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Vous êtes majeur&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Vous êtes mineur&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Entrée invalide!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--analyse-de-chaîne">Exemple : Analyse de chaîne<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">bool</span> <span class="n">ExtraireNomPrenom</span><span class="p">(</span><span class="kt">string</span> <span class="n">nomComplet</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span><span class="p">[]</span> <span class="n">parties</span> <span class="p">=</span> <span class="n">nomComplet</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">parties</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;=</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prenom</span> <span class="p">=</span> <span class="n">parties</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nom</span> <span class="p">=</span> <span class="n">parties</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nom</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prenom</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">nomComplet</span> <span class="p">=</span> <span class="s">&#34;Alice Tremblay&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ExtraireNomPrenom</span><span class="p">(</span><span class="n">nomComplet</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">n</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">p</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prénom: {p}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nom: {n}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Format invalide&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="paramètres-optionnels">Paramètres optionnels<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les <strong>paramètres optionnels</strong> ont des valeurs par défaut et peuvent être omis lors de l&rsquo;appel.</p>
+<h3 id="règles">Règles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Les paramètres optionnels doivent être à la <strong>fin</strong> de la liste de paramètres</li>
+<li>Vous devez fournir une valeur par défaut</li>
+<li>Si omis lors de l&rsquo;appel, la valeur par défaut est utilisée</li>
+</ul>
+<h3 id="syntaxe-2">Syntaxe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">NomMethode</span><span class="p">(</span><span class="kt">int</span> <span class="n">obligatoire</span><span class="p">,</span> <span class="kt">int</span> <span class="n">optionnel</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Corps de la méthode</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Appels possibles</span>
+</span></span><span class="line"><span class="cl"><span class="n">NomMethode</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>        <span class="c1">// optionnel = 10 (valeur par défaut)</span>
+</span></span><span class="line"><span class="cl"><span class="n">NomMethode</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">20</span><span class="p">);</span>    <span class="c1">// optionnel = 20</span></span></span></code></pre></div>
+<h3 id="exemple--afficher-un-message-personnalisé">Exemple : Afficher un message personnalisé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherBienvenue</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">titre</span> <span class="p">=</span> <span class="s">&#34;Étudiant&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Bonjour {titre} {nom}!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherBienvenue</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">);</span>              <span class="c1">// Utilise &#34;Étudiant&#34; par défaut</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherBienvenue</span><span class="p">(</span><span class="s">&#34;Bernard&#34;</span><span class="p">,</span> <span class="s">&#34;Professeur&#34;</span><span class="p">);</span> <span class="c1">// Utilise &#34;Professeur&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherBienvenue</span><span class="p">(</span><span class="s">&#34;Catherine&#34;</span><span class="p">,</span> <span class="s">&#34;Directrice&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Bonjour Étudiant Alice!
+Bonjour Professeur Bernard!
+Bonjour Directrice Catherine!</code></pre></div>
+<h3 id="exemple--calcul-avec-taux-par-défaut">Exemple : Calcul avec taux par défaut<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerPrixTotal</span><span class="p">(</span><span class="kt">double</span> <span class="n">prixBase</span><span class="p">,</span> <span class="kt">double</span> <span class="n">tauxTaxe</span> <span class="p">=</span> <span class="m">0.15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">prixBase</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">+</span> <span class="n">tauxTaxe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Utilise le taux par défaut (15%)</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">total1</span> <span class="p">=</span> <span class="n">CalculerPrixTotal</span><span class="p">(</span><span class="m">100.00</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prix avec taxe par défaut: {total1:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Spécifie un taux différent</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">total2</span> <span class="p">=</span> <span class="n">CalculerPrixTotal</span><span class="p">(</span><span class="m">100.00</span><span class="p">,</span> <span class="m">0.20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prix avec 20% de taxe: {total2:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--affichage-formaté">Exemple : Affichage formaté<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherLigne</span><span class="p">(</span><span class="kt">string</span> <span class="n">texte</span><span class="p">,</span> <span class="kt">char</span> <span class="n">caractere</span> <span class="p">=</span> <span class="sc">&#39;-&#39;</span><span class="p">,</span> <span class="kt">int</span> <span class="n">longueur</span> <span class="p">=</span> <span class="m">40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">texte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span> <span class="kt">string</span><span class="p">(</span><span class="n">caractere</span><span class="p">,</span> <span class="n">longueur</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherLigne</span><span class="p">(</span><span class="s">&#34;Titre 1&#34;</span><span class="p">);</span>                    <span class="c1">// - et 40 par défaut</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherLigne</span><span class="p">(</span><span class="s">&#34;Titre 2&#34;</span><span class="p">,</span> <span class="sc">&#39;=&#39;</span><span class="p">);</span>               <span class="c1">// = et 40</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherLigne</span><span class="p">(</span><span class="s">&#34;Titre 3&#34;</span><span class="p">,</span> <span class="sc">&#39;*&#39;</span><span class="p">,</span> <span class="m">30</span><span class="p">);</span>           <span class="c1">// * et 30</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Sortie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Titre 1
+----------------------------------------
+Titre 2
+========================================
+Titre 3
+******************************</code></pre></div>
+<hr>
+<h2 id="surcharge-de-méthodes">Surcharge de méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>La <strong>surcharge</strong> (overloading) permet d&rsquo;avoir plusieurs méthodes avec le <strong>même nom</strong> mais des <strong>signatures différentes</strong>.</p>
+<h3 id="quest-ce-quune-signature">Qu&rsquo;est-ce qu&rsquo;une signature?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La signature d&rsquo;une méthode inclut :</p>
+<ul>
+<li>Le nom de la méthode</li>
+<li>Le nombre de paramètres</li>
+<li>Le type des paramètres</li>
+<li>L&rsquo;ordre des paramètres</li>
+</ul>
+<p><strong>Note :</strong> Le type de retour ne fait PAS partie de la signature.</p>
+<h3 id="exemple--calculer-laire-de-différentes-formes">Exemple : Calculer l&rsquo;aire de différentes formes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Aire d&#39;un carré</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="kt">double</span> <span class="n">cote</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">cote</span> <span class="p">*</span> <span class="n">cote</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Aire d&#39;un rectangle</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="kt">double</span> <span class="n">longueur</span><span class="p">,</span> <span class="kt">double</span> <span class="n">largeur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">longueur</span> <span class="p">*</span> <span class="n">largeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Aire d&#39;un cercle</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="kt">double</span> <span class="n">rayon</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">estCercle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Math</span><span class="p">.</span><span class="n">PI</span> <span class="p">*</span> <span class="n">rayon</span> <span class="p">*</span> <span class="n">rayon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">aireCarre</span> <span class="p">=</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="m">5.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Aire du carré: {aireCarre:F2} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">aireRectangle</span> <span class="p">=</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="m">5.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Aire du rectangle: {aireRectangle:F2} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">aireCercle</span> <span class="p">=</span> <span class="n">CalculerAire</span><span class="p">(</span><span class="m">4.0</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Aire du cercle: {aireCercle:F2} m²&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--afficher-différents-types">Exemple : Afficher différents types<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre entier: {nombre}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">(</span><span class="kt">double</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Nombre décimal: {nombre:F2}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">(</span><span class="kt">string</span> <span class="n">texte</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Texte: {texte}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">tableau</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&#34;Tableau: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="k">in</span> <span class="n">tableau</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&#34;{n} &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Afficher</span><span class="p">(</span><span class="m">42</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Afficher</span><span class="p">(</span><span class="m">3.14159</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Afficher</span><span class="p">(</span><span class="s">&#34;Bonjour!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Afficher</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">[]</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--créer-un-message-de-bienvenue">Exemple : Créer un message de bienvenue<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Version simple</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">CreerBienvenue</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">$&#34;Bienvenue {nom}!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Version avec prénom et nom</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">CreerBienvenue</span><span class="p">(</span><span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nom</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">$&#34;Bienvenue {prenom} {nom}!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Version avec titre</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">CreerBienvenue</span><span class="p">(</span><span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">$&#34;Bienvenue {titre} {prenom} {nom}!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">CreerBienvenue</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">CreerBienvenue</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Tremblay&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">CreerBienvenue</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Tremblay&#34;</span><span class="p">,</span> <span class="s">&#34;Dr.&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="portée-des-variables">Portée des variables<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>La <strong>portée</strong> (scope) d&rsquo;une variable détermine où elle peut être utilisée dans le code.</p>
+<h3 id="variables-locales">Variables locales<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les variables déclarées <strong>à l&rsquo;intérieur</strong> d&rsquo;une méthode sont <strong>locales</strong> à cette méthode.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Methode1</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span> <span class="c1">// Variable locale à Methode1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Dans Methode1: x = {x}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Methode2</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">20</span><span class="p">;</span> <span class="c1">// Variable différente, locale à Methode2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Dans Methode2: x = {x}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Methode1</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Methode2</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Console.WriteLine(x); // ERREUR: x n&#39;existe pas ici</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="portée-de-bloc">Portée de bloc<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les variables déclarées dans un bloc <code>{ }</code> ne sont visibles que dans ce bloc.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">nombre</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">nombre</span> <span class="p">&gt;</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">nombre</span> <span class="p">*</span> <span class="m">2</span><span class="p">;</span> <span class="c1">// Variable locale au bloc if</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Résultat: {resultat}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Console.WriteLine(resultat); // ERREUR: resultat n&#39;existe plus</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="c1">// i existe seulement dans le for</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;i = {i}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Console.WriteLine(i); // ERREUR: i n&#39;existe plus</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="exemple--portée-et-méthodes">Exemple : Portée et méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Programme</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">CalculerCarre</span><span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">nombre</span> <span class="p">*</span> <span class="n">nombre</span><span class="p">;</span> <span class="c1">// Variable locale</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">valeur</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">carre</span> <span class="p">=</span> <span class="n">CalculerCarre</span><span class="p">(</span><span class="n">valeur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Le carré de {valeur} est {carre}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Console.WriteLine(resultat); // ERREUR: resultat est local à CalculerCarre</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="bonnes-pratiques">Bonnes pratiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-nommage-des-méthodes">1. Nommage des méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Utilisez des verbes qui décrivent l&rsquo;action</li>
+<li>Commencez par une majuscule (convention C#)</li>
+<li>Soyez descriptif</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Bon</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CalculerMoyenne</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">bool</span> <span class="n">VerifierAge</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">string</span> <span class="n">ObtenirNomComplet</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// À éviter</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">calc</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">bool</span> <span class="n">check</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">string</span> <span class="k">get</span><span class="p">()</span></span></span></code></pre></div>
+<h3 id="2-une-méthode--une-tâche">2. Une méthode = une tâche<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Chaque méthode devrait faire <strong>une seule chose</strong> et la faire bien.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Bon - une méthode par tâche</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerMoyenne</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">notes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Calcule seulement la moyenne</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherResultats</span><span class="p">(</span><span class="kt">double</span> <span class="n">moyenne</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Affiche seulement les résultats</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Moins bon - fait trop de choses</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CalculerEtAfficher</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">notes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Calcule ET affiche</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="3-limiter-le-nombre-de-paramètres">3. Limiter le nombre de paramètres<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Si une méthode a trop de paramètres (plus de 4-5), considérez regrouper les données.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Peut devenir difficile à gérer</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">CreerEtudiant</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                         <span class="kt">string</span> <span class="n">adresse</span><span class="p">,</span> <span class="kt">string</span> <span class="n">telephone</span><span class="p">,</span> <span class="kt">string</span> <span class="n">courriel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Beaucoup de paramètres!</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="4-utiliser-des-noms-de-paramètres-significatifs">4. Utiliser des noms de paramètres significatifs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Bon</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">CalculerPrixTotal</span><span class="p">(</span><span class="kt">double</span> <span class="n">prixBase</span><span class="p">,</span> <span class="kt">double</span> <span class="n">tauxTaxe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">prixBase</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">+</span> <span class="n">tauxTaxe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Moins clair</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="n">Calculer</span><span class="p">(</span><span class="kt">double</span> <span class="n">p</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">p</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">+</span> <span class="n">t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="récapitulatif--ref-vs-out">Récapitulatif : ref vs out<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="utilisez-ref-quand-">Utilisez <code>ref</code> quand :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Vous voulez <strong>modifier</strong> une valeur existante</li>
+<li>La variable doit être <strong>initialisée</strong> avant l&rsquo;appel</li>
+<li>Vous voulez que les changements affectent la variable originale</li>
+</ul>
+<h3 id="utilisez-out-quand-">Utilisez <code>out</code> quand :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Vous voulez <strong>retourner plusieurs valeurs</strong> d&rsquo;une méthode</li>
+<li>La variable <strong>n&rsquo;a pas besoin</strong> d&rsquo;être initialisée avant l&rsquo;appel</li>
+<li>La méthode va créer/calculer une nouvelle valeur</li>
+</ul>
+<h3 id="tableau-comparatif">Tableau comparatif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Passage par valeur</th>
+          <th><code>ref</code></th>
+          <th><code>out</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Initialisation requise</td>
+          <td>Non</td>
+          <td>Oui</td>
+          <td>Non</td>
+      </tr>
+      <tr>
+          <td>Modifie l&rsquo;original</td>
+          <td>Non</td>
+          <td>Oui</td>
+          <td>Oui</td>
+      </tr>
+      <tr>
+          <td>Doit assigner dans méthode</td>
+          <td>Non</td>
+          <td>Non</td>
+          <td>Oui</td>
+      </tr>
+      <tr>
+          <td>Usage principal</td>
+          <td>Donner des données</td>
+          <td>Modifier des données</td>
+          <td>Retourner plusieurs valeurs</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="exercices">Exercices<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="exercice-1--méthode-simple">Exercice 1 : Méthode simple<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Facile</strong></p>
+<p>Créez une méthode <code>AfficherTableMultiplication</code> qui prend un nombre en paramètre et affiche sa table de multiplication de 1 à 10.</p>
+<p><strong>Exemple de sortie pour le nombre 5 :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50</code></pre></div>
+<hr>
+<h3 id="exercice-2--méthode-avec-retour">Exercice 2 : Méthode avec retour<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Facile</strong></p>
+<p>Créez une méthode <code>EstPair</code> qui prend un nombre entier en paramètre et retourne <code>true</code> s&rsquo;il est pair, <code>false</code> sinon.</p>
+<p><strong>Indice :</strong> Un nombre est pair si <code>nombre % 2 == 0</code></p>
+<hr>
+<h3 id="exercice-3--méthode-avec-plusieurs-paramètres">Exercice 3 : Méthode avec plusieurs paramètres<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Facile</strong></p>
+<p>Créez une méthode <code>CalculerMoyenne</code> qui prend trois notes (double) en paramètres et retourne leur moyenne.</p>
+<hr>
+<h3 id="exercice-4--utilisation-de-ref">Exercice 4 : Utilisation de ref<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez une méthode <code>AugmenterDe10Pourcent</code> qui prend un prix en paramètre (<code>ref double</code>) et l&rsquo;augmente de 10%.</p>
+<p>Testez avec un prix initial de 100.00$ et vérifiez que la variable originale est bien modifiée.</p>
+<hr>
+<h3 id="exercice-5--utilisation-de-out---division">Exercice 5 : Utilisation de out - Division<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez une méthode <code>DiviserEntiers</code> qui prend deux entiers (dividende et diviseur) et retourne le quotient ET le reste en utilisant des paramètres <code>out</code>.</p>
+<p><strong>Exemple :</strong> 17 divisé par 5 donne quotient = 3 et reste = 2</p>
+<p><strong>Indice :</strong> Utilisez les opérateurs <code>/</code> pour le quotient et <code>%</code> pour le reste.</p>
+<hr>
+<h3 id="exercice-6--utilisation-de-out---statistiques">Exercice 6 : Utilisation de out - Statistiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez une méthode <code>AnalyserTableau</code> qui prend un tableau d&rsquo;entiers et retourne (via <code>out</code>) :</p>
+<ul>
+<li>La somme de tous les éléments</li>
+<li>La moyenne</li>
+<li>Le nombre d&rsquo;éléments</li>
+</ul>
+<p>Testez avec le tableau : <code>{10, 20, 30, 40, 50}</code></p>
+<hr>
+<h3 id="exercice-7--paramètres-optionnels">Exercice 7 : Paramètres optionnels<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez une méthode <code>AfficherFacture</code> qui prend :</p>
+<ul>
+<li>Le montant (obligatoire)</li>
+<li>Le taux de TPS (optionnel, défaut = 0.05)</li>
+<li>Le taux de TVQ (optionnel, défaut = 0.09975)</li>
+</ul>
+<p>La méthode calcule et affiche le montant avant taxes, les taxes, et le total.</p>
+<hr>
+<h3 id="exercice-8--surcharge-de-méthodes">Exercice 8 : Surcharge de méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez trois versions surchargées d&rsquo;une méthode <code>CalculerVolume</code> :</p>
+<ol>
+<li>Volume d&rsquo;un cube : <code>CalculerVolume(double cote)</code></li>
+<li>Volume d&rsquo;un parallélépipède : <code>CalculerVolume(double longueur, double largeur, double hauteur)</code></li>
+<li>Volume d&rsquo;un cylindre : <code>CalculerVolume(double rayon, double hauteur, bool estCylindre)</code></li>
+</ol>
+<p><strong>Formules :</strong></p>
+<ul>
+<li>Cube : côté³</li>
+<li>Parallélépipède : longueur × largeur × hauteur</li>
+<li>Cylindre : π × rayon² × hauteur</li>
+</ul>
+<hr>
+<h3 id="exercice-9--validation-avec-tryparse">Exercice 9 : Validation avec TryParse<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Moyenne</strong></p>
+<p>Créez un programme qui demande à l&rsquo;utilisateur d&rsquo;entrer un nombre. Utilisez <code>int.TryParse</code> avec un paramètre <code>out</code> pour valider l&rsquo;entrée. Si l&rsquo;entrée est valide, affichez le carré du nombre. Sinon, affichez un message d&rsquo;erreur.</p>
+<hr>
+<h3 id="exercice-10--calculatrice-simple">Exercice 10 : Calculatrice simple<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Difficile</strong></p>
+<p>Créez les méthodes suivantes pour une calculatrice :</p>
+<ol>
+<li><code>Additionner(double a, double b)</code> - retourne a + b</li>
+<li><code>Soustraire(double a, double b)</code> - retourne a - b</li>
+<li><code>Multiplier(double a, double b)</code> - retourne a × b</li>
+<li><code>Diviser(double a, double b, out bool succes)</code> - retourne a ÷ b et indique si la division a réussi (pas de division par zéro)</li>
+</ol>
+<p>Créez un menu qui permet à l&rsquo;utilisateur de choisir une opération et d&rsquo;entrer deux nombres.</p>
+<hr>
+<h3 id="exercice-11--analyse-de-texte">Exercice 11 : Analyse de texte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Difficile</strong></p>
+<p>Créez une méthode <code>AnalyserTexte</code> qui prend une chaîne de caractères et retourne (via <code>out</code>) :</p>
+<ul>
+<li>Le nombre de caractères</li>
+<li>Le nombre de mots</li>
+<li>Le nombre de voyelles</li>
+</ul>
+<p><strong>Indice :</strong> Utilisez <code>.Split(' ')</code> pour séparer les mots, et une boucle pour compter les voyelles (a, e, i, o, u).</p>
+<hr>
+<h3 id="exercice-12--conversion-de-température">Exercice 12 : Conversion de température<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Difficulté : Difficile</strong></p>
+<p>Créez les méthodes suivantes avec surcharge :</p>
+<ol>
+<li><code>ConvertirTemperature(double celsius)</code> - convertit Celsius → Fahrenheit</li>
+<li><code>ConvertirTemperature(double fahrenheit, bool versCelsius)</code> - convertit Fahrenheit → Celsius</li>
+</ol>
+<p>Puis créez une méthode <code>ConvertirAvecValidation</code> qui utilise un paramètre <code>out bool</code> pour indiquer si la température est physiquement possible (au-dessus du zéro absolu : -273.15°C ou -459.67°F).</p>
+<p><strong>Formules :</strong></p>
+<ul>
+<li>C → F : (C × 9/5) + 32</li>
+<li>F → C : (F - 32) × 5/9</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les méthodes sont un outil fondamental en programmation. Vous avez appris :</p>
+<p>✅ <strong>Syntaxe de base</strong> : Comment créer et appeler des méthodes<br>
+✅ <strong>Paramètres</strong> : Passage par valeur vs passage par référence<br>
+✅ <strong><code>ref</code></strong> : Modifier des variables existantes<br>
+✅ <strong><code>out</code></strong> : Retourner plusieurs valeurs<br>
+✅ <strong>Paramètres optionnels</strong> : Valeurs par défaut<br>
+✅ <strong>Surcharge</strong> : Plusieurs méthodes avec le même nom<br>
+✅ <strong>Portée</strong> : Où les variables sont accessibles</p>
+<h3 id="concepts-clés-à-retenir">Concepts clés à retenir<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Une méthode = une tâche</strong> : Gardez vos méthodes simples et ciblées</li>
+<li><strong>Nommage clair</strong> : Le nom doit décrire ce que fait la méthode</li>
+<li><strong><code>ref</code> pour modifier, <code>out</code> pour retourner</strong> : Choisissez selon votre besoin</li>
+<li><strong>Réutilisabilité</strong> : Écrivez une fois, utilisez plusieurs fois</li>
+</ol>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Introduction à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Introduction et syntaxe du langage C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="active " data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1769763224" defer></script>
+    <script src="/420-413/js/theme.js?1769763224" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
