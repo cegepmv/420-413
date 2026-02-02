@@ -23,29 +23,29 @@
     <meta itemprop="name" content="Structures de contrôles :: Développement d&#39;applications pour entreprises">
     <meta itemprop="description" content="1. Structures Conditionnelles 1.1 If-Else Similitudes avec Java : La syntaxe de base est identique.
 // Calcul de rabais selon la quantité et le montant int quantite = 15; double montantTotal = 250.50; double rabais = 0.0; if (quantite &gt;= 20 &amp;&amp; montantTotal &gt;= 500) { rabais = 0.20; // 20% pour commandes importantes } else if (quantite &gt;= 10 || montantTotal &gt;= 200) { rabais = 0.10; // 10% pour commandes moyennes } else { rabais = 0.0; // Pas de rabais } double montantFinal = montantTotal * (1 - rabais); Console.WriteLine($&#34;Montant final: {montantFinal} $&#34;); ✅ Bonne pratique - Accolades obligatoires">
-    <meta itemprop="wordCount" content="2489">
+    <meta itemprop="wordCount" content="2366">
     <title>Structures de contrôles :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1770014865" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1770014865" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1770014865" defer></script>
-    <script src="/420-413/js/search-lunr.js?1770014865" defer></script>
-    <script src="/420-413/js/search.js?1770014865" defer></script>
+    <link href="/420-413/images/favicon.png?1770056664" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1770056664" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1770056664" defer></script>
+    <script src="/420-413/js/search-lunr.js?1770056664" defer></script>
+    <script src="/420-413/js/search.js?1770056664" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1770014865";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1770056664";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1770014865" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1770014865" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1770014865" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1770014865" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1770056664" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1770056664" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1770056664" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1770056664" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1770014865" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1770014865" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1770014865" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1770014865" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1770014865" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1770056664" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1770056664" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1770056664" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1770056664" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1770056664" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -251,19 +251,6 @@
 </span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="n">heuresSupplementaires</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">?</span> <span class="m">22.0</span> <span class="p">:</span> <span class="m">20.0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Difficile à lire et à maintenir !</span></span></span></code></pre></div>
-<p><strong>✅ Bonne pratique - Assignation conditionnelle simple</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">articlesDansPanier</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">prixArticle</span> <span class="p">=</span> <span class="m">19.99</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Rabais de volume (Logique dégressive)</span>
-</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">prixUnitaire</span> <span class="p">=</span> <span class="n">articlesDansPanier</span> <span class="p">&gt;=</span> <span class="m">10</span> <span class="p">?</span> <span class="n">prixArticle</span> <span class="p">*</span> <span class="m">0.85</span> <span class="p">:</span> 
-</span></span><span class="line"><span class="cl">                      <span class="n">articlesDansPanier</span> <span class="p">&gt;=</span> <span class="m">5</span>  <span class="p">?</span> <span class="n">prixArticle</span> <span class="p">*</span> <span class="m">0.95</span> <span class="p">:</span> 
-</span></span><span class="line"><span class="cl">                      <span class="n">prixArticle</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">coutTotal</span> <span class="p">=</span> <span class="n">articlesDansPanier</span> <span class="p">*</span> <span class="n">prixUnitaire</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Utilisation du symbole $ au lieu du formatage automatique :C</span>
-</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Prix unitaire : {prixUnitaire} $, Total : {coutTotal} $&#34;</span><span class="p">);</span></span></span></code></pre></div>
 <h3 id="13-switch-statement">1.3 Switch Statement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p><strong>Différence majeure avec Java :</strong> Pas de &ldquo;fall-through&rdquo; implicite en C#.</p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">jour</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
@@ -346,7 +333,7 @@
 </span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <h3 id="14-switch-expression-c-80">1.4 Switch Expression (C# 8.0+)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p><strong>Nouveauté C# - N&rsquo;existe pas en Java (avant Java 14)</strong></p>
+<p><strong>Nouveauté C#</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Syntaxe concise et fonctionnelle</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">numeroDuJour</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">nomJour</span> <span class="p">=</span> <span class="n">numeroDuJour</span> <span class="k">switch</span>
@@ -799,18 +786,6 @@ C&rsquo;est l&rsquo;outil le plus sûr car il élimine les erreurs de dépasseme
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="c1">// Le code principal reste ici, sans être caché dans un bloc &#39;if&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Note valide : {note}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MOINS LISIBLE - L&#39;imbrication inutile (Arrow Code)</span>
-</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">note</span> <span class="k">in</span> <span class="n">notes</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">note</span> <span class="p">&gt;=</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="n">note</span> <span class="p">&lt;=</span> <span class="m">100</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// Imaginez si vous aviez 10 conditions... </span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// Le code finirait par être très décalé vers la droite.</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Note valide : {note}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p><strong>Exemple - Somme conditionnelle</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span><span class="p">[]</span> <span class="n">nombres</span> <span class="p">=</span> <span class="p">{</span> <span class="m">5</span><span class="p">,</span> <span class="p">-</span><span class="m">3</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="p">-</span><span class="m">7</span><span class="p">,</span> <span class="m">15</span> <span class="p">};</span>
@@ -908,8 +883,9 @@ C&rsquo;est l&rsquo;outil le plus sûr car il élimine les erreurs de dépasseme
             <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
             <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
             <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
-            <li class="" data-nav-id="/420-413/poo-_2/index.html"><a class="padding" href="/420-413/poo-_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
             <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
           </ul>
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
@@ -945,8 +921,8 @@ C&rsquo;est l&rsquo;outil le plus sûr car il élimine les erreurs de dépasseme
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1770014865" defer></script>
-    <script src="/420-413/js/theme.js?1770014865" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1770056664" defer></script>
+    <script src="/420-413/js/theme.js?1770056664" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

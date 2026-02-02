@@ -8,7 +8,7 @@
     <language>fr-ca</language>
     <atom:link href="http://localhost:1313/420-413/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction à Visual Studio 2022</title>
+      <title>Intro à Visual Studio 2022</title>
       <link>http://localhost:1313/420-413/intro/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/intro/index.html</guid>
@@ -22,7 +22,7 @@
       <description>Introduction à .NET .NET : Un écosystème pour le développement dʼapplications qui prend en charge plusieurs langages, dont C#, F#, et VB.NET. Il fournit des outils, des bibliothèques, et un environnement dʼexécution pour faciliter le développement d’applications.&#xA;La plateforme .NET La plateforme .NET repose sur une architecture en couches qui permet l’exécution de code écrit dans différents langages (C#, F#, VB.NET) de manière unifiée et performante.</description>
     </item>
     <item>
-      <title>Introduction et syntaxe du langage C#</title>
+      <title>Intro et syntaxe du C#</title>
       <link>http://localhost:1313/420-413/intro_syntaxe_c_sharp/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/intro_syntaxe_c_sharp/index.html</guid>
@@ -79,17 +79,24 @@
     </item>
     <item>
       <title>Programmation orientée objet - partie 2</title>
-      <link>http://localhost:1313/420-413/poo-_2-copy/index.html</link>
+      <link>http://localhost:1313/420-413/poo_2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/poo-_2-copy/index.html</guid>
+      <guid>http://localhost:1313/420-413/poo_2/index.html</guid>
       <description>Table des matières Le mot-clé Virtual Le mot-clé Abstract Le mot-clé Sealed Les Classes Abstraites Les Interfaces Membres Statiques Cours POO C# - Partie 2 : Concepts Avancés 10. Le mot-clé Virtual 10.1 Définition Le mot-clé virtual permet de déclarer une méthode qui peut être redéfinie (override) dans les classes dérivées. C’est la base du polymorphisme d’exécution en C#.</description>
     </item>
     <item>
-      <title>Programmation orientée objet - partie 2</title>
-      <link>http://localhost:1313/420-413/poo-_2/index.html</link>
+      <title>Exercices - POO</title>
+      <link>http://localhost:1313/420-413/poo_exos/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/poo-_2/index.html</guid>
-      <description>Table des matières Le mot-clé Virtual Le mot-clé Abstract Le mot-clé Sealed Les Classes Abstraites Les Interfaces Membres Statiques Cours POO C# - Partie 2 : Concepts Avancés 10. Le mot-clé Virtual 10.1 Définition Le mot-clé virtual permet de déclarer une méthode qui peut être redéfinie (override) dans les classes dérivées. C’est la base du polymorphisme d’exécution en C#.</description>
+      <guid>http://localhost:1313/420-413/poo_exos/index.html</guid>
+      <description>Mini-Projets : Programmation Orientée Objet en C# Progression recommandée Niveau Projets Débutant Projet 8 (Formes), Projet 5 (Tâches) Intermédiaire Projet 1 (Banque), Projet 2 (Bibliothèque), Projet 6 (Zoo) Avancé Projet 3 (RPG), Projet 4 (Restaurant), Projet 7 (Hôtel) Table des matières Projet 1 : Système de Gestion Bancaire Projet 2 : Gestion d’une Bibliothèque Projet 3 : Jeu de Combat RPG Projet 4 : Système de Commandes Restaurant Projet 5 : Gestionnaire de Tâches Projet 6 : Simulateur de Zoo Projet 7 : Système de Réservation Hôtel Projet 8 : Calculatrice de Formes Géométriques Projet 1 : Système de Gestion Bancaire 📋 Objectif Créer un système de gestion de comptes bancaires avec différents types de comptes et opérations.</description>
+    </item>
+    <item>
+      <title>Rubrique  - Semaine 2</title>
+      <link>http://localhost:1313/420-413/rubrique/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/rubrique/index.html</guid>
+      <description>Noms Significatifs et Fonctions Claires 📋 Objectifs de cette semaine Apprendre à :&#xA;Identifier et corriger les noms non significatifs Reconnaître et résoudre les fonctions trop longues Éliminer les commentaires inutiles en écrivant du code auto-explicatif 💡 Citation de la semaine “Le code est lu beaucoup plus souvent qu’il n’est écrit. Facilitez la lecture, pas l’écriture.”</description>
     </item>
   </channel>
 </rss>

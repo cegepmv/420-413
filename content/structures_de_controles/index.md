@@ -94,23 +94,6 @@ double tauxHoraire = heuresTravaillees > 40 ? (estWeekend ? 30.0 : 25.0) :
 // Difficile à lire et à maintenir !
 ```
 
-**✅ Bonne pratique - Assignation conditionnelle simple**
-```csharp
-int articlesDansPanier = 5;
-double prixArticle = 19.99;
-
-// Rabais de volume (Logique dégressive)
-double prixUnitaire = articlesDansPanier >= 10 ? prixArticle * 0.85 : 
-                      articlesDansPanier >= 5  ? prixArticle * 0.95 : 
-                      prixArticle;
-
-double coutTotal = articlesDansPanier * prixUnitaire;
-
-// Utilisation du symbole $ au lieu du formatage automatique :C
-Console.WriteLine($"Prix unitaire : {prixUnitaire} $, Total : {coutTotal} $");
-```
-
-
 ### 1.3 Switch Statement
 
 **Différence majeure avec Java :** Pas de "fall-through" implicite en C#.
@@ -206,7 +189,7 @@ switch (commande)
 
 ### 1.4 Switch Expression (C# 8.0+)
 
-**Nouveauté C# - N'existe pas en Java (avant Java 14)**
+**Nouveauté C#**
 
 ```csharp
 // Syntaxe concise et fonctionnelle
@@ -754,18 +737,6 @@ foreach (int note in notes)
     
     // Le code principal reste ici, sans être caché dans un bloc 'if'
     Console.WriteLine($"Note valide : {note}");
-}
-
-
-// ❌ MOINS LISIBLE - L'imbrication inutile (Arrow Code)
-foreach (int note in notes)
-{
-    if (note >= 0 && note <= 100)
-    {
-        // Imaginez si vous aviez 10 conditions... 
-        // Le code finirait par être très décalé vers la droite.
-        Console.WriteLine($"Note valide : {note}");
-    }
 }
 ```
 

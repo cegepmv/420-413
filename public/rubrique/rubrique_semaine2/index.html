@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="🧹 Rubrique Clean Code - Semaine 1 Noms Significatifs et Fonctions Claires 📋 Objectifs de cette semaine Apprendre à :
+Identifier et corriger les noms non significatifs Reconnaître et résoudre les fonctions trop longues Éliminer les commentaires inutiles en écrivant du code auto-explicatif 💡 Citation de la semaine “Le code est lu beaucoup plus souvent qu’il n’est écrit. Facilitez la lecture, pas l’écriture.”">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Affichage console :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="🧹 Rubrique Clean Code - Semaine 1 Noms Significatifs et Fonctions Claires 📋 Objectifs de cette semaine Apprendre à :
+Identifier et corriger les noms non significatifs Reconnaître et résoudre les fonctions trop longues Éliminer les commentaires inutiles en écrivant du code auto-explicatif 💡 Citation de la semaine “Le code est lu beaucoup plus souvent qu’il n’est écrit. Facilitez la lecture, pas l’écriture.”">
+    <meta property="og:url" content="http://localhost:1313/420-413/rubrique/rubrique_semaine2/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Affichage console :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="🧹 Rubrique Clean Code - Semaine 1 Noms Significatifs et Fonctions Claires 📋 Objectifs de cette semaine Apprendre à :
+Identifier et corriger les noms non significatifs Reconnaître et résoudre les fonctions trop longues Éliminer les commentaires inutiles en écrivant du code auto-explicatif 💡 Citation de la semaine “Le code est lu beaucoup plus souvent qu’il n’est écrit. Facilitez la lecture, pas l’écriture.”">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Rubriques">
+    <meta property="article:published_time" content="2025-08-20T19:04:19-04:00">
+    <meta property="article:modified_time" content="2025-08-20T19:04:19-04:00">
+    <meta itemprop="name" content="Affichage console :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="🧹 Rubrique Clean Code - Semaine 1 Noms Significatifs et Fonctions Claires 📋 Objectifs de cette semaine Apprendre à :
+Identifier et corriger les noms non significatifs Reconnaître et résoudre les fonctions trop longues Éliminer les commentaires inutiles en écrivant du code auto-explicatif 💡 Citation de la semaine “Le code est lu beaucoup plus souvent qu’il n’est écrit. Facilitez la lecture, pas l’écriture.”">
+    <meta itemprop="datePublished" content="2025-08-20T19:04:19-04:00">
+    <meta itemprop="dateModified" content="2025-08-20T19:04:19-04:00">
+    <meta itemprop="wordCount" content="3914">
+    <title>Affichage console :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1770021033" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1770021033" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1770021033" defer></script>
+    <script src="/420-413/js/search-lunr.js?1770021033" defer></script>
+    <script src="/420-413/js/search.js?1770021033" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1770021033";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1770021033" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1770021033" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1770021033" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1770021033" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1770021033" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1770021033" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1770021033" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1770021033" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1770021033" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/rubrique\/rubrique_semaine2\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/rubrique/rubrique_semaine2/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#noms-significatifs-et-fonctions-claires">Noms Significatifs et Fonctions Claires</a></li>
+    <li><a href="#-objectifs-de-cette-semaine">📋 Objectifs de cette semaine</a></li>
+    <li><a href="#-citation-de-la-semaine">💡 Citation de la semaine</a></li>
+    <li><a href="#-code-smell-1--noms-non-significatifs">🔴 Code Smell #1 : Noms Non Significatifs</a>
+      <ul>
+        <li><a href="#quest-ce-quun-nom-non-significatif-">Qu&rsquo;est-ce qu&rsquo;un nom non significatif ?</a></li>
+        <li><a href="#-exemple-de-code-problématique">❌ Exemple de Code Problématique</a></li>
+        <li><a href="#-problèmes-identifiés">🤔 Problèmes identifiés</a></li>
+        <li><a href="#-code-corrigé-version-clean-code">✅ Code Corrigé (Version Clean Code)</a></li>
+        <li><a href="#-comparaison-avantaprès">📊 Comparaison Avant/Après</a></li>
+        <li><a href="#-règles-pour-les-noms-significatifs">🎯 Règles pour les Noms Significatifs</a></li>
+        <li><a href="#-exercice-pratique-1">🔍 Exercice Pratique #1</a></li>
+      </ul>
+    </li>
+    <li><a href="#-code-smell-2--fonctions-trop-longues">🔴 Code Smell #2 : Fonctions Trop Longues</a>
+      <ul>
+        <li><a href="#quest-ce-quune-fonction-trop-longue-">Qu&rsquo;est-ce qu&rsquo;une fonction trop longue ?</a></li>
+        <li><a href="#-exemple-de-code-problématique-1">❌ Exemple de Code Problématique</a></li>
+        <li><a href="#-problèmes-identifiés-1">🤔 Problèmes identifiés</a></li>
+        <li><a href="#-code-corrigé-version-clean-code-1">✅ Code Corrigé (Version Clean Code)</a></li>
+        <li><a href="#-comparaison-avantaprès-1">📊 Comparaison Avant/Après</a></li>
+        <li><a href="#-règles-pour-les-fonctions-propres">🎯 Règles pour les Fonctions Propres</a></li>
+        <li><a href="#-exercice-pratique-2">🔍 Exercice Pratique #2</a></li>
+      </ul>
+    </li>
+    <li><a href="#-code-smell-3--commentaires-inutiles-ou-mensongers">🔴 Code Smell #3 : Commentaires Inutiles ou Mensongers</a>
+      <ul>
+        <li><a href="#quest-ce-quun-commentaire-inutile-">Qu&rsquo;est-ce qu&rsquo;un commentaire inutile ?</a></li>
+        <li><a href="#-exemple-de-code-problématique-2">❌ Exemple de Code Problématique</a></li>
+        <li><a href="#-problèmes-identifiés-2">🤔 Problèmes identifiés</a></li>
+        <li><a href="#-code-corrigé-version-clean-code-2">✅ Code Corrigé (Version Clean Code)</a></li>
+        <li><a href="#-quand-les-commentaires-sont-utiles">🎯 Quand les Commentaires SONT Utiles</a></li>
+        <li><a href="#-guide-de-décision--commentaire-ou-refactoring-">📊 Guide de Décision : Commentaire ou Refactoring ?</a></li>
+        <li><a href="#-exercice-pratique-3">🔍 Exercice Pratique #3</a></li>
+      </ul>
+    </li>
+    <li><a href="#-résumé-de-la-semaine">📝 Résumé de la Semaine</a>
+      <ul>
+        <li><a href="#les-3-code-smells-étudiés">Les 3 Code Smells Étudiés</a></li>
+        <li><a href="#citations-à-retenir">Citations à Retenir</a></li>
+        <li><a href="#checklist-avant-de-commiter-du-code">Checklist Avant de Commiter du Code</a></li>
+      </ul>
+    </li>
+    <li><a href="#-défi-de-la-semaine">🎯 Défi de la Semaine</a></li>
+    <li><a href="#-lectures-recommandées">📚 Lectures Recommandées</a></li>
+    <li><a href="#-aperçu-semaine-prochaine">🔜 Aperçu Semaine Prochaine</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/rubrique/index.html"><span itemprop="name">Rubriques</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Affichage console</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/rubrique/index.html" title="Rubriques (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-chevron-right"></i></span></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable rubrique" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="affichage-console">Affichage console</h1>
+
+<h1 id="-rubrique-clean-code---semaine-1">🧹 Rubrique Clean Code - Semaine 1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="noms-significatifs-et-fonctions-claires">Noms Significatifs et Fonctions Claires<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<hr>
+<h2 id="-objectifs-de-cette-semaine">📋 Objectifs de cette semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Apprendre à :</p>
+<ol>
+<li>Identifier et corriger les <strong>noms non significatifs</strong></li>
+<li>Reconnaître et résoudre les <strong>fonctions trop longues</strong></li>
+<li>Éliminer les <strong>commentaires inutiles</strong> en écrivant du code auto-explicatif</li>
+</ol>
+<hr>
+<h2 id="-citation-de-la-semaine">💡 Citation de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>&ldquo;Le code est lu beaucoup plus souvent qu&rsquo;il n&rsquo;est écrit. Facilitez la lecture, pas l&rsquo;écriture.&rdquo;</p>
+<p>— Robert C. Martin (Uncle Bob), Clean Code</p></blockquote>
+<hr>
+<h2 id="-code-smell-1--noms-non-significatifs">🔴 Code Smell #1 : Noms Non Significatifs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-quun-nom-non-significatif-">Qu&rsquo;est-ce qu&rsquo;un nom non significatif ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un <strong>nom non significatif</strong> est un nom de variable, méthode ou classe qui ne révèle pas clairement son intention ou son rôle. Il force le lecteur à deviner ou à chercher dans le contexte pour comprendre.</p>
+<h3 id="-exemple-de-code-problématique">❌ Exemple de Code Problématique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Que représentent ces variables ???</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">d</span> <span class="p">=</span> <span class="m">30</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">temp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">[]&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">x</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">i</span> <span class="p">*</span> <span class="m">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">temp</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Afficher les résultats</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">t</span> <span class="k">in</span> <span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{t[0]} - {t[1]} - {t[2]}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-problèmes-identifiés">🤔 Problèmes identifiés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong><code>d</code></strong> : Que signifie &ldquo;d&rdquo; ? Jour ? Distance ? Diviseur ?</li>
+<li><strong><code>temp</code></strong> : Temporaire de quoi ? Quelle est sa vraie signification ?</li>
+<li><strong><code>x</code></strong> : Qu&rsquo;est-ce que ce tableau représente ?</li>
+<li><strong><code>t</code></strong> : Même problème dans la boucle</li>
+<li><strong><code>i</code></strong> : Dans ce contexte, que représente-t-il vraiment ?</li>
+<li><strong>Indices magiques</strong> : Que signifient <code>[0]</code>, <code>[1]</code>, <code>[2]</code> ?</li>
+</ol>
+<h3 id="-code-corrigé-version-clean-code">✅ Code Corrigé (Version Clean Code)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// VERSION CLEAN CODE</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">const</span> <span class="kt">int</span> <span class="n">nombreDeJoursDansUnMois</span> <span class="p">=</span> <span class="m">30</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="p">&lt;</span><span class="n">Commande</span><span class="p">&gt;</span> <span class="n">commandesDivisiblesParTrente</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Commande</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">numeroCommande</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">numeroCommande</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">numeroCommande</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Commande</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Numero</span> <span class="p">=</span> <span class="n">numeroCommande</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MontantDouble</span> <span class="p">=</span> <span class="n">numeroCommande</span> <span class="p">*</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ResteModulo</span> <span class="p">=</span> <span class="n">numeroCommande</span> <span class="p">%</span> <span class="n">nombreDeJoursDansUnMois</span>
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">EstDivisibleParTrente</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">commandesDivisiblesParTrente</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">AfficherCommandes</span><span class="p">(</span><span class="n">commandesDivisiblesParTrente</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">AfficherCommandes</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Commande</span><span class="p">&gt;</span> <span class="n">commandes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">commande</span> <span class="k">in</span> <span class="n">commandes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">ObtenirDescription</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Commande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Numero</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">MontantDouble</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">ResteModulo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstDivisibleParTrente</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ResteModulo</span> <span class="p">==</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">ObtenirDescription</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">$&#34;Commande #{Numero} - Montant: {MontantDouble} - Reste: {ResteModulo}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-comparaison-avantaprès">📊 Comparaison Avant/Après<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Avant (😞 Mauvais)</th>
+          <th>Après (✅ Bon)</th>
+          <th>Amélioration</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>d</code></td>
+          <td><code>nombreDeJoursDansUnMois</code></td>
+          <td>Intention claire</td>
+      </tr>
+      <tr>
+          <td><code>temp</code></td>
+          <td><code>commandesDivisiblesParTrente</code></td>
+          <td>But explicite</td>
+      </tr>
+      <tr>
+          <td><code>x</code></td>
+          <td><code>commande</code> (objet Commande)</td>
+          <td>Type et rôle clairs</td>
+      </tr>
+      <tr>
+          <td><code>x[0]</code>, <code>x[1]</code>, <code>x[2]</code></td>
+          <td><code>commande.Numero</code>, <code>commande.MontantDouble</code></td>
+          <td>Propriétés nommées</td>
+      </tr>
+      <tr>
+          <td><code>i</code></td>
+          <td><code>numeroCommande</code></td>
+          <td>Contexte précis</td>
+      </tr>
+      <tr>
+          <td><code>t</code></td>
+          <td><code>commande</code></td>
+          <td>Nom significatif</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="-règles-pour-les-noms-significatifs">🎯 Règles pour les Noms Significatifs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="-faire-">✅ FAIRE :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 1. Utiliser des noms qui révèlent l&#39;intention</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">nombreJoursEcoules</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">decimal</span> <span class="n">prixTotalAvecTaxes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">utilisateurEstConnecte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. Utiliser des noms prononçables</span>
+</span></span><span class="line"><span class="cl"><span class="n">DateTime</span> <span class="n">dateCreationClient</span><span class="p">;</span>  <span class="c1">// ✅ Bon</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// vs</span>
+</span></span><span class="line"><span class="cl"><span class="n">DateTime</span> <span class="n">dtCrCl</span><span class="p">;</span>  <span class="c1">// ❌ Imprononçable</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 3. Utiliser des noms cherchables</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="kt">int</span> <span class="n">NOMBRE_HEURES_TRAVAIL_PAR_SEMAINE</span> <span class="p">=</span> <span class="m">40</span><span class="p">;</span>  <span class="c1">// ✅ Facile à trouver</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// vs</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span> <span class="p">=</span> <span class="m">40</span><span class="p">;</span>  <span class="c1">// ❌ Impossible à chercher</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 4. Éviter les abréviations ambiguës</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="n">Client</span><span class="p">&gt;</span> <span class="n">listeClients</span><span class="p">;</span>  <span class="c1">// ✅ Clair</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// vs</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="n">Client</span><span class="p">&gt;</span> <span class="n">lc</span><span class="p">;</span>  <span class="c1">// ❌ Qu&#39;est-ce que &#34;lc&#34; ?</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 5. Utiliser des noms de domaine métier</span>
+</span></span><span class="line"><span class="cl"><span class="kt">decimal</span> <span class="n">montantFacture</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">numeroCompteBancaire</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">DateTime</span> <span class="n">dateEcheancePaiement</span><span class="p">;</span></span></span></code></pre></div>
+<h4 id="-ne-pas-faire-">❌ NE PAS FAIRE :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 1. Noms d&#39;une seule lettre (sauf compteurs de boucle simples)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">d</span><span class="p">;</span>  <span class="c1">// ❌ Que représente &#34;d&#34; ?</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">s</span><span class="p">;</span>  <span class="c1">// ❌ Trop vague</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. Noms trompeurs</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="n">Client</span><span class="p">&gt;</span> <span class="n">clientsList</span><span class="p">;</span>  <span class="c1">// ❌ Notation hongroise inutile en C#</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">compteur1</span><span class="p">,</span> <span class="n">compteur2</span><span class="p">;</span>  <span class="c1">// ❌ Numérotation sans signification</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 3. Noms trop génériques</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">ObtenirDonnees</span><span class="p">();</span>  <span class="c1">// ❌ Quelles données ?</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">info</span> <span class="p">=</span> <span class="n">CalculerInfo</span><span class="p">();</span>    <span class="c1">// ❌ Quelle info ?</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">Process</span><span class="p">();</span>         <span class="c1">// ❌ Temp de quoi ?</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 4. Préfixes/suffixes redondants</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ClientClass</span> <span class="p">{</span> <span class="p">}</span>  <span class="c1">// ❌ &#34;Class&#34; est redondant</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">intAge</span><span class="p">;</span>           <span class="c1">// ❌ Notation hongroise dépassée</span></span></span></code></pre></div>
+<h3 id="-exercice-pratique-1">🔍 Exercice Pratique #1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Corrigez ce code :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Process</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">r</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">b</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span> <span class="p">+=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Solution :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">AfficherSommeNombresPairs</span><span class="p">(</span><span class="kt">int</span> <span class="n">nombreDebut</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nombreFin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">sommePairs</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span> <span class="p">=</span> <span class="n">nombreDebut</span><span class="p">;</span> <span class="n">nombre</span> <span class="p">&lt;=</span> <span class="n">nombreFin</span><span class="p">;</span> <span class="n">nombre</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">NombreEstPair</span><span class="p">(</span><span class="n">nombre</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sommePairs</span> <span class="p">+=</span> <span class="n">nombre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Somme des nombres pairs : {sommePairs}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">bool</span> <span class="n">NombreEstPair</span><span class="p">(</span><span class="kt">int</span> <span class="n">nombre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">nombre</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="-code-smell-2--fonctions-trop-longues">🔴 Code Smell #2 : Fonctions Trop Longues<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-quune-fonction-trop-longue-">Qu&rsquo;est-ce qu&rsquo;une fonction trop longue ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Une fonction qui fait <strong>trop de choses</strong>, contient <strong>trop de lignes</strong> de code, ou a <strong>trop de niveaux d&rsquo;indentation</strong>. Règle générale : une fonction devrait tenir sur un écran sans défilement.</p>
+<blockquote>
+<p><strong>Règle d&rsquo;or</strong> : Une fonction = Une responsabilité</p></blockquote>
+<h3 id="-exemple-de-code-problématique-1">❌ Exemple de Code Problématique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireCommandes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">TraiterCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Cette fonction fait BEAUCOUP TROP de choses !</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. Récupération des données</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Commande</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="s">&#34;connectionString&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">connection</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlCommand</span><span class="p">(</span><span class="s">$&#34;SELECT * FROM Commandes WHERE Id = {idCommande}&#34;</span><span class="p">,</span> <span class="n">connection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">commande</span><span class="p">.</span><span class="n">Id</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;Id&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">commande</span><span class="p">.</span><span class="n">ClientId</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;ClientId&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">=</span> <span class="p">(</span><span class="kt">decimal</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;MontantTotal&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">commande</span><span class="p">.</span><span class="n">DateCommande</span> <span class="p">=</span> <span class="p">(</span><span class="n">DateTime</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;DateCommande&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. Validation</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Erreur: Montant invalide&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">DateCommande</span> <span class="p">&gt;</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Erreur: Date future&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. Calcul des taxes</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">decimal</span> <span class="n">tps</span> <span class="p">=</span> <span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">*</span> <span class="m">0.05</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">decimal</span> <span class="n">tvq</span> <span class="p">=</span> <span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">*</span> <span class="m">0.09975</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">decimal</span> <span class="n">total</span> <span class="p">=</span> <span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">+</span> <span class="n">tps</span> <span class="p">+</span> <span class="n">tvq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 4. Vérification du client</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Client</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="s">&#34;connectionString&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">connection</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlCommand</span><span class="p">(</span><span class="s">$&#34;SELECT * FROM Clients WHERE Id = {commande.ClientId}&#34;</span><span class="p">,</span> <span class="n">connection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client</span><span class="p">.</span><span class="n">Nom</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;Nom&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client</span><span class="p">.</span><span class="n">Email</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;Email&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client</span><span class="p">.</span><span class="n">Actif</span> <span class="p">=</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="n">reader</span><span class="p">[</span><span class="s">&#34;Actif&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">client</span><span class="p">.</span><span class="n">Actif</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Erreur: Client inactif&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 5. Application de rabais</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">decimal</span> <span class="n">rabais</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">&gt;</span> <span class="m">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rabais</span> <span class="p">=</span> <span class="n">total</span> <span class="p">*</span> <span class="m">0.10</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">&gt;</span> <span class="m">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rabais</span> <span class="p">=</span> <span class="n">total</span> <span class="p">*</span> <span class="m">0.05</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="p">-=</span> <span class="n">rabais</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 6. Enregistrement de la facture</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="s">&#34;connectionString&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">connection</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlCommand</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s">$&#34;INSERT INTO Factures (CommandeId, MontantHT, TPS, TVQ, Rabais, Total) &#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">$&#34;VALUES ({commande.Id}, {commande.MontantTotal}, {tps}, {tvq}, {rabais}, {total})&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">connection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 7. Envoi d&#39;email</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">smtp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SmtpClient</span><span class="p">(</span><span class="s">&#34;smtp.server.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MailMessage</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message</span><span class="p">.</span><span class="n">To</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">Email</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message</span><span class="p">.</span><span class="n">Subject</span> <span class="p">=</span> <span class="s">&#34;Facture&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">message</span><span class="p">.</span><span class="n">Body</span> <span class="p">=</span> <span class="s">$&#34;Votre facture de {total:C} est prête&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">smtp</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 8. Logging</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Commande {idCommande} traitée avec succès&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">AppendAllText</span><span class="p">(</span><span class="s">&#34;log.txt&#34;</span><span class="p">,</span> <span class="s">$&#34;{DateTime.Now}: Commande {idCommande} OK\n&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-problèmes-identifiés-1">🤔 Problèmes identifiés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>91 lignes</strong> dans une seule méthode !</li>
+<li><strong>8 responsabilités différentes</strong> dans une fonction</li>
+<li><strong>Violation du principe SRP</strong> (Single Responsibility Principle)</li>
+<li><strong>Difficile à tester</strong> : comment tester juste une partie ?</li>
+<li><strong>Difficile à maintenir</strong> : modifier une partie risque de casser le reste</li>
+<li><strong>Code dupliqué</strong> : connexion DB répétée 3 fois</li>
+<li><strong>Mélange de niveaux d&rsquo;abstraction</strong> : détails DB + logique métier</li>
+</ol>
+<h3 id="-code-corrigé-version-clean-code-1">✅ Code Corrigé (Version Clean Code)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireCommandes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ICommandeRepository</span> <span class="n">_commandeRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IClientRepository</span> <span class="n">_clientRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IFactureRepository</span> <span class="n">_factureRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ICalculateurTaxes</span> <span class="n">_calculateurTaxes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ICalculateurRabais</span> <span class="n">_calculateurRabais</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IServiceEmail</span> <span class="n">_serviceEmail</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ILogger</span> <span class="n">_logger</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">GestionnaireCommandes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICommandeRepository</span> <span class="n">commandeRepository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IClientRepository</span> <span class="n">clientRepository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IFactureRepository</span> <span class="n">factureRepository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICalculateurTaxes</span> <span class="n">calculateurTaxes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICalculateurRabais</span> <span class="n">calculateurRabais</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IServiceEmail</span> <span class="n">serviceEmail</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_commandeRepository</span> <span class="p">=</span> <span class="n">commandeRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_clientRepository</span> <span class="p">=</span> <span class="n">clientRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_factureRepository</span> <span class="p">=</span> <span class="n">factureRepository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_calculateurTaxes</span> <span class="p">=</span> <span class="n">calculateurTaxes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_calculateurRabais</span> <span class="p">=</span> <span class="n">calculateurRabais</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_serviceEmail</span> <span class="p">=</span> <span class="n">serviceEmail</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE PRINCIPALE - Claire et concise</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">TraiterCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">RecupererCommande</span><span class="p">(</span><span class="n">idCommande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ValiderCommande</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">RecupererClient</span><span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">ClientId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ValiderClient</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">facture</span> <span class="p">=</span> <span class="n">CreerFacture</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EnregistrerFacture</span><span class="p">(</span><span class="n">facture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">EnvoyerEmailConfirmation</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">facture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">LoggerTraitement</span><span class="p">(</span><span class="n">idCommande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODES PRIVÉES - Une responsabilité chacune</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Commande</span> <span class="n">RecupererCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">_commandeRepository</span><span class="p">.</span><span class="n">ObtenirParId</span><span class="p">(</span><span class="n">idCommande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">CommandeIntrouvableException</span><span class="p">(</span><span class="s">$&#34;Commande {idCommande} introuvable&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">commande</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">ValiderCommande</span><span class="p">(</span><span class="n">Commande</span> <span class="n">commande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">CommandeInvalideException</span><span class="p">(</span><span class="s">&#34;Le montant doit être positif&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">DateCommande</span> <span class="p">&gt;</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">CommandeInvalideException</span><span class="p">(</span><span class="s">&#34;La date ne peut être future&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Client</span> <span class="n">RecupererClient</span><span class="p">(</span><span class="kt">int</span> <span class="n">clientId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">_clientRepository</span><span class="p">.</span><span class="n">ObtenirParId</span><span class="p">(</span><span class="n">clientId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">client</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">ClientIntrouvableException</span><span class="p">(</span><span class="s">$&#34;Client {clientId} introuvable&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">ValiderClient</span><span class="p">(</span><span class="n">Client</span> <span class="n">client</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">client</span><span class="p">.</span><span class="n">Actif</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">ClientInactifException</span><span class="p">(</span><span class="s">$&#34;Le client {client.Nom} est inactif&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Facture</span> <span class="n">CreerFacture</span><span class="p">(</span><span class="n">Commande</span> <span class="n">commande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">montantHT</span> <span class="p">=</span> <span class="n">commande</span><span class="p">.</span><span class="n">MontantTotal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">taxes</span> <span class="p">=</span> <span class="n">_calculateurTaxes</span><span class="p">.</span><span class="n">CalculerTaxes</span><span class="p">(</span><span class="n">montantHT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">montantAvecTaxes</span> <span class="p">=</span> <span class="n">montantHT</span> <span class="p">+</span> <span class="n">taxes</span><span class="p">.</span><span class="n">TPS</span> <span class="p">+</span> <span class="n">taxes</span><span class="p">.</span><span class="n">TVQ</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">rabais</span> <span class="p">=</span> <span class="n">_calculateurRabais</span><span class="p">.</span><span class="n">CalculerRabais</span><span class="p">(</span><span class="n">montantAvecTaxes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">montantFinal</span> <span class="p">=</span> <span class="n">montantAvecTaxes</span> <span class="p">-</span> <span class="n">rabais</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">Facture</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">CommandeId</span> <span class="p">=</span> <span class="n">commande</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MontantHorsTaxes</span> <span class="p">=</span> <span class="n">montantHT</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TPS</span> <span class="p">=</span> <span class="n">taxes</span><span class="p">.</span><span class="n">TPS</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TVQ</span> <span class="p">=</span> <span class="n">taxes</span><span class="p">.</span><span class="n">TVQ</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Rabais</span> <span class="p">=</span> <span class="n">rabais</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MontantTotal</span> <span class="p">=</span> <span class="n">montantFinal</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">EnregistrerFacture</span><span class="p">(</span><span class="n">Facture</span> <span class="n">facture</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_factureRepository</span><span class="p">.</span><span class="n">Enregistrer</span><span class="p">(</span><span class="n">facture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">EnvoyerEmailConfirmation</span><span class="p">(</span><span class="n">Client</span> <span class="n">client</span><span class="p">,</span> <span class="n">Facture</span> <span class="n">facture</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">contenuEmail</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EmailFacture</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Destinataire</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">NomClient</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Nom</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MontantTotal</span> <span class="p">=</span> <span class="n">facture</span><span class="p">.</span><span class="n">MontantTotal</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">_serviceEmail</span><span class="p">.</span><span class="n">EnvoyerEmailFacture</span><span class="p">(</span><span class="n">contenuEmail</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">LoggerTraitement</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">$&#34;Commande {idCommande} traitée avec succès&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// CLASSES DE SUPPORT (extraites)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CalculateurTaxes</span> <span class="p">:</span> <span class="n">ICalculateurTaxes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_TPS</span> <span class="p">=</span> <span class="m">0.05</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_TVQ</span> <span class="p">=</span> <span class="m">0.09975</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TaxesCalculees</span> <span class="n">CalculerTaxes</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montantHorsTaxes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">TaxesCalculees</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TPS</span> <span class="p">=</span> <span class="n">montantHorsTaxes</span> <span class="p">*</span> <span class="n">TAUX_TPS</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TVQ</span> <span class="p">=</span> <span class="n">montantHorsTaxes</span> <span class="p">*</span> <span class="n">TAUX_TVQ</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CalculateurRabais</span> <span class="p">:</span> <span class="n">ICalculateurRabais</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">SEUIL_RABAIS_ELEVE</span> <span class="p">=</span> <span class="m">1000</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">SEUIL_RABAIS_MOYEN</span> <span class="p">=</span> <span class="m">500</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_RABAIS_ELEVE</span> <span class="p">=</span> <span class="m">0.10</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_RABAIS_MOYEN</span> <span class="p">=</span> <span class="m">0.05</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerRabais</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">montant</span> <span class="p">&gt;</span> <span class="n">SEUIL_RABAIS_ELEVE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">montant</span> <span class="p">*</span> <span class="n">TAUX_RABAIS_ELEVE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">montant</span> <span class="p">&gt;</span> <span class="n">SEUIL_RABAIS_MOYEN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">montant</span> <span class="p">*</span> <span class="n">TAUX_RABAIS_MOYEN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-comparaison-avantaprès-1">📊 Comparaison Avant/Après<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Avant (😞)</th>
+          <th>Après (✅)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Lignes par méthode</strong></td>
+          <td>91 lignes</td>
+          <td>5-15 lignes max</td>
+      </tr>
+      <tr>
+          <td><strong>Responsabilités</strong></td>
+          <td>8 dans une méthode</td>
+          <td>1 par méthode</td>
+      </tr>
+      <tr>
+          <td><strong>Testabilité</strong></td>
+          <td>Très difficile</td>
+          <td>Facile (chaque partie)</td>
+      </tr>
+      <tr>
+          <td><strong>Lisibilité</strong></td>
+          <td>Nécessite défilement</td>
+          <td>Chaque méthode visible d&rsquo;un coup</td>
+      </tr>
+      <tr>
+          <td><strong>Maintenance</strong></td>
+          <td>Risqué</td>
+          <td>Sûr et ciblé</td>
+      </tr>
+      <tr>
+          <td><strong>Réutilisabilité</strong></td>
+          <td>Aucune</td>
+          <td>Chaque méthode réutilisable</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="-règles-pour-les-fonctions-propres">🎯 Règles pour les Fonctions Propres<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="-principes-à-suivre-">✅ Principes à suivre :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li><strong>Une fonction = Une responsabilité</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Fait une seule chose</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerPrixAvecTaxes</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">prixHT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">prixHT</span> <span class="p">*</span> <span class="m">1.14975</span><span class="n">m</span><span class="p">;</span> <span class="c1">// TPS + TVQ du Québec</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - Fait plusieurs choses</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerEtEnregistrerPrixAvecTaxes</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">prixHT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">prixTTC</span> <span class="p">=</span> <span class="n">prixHT</span> <span class="p">*</span> <span class="m">1.14975</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Enregistrement en DB</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Envoi d&#39;email</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Logging</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">prixTTC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<ol start="2">
+<li><strong>Petite taille</strong> : 5-20 lignes idéalement</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Court et clair</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">UtilisateurEstEligibleAuRabais</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">user</span><span class="p">.</span><span class="n">EstMembre</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="n">AncienneteEnMois</span> <span class="p">&gt;=</span> <span class="m">6</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="n">MontantAchatsTotal</span> <span class="p">&gt;</span> <span class="m">1000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<ol start="3">
+<li><strong>Un seul niveau d&rsquo;abstraction</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Même niveau d&#39;abstraction</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">TraiterInscription</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ValiderDonneesUtilisateur</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EnvoyerEmailBienvenue</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - Niveaux d&#39;abstraction mélangés</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">TraiterInscription</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Haut niveau</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ValiderDonneesUtilisateur</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Bas niveau (détails d&#39;implémentation)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="s">&#34;...&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">connection</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlCommand</span><span class="p">(</span><span class="s">&#34;INSERT...&#34;</span><span class="p">,</span> <span class="n">connection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Haut niveau</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EnvoyerEmailBienvenue</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<ol start="4">
+<li><strong>Peu de paramètres</strong> : 0-3 idéalement</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - 2 paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerRemise</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montant</span><span class="p">,</span> <span class="n">TypeClient</span> <span class="n">typeClient</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ⚠️ ACCEPTABLE - 3 paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CreerCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">clientId</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">produits</span><span class="p">,</span> <span class="n">AdresseLivraison</span> <span class="n">adresse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - Trop de paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CreerCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">clientId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">email</span><span class="p">,</span> <span class="kt">string</span> <span class="n">telephone</span><span class="p">,</span> <span class="kt">string</span> <span class="n">rue</span><span class="p">,</span> <span class="kt">string</span> <span class="n">ville</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">codePostal</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">produits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Utilisez plutôt un objet</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ✅ MIEUX - Objet de paramètres</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CreerCommande</span><span class="p">(</span><span class="n">InformationsCommande</span> <span class="n">infos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<ol start="5">
+<li><strong>Pas d&rsquo;effets de bord</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - Effet de bord caché</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">int</span> <span class="n">compteur</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>  <span class="c1">// Variable de classe</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">ValiderUtilisateur</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">compteur</span><span class="p">++;</span>  <span class="c1">// ⚠️ Effet de bord : modifie l&#39;état</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">user</span><span class="p">.</span><span class="n">Email</span> <span class="p">!=</span> <span class="kc">null</span> <span class="p">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="n">Age</span> <span class="p">&gt;=</span> <span class="m">18</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ✅ BON - Fonction pure</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">ValiderUtilisateur</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">user</span><span class="p">.</span><span class="n">Email</span> <span class="p">!=</span> <span class="kc">null</span> <span class="p">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="n">Age</span> <span class="p">&gt;=</span> <span class="m">18</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-exercice-pratique-2">🔍 Exercice Pratique #2<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Décomposez cette fonction :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">ProcessOrder</span><span class="p">(</span><span class="kt">int</span> <span class="n">orderId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">order</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Orders</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">orderId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">order</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">customer</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Customers</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">order</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">customer</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">total</span> <span class="p">=</span> <span class="m">0</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">order</span><span class="p">.</span><span class="n">Items</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="p">+=</span> <span class="n">item</span><span class="p">.</span><span class="n">Price</span> <span class="p">*</span> <span class="n">item</span><span class="p">.</span><span class="n">Quantity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">tax</span> <span class="p">=</span> <span class="n">total</span> <span class="p">*</span> <span class="m">0.15</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">finalTotal</span> <span class="p">=</span> <span class="n">total</span> <span class="p">+</span> <span class="n">tax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">finalTotal</span> <span class="p">&gt;</span> <span class="m">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">finalTotal</span> <span class="p">*=</span> <span class="m">0.9</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">order</span><span class="p">.</span><span class="n">Total</span> <span class="p">=</span> <span class="n">finalTotal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">SendEmail</span><span class="p">(</span><span class="n">customer</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span> <span class="s">$&#34;Your order total: {finalTotal:C}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Solution :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">TraiterCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">RecupererCommande</span><span class="p">(</span><span class="n">idCommande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">RecupererClient</span><span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">ClientId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">montantTotal</span> <span class="p">=</span> <span class="n">CalculerMontantTotal</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">EnregistrerMontantCommande</span><span class="p">(</span><span class="n">commande</span><span class="p">,</span> <span class="n">montantTotal</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EnvoyerEmailConfirmation</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">montantTotal</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">Commande</span> <span class="n">RecupererCommande</span><span class="p">(</span><span class="kt">int</span> <span class="n">idCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Orders</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">idCommande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">commande</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="n">CommandeIntrouvableException</span><span class="p">(</span><span class="s">$&#34;Commande {idCommande} introuvable&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">commande</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">Client</span> <span class="n">RecupererClient</span><span class="p">(</span><span class="kt">int</span> <span class="n">clientId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Customers</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">clientId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">client</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="n">ClientIntrouvableException</span><span class="p">(</span><span class="s">$&#34;Client {clientId} introuvable&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">decimal</span> <span class="n">CalculerMontantTotal</span><span class="p">(</span><span class="n">Commande</span> <span class="n">commande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">sousTotal</span> <span class="p">=</span> <span class="n">CalculerSousTotal</span><span class="p">(</span><span class="n">commande</span><span class="p">.</span><span class="n">Items</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">montantAvecTaxes</span> <span class="p">=</span> <span class="n">AjouterTaxes</span><span class="p">(</span><span class="n">sousTotal</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">montantFinal</span> <span class="p">=</span> <span class="n">AppliquerRabaisSiEligible</span><span class="p">(</span><span class="n">montantAvecTaxes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">montantFinal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">decimal</span> <span class="n">CalculerSousTotal</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">item</span><span class="p">.</span><span class="n">Price</span> <span class="p">*</span> <span class="n">item</span><span class="p">.</span><span class="n">Quantity</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">decimal</span> <span class="n">AjouterTaxes</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_TAXE</span> <span class="p">=</span> <span class="m">0.15</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">montant</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">+</span> <span class="n">TAUX_TAXE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">decimal</span> <span class="n">AppliquerRabaisSiEligible</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">SEUIL_RABAIS</span> <span class="p">=</span> <span class="m">1000</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TAUX_RABAIS</span> <span class="p">=</span> <span class="m">0.10</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">montant</span> <span class="p">&gt;</span> <span class="n">SEUIL_RABAIS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">montant</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">TAUX_RABAIS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">montant</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">EnregistrerMontantCommande</span><span class="p">(</span><span class="n">Commande</span> <span class="n">commande</span><span class="p">,</span> <span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">commande</span><span class="p">.</span><span class="n">Total</span> <span class="p">=</span> <span class="n">montant</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">db</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">EnvoyerEmailConfirmation</span><span class="p">(</span><span class="n">Client</span> <span class="n">client</span><span class="p">,</span> <span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="s">$&#34;Votre commande : {montant:C}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SendEmail</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="-code-smell-3--commentaires-inutiles-ou-mensongers">🔴 Code Smell #3 : Commentaires Inutiles ou Mensongers<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-quun-commentaire-inutile-">Qu&rsquo;est-ce qu&rsquo;un commentaire inutile ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un commentaire qui :</p>
+<ul>
+<li>Décrit ce que le code fait déjà clairement</li>
+<li>Est obsolète ou faux</li>
+<li>Compense un code mal écrit</li>
+<li>Pourrait être remplacé par un bon nom de variable/méthode</li>
+</ul>
+<blockquote>
+<p><strong>Règle d&rsquo;or</strong> : Le meilleur commentaire est celui que vous n&rsquo;avez pas besoin d&rsquo;écrire</p></blockquote>
+<h3 id="-exemple-de-code-problématique-2">❌ Exemple de Code Problématique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireUtilisateurs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Cette méthode calcule l&#39;âge de l&#39;utilisateur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">CalculerAge</span><span class="p">(</span><span class="n">DateTime</span> <span class="n">dateNaissance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Obtenir la date d&#39;aujourd&#39;hui</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DateTime</span> <span class="n">aujourd</span><span class="err">&#39;</span><span class="n">hui</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculer l&#39;âge</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="n">aujourd</span><span class="err">&#39;</span><span class="n">hui</span><span class="p">.</span><span class="n">Year</span> <span class="p">-</span> <span class="n">dateNaissance</span><span class="p">.</span><span class="n">Year</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si l&#39;anniversaire est passé cette année</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">dateNaissance</span><span class="p">.</span><span class="n">Date</span> <span class="p">&gt;</span> <span class="n">aujourd</span><span class="err">&#39;</span><span class="n">hui</span><span class="p">.</span><span class="n">AddYears</span><span class="p">(-</span><span class="n">age</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">age</span><span class="p">--;</span> <span class="c1">// Soustraire 1 si anniversaire pas encore passé</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Retourner l&#39;âge</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// TODO: Corriger ce bug (écrit il y a 2 ans...)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// HACK: Solution temporaire en attendant le refactoring</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// NOTE: Ne fonctionne pas pour les clients VIP</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerPrix</span><span class="p">(</span><span class="n">Produit</span> <span class="n">p</span><span class="p">,</span> <span class="n">Client</span> <span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">decimal</span> <span class="n">prix</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">PrixBase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Appliquer le rabais</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Type</span> <span class="p">==</span> <span class="s">&#34;VIP&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prix</span> <span class="p">=</span> <span class="n">prix</span> <span class="p">*</span> <span class="m">0.8</span><span class="n">m</span><span class="p">;</span> <span class="c1">// 20% de rabais</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Type</span> <span class="p">==</span> <span class="s">&#34;Premium&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prix</span> <span class="p">=</span> <span class="n">prix</span> <span class="p">*</span> <span class="m">0.9</span><span class="n">m</span><span class="p">;</span> <span class="c1">// 10% de rabais</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Sinon, pas de rabais</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">prix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// SECTION: Validation</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Valide l&#39;email</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">ValiderEmail</span><span class="p">(</span><span class="kt">string</span> <span class="n">email</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si email est null</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">email</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Retourner faux</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si email contient @</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">email</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;@&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Retourner faux</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// L&#39;email est valide</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// Retourner vrai</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Cette méthode envoie un email à l&#39;utilisateur
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Paramètres:
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *   - destinataire: l&#39;adresse email du destinataire
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *   - sujet: le sujet de l&#39;email
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *   - corps: le corps du message
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Retour:
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *   - bool: true si envoyé, false sinon
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Auteur: Jean Dupont
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Date: 15/01/2022
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Modifié par: Marie Martin
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Date: 03/05/2023
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EnvoyerEmail</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sujet</span><span class="p">,</span> <span class="kt">string</span> <span class="n">corps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code d&#39;envoi d&#39;email</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Méthode obsolète - NE PLUS UTILISER</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Utiliser NouvelleMethode() à la place</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AncienneMethode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Cette méthode ne devrait plus être utilisée</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// mais on la garde pour compatibilité</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-problèmes-identifiés-2">🤔 Problèmes identifiés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Commentaires redondants</strong> : &ldquo;Cette méthode calcule l&rsquo;âge&rdquo; → Le nom le dit déjà !</li>
+<li><strong>Commentaires évidents</strong> : &ldquo;Obtenir la date d&rsquo;aujourd&rsquo;hui&rdquo; → Le code est clair</li>
+<li><strong>TODO/HACK vieux</strong> : Jamais résolus, induisent en erreur</li>
+<li><strong>Commentaires qui mentent</strong> : &ldquo;Ne fonctionne pas pour VIP&rdquo; mais le code le gère !</li>
+<li><strong>Commentaires de séparation</strong> : Headers inutiles</li>
+<li><strong>Documentation excessive</strong> : Javadoc inutile pour méthode simple</li>
+<li><strong>Code commenté</strong> : Méthode obsolète devrait être supprimée</li>
+<li><strong>Explications du &ldquo;comment&rdquo;</strong> : Au lieu du &ldquo;pourquoi&rdquo;</li>
+</ol>
+<h3 id="-code-corrigé-version-clean-code-2">✅ Code Corrigé (Version Clean Code)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireUtilisateurs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE 1 : Calcul d&#39;âge</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Aucun commentaire nécessaire - le code parle de lui-même</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">CalculerAge</span><span class="p">(</span><span class="n">DateTime</span> <span class="n">dateNaissance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">aujourdHui</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">age</span> <span class="p">=</span> <span class="n">aujourdHui</span><span class="p">.</span><span class="n">Year</span> <span class="p">-</span> <span class="n">dateNaissance</span><span class="p">.</span><span class="n">Year</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">AnniversairePasEncorePasseCetteAnnee</span><span class="p">(</span><span class="n">dateNaissance</span><span class="p">,</span> <span class="n">aujourdHui</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">age</span><span class="p">--;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">AnniversairePasEncorePasseCetteAnnee</span><span class="p">(</span><span class="n">DateTime</span> <span class="n">dateNaissance</span><span class="p">,</span> <span class="n">DateTime</span> <span class="n">aujourdHui</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dateNaissance</span><span class="p">.</span><span class="n">Date</span> <span class="p">&gt;</span> <span class="n">aujourdHui</span><span class="p">.</span><span class="n">AddYears</span><span class="p">(-</span><span class="n">age</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE 2 : Calcul de prix</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code auto-documenté avec extraction de méthodes</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerPrix</span><span class="p">(</span><span class="n">Produit</span> <span class="n">produit</span><span class="p">,</span> <span class="n">Client</span> <span class="n">client</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">prixBase</span> <span class="p">=</span> <span class="n">produit</span><span class="p">.</span><span class="n">PrixBase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tauxRabais</span> <span class="p">=</span> <span class="n">ObtenirTauxRabais</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">Type</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">AppliquerRabais</span><span class="p">(</span><span class="n">prixBase</span><span class="p">,</span> <span class="n">tauxRabais</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">decimal</span> <span class="n">ObtenirTauxRabais</span><span class="p">(</span><span class="n">TypeClient</span> <span class="n">typeClient</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">typeClient</span> <span class="k">switch</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TypeClient</span><span class="p">.</span><span class="n">VIP</span> <span class="p">=&gt;</span> <span class="m">0.20</span><span class="n">m</span><span class="p">,</span>      <span class="c1">// 20% pour VIP</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TypeClient</span><span class="p">.</span><span class="n">Premium</span> <span class="p">=&gt;</span> <span class="m">0.10</span><span class="n">m</span><span class="p">,</span>  <span class="c1">// 10% pour Premium</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_</span> <span class="p">=&gt;</span> <span class="m">0</span><span class="n">m</span>                        <span class="c1">// Pas de rabais par défaut</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">decimal</span> <span class="n">AppliquerRabais</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">prixBase</span><span class="p">,</span> <span class="kt">decimal</span> <span class="n">tauxRabais</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">prixBase</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">tauxRabais</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE 3 : Validation email</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Nom de méthode explicite + extraction de conditions</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EmailEstValide</span><span class="p">(</span><span class="kt">string</span> <span class="n">email</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">email</span> <span class="p">!=</span> <span class="kc">null</span> <span class="p">&amp;&amp;</span> <span class="n">email</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;@&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// OU version plus robuste</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EmailEstValide_Version2</span><span class="p">(</span><span class="kt">string</span> <span class="n">email</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">EstVideOuNull</span><span class="p">(</span><span class="n">email</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ContientArobase</span><span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">ContientPoint</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">EstVideOuNull</span><span class="p">(</span><span class="kt">string</span> <span class="n">texte</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">texte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">ContientArobase</span><span class="p">(</span><span class="kt">string</span> <span class="n">email</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">email</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;@&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">ContientPoint</span><span class="p">(</span><span class="kt">string</span> <span class="n">email</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">email</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE 4 : Envoi email</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Signature claire = documentation suffisante</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EnvoyerEmail</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sujet</span><span class="p">,</span> <span class="kt">string</span> <span class="n">corps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code d&#39;envoi</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// MÉTHODE OBSOLÈTE : Marquée avec attribut, pas commentaire</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ==========================================</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Obsolete(&#34;Utilisez NouvelleMethode() à la place&#34;, error: true)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AncienneMethode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="n">NotSupportedException</span><span class="p">(</span><span class="s">&#34;Cette méthode est obsolète&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">NouvelleMethode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Nouvelle implémentation</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-quand-les-commentaires-sont-utiles">🎯 Quand les Commentaires SONT Utiles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Certains commentaires sont précieux et doivent être gardés :</p>
+<h4 id="-1-explication-du-pourquoi-pas-du-quoi">✅ 1. Explication du &ldquo;POURQUOI&rdquo; (pas du &ldquo;QUOI&rdquo;)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Explique une décision non-évidente</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerFraisLivraison</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montantCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Nous offrons la livraison gratuite au-dessus de 50$ pour encourager</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// les achats plus importants et améliorer la satisfaction client</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// (décision marketing du 15/01/2024)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">montantCommande</span> <span class="p">&gt;=</span> <span class="m">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="m">5.99</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - Décrit ce que le code fait déjà</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerFraisLivraison</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montantCommande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Vérifier si le montant est supérieur ou égal à 50</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">montantCommande</span> <span class="p">&gt;=</span> <span class="m">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">0</span><span class="p">;</span> <span class="c1">// Retourner 0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="m">5.99</span><span class="n">m</span><span class="p">;</span> <span class="c1">// Sinon retourner 5.99</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="-2-avertissements-sur-les-conséquences">✅ 2. Avertissements sur les Conséquences<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Avertit d&#39;un comportement important</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">SupprimerToutesLesDonnees</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ATTENTION: Cette opération est IRRÉVERSIBLE et supprime</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// toutes les données de production. À utiliser uniquement</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// dans le cadre de la procédure de réinitialisation annuelle.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">database</span><span class="p">.</span><span class="n">DeleteAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="-3-todo-légitimes-avec-date-et-contexte">✅ 3. TODO Légitimes (avec date et contexte)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - TODO avec contexte et échéance</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServicePaiement</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// TODO (2024-02-15): Migrer vers la nouvelle API Stripe v3</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Dépendance: Attente de la mise à jour du SDK</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Responsable: équipe-backend@example.com</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">ProcesserPaiement</span><span class="p">(</span><span class="n">CarteBancaire</span> <span class="n">carte</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Utilisation de l&#39;ancienne API (v2)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">StripeV2</span><span class="p">.</span><span class="n">Charge</span><span class="p">(</span><span class="n">carte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ❌ MAUVAIS - TODO vague et sans contexte</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">ProcesserPaiement</span><span class="p">(</span><span class="n">CarteBancaire</span> <span class="n">carte</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// TODO: améliorer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">StripeV2</span><span class="p">.</span><span class="n">Charge</span><span class="p">(</span><span class="n">carte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="-4-explication-dun-algorithme-complexe">✅ 4. Explication d&rsquo;un Algorithme Complexe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Explique un algorithme non-trivial</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">CalculerJourPaques</span><span class="p">(</span><span class="kt">int</span> <span class="n">annee</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Algorithme de Gauss pour calculer la date de Pâques</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Formule mathématique complexe basée sur les cycles lunaires</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Référence: https://fr.wikipedia.org/wiki/Calcul_de_la_date_de_Pâques</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="n">annee</span> <span class="p">%</span> <span class="m">19</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="n">annee</span> <span class="p">/</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">c</span> <span class="p">=</span> <span class="n">annee</span> <span class="p">%</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... suite de l&#39;algorithme complexe</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="-5-exigences-légales-ou-métier">✅ 5. Exigences Légales ou Métier<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ BON - Référence légale importante</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">decimal</span> <span class="n">CalculerTaxes</span><span class="p">(</span><span class="kt">decimal</span> <span class="n">montant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Conformément à la loi C-45 (Québec), les taux de taxes sont:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// TPS fédérale: 5% (depuis 01/01/2008)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// TVQ provinciale: 9.975% (depuis 01/01/2013)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ces taux peuvent changer - voir: revenuquebec.ca</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TPS</span> <span class="p">=</span> <span class="m">0.05</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="kt">decimal</span> <span class="n">TVQ</span> <span class="p">=</span> <span class="m">0.09975</span><span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">montant</span> <span class="p">*</span> <span class="p">(</span><span class="m">1</span> <span class="p">+</span> <span class="n">TPS</span> <span class="p">+</span> <span class="n">TVQ</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-guide-de-décision--commentaire-ou-refactoring-">📊 Guide de Décision : Commentaire ou Refactoring ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Vous voulez écrire un commentaire ?
+│
+├─ Décrit-il ce que le code fait ?
+│  └─ OUI → ❌ Ne commentez pas, améliorez le code
+│      └─ Renommez variables/méthodes pour être auto-documenté
+│
+├─ Explique-t-il POURQUOI (décision métier, contrainte) ?
+│  └─ OUI → ✅ Commentaire utile, gardez-le
+│
+├─ Compense-t-il un code mal écrit ?
+│  └─ OUI → ❌ Ne commentez pas, refactorez
+│
+├─ Contient-il un TODO/FIXME ?
+│  ├─ Avec date, contexte et responsable → ✅ OK
+│  └─ Vague ou ancien → ❌ Supprimez ou corrigez
+│
+└─ Explique-t-il un algorithme complexe ?
+   └─ OUI → ✅ Commentaire utile avec référence</code></pre></div>
+<h3 id="-exercice-pratique-3">🔍 Exercice Pratique #3<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Nettoyez ce code :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Classe pour gérer les utilisateurs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">UserManager</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructeur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">UserManager</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Initialiser</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Cette méthode vérifie si l&#39;utilisateur peut se connecter</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">CanLogin</span><span class="p">(</span><span class="n">User</span> <span class="n">u</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si l&#39;utilisateur n&#39;est pas null</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Retourner faux</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si l&#39;utilisateur est actif</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">u</span><span class="p">.</span><span class="n">IsActive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Retourner faux</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier le mot de passe</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// TODO: ajouter vérification 2FA</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="n">Password</span> <span class="p">==</span> <span class="kc">null</span> <span class="p">||</span> <span class="n">u</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">Length</span> <span class="p">&lt;</span> <span class="m">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Mot de passe trop court</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Tout est OK</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// Retourner vrai</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// HACK: Temporaire jusqu&#39;à refonte</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ne fonctionne pas pour admin</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">DeleteUser</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code de suppression</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Solution :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireUtilisateurs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">LONGUEUR_MINIMALE_MOT_DE_PASSE</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">UtilisateurPeutSeConnecter</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">UtilisateurExiste</span><span class="p">(</span><span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&amp;&amp;</span> <span class="n">UtilisateurEstActif</span><span class="p">(</span><span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&amp;&amp;</span> <span class="n">MotDePasseEstValide</span><span class="p">(</span><span class="n">utilisateur</span><span class="p">.</span><span class="n">MotDePasse</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">UtilisateurExiste</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">utilisateur</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">UtilisateurEstActif</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">utilisateur</span><span class="p">.</span><span class="n">EstActif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">MotDePasseEstValide</span><span class="p">(</span><span class="kt">string</span> <span class="n">motDePasse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">motDePasse</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">            <span class="p">&amp;&amp;</span> <span class="n">motDePasse</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;=</span> <span class="n">LONGUEUR_MINIMALE_MOT_DE_PASSE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// TODO (2024-02-15): Ajouter authentification à deux facteurs (2FA)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ticket: SECURITY-123</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Responsable: équipe-sécurité@example.com</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SupprimerUtilisateur</span><span class="p">(</span><span class="kt">int</span> <span class="n">idUtilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Implémentation</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="-résumé-de-la-semaine">📝 Résumé de la Semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="les-3-code-smells-étudiés">Les 3 Code Smells Étudiés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>
+<p><strong>Noms Non Significatifs</strong></p>
+<ul>
+<li>❌ Variables d&rsquo;une lettre, abréviations obscures</li>
+<li>✅ Noms révélant l&rsquo;intention, prononçables, cherchables</li>
+</ul>
+</li>
+<li>
+<p><strong>Fonctions Trop Longues</strong></p>
+<ul>
+<li>❌ Fonction qui fait tout, 100+ lignes</li>
+<li>✅ Petites fonctions (5-20 lignes), une responsabilité, un niveau d&rsquo;abstraction</li>
+</ul>
+</li>
+<li>
+<p><strong>Commentaires Inutiles</strong></p>
+<ul>
+<li>❌ Commentaires redondants, obsolètes, compensant du mauvais code</li>
+<li>✅ Code auto-documenté, commentaires expliquant le POURQUOI</li>
+</ul>
+</li>
+</ol>
+<h3 id="citations-à-retenir">Citations à Retenir<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p>&ldquo;Le code propre est simple et direct. Il se lit comme une prose bien écrite.&rdquo;
+— Grady Booch</p></blockquote>
+<blockquote>
+<p>&ldquo;Un commentaire mensonger est pire que pas de commentaire du tout.&rdquo;
+— Robert C. Martin</p></blockquote>
+<h3 id="checklist-avant-de-commiter-du-code">Checklist Avant de Commiter du Code<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Mes variables ont des noms significatifs et révèlent leur intention</li>
+<li><input disabled="" type="checkbox"> Mes méthodes font UNE SEULE chose</li>
+<li><input disabled="" type="checkbox"> Mes méthodes ont moins de 20 lignes</li>
+<li><input disabled="" type="checkbox"> Mes méthodes ont 3 paramètres ou moins</li>
+<li><input disabled="" type="checkbox"> J&rsquo;ai éliminé les commentaires qui décrivent ce que le code fait</li>
+<li><input disabled="" type="checkbox"> Mes commentaires (s&rsquo;il y en a) expliquent le POURQUOI</li>
+<li><input disabled="" type="checkbox"> Mon code se lit comme une histoire claire</li>
+</ul>
+<hr>
+<h2 id="-défi-de-la-semaine">🎯 Défi de la Semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Trouvez dans votre propre code :</strong></p>
+<ol>
+<li><strong>3 variables</strong> avec des noms non significatifs → Renommez-les</li>
+<li><strong>1 fonction longue</strong> (&gt;30 lignes) → Décomposez-la</li>
+<li><strong>5 commentaires inutiles</strong> → Supprimez-les en rendant le code auto-documenté</li>
+</ol>
+<p>Partagez vos avant/après avec la classe la semaine prochaine !</p>
+<hr>
+<h2 id="-lectures-recommandées">📚 Lectures Recommandées<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Clean Code</strong> (Chapitre 2: Meaningful Names)</li>
+<li><strong>Clean Code</strong> (Chapitre 3: Functions)</li>
+<li><strong>Clean Code</strong> (Chapitre 4: Comments)</li>
+</ul>
+<hr>
+<h2 id="-aperçu-semaine-prochaine">🔜 Aperçu Semaine Prochaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>La semaine prochaine, nous aborderons :</p>
+<ul>
+<li><strong>Code Duplication</strong> (DRY Principle)</li>
+<li><strong>Classes trop grandes</strong></li>
+<li><strong>Couplage fort vs Couplage faible</strong></li>
+</ul>
+<hr>
+<p><em>&ldquo;Laissez le code plus propre que vous ne l&rsquo;avez trouvé.&rdquo;</em> — Règle du Boy Scout</p>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Aug 20, 2025
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="parent " data-nav-id="/420-413/rubrique/index.html"><a class="padding default-animation" href="/420-413/rubrique/index.html">Rubriques</a><ul id="R-subsections-0f780b3ee1d9797ddf11bd865b4d335d" class="collapsible-menu">
+            <li class="active " data-nav-id="/420-413/rubrique/rubrique_semaine2/index.html"><a class="padding" href="/420-413/rubrique/rubrique_semaine2/index.html">Affichage console</a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1770021033" defer></script>
+    <script src="/420-413/js/theme.js?1770021033" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
