@@ -97,7 +97,7 @@ Lors du lancement, la **fenêtre de démarrage** propose quatre options principa
 ### Différences fondamentales entre projet et solution
 * Un projet est un ensemble de fichiers qui seront compilés en un seul assemblage.
 * Une solution est un ensemble d’un ou plusieurs projets.
-*Un projet d’application exécutable possède un point d’entrée. C’est la méthode **Main**. Cette méthode doit être publique et statique en utilisant les mots-clés **public** et **static**, qui spécifient respectivement que la méthode est accessible depuis l’application et en dehors, que la méthode est globale et que la classe n’a pas besoin d’être instanciée pour pouvoir l’appeler.
+* Un projet d’application exécutable possède un point d’entrée. C’est la méthode **Main**. Cette méthode doit être publique et statique en utilisant les mots-clés **public** et **static**, qui spécifient respectivement que la méthode est accessible depuis l’application et en dehors, que la méthode est globale et que la classe n’a pas besoin d’être instanciée pour pouvoir l’appeler.
 * Une solution possède aussi un projet de démarrage. Ce projet est identifiable dans l’explorateur de solutions, car son nom est en gras. Pour modifier cette propriété, un clic droit sur le projet permet de sélectionner Définir en tant que projet de démarrage dans le menu contextuel.
 
 
