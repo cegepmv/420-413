@@ -26,7 +26,7 @@ bool isActive = true;  // Booléen (vrai ou faux)
     `bool joyeux = true, content = true;`
 
 * Une variable peut également être marquée par le mot-clé `const` qui spécifie que la valeur de la variable ne peut pas être modifiée pendant l’exécution. C’est une variable en lecture seule.
-    `const double pi = 3.14;`
+    `const double Pi = 3.14;`
 
 * L'inférence de type (var) : Le mot-clé var permet au compilateur de deviner le type de la variable lors de l'initialisation. Attention : le type reste fixe après l'assignation.
 
@@ -170,7 +170,7 @@ System.String salutation = "Hello World!";
 var temporaire = "I'm still a strongly-typed System.String!";
 
 // Utilisez une chaîne const pour empêcher la variable de stocker une autre valeur.
-const string messagePermanent = "Tu ne peux pas te débarrasser de moi!";
+const string MessagePermanent = "Tu ne peux pas te débarrasser de moi!";
 
 // Utilisez le constructeur String uniquement lors de la création
 // d'une chaîne à partir d'un char*, char[] ou sbyte*.
