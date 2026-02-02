@@ -56,5 +56,40 @@
       <guid>http://localhost:1313/420-413/tableaux_collections/index.html</guid>
       <description>En C#, on distingue deux grandes familles pour stocker des groupes de données : les Tableaux (taille fixe) et les Collections (taille dynamique).&#xA;Les tableaux (Array) Un tableau est une structure de données de taille fixe stockée de manière contiguë en mémoire.&#xA;1. Déclaration et initialisation Syntaxe de base // Déclaration d&#39;un tableau int[] nombres; // Déclaration avec initialisation de la taille int[] nombres = new int[5]; // Déclaration avec initialisation des valeurs int[] nombres = new int[] { 10, 20, 30, 40, 50 }; // Syntaxe courte (recommandée) int[] nombres = { 10, 20, 30, 40, 50 }; Le piège de l’immuabilité : Si vous créez int[] tab = new int[3], vous ne pourrez jamais y mettre un 4e élément. Pour “agrandir” un tableau, il faut en créer un nouveau, copier les données, puis ajouter le nouvel élément. C’est pourquoi nous utilisons les Collections pour les données dynamiques.</description>
     </item>
+    <item>
+      <title>Les méthodes en c#</title>
+      <link>http://localhost:1313/420-413/methodes/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/methodes/index.html</guid>
+      <description>Table des matières Introduction Syntaxe de base Paramètres de méthodes Paramètres par référence (ref) Paramètres de sortie (out) Paramètres optionnels Surcharge de méthodes Portée des variables Exercices Introduction Les méthodes (aussi appelées fonctions) sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de :</description>
+    </item>
+    <item>
+      <title>Série d&#39;exercices 1</title>
+      <link>http://localhost:1313/420-413/serie_exos_1/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/serie_exos_1/index.html</guid>
+      <description>Première partie 1 : Calculatrice Simple Concepts pratiqués : Variables, opérateurs arithmétiques, types numériques&#xA;Description : Créez un programme qui demande à l’utilisateur deux nombres et une opération (+, -, *, /), puis affiche le résultat.&#xA;Fonctionnalités requises :&#xA;Demander deux nombres décimaux à l’utilisateur Demander l’opération souhaitée Effectuer le calcul approprié Afficher le résultat avec 2 décimales Gérer la division par zéro Exemple d’exécution :</description>
+    </item>
+    <item>
+      <title>Programmation orientée objet - partie 1</title>
+      <link>http://localhost:1313/420-413/poo/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/poo/index.html</guid>
+      <description>Table des matières Introduction à la POO Les Classes et les Objets Les Attributs (Champs) Les Propriétés (Properties) L’Encapsulation Les Méthodes Les Constructeurs L’Héritage Le Polymorphisme 1. Introduction à la POO 1.1 Qu’est-ce que la Programmation Orientée Objet ? La Programmation Orientée Objet (POO) est un paradigme de programmation qui organise le code autour du concept d’objets plutôt que de fonctions et de logique. Un objet combine des données (ce qu’il possède) et des comportements (ce qu’il peut faire).</description>
+    </item>
+    <item>
+      <title>Programmation orientée objet - partie 2</title>
+      <link>http://localhost:1313/420-413/poo-_2-copy/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/poo-_2-copy/index.html</guid>
+      <description>Table des matières Le mot-clé Virtual Le mot-clé Abstract Le mot-clé Sealed Les Classes Abstraites Les Interfaces Membres Statiques Cours POO C# - Partie 2 : Concepts Avancés 10. Le mot-clé Virtual 10.1 Définition Le mot-clé virtual permet de déclarer une méthode qui peut être redéfinie (override) dans les classes dérivées. C’est la base du polymorphisme d’exécution en C#.</description>
+    </item>
+    <item>
+      <title>Programmation orientée objet - partie 2</title>
+      <link>http://localhost:1313/420-413/poo-_2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/poo-_2/index.html</guid>
+      <description>Table des matières Le mot-clé Virtual Le mot-clé Abstract Le mot-clé Sealed Les Classes Abstraites Les Interfaces Membres Statiques Cours POO C# - Partie 2 : Concepts Avancés 10. Le mot-clé Virtual 10.1 Définition Le mot-clé virtual permet de déclarer une méthode qui peut être redéfinie (override) dans les classes dérivées. C’est la base du polymorphisme d’exécution en C#.</description>
+    </item>
   </channel>
 </rss>

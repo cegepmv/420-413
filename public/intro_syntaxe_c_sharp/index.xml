@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction et syntaxe du langage C# :: Développement d&#39;applications pour entreprises</title>
+    <title>Intro et syntaxe du C# :: Développement d&#39;applications pour entreprises</title>
     <link>http://localhost:1313/420-413/intro_syntaxe_c_sharp/index.html</link>
     <description>Introduction à C# C# (prononcé “C Sharp”) est un langage de programmation moderne, orienté objet et fortement typé. C# est développé par Microsoft en 2000 et est principalement utilisé pour le développement dʼapplications sous la plateforme .NET. La syntaxe de C# est influencée par C, C++ et Java, mais elle présente certaines spécificités qui lui sont propres.</description>
     <generator>Hugo</generator>

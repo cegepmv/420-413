@@ -1,5 +1,5 @@
 ---
-title: "Introduction à Visual Studio 2022"
+title: "Intro à Visual Studio 2022"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné

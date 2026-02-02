@@ -1,5 +1,5 @@
 ---
-title: "Introduction et syntaxe du langage C#"
+title: "Intro et syntaxe du C#"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné

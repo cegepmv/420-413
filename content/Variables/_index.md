@@ -77,7 +77,7 @@ bool isActive = true;  // Booléen (vrai ou faux)
 | :--- | :--- | :--- |
 | **Variable locale** | camelCase | `uniteDisponible` |
 | **Paramètre de méthode** | camelCase | `(int quantiteItems)` |
-| **Constante** | PascalCase | ` tauxTaxeFederale` |
+| **Constante** | PascalCase | `TauxTaxeFederale` |
 | **Classe** | PascalCase | `GestionnaireEtudiant` |
 | **Méthode** | PascalCase | `CalculerSalaire()` |
 
