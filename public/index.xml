@@ -92,6 +92,13 @@
       <description>Mini-Projets : Programmation Orientée Objet en C# Progression recommandée Niveau Projets Débutant Projet 8 (Formes), Projet 5 (Tâches) Intermédiaire Projet 1 (Banque), Projet 2 (Bibliothèque), Projet 6 (Zoo) Avancé Projet 3 (RPG), Projet 4 (Restaurant), Projet 7 (Hôtel) Table des matières Projet 1 : Système de Gestion Bancaire Projet 2 : Gestion d’une Bibliothèque Projet 3 : Jeu de Combat RPG Projet 4 : Système de Commandes Restaurant Projet 5 : Gestionnaire de Tâches Projet 6 : Simulateur de Zoo Projet 7 : Système de Réservation Hôtel Projet 8 : Calculatrice de Formes Géométriques Projet 1 : Système de Gestion Bancaire 📋 Objectif Créer un système de gestion de comptes bancaires avec différents types de comptes et opérations.</description>
     </item>
     <item>
+      <title>LINQ</title>
+      <link>http://localhost:1313/420-413/linq/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/linq/index.html</guid>
+      <description>📘 LINQ en C# Language Integrated Query 📋 Table des matières Introduction à LINQ Pourquoi utiliser LINQ ? Les Bases de LINQ Les Deux Syntaxes LINQ Opérations de Filtrage Opérations de Projection Opérations de Tri Opérations d’Agrégation Opérations de Regroupement Opérations de Jointure Opérations d’Ensemble Opérations de Quantification Opérations de Partition LINQ avec Objets Complexes Cas Pratiques Réels Bonnes Pratiques et Pièges 1. Introduction à LINQ 1.1 Qu’est-ce que LINQ ? LINQ (Language Integrated Query) est une fonctionnalité de C# qui permet d’interroger des collections de données directement dans le code, avec une syntaxe élégante et lisible.</description>
+    </item>
+    <item>
       <title>Rubrique  - Semaine 2</title>
       <link>http://localhost:1313/420-413/rubrique/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
