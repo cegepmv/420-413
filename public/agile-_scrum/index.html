@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Agile - Scrum :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.">
+    <meta property="og:url" content="http://localhost:1313/420-413/agile-_scrum/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Agile - Scrum :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Agile - Scrum :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.">
+    <meta itemprop="wordCount" content="5184">
+    <title>Agile - Scrum :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1770657623" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1770657623" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1770657623" defer></script>
+    <script src="/420-413/js/search-lunr.js?1770657623" defer></script>
+    <script src="/420-413/js/search.js?1770657623" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1770657623";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1770657623" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1770657623" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1770657623" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1770657623" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1770657623" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1770657623" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1770657623" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1770657623" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1770657623" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/agile-_scrum\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/agile-_scrum/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#table-des-matières">Table des matières</a></li>
+    <li><a href="#introduction-à-agile">Introduction à Agile</a>
+      <ul>
+        <li><a href="#quest-ce-que-lagile-">Qu&rsquo;est-ce que l&rsquo;Agile ?</a></li>
+        <li><a href="#les-principes-fondamentaux-dagile">Les principes fondamentaux d&rsquo;Agile</a></li>
+        <li><a href="#les-4-c-de-scrum">Les 4 C de Scrum</a></li>
+      </ul>
+    </li>
+    <li><a href="#quest-ce-que-scrum-">Qu&rsquo;est-ce que Scrum ?</a>
+      <ul>
+        <li><a href="#la-règle-353-de-scrum">La règle 3:5:3 de Scrum</a></li>
+        <li><a href="#caractéristiques-clés-de-scrum">Caractéristiques clés de Scrum</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-rôles-scrum">Les Rôles Scrum</a>
+      <ul>
+        <li><a href="#1-product-owner-propriétaire-du-produit">1. Product Owner (Propriétaire du produit)</a></li>
+        <li><a href="#2-scrum-master">2. Scrum Master</a></li>
+        <li><a href="#3-léquipe-de-développement-development-team">3. L&rsquo;Équipe de Développement (Development Team)</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-artefacts-scrum">Les Artefacts Scrum</a>
+      <ul>
+        <li><a href="#1-product-backlog-backlog-produit">1. Product Backlog (Backlog produit)</a></li>
+        <li><a href="#2-sprint-backlog">2. Sprint Backlog</a></li>
+        <li><a href="#3-incrément">3. Incrément</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-cérémonies-scrum">Les Cérémonies Scrum</a>
+      <ul>
+        <li><a href="#1-sprint-planning-planification-de-sprint">1. Sprint Planning (Planification de Sprint)</a></li>
+        <li><a href="#2-daily-scrum-mêlée-quotidienne--standup">2. Daily Scrum (Mêlée quotidienne / Standup)</a></li>
+        <li><a href="#3-sprint-review-revue-de-sprint">3. Sprint Review (Revue de Sprint)</a></li>
+        <li><a href="#4-sprint-retrospective-rétrospective">4. Sprint Retrospective (Rétrospective)</a></li>
+        <li><a href="#5-product-backlog-refinement-affinement-du-backlog">5. Product Backlog Refinement (Affinement du Backlog)</a></li>
+      </ul>
+    </li>
+    <li><a href="#epics-stories-et-sprints">Epics, Stories et Sprints</a>
+      <ul>
+        <li><a href="#user-stories-histoires-utilisateur">User Stories (Histoires Utilisateur)</a></li>
+        <li><a href="#epics">Epics</a></li>
+        <li><a href="#sprints">Sprints</a></li>
+        <li><a href="#initiatives">Initiatives</a></li>
+        <li><a href="#relation-entre-backlog-stories-epics-et-sprints">Relation entre Backlog, Stories, Epics et Sprints</a></li>
+      </ul>
+    </li>
+    <li><a href="#exercice-pratique-pour-étudiants">Exercice Pratique pour Étudiants</a>
+      <ul>
+        <li><a href="#-exercice--le-festival-étudiant">🎯 Exercice : &ldquo;Le Festival Étudiant&rdquo;</a></li>
+        <li><a href="#-phase-1--mise-en-place-30-minutes">📋 Phase 1 : Mise en Place (30 minutes)</a></li>
+        <li><a href="#-phase-2--création-du-product-backlog-45-minutes">📝 Phase 2 : Création du Product Backlog (45 minutes)</a></li>
+        <li><a href="#-phase-3--sprint-1-1-semaine-simulée--1-heure-de-classe">🚀 Phase 3 : Sprint 1 (1 semaine simulée = 1 heure de classe)</a></li>
+        <li><a href="#-phase-4--sprints-2-et-3-même-structure">🔄 Phase 4 : Sprints 2 et 3 (même structure)</a></li>
+        <li><a href="#-phase-5--présentation-finale-et-débriefing-45-minutes">📊 Phase 5 : Présentation Finale et Débriefing (45 minutes)</a></li>
+        <li><a href="#-livrables-de-lexercice">📝 Livrables de l&rsquo;exercice</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#ressources-complémentaires">Ressources complémentaires</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Agile - Scrum</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/poo_exos/index.html" title="Exercices - POO (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/linq/index.html" title="LINQ (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="agile---scrum">Agile - Scrum</h1>
+
+<h2 id="table-des-matières">Table des matières<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ol>
+<li><a href="/420-413/agile-_scrum/index.html#introduction-à-agile">Introduction à Agile</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#quest-ce-que-scrum">Qu&rsquo;est-ce que Scrum ?</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#les-rôles-scrum">Les Rôles Scrum</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#les-artefacts-scrum">Les Artefacts Scrum</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#les-cérémonies-scrum">Les Cérémonies Scrum</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#epics-stories-et-sprints">Epics, Stories et Sprints</a></li>
+<li><a href="/420-413/agile-_scrum/index.html#exercice-pratique-pour-étudiants">Exercice Pratique pour Étudiants</a></li>
+</ol>
+<hr>
+<h2 id="introduction-à-agile">Introduction à Agile<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-que-lagile-">Qu&rsquo;est-ce que l&rsquo;Agile ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Agile</strong> est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d&rsquo;autres domaines.</p>
+<h3 id="les-principes-fondamentaux-dagile">Les principes fondamentaux d&rsquo;Agile<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>L&rsquo;approche Agile met l&rsquo;accent sur :</p>
+<ul>
+<li><strong>Les personnes d&rsquo;abord</strong> : Mettre les utilisateurs finaux au centre de la conversation</li>
+<li><strong>La flexibilité</strong> : Capacité à répondre au changement rapidement</li>
+<li><strong>La livraison continue</strong> : Fournir de la valeur régulièrement plutôt qu&rsquo;en une seule fois</li>
+<li><strong>La collaboration</strong> : Travail d&rsquo;équipe transparent et communication ouverte</li>
+<li><strong>L&rsquo;amélioration continue</strong> : Réflexion constante pour optimiser les processus</li>
+</ul>
+<h3 id="les-4-c-de-scrum">Les 4 C de Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les principes directeurs qui guident les équipes Scrum :</p>
+<ol>
+<li><strong>Communication</strong> : Dialogue transparent et ouvert</li>
+<li><strong>Collaboration</strong> : Soutien mutuel et travail d&rsquo;équipe</li>
+<li><strong>Commitment (Engagement)</strong> : Dévouement aux objectifs</li>
+<li><strong>Continuous Improvement (Amélioration continue)</strong> : Réflexion régulière pour améliorer les processus</li>
+</ol>
+<hr>
+<h2 id="quest-ce-que-scrum-">Qu&rsquo;est-ce que Scrum ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Scrum</strong> est l&rsquo;un des frameworks agiles les plus populaires. Il aide les équipes à organiser et à gérer leur travail à travers des valeurs, des principes et des pratiques structurées.</p>
+<h3 id="la-règle-353-de-scrum">La règle 3:5:3 de Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Scrum est structuré autour de :</p>
+<ul>
+<li><strong>3 rôles</strong> : Product Owner, Scrum Master, Équipe de développement</li>
+<li><strong>5 événements</strong> : Sprint, Planification de sprint, Daily Scrum, Revue de sprint, Rétrospective</li>
+<li><strong>3 artefacts</strong> : Product Backlog, Sprint Backlog, Incrément</li>
+</ul>
+<h3 id="caractéristiques-clés-de-scrum">Caractéristiques clés de Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Sprints</strong> : Cycles de travail fixes (généralement 1 à 4 semaines)</li>
+<li><strong>Équipes auto-organisées</strong> : Les équipes décident comment accomplir leur travail</li>
+<li><strong>Transparence</strong> : Visibilité sur le travail en cours et les obstacles</li>
+<li><strong>Inspection et adaptation</strong> : Évaluation régulière et ajustement des processus</li>
+</ul>
+<hr>
+<h2 id="les-rôles-scrum">Les Rôles Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-product-owner-propriétaire-du-produit">1. Product Owner (Propriétaire du produit)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Responsabilités principales :</strong></p>
+<ul>
+<li><strong>Gestion du Product Backlog</strong> : Maintenir et prioriser la liste de toutes les fonctionnalités et exigences</li>
+<li><strong>Vision du produit</strong> : Définir la direction et les objectifs du produit</li>
+<li><strong>Représentant du client</strong> : Comprendre et communiquer les besoins des utilisateurs</li>
+<li><strong>Priorisation</strong> : Décider quelles fonctionnalités apportent le plus de valeur</li>
+<li><strong>Gestion des versions</strong> : Planifier les releases (bien que le sprint ne soit pas un cycle de release)</li>
+<li><strong>Clarification des exigences</strong> : Répondre aux questions de l&rsquo;équipe sur le backlog</li>
+</ul>
+<p><strong>Profil :</strong>
+Le Product Owner se concentre sur la stratégie et les besoins métier. Il n&rsquo;est pas un chef de projet traditionnel, mais plutôt un facilitateur entre les parties prenantes et l&rsquo;équipe de développement.</p>
+<h3 id="2-scrum-master">2. Scrum Master<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Responsabilités principales :</strong></p>
+<ul>
+<li><strong>Facilitation des cérémonies</strong> : S&rsquo;assurer que les réunions sont productives et limitées dans le temps</li>
+<li><strong>Suppression des obstacles</strong> : Éliminer les blocages qui empêchent l&rsquo;équipe d&rsquo;avancer</li>
+<li><strong>Coaching</strong> : Former l&rsquo;équipe aux principes Agile et Scrum</li>
+<li><strong>Protection de l&rsquo;équipe</strong> : Protéger l&rsquo;équipe des distractions externes</li>
+<li><strong>Promotion de l&rsquo;amélioration continue</strong> : Encourager la réflexion et l&rsquo;optimisation</li>
+<li><strong>Facilitation de la collaboration</strong> : Favoriser la communication entre tous les membres</li>
+</ul>
+<p><strong>Compétences essentielles :</strong></p>
+<ul>
+<li>Leadership serviteur (servant leadership)</li>
+<li>Empathie et intelligence émotionnelle</li>
+<li>Compétences en facilitation de réunions</li>
+<li>Adaptabilité</li>
+<li>Communication efficace</li>
+<li>Connaissances techniques (optionnel mais utile)</li>
+</ul>
+<p><strong>À noter :</strong> Le Scrum Master n&rsquo;est pas un gestionnaire traditionnel. Son rôle est d&rsquo;habiliter l&rsquo;équipe à s&rsquo;auto-organiser et à réussir. Les Scrum Masters ne sont pas remplacés par l&rsquo;IA car leur travail nécessite jugement humain, empathie et adaptabilité.</p>
+<h3 id="3-léquipe-de-développement-development-team">3. L&rsquo;Équipe de Développement (Development Team)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Taille optimale</strong> : 5 à 11 membres (idéalement 7)</li>
+<li><strong>Cross-fonctionnelle</strong> : Possède toutes les compétences nécessaires pour livrer l&rsquo;incrément</li>
+<li><strong>Auto-organisée</strong> : Décide comment accomplir le travail</li>
+<li><strong>Responsabilité collective</strong> : Tous sont responsables de la livraison</li>
+</ul>
+<p><strong>Composition :</strong>
+Contrairement à ce que le nom suggère, l&rsquo;équipe de développement n&rsquo;inclut pas seulement des programmeurs. Elle peut comprendre :</p>
+<ul>
+<li>Développeurs</li>
+<li>Designers</li>
+<li>Rédacteurs</li>
+<li>Testeurs</li>
+<li>Analystes</li>
+<li>Tout autre rôle nécessaire pour livrer le produit</li>
+</ul>
+<p><strong>Leadership distribué :</strong>
+Il n&rsquo;y a pas de leader traditionnel dans une équipe Scrum. Le leadership est distribué : le Scrum Master dirige le processus, le Product Owner dirige la vision produit, et l&rsquo;équipe de développement est collectivement responsable de la livraison.</p>
+<hr>
+<h2 id="les-artefacts-scrum">Les Artefacts Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les artefacts Scrum représentent le travail ou la valeur et sont conçus pour maximiser la transparence.</p>
+<h3 id="1-product-backlog-backlog-produit">1. Product Backlog (Backlog produit)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Liste ordonnée et évolutive de tout ce qui pourrait être nécessaire dans le produit. C&rsquo;est la source unique de vérité pour les exigences.</p>
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Vivant et dynamique</strong> : Constamment mis à jour en fonction des retours et des apprentissages</li>
+<li><strong>Priorisé</strong> : Les éléments sont classés par valeur métier et urgence</li>
+<li><strong>Détaillé au sommet</strong> : Les éléments en haut sont plus détaillés que ceux en bas</li>
+<li><strong>Propriété</strong> : Géré par le Product Owner (bien que d&rsquo;autres puissent y contribuer)</li>
+</ul>
+<p><strong>Contenu typique :</strong></p>
+<ul>
+<li>User Stories</li>
+<li>Bugs</li>
+<li>Améliorations techniques</li>
+<li>Recherches nécessaires</li>
+</ul>
+<h3 id="2-sprint-backlog">2. Sprint Backlog<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Ensemble des éléments du Product Backlog sélectionnés pour le sprint, plus un plan pour livrer l&rsquo;incrément et atteindre l&rsquo;objectif du sprint.</p>
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Engagement de l&rsquo;équipe</strong> : L&rsquo;équipe s&rsquo;engage à livrer ces éléments durant le sprint</li>
+<li><strong>Flexible pendant le sprint</strong> : Peut être ajusté si nécessaire, en accord avec l&rsquo;équipe</li>
+<li><strong>Visible et transparent</strong> : Généralement affiché sur un tableau Scrum (physique ou numérique)</li>
+</ul>
+<p><strong>États typiques :</strong></p>
+<ul>
+<li>À faire (To Do)</li>
+<li>En cours (In Progress)</li>
+<li>Terminé (Done)</li>
+</ul>
+<h3 id="3-incrément">3. Incrément<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+La somme de tous les éléments du Product Backlog complétés durant un sprint et tous les sprints précédents. C&rsquo;est le produit potentiellement livrable.</p>
+<p><strong>Critères :</strong></p>
+<ul>
+<li><strong>Définition de &ldquo;Done&rdquo;</strong> : Doit respecter la définition d&rsquo;achèvement de l&rsquo;équipe</li>
+<li><strong>Utilisable</strong> : Doit être dans un état utilisable, même si le Product Owner décide de ne pas le livrer</li>
+<li><strong>Cumulatif</strong> : Chaque incrément s&rsquo;ajoute aux précédents</li>
+</ul>
+<hr>
+<h2 id="les-cérémonies-scrum">Les Cérémonies Scrum<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les cérémonies (ou événements) Scrum créent une régularité et aident les équipes à maintenir une communication transparente. Elles sont <strong>time-boxed</strong> (limitées dans le temps) et ont des objectifs spécifiques.</p>
+<h3 id="1-sprint-planning-planification-de-sprint">1. Sprint Planning (Planification de Sprint)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong>
+Définir ce qui peut être livré dans le sprint et comment ce travail sera accompli.</p>
+<p><strong>Durée :</strong>
+Maximum 8 heures pour un sprint d&rsquo;un mois (proportionnel pour des sprints plus courts, ex : 4 heures pour 2 semaines)</p>
+<p><strong>Participants :</strong></p>
+<ul>
+<li>Product Owner (présente le Product Backlog)</li>
+<li>Scrum Master (facilite)</li>
+<li>Équipe de développement complète</li>
+</ul>
+<p><strong>Structure typique :</strong></p>
+<p><strong>Partie 1 - Quoi ?</strong> (1ère moitié)</p>
+<ol>
+<li>Le Product Owner présente les éléments prioritaires du Product Backlog</li>
+<li>L&rsquo;équipe pose des questions pour clarifier les exigences</li>
+<li>L&rsquo;équipe sélectionne les éléments qu&rsquo;elle pense pouvoir compléter</li>
+<li>Définition de l&rsquo;<strong>objectif du sprint</strong> (Sprint Goal)</li>
+</ol>
+<p><strong>Partie 2 - Comment ?</strong> (2ème moitié)</p>
+<ol>
+<li>L&rsquo;équipe décompose les éléments sélectionnés en tâches</li>
+<li>Estimation de l&rsquo;effort (story points, heures, etc.)</li>
+<li>Identification des dépendances et des risques</li>
+<li>Création du Sprint Backlog</li>
+</ol>
+<p><strong>Résultat :</strong></p>
+<ul>
+<li>Sprint Backlog complet</li>
+<li>Objectif du sprint clair</li>
+<li>Engagement de l&rsquo;équipe</li>
+</ul>
+<h3 id="2-daily-scrum-mêlée-quotidienne--standup">2. Daily Scrum (Mêlée quotidienne / Standup)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong>
+Synchroniser les activités et créer un plan pour les prochaines 24 heures. Identifier rapidement les obstacles.</p>
+<p><strong>Durée :</strong>
+Maximum 15 minutes (d&rsquo;où l&rsquo;appellation &ldquo;standup&rdquo; - debout pour garder la réunion courte)</p>
+<p><strong>Fréquence :</strong>
+Chaque jour à la même heure, au même endroit</p>
+<p><strong>Participants :</strong></p>
+<ul>
+<li>Équipe de développement (obligatoire)</li>
+<li>Scrum Master (facilite si nécessaire)</li>
+<li>Product Owner (optionnel, en observateur)</li>
+</ul>
+<p><strong>Format classique - Les 3 questions :</strong>
+Chaque membre de l&rsquo;équipe répond à :</p>
+<ol>
+<li><strong>Qu&rsquo;ai-je accompli hier</strong> qui a aidé l&rsquo;équipe à atteindre l&rsquo;objectif du sprint ?</li>
+<li><strong>Que vais-je faire aujourd&rsquo;hui</strong> pour aider l&rsquo;équipe à atteindre l&rsquo;objectif du sprint ?</li>
+<li><strong>Y a-t-il des obstacles</strong> qui m&rsquo;empêchent ou qui empêchent l&rsquo;équipe d&rsquo;atteindre l&rsquo;objectif ?</li>
+</ol>
+<p><strong>Bonnes pratiques :</strong></p>
+<ul>
+<li>Rester debout pour maintenir l&rsquo;énergie et la brièveté</li>
+<li>Se concentrer sur les progrès, pas sur un rapport de statut détaillé</li>
+<li>Ton léger et amusant, mais informatif</li>
+<li>Responsabilité implicite devant les pairs</li>
+<li>Les discussions détaillées se font après le standup</li>
+<li>Ne pas réserver de salle de conférence - le faire près du tableau Scrum</li>
+</ul>
+<p><strong>À éviter :</strong></p>
+<ul>
+<li>Transformer le standup en réunion d&rsquo;une heure</li>
+<li>Rapports détaillés au Scrum Master ou Product Owner</li>
+<li>Résolution de problèmes complexes (reporter après)</li>
+</ul>
+<h3 id="3-sprint-review-revue-de-sprint">3. Sprint Review (Revue de Sprint)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong>
+Inspecter l&rsquo;incrément et adapter le Product Backlog si nécessaire. Obtenir des retours des parties prenantes.</p>
+<p><strong>Durée :</strong>
+Maximum 4 heures pour un sprint d&rsquo;un mois (proportionnel pour sprints plus courts)</p>
+<p><strong>Participants :</strong></p>
+<ul>
+<li>Équipe Scrum complète</li>
+<li>Parties prenantes</li>
+<li>Clients (si possible)</li>
+<li>Management</li>
+</ul>
+<p><strong>Structure typique :</strong></p>
+<ol>
+<li>
+<p><strong>Introduction</strong> (Product Owner)</p>
+<ul>
+<li>Rappel de l&rsquo;objectif du sprint</li>
+<li>Éléments complétés vs planifiés</li>
+</ul>
+</li>
+<li>
+<p><strong>Démonstration</strong> (Équipe de développement)</p>
+<ul>
+<li>Présentation de l&rsquo;incrément fonctionnel</li>
+<li>Fonctionnalités en action, pas de slides PowerPoint</li>
+<li>Les parties prenantes testent et manipulent le produit</li>
+</ul>
+</li>
+<li>
+<p><strong>Discussion</strong> (Tous)</p>
+<ul>
+<li>Retours et questions</li>
+<li>Ce qui fonctionne bien</li>
+<li>Suggestions d&rsquo;améliorations</li>
+<li>Discussion sur le marché ou l&rsquo;utilisation potentielle</li>
+</ul>
+</li>
+<li>
+<p><strong>Mise à jour du Product Backlog</strong> (Product Owner)</p>
+<ul>
+<li>Ajustement des priorités basé sur les retours</li>
+<li>Nouvelles idées de fonctionnalités</li>
+<li>Révision de la timeline si nécessaire</li>
+</ul>
+</li>
+</ol>
+<p><strong>Résultat :</strong></p>
+<ul>
+<li>Product Backlog révisé</li>
+<li>Compréhension partagée de ce qui a été accompli</li>
+<li>Retours précieux pour orienter le prochain sprint</li>
+</ul>
+<p><strong>Philosophie :</strong>
+La revue n&rsquo;est PAS une porte de validation (gate). C&rsquo;est une opportunité d&rsquo;inspection et d&rsquo;adaptation collaborative. Idéalement, les équipes livrent fréquemment tout au long du sprint, permettant à la revue de porter sur l&rsquo;usage réel par les clients.</p>
+<h3 id="4-sprint-retrospective-rétrospective">4. Sprint Retrospective (Rétrospective)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong>
+Réfléchir sur le sprint écoulé et identifier des améliorations concrètes pour le prochain sprint. C&rsquo;est le cœur de l&rsquo;amélioration continue.</p>
+<p><strong>Durée :</strong>
+Maximum 3 heures pour un sprint d&rsquo;un mois (1,5 heure pour 2 semaines)</p>
+<p><strong>Timing :</strong>
+Après la Sprint Review, avant la prochaine Sprint Planning</p>
+<p><strong>Participants :</strong></p>
+<ul>
+<li>Équipe de développement</li>
+<li>Scrum Master (facilite)</li>
+<li>Product Owner (optionnel mais recommandé)</li>
+</ul>
+<p><strong>Structure typique :</strong></p>
+<ol>
+<li>
+<p><strong>Préparer le terrain</strong> (5-10 minutes)</p>
+<ul>
+<li>Créer un environnement sûr et ouvert</li>
+<li>Rappeler la prime directive : &ldquo;Nous croyons que tous ont fait de leur mieux&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Collecter des données</strong> (20-30 minutes)</p>
+<ul>
+<li>Ce qui a bien fonctionné</li>
+<li>Ce qui n&rsquo;a pas fonctionné</li>
+<li>Puzzles ou questions</li>
+</ul>
+</li>
+<li>
+<p><strong>Générer des insights</strong> (20-30 minutes)</p>
+<ul>
+<li>Identifier les patterns</li>
+<li>Analyser les causes profondes</li>
+<li>Discussions en groupe</li>
+</ul>
+</li>
+<li>
+<p><strong>Décider quoi faire</strong> (15-20 minutes)</p>
+<ul>
+<li>Sélectionner 1-3 actions d&rsquo;amélioration</li>
+<li>Définir des actions concrètes et mesurables</li>
+<li>Assigner des responsables</li>
+</ul>
+</li>
+<li>
+<p><strong>Clôture</strong> (5-10 minutes)</p>
+<ul>
+<li>Résumer les décisions</li>
+<li>Appréciation de l&rsquo;équipe</li>
+</ul>
+</li>
+</ol>
+<p><strong>Techniques populaires :</strong></p>
+<ul>
+<li><strong>Start, Stop, Continue</strong> : Quoi commencer à faire, arrêter de faire, continuer de faire</li>
+<li><strong>Glad, Sad, Mad</strong> : Ce qui nous rend heureux, triste ou en colère</li>
+<li><strong>4Ls</strong> : Liked, Learned, Lacked, Longed for</li>
+<li><strong>Sailboat</strong> : Vents favorables (ce qui nous aide), ancres (ce qui nous freine)</li>
+</ul>
+<p><strong>Bonnes pratiques :</strong></p>
+<ul>
+<li>Ce n&rsquo;est PAS seulement un moment pour se plaindre</li>
+<li>Focus sur les solutions, pas seulement les problèmes</li>
+<li>Même si tout va bien, continuer les rétrospectives</li>
+<li>Varier les formats pour maintenir l&rsquo;engagement</li>
+<li>Suivre les actions décidées lors de la prochaine rétro</li>
+</ul>
+<p><strong>Résultat :</strong></p>
+<ul>
+<li>1-3 améliorations concrètes identifiées</li>
+<li>Plan d&rsquo;action pour le prochain sprint</li>
+<li>Engagement de l&rsquo;équipe envers l&rsquo;amélioration</li>
+</ul>
+<p><strong>Citation clé :</strong>
+&ldquo;L&rsquo;amélioration continue est ce qui soutient et stimule le développement au sein d&rsquo;une équipe agile, et les rétrospectives en sont un élément clé.&rdquo;</p>
+<h3 id="5-product-backlog-refinement-affinement-du-backlog">5. Product Backlog Refinement (Affinement du Backlog)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Note :</strong> Bien que non officielle dans le Scrum Guide original, cette cérémonie est largement adoptée.</p>
+<p><strong>Objectif :</strong>
+Ajouter des détails, des estimations et de l&rsquo;ordre aux éléments du Product Backlog pour préparer les futurs sprints.</p>
+<p><strong>Durée :</strong>
+Généralement 1-2 heures par semaine (environ 10% de la capacité du sprint)</p>
+<p><strong>Participants :</strong></p>
+<ul>
+<li>Product Owner (dirige)</li>
+<li>Équipe de développement</li>
+<li>Scrum Master (facilite si nécessaire)</li>
+</ul>
+<p><strong>Activités :</strong></p>
+<ol>
+<li><strong>Clarification</strong> : Discuter des user stories à venir</li>
+<li><strong>Décomposition</strong> : Diviser les grandes stories en plus petites</li>
+<li><strong>Estimation</strong> : Estimer l&rsquo;effort nécessaire (story points)</li>
+<li><strong>Critères d&rsquo;acceptation</strong> : Définir la &ldquo;Definition of Done&rdquo; pour chaque story</li>
+<li><strong>Priorisation</strong> : Réorganiser selon la valeur métier</li>
+</ol>
+<p><strong>Résultat :</strong>
+Un backlog &ldquo;prêt&rdquo; (ready) avec des éléments clairs et estimés pour la prochaine planification de sprint.</p>
+<hr>
+<h2 id="epics-stories-et-sprints">Epics, Stories et Sprints<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="user-stories-histoires-utilisateur">User Stories (Histoires Utilisateur)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Une user story est une description concise d&rsquo;une fonctionnalité du point de vue de l&rsquo;utilisateur final. Elle utilise un langage non technique pour fournir du contexte à l&rsquo;équipe.</p>
+<p><strong>Format standard :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>En tant que [persona/rôle],
+Je veux [objectif/désir],
+Afin de [bénéfice/valeur].</code></pre></div>
+<p><strong>Exemple :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>En tant que client régulier,
+Je veux sauvegarder des articles dans une liste de souhaits,
+Afin de pouvoir les acheter plus tard.</code></pre></div>
+<p><strong>Composantes d&rsquo;une bonne user story - INVEST :</strong></p>
+<ul>
+<li><strong>I</strong>ndépendante : Peut être développée sans dépendre d&rsquo;autres stories</li>
+<li><strong>N</strong>égociable : Les détails peuvent être discutés et ajustés</li>
+<li><strong>V</strong>alorisée : Apporte de la valeur claire à l&rsquo;utilisateur</li>
+<li><strong>E</strong>stimable : L&rsquo;équipe peut estimer l&rsquo;effort nécessaire</li>
+<li><strong>S</strong>mall (Petite) : Peut être complétée en un sprint</li>
+<li><strong>T</strong>estable : Des critères d&rsquo;acceptation clairs existent</li>
+</ul>
+<p><strong>Critères d&rsquo;acceptation :</strong>
+Conditions spécifiques qui doivent être remplies pour que la story soit considérée comme &ldquo;Done&rdquo;. Exemple :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>User Story : Connexion utilisateur
+
+Critères d&#39;acceptation :
+- L&#39;utilisateur peut entrer son email et mot de passe
+- Un message d&#39;erreur s&#39;affiche si les identifiants sont incorrects
+- L&#39;utilisateur est redirigé vers le tableau de bord après connexion réussie
+- Un lien &#34;Mot de passe oublié&#34; est visible
+- La session reste active pendant 24 heures</code></pre></div>
+<p><strong>Taille :</strong>
+Une story doit pouvoir être complétée dans un sprint. Si une story prend des semaines ou des mois, elle devrait être décomposée ou considérée comme un epic.</p>
+<p><strong>Quand utiliser les stories :</strong></p>
+<ul>
+<li>Développement de nouvelles fonctionnalités</li>
+<li>Amélioration d&rsquo;expérience utilisateur</li>
+<li>Corrections de bugs (format adapté)</li>
+<li>Travail qui peut être complété en une ou deux semaines</li>
+</ul>
+<h3 id="epics">Epics<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Un epic est un grand corps de travail qui peut être décomposé en plusieurs user stories plus petites. Les epics représentent souvent une fonctionnalité majeure ou un objectif important.</p>
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Large portée</strong> : Trop grand pour être complété en un seul sprint</li>
+<li><strong>Décomposable</strong> : Se divise en plusieurs stories</li>
+<li><strong>Évolutif</strong> : Les stories associées peuvent être ajoutées ou retirées selon les retours</li>
+<li><strong>Multi-sprints</strong> : Généralement livré sur plusieurs sprints</li>
+<li><strong>Flexible</strong> : La portée s&rsquo;adapte selon les retours clients et le rythme de l&rsquo;équipe</li>
+</ul>
+<p><strong>Exemple d&rsquo;epic et ses stories :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>EPIC : Système d&#39;authentification utilisateur
+
+Stories :
+├─ Story 1 : Implémenter la fonctionnalité de connexion
+├─ Story 2 : Créer la fonctionnalité de réinitialisation de mot de passe
+├─ Story 3 : Ajouter l&#39;authentification à deux facteurs
+├─ Story 4 : Développer la déconnexion automatique après inactivité
+└─ Story 5 : Créer la gestion de sessions utilisateur</code></pre></div>
+<p><strong>Quand créer un epic :</strong></p>
+<ul>
+<li>Vous avez un grand volume de travail qui nécessite plusieurs sprints</li>
+<li>Vous remarquez un pattern parmi plusieurs user stories</li>
+<li>Vous voulez regrouper des stories liées sous une même initiative</li>
+</ul>
+<p><strong>Techniques pour décomposer un epic en stories :</strong></p>
+<ol>
+<li>
+<p><strong>Par rôle utilisateur</strong> : Créer une story pour chaque persona</p>
+<ul>
+<li>&ldquo;Connexion rapide pour nouveaux visiteurs&rdquo;</li>
+<li>&ldquo;Connexion rapide pour clients réguliers&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Par étapes du processus</strong> : Une story par étape</p>
+<ul>
+<li>&ldquo;Saisie des identifiants&rdquo;</li>
+<li>&ldquo;Validation des identifiants&rdquo;</li>
+<li>&ldquo;Création de session&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Par CRUD (Create, Read, Update, Delete)</strong> :</p>
+<ul>
+<li>&ldquo;Créer un compte utilisateur&rdquo;</li>
+<li>&ldquo;Afficher le profil utilisateur&rdquo;</li>
+<li>&ldquo;Modifier les informations du profil&rdquo;</li>
+<li>&ldquo;Supprimer un compte&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Par plateforme</strong> :</p>
+<ul>
+<li>&ldquo;Connexion sur mobile&rdquo;</li>
+<li>&ldquo;Connexion sur web&rdquo;</li>
+<li>&ldquo;Connexion sur tablette&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Par critères de temps</strong> :</p>
+<ul>
+<li>Stories qui peuvent être complétées en un sprint ou moins</li>
+</ul>
+</li>
+</ol>
+<p><strong>Estimation des epics :</strong>
+Les epics sont généralement estimés avec des tailles T-shirt (XS, S, M, L, XL) ou en nombre de sprints nécessaires, plutôt qu&rsquo;en story points précis.</p>
+<h3 id="sprints">Sprints<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Un sprint est une période time-boxed (durée fixe) pendant laquelle une équipe Scrum travaille pour compléter une quantité définie de travail. C&rsquo;est le cœur de Scrum.</p>
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Durée fixe</strong> : Généralement 1, 2 ou 4 semaines (2 semaines est le plus courant)</li>
+<li><strong>Objectif clair</strong> : Chaque sprint a un Sprint Goal spécifique</li>
+<li><strong>Cadence régulière</strong> : L&rsquo;équipe opère perpétuellement sur cette cadence</li>
+<li><strong>Livrable</strong> : Produit un incrément potentiellement livrable</li>
+</ul>
+<p><strong>Anatomie d&rsquo;un sprint :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Sprint de 2 semaines (exemple)
+
+Jour 1 :
+└─ Sprint Planning (4h)
+
+Jours 2-10 :
+├─ Daily Scrum (15 min/jour)
+└─ Travail de développement
+
+Jour 10 :
+├─ Sprint Review (2h)
+└─ Sprint Retrospective (1.5h)
+
+Jour 11 :
+└─ Début du prochain sprint</code></pre></div>
+<p><strong>Pourquoi des sprints fixes ?</strong></p>
+<ul>
+<li><strong>Prévisibilité</strong> : Aide à prévoir la vélocité future</li>
+<li><strong>Rythme</strong> : Crée un battement régulier pour l&rsquo;équipe</li>
+<li><strong>Focus</strong> : Limite le travail en cours</li>
+<li><strong>Livraison régulière</strong> : Valeur livrée fréquemment</li>
+<li><strong>Feedback rapide</strong> : Retours réguliers des parties prenantes</li>
+</ul>
+<p><strong>Sprint Goal (Objectif du Sprint) :</strong>
+Une déclaration courte décrivant ce que le sprint vise à accomplir. Il fournit une orientation et permet une certaine flexibilité dans l&rsquo;implémentation.</p>
+<p>Exemple de Sprint Goals :</p>
+<ul>
+<li>&ldquo;Permettre aux utilisateurs de créer et gérer leur profil&rdquo;</li>
+<li>&ldquo;Améliorer la performance de chargement des pages de 50%&rdquo;</li>
+<li>&ldquo;Implémenter le système de paiement de base&rdquo;</li>
+</ul>
+<p><strong>Vélocité (Velocity) :</strong>
+Mesure de la quantité de travail qu&rsquo;une équipe peut accomplir durant un sprint, généralement exprimée en story points.</p>
+<ul>
+<li>Calculée en additionnant les points de toutes les stories complétées</li>
+<li>Utilisée pour prévoir combien de travail peut être fait dans les futurs sprints</li>
+<li>Devient plus précise au fil du temps</li>
+</ul>
+<p><strong>Que se passe-t-il si le travail n&rsquo;est pas terminé ?</strong></p>
+<p>À la fin du sprint, vous avez plusieurs options :</p>
+<ol>
+<li><strong>Retourner au backlog</strong> : L&rsquo;histoire retourne dans le Product Backlog</li>
+<li><strong>Déplacer au prochain sprint</strong> : Si presque terminée et toujours prioritaire</li>
+<li><strong>Créer un nouveau sprint</strong> : Jira peut créer automatiquement</li>
+</ol>
+<p><strong>Important :</strong> Tous les sous-tâches doivent être complétées pour fermer un sprint.</p>
+<h3 id="initiatives">Initiatives<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong>
+Une initiative est une collection d&rsquo;epics qui travaillent ensemble vers un objectif stratégique commun, souvent à l&rsquo;échelle de l&rsquo;entreprise.</p>
+<p><strong>Hiérarchie complète :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>INITIATIVE (1 an)
+│
+├─ EPIC 1 (1-3 mois)
+│  ├─ Story 1.1 (1 sprint)
+│  ├─ Story 1.2 (1 sprint)
+│  └─ Story 1.3 (1 sprint)
+│
+├─ EPIC 2 (1-3 mois)
+│  ├─ Story 2.1 (1 sprint)
+│  └─ Story 2.2 (1 sprint)
+│
+└─ EPIC 3 (1-3 mois)
+   ├─ Story 3.1 (1 sprint)
+   ├─ Story 3.2 (1 sprint)
+   └─ Story 3.3 (1 sprint)</code></pre></div>
+<p><strong>Exemple concret - Entreprise de fusées spatiales :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>INITIATIVE : Réduire le coût par lancement de 5% cette année
+
+├─ EPIC 1 : Optimiser la consommation de carburant
+│  ├─ Story : Analyser les données de consommation des 10 derniers lancements
+│  ├─ Story : Développer un algorithme d&#39;optimisation de trajectoire
+│  └─ Story : Tester le nouvel algorithme en simulation
+│
+├─ EPIC 2 : Automatiser les vérifications pré-lancement
+│  ├─ Story : Créer un système de diagnostic automatique
+│  ├─ Story : Implémenter des capteurs IoT supplémentaires
+│  └─ Story : Développer le tableau de bord de monitoring
+│
+└─ EPIC 3 : Améliorer la réutilisabilité des composants
+   ├─ Story : Concevoir un système de récupération amélioré
+   ├─ Story : Développer les tests de résistance des matériaux
+   └─ Story : Créer le processus de reconditionnement</code></pre></div>
+<p><strong>Timeframes typiques :</strong></p>
+<ul>
+<li><strong>Story</strong> : 1-2 semaines (1 sprint)</li>
+<li><strong>Epic</strong> : 1-3 mois (plusieurs sprints)</li>
+<li><strong>Initiative</strong> : 6-12 mois (plusieurs quarters)</li>
+</ul>
+<h3 id="relation-entre-backlog-stories-epics-et-sprints">Relation entre Backlog, Stories, Epics et Sprints<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Product Backlog</strong> : Contient toutes les stories et epics priorisés</p>
+<p><strong>Sprint Backlog</strong> : Contient les stories sélectionnées pour le sprint actuel</p>
+<p><strong>Flux de travail typique :</strong></p>
+<ol>
+<li>Le Product Owner ajoute un epic au Product Backlog</li>
+<li>L&rsquo;epic est décomposé en stories pendant le Backlog Refinement</li>
+<li>Les stories sont estimées et priorisées</li>
+<li>Pendant Sprint Planning, les stories en haut du backlog sont sélectionnées pour le sprint</li>
+<li>Ces stories deviennent le Sprint Backlog</li>
+<li>L&rsquo;équipe complète les stories durant le sprint</li>
+<li>Les stories complétées contribuent à l&rsquo;avancement de l&rsquo;epic</li>
+<li>Le processus se répète jusqu&rsquo;à ce que l&rsquo;epic soit complété</li>
+</ol>
+<hr>
+<h2 id="exercice-pratique-pour-étudiants">Exercice Pratique pour Étudiants<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="-exercice--le-festival-étudiant">🎯 Exercice : &ldquo;Le Festival Étudiant&rdquo;<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="contexte">Contexte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Votre classe est responsable de l&rsquo;organisation d&rsquo;un festival étudiant qui aura lieu dans 6 semaines (3 sprints de 2 semaines). Le festival comprendra de la musique, de la nourriture, des activités et des compétitions.</p>
+<h4 id="objectif-pédagogique">Objectif Pédagogique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Cet exercice permet aux étudiants de :</p>
+<ul>
+<li>Pratiquer tous les rôles Scrum</li>
+<li>Vivre toutes les cérémonies</li>
+<li>Créer et gérer des epics, stories et sprints</li>
+<li>Expérimenter la collaboration agile</li>
+<li>Comprendre l&rsquo;importance de l&rsquo;adaptation</li>
+</ul>
+<hr>
+<h3 id="-phase-1--mise-en-place-30-minutes">📋 Phase 1 : Mise en Place (30 minutes)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="étape-1--formation-des-équipes-10-min">Étape 1 : Formation des équipes (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li>Formez des équipes de 5-7 étudiants</li>
+<li>Chaque équipe représente une &ldquo;équipe Scrum&rdquo;</li>
+</ul>
+<h4 id="étape-2--attribution-des-rôles-10-min">Étape 2 : Attribution des rôles (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Chaque équipe assigne les rôles (rotation à chaque sprint) :</p>
+<ul>
+<li><strong>1 Product Owner</strong> : Représente les étudiants qui participeront au festival</li>
+<li><strong>1 Scrum Master</strong> : Facilite les cérémonies et supprime les obstacles</li>
+<li><strong>3-5 Développeurs</strong> : Équipe qui exécute le travail</li>
+</ul>
+<h4 id="étape-3--création-de-la-vision-10-min">Étape 3 : Création de la vision (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Le Product Owner de chaque équipe définit :</p>
+<ul>
+<li>La vision du festival</li>
+<li>Les contraintes (budget fictif, espace, règlements)</li>
+<li>Les attentes des &ldquo;utilisateurs&rdquo; (étudiants participants)</li>
+</ul>
+<hr>
+<h3 id="-phase-2--création-du-product-backlog-45-minutes">📝 Phase 2 : Création du Product Backlog (45 minutes)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="étape-1--identifier-les-epics-15-min">Étape 1 : Identifier les Epics (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>L&rsquo;équipe identifie les grands domaines du festival. Exemples d&rsquo;epics :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>EPIC 1 : Programmation musicale
+EPIC 2 : Stands de nourriture et boissons
+EPIC 3 : Activités et animations
+EPIC 4 : Marketing et communication
+EPIC 5 : Logistique et infrastructure
+EPIC 6 : Gestion budgétaire</code></pre></div>
+<h4 id="étape-2--décomposer-en-user-stories-25-min">Étape 2 : Décomposer en User Stories (25 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Pour chaque epic, créez des user stories au format :
+&ldquo;En tant que [persona], je veux [objectif], afin de [bénéfice]&rdquo;</p>
+<p><strong>Exemples de stories pour EPIC 1 (Programmation musicale) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Story 1.1 : En tant que participant, je veux voir la liste des groupes qui se produiront, 
+            afin de décider si je veux assister au festival.
+
+Story 1.2 : En tant que participant, je veux connaître l&#39;horaire des performances, 
+            afin de planifier ma journée.
+
+Story 1.3 : En tant qu&#39;organisateur, je veux créer une scène avec système audio, 
+            afin que les groupes puissent performer.
+
+Story 1.4 : En tant que participant malentendant, je veux avoir accès à une 
+            interprétation en langue des signes, afin de profiter des spectacles.</code></pre></div>
+<p><strong>Exemples pour EPIC 4 (Marketing et communication) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Story 4.1 : En tant qu&#39;étudiant potentiel, je veux voir des affiches dans l&#39;école, 
+            afin d&#39;être informé du festival.
+
+Story 4.2 : En tant qu&#39;étudiant, je veux pouvoir acheter des billets en ligne, 
+            afin d&#39;éviter les files d&#39;attente.
+
+Story 4.3 : En tant qu&#39;organisateur, je veux créer une page Instagram pour l&#39;événement, 
+            afin de générer de l&#39;engouement.</code></pre></div>
+<h4 id="étape-3--ajouter-les-critères-dacceptation-15-min">Étape 3 : Ajouter les critères d&rsquo;acceptation (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Pour chaque story, définissez 2-3 critères d&rsquo;acceptation.</p>
+<p><strong>Exemple pour Story 1.1 :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Critères d&#39;acceptation :
+✓ Une liste de minimum 3 groupes est confirmée
+✓ Une courte bio de chaque groupe est disponible
+✓ Des liens vers la musique de chaque groupe sont fournis
+✓ Les genres musicaux sont clairement indiqués</code></pre></div>
+<h4 id="étape-4--estimation-10-min">Étape 4 : Estimation (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Utilisez la technique du <strong>Planning Poker</strong> :</p>
+<ul>
+<li>Cartes avec valeurs : 1, 2, 3, 5, 8, 13, 20</li>
+<li>Chaque membre estime silencieusement</li>
+<li>Révèle simultanément</li>
+<li>Discussion sur les écarts</li>
+<li>Consensus</li>
+</ul>
+<p><strong>Note :</strong> Pour l&rsquo;exercice, 1 point = 1 heure de travail fictif</p>
+<hr>
+<h3 id="-phase-3--sprint-1-1-semaine-simulée--1-heure-de-classe">🚀 Phase 3 : Sprint 1 (1 semaine simulée = 1 heure de classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="sprint-planning---partie-1--quoi--15-min">Sprint Planning - Partie 1 : Quoi ? (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li>
+<p><strong>Le Product Owner présente les stories prioritaires</strong> (5 min)</p>
+<ul>
+<li>Lit chaque story</li>
+<li>Explique la valeur</li>
+<li>Répond aux questions</li>
+</ul>
+</li>
+<li>
+<p><strong>Définir le Sprint Goal</strong> (5 min)
+Exemple : &ldquo;Créer l&rsquo;infrastructure de base et la stratégie marketing initiale&rdquo;</p>
+</li>
+<li>
+<p><strong>Sélectionner les stories</strong> (5 min)</p>
+<ul>
+<li>L&rsquo;équipe choisit les stories qu&rsquo;elle peut compléter</li>
+<li>Basé sur la vélocité estimée (pour Sprint 1, estimez conservativement)</li>
+<li>Exemple : Si l&rsquo;équipe pense pouvoir faire 15 points, sélectionner des stories totalisant 12-15 points</li>
+</ul>
+</li>
+</ol>
+<h4 id="sprint-planning---partie-2--comment--10-min">Sprint Planning - Partie 2 : Comment ? (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li>
+<p><strong>Décomposer en tâches</strong>
+Pour chaque story sélectionnée, créer des tâches concrètes.</p>
+<p><strong>Exemple pour Story 1.1 (Liste des groupes) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Tâches :
+□ Contacter 5 groupes potentiels
+□ Négocier les cachetsfictifs
+□ Obtenir les confirmations écrites
+□ Rédiger les biographies
+□ Collecter les liens musicaux
+□ Créer la page web de présentation</code></pre></div>
+</li>
+<li>
+<p><strong>Attribution initiale</strong> (optionnel)</p>
+<ul>
+<li>Les développeurs peuvent s&rsquo;assigner des tâches</li>
+<li>Ou décider de s&rsquo;organiser jour par jour</li>
+</ul>
+</li>
+</ol>
+<h4 id="daily-scrum-simulation---3-fois-pendant-le-sprint---5-min-chaque">Daily Scrum (Simulation - 3 fois pendant le sprint - 5 min chaque)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Simulation 1 - Début du sprint :</strong>
+Chaque développeur répond :</p>
+<ol>
+<li>Qu&rsquo;ai-je choisi de faire aujourd&rsquo;hui ?</li>
+<li>Comment vais-je contribuer au Sprint Goal ?</li>
+<li>Y a-t-il des obstacles anticipés ?</li>
+</ol>
+<p><strong>Simulation 2 - Milieu du sprint :</strong></p>
+<ol>
+<li>Qu&rsquo;ai-je accompli depuis hier ?</li>
+<li>Que vais-je faire aujourd&rsquo;hui ?</li>
+<li>Y a-t-il des obstacles ?</li>
+</ol>
+<p><strong>Exemple de déroulement :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Marie : &#34;Hier j&#39;ai contacté 5 groupes. Aujourd&#39;hui je vais négocier avec les 
+         2 qui ont répondu positivement. Aucun obstacle.&#34;
+
+Jean : &#34;Hier j&#39;ai commencé la page web de présentation. Aujourd&#39;hui je vais 
+        finir le design et intégrer les infos. J&#39;ai besoin des biographies de 
+        Marie pour avancer.&#34;
+
+Sophie : &#34;Hier j&#39;ai créé la page Instagram et posté 2 visuels. Aujourd&#39;hui je 
+          vais créer les affiches à imprimer. Pas d&#39;obstacle.&#34;</code></pre></div>
+<p><strong>Simulation 3 - Fin du sprint :</strong></p>
+<ol>
+<li>Qu&rsquo;ai-je accompli depuis hier ?</li>
+<li>Que reste-t-il à finaliser ?</li>
+<li>Quelles stories sont &ldquo;Done&rdquo; ?</li>
+</ol>
+<p><strong>Rôle du Scrum Master pendant les Standups :</strong></p>
+<ul>
+<li>S&rsquo;assurer que c&rsquo;est rapide (15 min max)</li>
+<li>Noter les obstacles mentionnés</li>
+<li>Faciliter les conversations bloquées</li>
+<li>Reporter les discussions détaillées après le standup</li>
+</ul>
+<h4 id="travail-du-sprint-simulation---15-min">Travail du Sprint (Simulation - 15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Les équipes &ldquo;travaillent&rdquo; sur leurs tâches. Pour l&rsquo;exercice :</p>
+<ul>
+<li>Créer des maquettes rapides (dessins, documents)</li>
+<li>Lister les étapes qu&rsquo;ils feraient réellement</li>
+<li>Déplacer les stories sur le tableau Scrum (À faire → En cours → Done)</li>
+<li>Simuler des obstacles (ex : &ldquo;Le budget pour un groupe est insuffisant&rdquo;)</li>
+</ul>
+<p><strong>Tableau Scrum à utiliser :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>┌─────────────┬─────────────┬─────────────┬──────────┐
+│   TO DO     │ IN PROGRESS │   TESTING   │   DONE   │
+├─────────────┼─────────────┼─────────────┼──────────┤
+│ Story 1.1   │             │             │          │
+│ Story 4.1   │             │             │          │
+│ Story 5.1   │             │             │          │
+└─────────────┴─────────────┴─────────────┴──────────┘</code></pre></div>
+<h4 id="sprint-review-10-min">Sprint Review (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li>
+<p><strong>Introduction par le Product Owner</strong> (2 min)</p>
+<ul>
+<li>Rappel du Sprint Goal</li>
+<li>Vue d&rsquo;ensemble de ce qui a été planifié</li>
+</ul>
+</li>
+<li>
+<p><strong>Démonstration par l&rsquo;équipe</strong> (5 min)</p>
+<ul>
+<li>Chaque story &ldquo;Done&rdquo; est démontrée</li>
+<li>Montrer les livrables concrets (maquettes, plans, documents)</li>
+<li>Les &ldquo;parties prenantes&rdquo; (autres équipes) posent des questions</li>
+</ul>
+</li>
+<li>
+<p><strong>Feedback et mise à jour du backlog</strong> (3 min)</p>
+<ul>
+<li>Recueillir les retours</li>
+<li>Ajuster les priorités si nécessaire</li>
+<li>Identifier de nouvelles stories à ajouter</li>
+</ul>
+</li>
+</ol>
+<p><strong>Exemple de démonstration :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Développeur : &#34;Nous avons complété la Story 1.1. Voici la maquette de la page web 
+               qui présente les 3 groupes confirmés. Chaque groupe a une bio de 
+               50 mots et 2 liens vers leur musique.&#34;
+
+Partie prenante : &#34;Super ! Est-ce que les horaires de chaque groupe seront 
+                   sur cette page aussi ?&#34;
+
+Product Owner : &#34;Bonne question. J&#39;ajoute une story pour ça au backlog.&#34;</code></pre></div>
+<h4 id="sprint-retrospective-10-min">Sprint Retrospective (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li>
+<p><strong>Préparer le terrain</strong> (2 min)
+Le Scrum Master crée un environnement sûr et rappelle la prime directive.</p>
+</li>
+<li>
+<p><strong>Format Start-Stop-Continue</strong> (6 min)</p>
+<p>L&rsquo;équipe identifie :</p>
+<p><strong>START (Commencer à faire) :</strong></p>
+<ul>
+<li>Quelles nouvelles pratiques adopter ?</li>
+<li>Exemple : &ldquo;Commencer à préparer les questions avant le standup&rdquo;</li>
+</ul>
+<p><strong>STOP (Arrêter de faire) :</strong></p>
+<ul>
+<li>Quoi cesser car inefficace ?</li>
+<li>Exemple : &ldquo;Arrêter de vérifier nos téléphones pendant les réunions&rdquo;</li>
+</ul>
+<p><strong>CONTINUE (Continuer à faire) :</strong></p>
+<ul>
+<li>Ce qui fonctionne bien et doit continuer</li>
+<li>Exemple : &ldquo;Continuer à se répartir les tâches équitablement&rdquo;</li>
+</ul>
+</li>
+<li>
+<p><strong>Sélectionner 2 actions concrètes</strong> (2 min)</p>
+<ul>
+<li>Voter sur les améliorations prioritaires</li>
+<li>Définir comment les implémenter au prochain sprint</li>
+<li>Assigner un responsable pour chaque action</li>
+</ul>
+</li>
+</ol>
+<p><strong>Exemple de rétrospective :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>START :
+- Faire un backlog refinement mid-sprint pour clarifier les stories à venir
+- Utiliser un timer pour les standups
+
+STOP :
+- Attendre la dernière minute pour demander de l&#39;aide
+- Avoir des réunions en retard
+
+CONTINUE :
+- Célébrer les petites victoires
+- Partager les connaissances entre membres
+
+Actions choisies pour Sprint 2 :
+1. Jean sera responsable du timer pendant les standups ✓
+2. Marie organisera un refinement à mi-sprint ✓</code></pre></div>
+<hr>
+<h3 id="-phase-4--sprints-2-et-3-même-structure">🔄 Phase 4 : Sprints 2 et 3 (même structure)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Sprint 2 et 3 suivent la même structure :</strong></p>
+<ul>
+<li>Sprint Planning</li>
+<li>Daily Scrums (3 simulations)</li>
+<li>Travail du sprint</li>
+<li>Sprint Review</li>
+<li>Sprint Retrospective</li>
+</ul>
+<p><strong>Particularités à introduire :</strong></p>
+<p><strong>Sprint 2 - Changements et adaptation :</strong></p>
+<ul>
+<li>Le professeur introduit un &ldquo;changement de priorité&rdquo; (simulation réaliste)</li>
+<li>Exemple : &ldquo;Un groupe annule, il faut trouver un remplaçant rapidement&rdquo;</li>
+<li>L&rsquo;équipe doit adapter son Sprint Backlog</li>
+<li>Discussion : Comment gérer le changement en Scrum ?</li>
+</ul>
+<p><strong>Sprint 3 - Finalisation et livraison :</strong></p>
+<ul>
+<li>Focus sur la complétion de l&rsquo;incrément final</li>
+<li>Préparation d&rsquo;une démo complète du festival planifié</li>
+<li>Rétrospective globale sur les 3 sprints</li>
+</ul>
+<hr>
+<h3 id="-phase-5--présentation-finale-et-débriefing-45-minutes">📊 Phase 5 : Présentation Finale et Débriefing (45 minutes)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="présentations-des-équipes-25-min---5-min-par-équipe">Présentations des équipes (25 min - 5 min par équipe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Chaque équipe présente :</p>
+<ol>
+<li>
+<p><strong>Leur festival final</strong> (2 min)</p>
+<ul>
+<li>Qu&rsquo;est-ce qui a été livré ?</li>
+<li>Quels epics sont complétés ?</li>
+</ul>
+</li>
+<li>
+<p><strong>Métriques Scrum</strong> (1 min)</p>
+<ul>
+<li>Vélocité par sprint</li>
+<li>Graphique burndown</li>
+<li>Nombre de stories complétées</li>
+</ul>
+</li>
+<li>
+<p><strong>Apprentissages clés</strong> (2 min)</p>
+<ul>
+<li>Qu&rsquo;ont-ils appris sur Scrum ?</li>
+<li>Quels défis ont-ils rencontrés ?</li>
+</ul>
+</li>
+</ol>
+<h4 id="discussion-de-classe-20-min">Discussion de classe (20 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Questions à discuter :</strong></p>
+<ol>
+<li>
+<p><strong>Sur les rôles :</strong></p>
+<ul>
+<li>Quel rôle avez-vous trouvé le plus difficile ? Pourquoi ?</li>
+<li>Comment le Product Owner a-t-il géré les priorités conflictuelles ?</li>
+<li>Comment le Scrum Master a-t-il supprimé les obstacles ?</li>
+</ul>
+</li>
+<li>
+<p><strong>Sur les cérémonies :</strong></p>
+<ul>
+<li>Quelle cérémonie a été la plus utile ?</li>
+<li>Avez-vous trouvé certaines réunions trop longues ou inutiles ?</li>
+<li>Comment les Daily Scrums ont-ils amélioré la communication ?</li>
+</ul>
+</li>
+<li>
+<p><strong>Sur les artefacts :</strong></p>
+<ul>
+<li>Comment le Product Backlog a-t-il évolué ?</li>
+<li>Avez-vous bien estimé votre vélocité ?</li>
+<li>Qu&rsquo;avez-vous appris sur la décomposition des epics ?</li>
+</ul>
+</li>
+<li>
+<p><strong>Sur l&rsquo;agilité :</strong></p>
+<ul>
+<li>Comment avez-vous réagi aux changements ?</li>
+<li>Qu&rsquo;est-ce qui a facilité ou empêché l&rsquo;adaptation ?</li>
+<li>En quoi Scrum est-il différent d&rsquo;une gestion de projet traditionnelle ?</li>
+</ul>
+</li>
+<li>
+<p><strong>Applications réelles :</strong></p>
+<ul>
+<li>Comment pourriez-vous utiliser Scrum dans d&rsquo;autres contextes ?</li>
+<li>Quelles limitations de Scrum avez-vous observées ?</li>
+<li>Dans quels types de projets Scrum serait-il inadapté ?</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="-livrables-de-lexercice">📝 Livrables de l&rsquo;exercice<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Chaque équipe doit produire :</p>
+<ol>
+<li>
+<p><strong>Product Backlog complet</strong> (Excel ou Jira)</p>
+<ul>
+<li>Tous les epics</li>
+<li>Toutes les stories avec critères d&rsquo;acceptation</li>
+<li>Estimations</li>
+</ul>
+</li>
+<li>
+<p><strong>Sprint Backlogs</strong> (3)</p>
+<ul>
+<li>Stories sélectionnées pour chaque sprint</li>
+<li>Tâches détaillées</li>
+<li>Attribution</li>
+</ul>
+</li>
+<li>
+<p><strong>Graphiques de suivi</strong></p>
+<ul>
+<li>Burndown chart pour chaque sprint</li>
+<li>Vélocité par sprint</li>
+<li>Graphique d&rsquo;avancement des epics</li>
+</ul>
+</li>
+<li>
+<p><strong>Notes de rétrospectives</strong> (3)</p>
+<ul>
+<li>Ce qui a bien fonctionné</li>
+<li>Ce qui n&rsquo;a pas fonctionné</li>
+<li>Actions d&rsquo;amélioration identifiées</li>
+</ul>
+</li>
+<li>
+<p><strong>Présentation finale</strong></p>
+<ul>
+<li>Plan du festival</li>
+<li>Démos visuelles (affiches, site web mockup, etc.)</li>
+<li>Rétrospective globale</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="conclusion">Conclusion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Scrum et Agile ne sont pas juste des processus, ce sont des mentalités. Le succès de Scrum repose sur :</p>
+<ul>
+<li><strong>La transparence</strong> : Visibilité sur le travail et les obstacles</li>
+<li><strong>L&rsquo;inspection</strong> : Évaluation régulière des progrès et du processus</li>
+<li><strong>L&rsquo;adaptation</strong> : Ajustement continu basé sur l&rsquo;apprentissage</li>
+<li><strong>La collaboration</strong> : Travail d&rsquo;équipe et communication ouverte</li>
+<li><strong>La livraison de valeur</strong> : Focus constant sur ce qui compte pour l&rsquo;utilisateur</li>
+</ul>
+<p>Les cérémonies Scrum ne sont pas des réunions bureaucratiques - elles sont des opportunités d&rsquo;inspection et d&rsquo;adaptation qui permettent aux équipes de livrer mieux et plus rapidement.</p>
+<p>En pratiquant Scrum à travers cet exercice, vous développez non seulement des compétences en gestion de projet, mais aussi en communication, collaboration, et résolution de problèmes - des compétences essentielles dans tous les domaines professionnels.</p>
+<hr>
+<h2 id="ressources-complémentaires">Ressources complémentaires<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Documentation officielle :</strong></p>
+<ul>
+<li>Scrum Guide : <a href="https://scrumguides.org/" rel="external">https://scrumguides.org/</a></li>
+<li>Documentation Atlassian : <a href="https://www.atlassian.com/agile/scrum" rel="external">https://www.atlassian.com/agile/scrum</a></li>
+</ul>
+<p><strong>Outils populaires :</strong></p>
+<ul>
+<li>Jira : Pour la gestion de projets Scrum</li>
+<li>Trello : Alternative plus simple</li>
+<li>Miro/Mural : Pour les rétrospectives et brainstorming</li>
+<li>Confluence : Pour la documentation d&rsquo;équipe</li>
+</ul>
+<p><strong>Lectures recommandées :</strong></p>
+<ul>
+<li>&ldquo;Scrum: The Art of Doing Twice the Work in Half the Time&rdquo; - Jeff Sutherland</li>
+<li>&ldquo;User Stories Applied&rdquo; - Mike Cohn</li>
+<li>&ldquo;The Phoenix Project&rdquo; - Gene Kim (DevOps et Agile)</li>
+</ul>
+<p><strong>Certifications :</strong></p>
+<ul>
+<li>Certified ScrumMaster (CSM)</li>
+<li>Professional Scrum Master (PSM)</li>
+<li>SAFe Agilist (pour l&rsquo;Agile à l&rsquo;échelle)</li>
+</ul>
+<hr>
+<p><em>Document créé sur la base des meilleures pratiques Scrum et Agile d&rsquo;Atlassian</em>
+<em>Version : 2.0 | Février 2026</em></p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="active " data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1770657623" defer></script>
+    <script src="/420-413/js/theme.js?1770657623" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -3,7 +3,7 @@ title: "LINQ"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 20
+weight: 19
 ---
 
 # 📘 LINQ en C#
