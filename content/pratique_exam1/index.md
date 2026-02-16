@@ -53,10 +53,6 @@ Créez une interface qui définit le comportement des éléments empruntables.
 
 **Interface `IEmpruntable`**
 
-**Propriétés:**
-- `bool EstDisponible { get; }` - Lecture seule, indique si l'item est disponible
-- `string Titre { get; }` - Lecture seule, titre de l'item
-
 **Méthodes:**
 - `bool PeutEtreEmprunte()` - Retourne true si l'item peut être emprunté
 - `bool Emprunter()` - Tente d'emprunter, retourne true si succès
@@ -75,17 +71,17 @@ Créez une classe abstraite qui servira de base pour tous les types de documents
 - `private static int prochainId = 1` - Compteur pour générer des ID uniques
 
 **Propriétés:**
-- `int Id { get; protected set; }` - Identifiant unique auto-généré
-- `string Titre { get; set; }` - Titre du document
-- `int AnneePublication { get; set; }` - Année de publication
-- `bool EstDisponible { get; protected set; }` - Disponibilité
+- `int Id ` - Identifiant unique auto-généré
+- `string Titre` - Titre du document
+- `int AnneePublication` - Année de publication
+- `bool EstDisponible` - Disponibilité
 
 **Propriétés calculées:**
 - `int Age` - Retourne l'âge du document (année actuelle - année publication)
 - `bool EstRecent` - Retourne true si publié dans les 5 dernières années
 
 **Propriétés abstraites à implémenter dans les classes dérivées:**
-- `abstract string TypeDocument { get; }` - Retourne le type de document ("Livre", "Magazine", "DVD")
+- `abstract string TypeDocument` - Retourne le type de document ("Livre", "Magazine", "DVD")
 
 **Constructeur:**
 ```csharp
@@ -113,12 +109,12 @@ protected Document()
 **Classe `Livre : Document, IEmpruntable`**
 
 **Propriétés spécifiques:**
-- `string Auteur { get; set; }` - Nom de l'auteur
-- `string ISBN { get; set; }` - Numéro ISBN
-- `GenreLivre Genre { get; set; }` - Genre du livre
-- `int NombrePages { get; set; }` - Nombre de pages
-- `int NombreExemplaires { get; set; }` - Nombre total d'exemplaires
-- `int NombreDisponibles { get; set; }` - Nombre d'exemplaires disponibles
+- `string Auteur ` - Nom de l'auteur
+- `string ISBN ` - Numéro ISBN
+- `GenreLivre Genre ` - Genre du livre
+- `int NombrePages ` - Nombre de pages
+- `int NombreExemplaires ` - Nombre total d'exemplaires
+- `int NombreDisponibles ` - Nombre d'exemplaires disponibles
 
 **Implémentation propriété abstraite:**
 - `override string TypeDocument` - Retourne "Livre"
@@ -155,9 +151,9 @@ public Livre() : base()
 **Classe `Magazine : Document, IEmpruntable`**
 
 **Propriétés spécifiques:**
-- `int NumeroEdition { get; set; }` - Numéro de l'édition
-- `string Editeur { get; set; }` - Nom de l'éditeur
-- `int Periodicite { get; set; }` - Périodicité en jours (7 pour hebdo, 30 pour mensuel)
+- `int NumeroEdition` - Numéro de l'édition
+- `string Editeur ` - Nom de l'éditeur
+- `int Periodicite` - Périodicité en jours (7 pour hebdo, 30 pour mensuel)
 
 **Implémentation propriété abstraite:**
 - `override string TypeDocument` - Retourne "Magazine"
@@ -180,13 +176,13 @@ public Livre() : base()
 ### 1.6 Classe Membre
 
 **Propriétés:**
-- `int Id { get; private set; }` - Identifiant unique auto-généré
-- `string Nom { get; set; }` - Nom complet
-- `string NumeroMembre { get; set; }` - Format: MEM-XXXXX
-- `string Courriel { get; set; }` - Adresse courriel
-- `TypeMembre Type { get; set; }` - Type de membre
-- `DateTime DateInscription { get; set; }` - Date d'inscription
-- `List<Emprunt> Emprunts { get; set; }` - Liste de tous les emprunts
+- `int Id` - Identifiant unique auto-généré
+- `string Nom ` - Nom complet
+- `string NumeroMembre ` - Format: MEM-XXXXX
+- `string Courriel` - Adresse courriel
+- `TypeMembre Type ` - Type de membre
+- `DateTime DateInscription ` - Date d'inscription
+- `List<Emprunt> Emprunts` - Liste de tous les emprunts
 
 **Champ statique:**
 ```csharp
