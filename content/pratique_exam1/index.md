@@ -8,15 +8,15 @@ weight: 13
 
 # 📝 EXERCICE DE PRÉPARATION À L'EXAMEN
 ## Système de Gestion d'une Bibliothèque Municipale
-### POO + LINQ
+### POO Avancée + LINQ
 
 ---
 
 ## 🎯 CONTEXTE
 
-Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.
+Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer différents types de documents (livres, magazines, DVD), les membres, les emprunts et générer des statistiques.
 
-**Technologies:** Application Console C# (.NET), POO avancée, LINQ obligatoire pour toutes les requêtes
+**Technologies:** Application Console C# (.NET), POO avancée (héritage, interfaces, polymorphisme), LINQ obligatoire pour toutes les requêtes
 
 ---
 
@@ -47,225 +47,404 @@ Vous travaillez pour la Ville de Montréal et devez créer un système de gestio
 
 ---
 
-### 1.2 Classes à créer
+### 1.2 Interface IEmpruntable
 
-#### Classe `Livre`
+Créez une interface qui définit le comportement des éléments empruntables.
+
+**Interface `IEmpruntable`**
 
 **Propriétés:**
-- `int Id` - Identifiant unique
-- `string Titre` - Titre du livre
-- `string Auteur` - Nom de l'auteur
-- `string ISBN` - Numéro ISBN (format: XXX-X-XXXX-XXXX-X)
-- `int AnneePublication` - Année de publication
-- `GenreLivre Genre` - Genre du livre
-- `int NombrePages` - Nombre de pages
-- `bool EstDisponible` - Disponibilité actuelle
-- `int NombreExemplaires` - Nombre total d'exemplaires
-- `int NombreDisponibles` - Nombre d'exemplaires disponibles
+- `bool EstDisponible { get; }` - Lecture seule, indique si l'item est disponible
+- `string Titre { get; }` - Lecture seule, titre de l'item
 
-**Propriétés calculées à implémenter:**
-- `int Age` - Retourne l'âge du livre (année actuelle - année publication)
-- `bool EstRecent` - Retourne true si publié dans les 5 dernières années
-- `string Description` - Retourne "{Titre} par {Auteur} ({AnneePublication})"
-
-**Méthodes à implémenter:**
-- `bool Emprunter()` - Diminue NombreDisponibles de 1 si possible, retourne true si succès
-- `void Retourner()` - Augmente NombreDisponibles de 1
-- `override string ToString()` - Format: "Titre - Auteur (Genre)"
+**Méthodes:**
+- `bool PeutEtreEmprunte()` - Retourne true si l'item peut être emprunté
+- `bool Emprunter()` - Tente d'emprunter, retourne true si succès
+- `void Retourner()` - Retourne l'item
+- `int ObtenirDureeEmprunt(TypeMembre typeMembre)` - Retourne la durée d'emprunt selon le type de membre
 
 ---
 
-#### Classe `Membre`
+### 1.3 Classe abstraite Document
+
+Créez une classe abstraite qui servira de base pour tous les types de documents.
+
+**Classe abstraite `Document`**
+
+**Champ statique:**
+- `private static int prochainId = 1` - Compteur pour générer des ID uniques
 
 **Propriétés:**
-- `int Id` - Identifiant unique - auto-généré (pas de set)
-- `string Nom` - Nom complet
-- `string NumeroMembre` - Format: MEM-XXXXX (ex: MEM-00123)
-- `string Courriel` - Adresse courriel
-- `TypeMembre Type` - Type de membre
-- `DateTime DateInscription` - Date d'inscription
-- `List<Emprunt> Emprunts` - Liste de tous les emprunts (historique)
+- `int Id { get; protected set; }` - Identifiant unique auto-généré
+- `string Titre { get; set; }` - Titre du document
+- `int AnneePublication { get; set; }` - Année de publication
+- `bool EstDisponible { get; protected set; }` - Disponibilité
 
-**Propriétés calculées à implémenter:**
-- `int NombreEmpruntsActuels` - Nombre d'emprunts en cours (StatutEmprunt.EnCours)
-- `int NombreEmpruntsTotal` - Nombre total d'emprunts dans l'historique
+**Propriétés calculées:**
+- `int Age` - Retourne l'âge du document (année actuelle - année publication)
+- `bool EstRecent` - Retourne true si publié dans les 5 dernières années
+
+**Propriétés abstraites à implémenter dans les classes dérivées:**
+- `abstract string TypeDocument { get; }` - Retourne le type de document ("Livre", "Magazine", "DVD")
+
+**Constructeur:**
+```csharp
+protected Document()
+{
+    Id = prochainId++;
+    EstDisponible = true;
+}
+```
+
+**Méthodes virtuelles:**
+- `virtual string ObtenirDescription()` - Retourne "{Titre} ({AnneePublication})"
+- `virtual void AfficherInfos()` - Affiche les informations de base du document
+
+**Méthodes abstraites:**
+- `abstract int ObtenirDureeEmpruntDefaut()` - Durée d'emprunt par défaut selon le type de document
+
+**Override obligatoire:**
+- `override string ToString()` - Format: "TypeDocument: Titre"
+
+---
+
+### 1.4 Classe Livre (hérite de Document et implémente IEmpruntable)
+
+**Classe `Livre : Document, IEmpruntable`**
+
+**Propriétés spécifiques:**
+- `string Auteur { get; set; }` - Nom de l'auteur
+- `string ISBN { get; set; }` - Numéro ISBN
+- `GenreLivre Genre { get; set; }` - Genre du livre
+- `int NombrePages { get; set; }` - Nombre de pages
+- `int NombreExemplaires { get; set; }` - Nombre total d'exemplaires
+- `int NombreDisponibles { get; set; }` - Nombre d'exemplaires disponibles
+
+**Implémentation propriété abstraite:**
+- `override string TypeDocument` - Retourne "Livre"
+
+**Override méthodes virtuelles:**
+- `override string ObtenirDescription()` - Retourne "{Titre} par {Auteur} ({AnneePublication})"
+- `override void AfficherInfos()` - Affiche toutes les infos du livre incluant auteur, genre, pages
+
+**Implémentation méthode abstraite:**
+- `override int ObtenirDureeEmpruntDefaut()` - Retourne 14 jours
+
+**Implémentation interface IEmpruntable:**
+- `bool PeutEtreEmprunte()` - Retourne true si NombreDisponibles > 0
+- `bool Emprunter()` - Diminue NombreDisponibles si possible, met à jour EstDisponible
+- `void Retourner()` - Augmente NombreDisponibles, met à jour EstDisponible
+- `int ObtenirDureeEmprunt(TypeMembre typeMembre)` - Retourne durée selon type:
+  - Regulier: 14 jours
+  - Etudiant: 21 jours
+  - Senior: 21 jours
+
+**Constructeur:**
+```csharp
+public Livre() : base()
+{
+    NombreExemplaires = 1;
+    NombreDisponibles = 1;
+}
+```
+
+---
+
+### 1.5 Classe Magazine (hérite de Document et implémente IEmpruntable)
+
+**Classe `Magazine : Document, IEmpruntable`**
+
+**Propriétés spécifiques:**
+- `int NumeroEdition { get; set; }` - Numéro de l'édition
+- `string Editeur { get; set; }` - Nom de l'éditeur
+- `int Periodicite { get; set; }` - Périodicité en jours (7 pour hebdo, 30 pour mensuel)
+
+**Implémentation propriété abstraite:**
+- `override string TypeDocument` - Retourne "Magazine"
+
+**Override méthodes virtuelles:**
+- `override string ObtenirDescription()` - Retourne "{Titre} #{NumeroEdition} - {Editeur}"
+- `override void AfficherInfos()` - Affiche infos du magazine incluant éditeur, numéro
+
+**Implémentation méthode abstraite:**
+- `override int ObtenirDureeEmpruntDefaut()` - Retourne 7 jours (magazines = emprunts courts)
+
+**Implémentation interface IEmpruntable:**
+- `bool PeutEtreEmprunte()` - Retourne EstDisponible
+- `bool Emprunter()` - Met EstDisponible à false
+- `void Retourner()` - Met EstDisponible à true
+- `int ObtenirDureeEmprunt(TypeMembre typeMembre)` - Retourne toujours 7 jours (même durée pour tous)
+
+---
+
+### 1.6 Classe Membre
+
+**Propriétés:**
+- `int Id { get; private set; }` - Identifiant unique auto-généré
+- `string Nom { get; set; }` - Nom complet
+- `string NumeroMembre { get; set; }` - Format: MEM-XXXXX
+- `string Courriel { get; set; }` - Adresse courriel
+- `TypeMembre Type { get; set; }` - Type de membre
+- `DateTime DateInscription { get; set; }` - Date d'inscription
+- `List<Emprunt> Emprunts { get; set; }` - Liste de tous les emprunts
+
+**Champ statique:**
+```csharp
+private static int prochainId = 1;
+```
+
+**Propriétés calculées:**
+- `int NombreEmpruntsActuels` - Compte les emprunts avec Statut == EnCours
+- `int NombreEmpruntsTotal` - Total d'emprunts dans l'historique
 - `bool PeutEmprunter` - true si NombreEmpruntsActuels < LimiteEmprunts
-- `int LimiteEmprunts` - Retourne la limite selon le type:
-  - Regulier: 5 livres
-  - Etudiant: 10 livres
-  - Senior: 8 livres
-- `int JoursMembre` - Nombre de jours depuis l'inscription
+- `int LimiteEmprunts` - Selon le type:
+  - Regulier: 5
+  - Etudiant: 10
+  - Senior: 8
+- `int JoursMembre` - Jours depuis l'inscription
 
-**Méthodes à implémenter:**
-- `void AjouterEmprunt(Emprunt emprunt)` - Ajoute un emprunt à la liste
+**Constructeur:**
+```csharp
+public Membre()
+{
+    Id = prochainId++;
+    Emprunts = new List<Emprunt>();
+    DateInscription = DateTime.Now;
+}
+```
+
+**Méthodes:**
+- `void AjouterEmprunt(Emprunt emprunt)` - Ajoute un emprunt
 - `override string ToString()` - Format: "NumeroMembre - Nom (Type)"
 
 ---
 
-#### Classe `Emprunt`
+### 1.7 Classe Emprunt
 
 **Propriétés:**
-- `int Id` - Identifiant unique
-- `Livre Livre` - Le livre emprunté
-- `Membre Membre` - Le membre qui emprunte
-- `DateTime DateEmprunt` - Date de l'emprunt
-- `DateTime DateRetourPrevue` - Date de retour prévue (DateEmprunt + durée)
-- `DateTime? DateRetourReelle` - Date de retour effective (nullable)
-- `StatutEmprunt Statut` - Statut actuel de l'emprunt
+- `int Id { get; private set; }` - ID unique auto-généré
+- `IEmpruntable Document { get; set; }` - Le document emprunté (interface!)
+- `Membre Membre { get; set; }` - Le membre qui emprunte
+- `DateTime DateEmprunt { get; set; }` - Date de l'emprunt
+- `DateTime DateRetourPrevue { get; set; }` - Date de retour prévue
+- `DateTime? DateRetourReelle { get; set; }` - Date de retour effective (nullable)
+- `StatutEmprunt Statut { get; set; }` - Statut actuel
 
-**Propriétés calculées à implémenter:**
-- `int DureeEmprunt` - Durée selon le type de membre:
-  - Regulier: 14 jours
-  - Etudiant: 21 jours
-  - Senior: 21 jours
-- `int JoursEmprunt` - Nombre de jours depuis l'emprunt
-- `bool EstEnRetard` - true si date actuelle > DateRetourPrevue ET Statut == EnCours
-- `int JoursRetard` - Nombre de jours de retard (0 si pas en retard)
-- `decimal Penalite` - Calcul: JoursRetard × 0.50$ (0 si pas de retard)
+**Champ statique:**
+```csharp
+private static int prochainId = 1;
+```
 
-**Méthodes à implémenter:**
-- `void Retourner()` - Met DateRetourReelle à aujourd'hui, change Statut à Retourne ou EnRetard
-- `override string ToString()` - Format: "Livre.Titre - Membre.Nom - Statut"
+**Propriétés calculées:**
+- `int DureeEmprunt` - Obtenue via Document.ObtenirDureeEmprunt(Membre.Type)
+- `int JoursEmprunt` - Jours depuis DateEmprunt
+- `bool EstEnRetard` - true si maintenant > DateRetourPrevue ET Statut == EnCours
+- `int JoursRetard` - Jours de retard (0 si pas en retard)
+- `decimal Penalite` - JoursRetard × 0.50$
+
+**Constructeur:**
+```csharp
+public Emprunt(IEmpruntable document, Membre membre)
+{
+    Id = prochainId++;
+    Document = document;
+    Membre = membre;
+    DateEmprunt = DateTime.Now;
+    int duree = document.ObtenirDureeEmprunt(membre.Type);
+    DateRetourPrevue = DateEmprunt.AddDays(duree);
+    Statut = StatutEmprunt.EnCours;
+}
+```
+
+**Méthodes:**
+- `void Retourner()` - Met DateRetourReelle, change Statut
+- `override string ToString()` - Format: "Document.Titre - Membre.Nom - Statut"
 
 ---
 
-## 📋 PARTIE 2: CLASSE GESTIONNAIRE
+## 📋 PARTIE 2: CLASSE GESTIONNAIRE AVEC POLYMORPHISME
 
 ### Classe `GestionnaireBibliotheque`
 
-Cette classe contient toutes les méthodes de gestion et requêtes LINQ.
-
 **Propriétés:**
-- `List<Livre> Livres` - Collection de tous les livres
-- `List<Membre> Membres` - Collection de tous les membres
-- `List<Emprunt> Emprunts` - Collection de tous les emprunts
+- `List<Document> Documents { get; set; }` - Tous les documents (polymorphisme!)
+- `List<Membre> Membres { get; set; }` - Tous les membres
+- `List<Emprunt> Emprunts { get; set; }` - Tous les emprunts
 
 **Constructeur:**
 - Initialise les 3 listes vides
 
 ---
 
-### MÉTHODES À IMPLÉMENTER AVEC LINQ (OBLIGATOIRE!)
+### MÉTHODES À IMPLÉMENTER AVEC LINQ
 
-#### 2.1 Gestion de base
+#### 2.1 Gestion de base avec polymorphisme
 
-**`void AjouterLivre(Livre livre)`**
-- Ajoute un livre à la liste
-- Valide que l'ISBN n'existe pas déjà
+**`void AjouterDocument(Document document)`**
+- Ajoute un document (peut être Livre ou Magazine)
+- Valide que l'ID n'existe pas déjà (LINQ)
 
 **`void AjouterMembre(Membre membre)`**
-- Ajoute un membre à la liste
-- Valide que le courriel n'existe pas déjà
+- Ajoute un membre
+- Valide que le courriel n'existe pas déjà (LINQ)
 
-**`bool CreerEmprunt(int livreId, int membreId)`**
-- Trouve le livre et le membre avec LINQ (FirstOrDefault)
-- Vérifie que le membre peut emprunter (PeutEmprunter)
-- Vérifie que le livre est disponible (EstDisponible)
-- Crée l'emprunt et l'ajoute aux deux listes (Emprunts et Membre.Emprunts)
-- Appelle Livre.Emprunter()
-- Retourne true si succès, false sinon
+**`bool CreerEmprunt(int documentId, int membreId)`**
+- Trouve le document avec LINQ (FirstOrDefault)
+- **Cast vers IEmpruntable** si le document implémente l'interface
+- Trouve le membre avec LINQ
+- Vérifie PeutEmprunter du membre
+- Vérifie PeutEtreEmprunte() du document
+- Crée l'Emprunt et l'ajoute aux listes
+- Appelle document.Emprunter()
+- Retourne true si succès
 
-**`bool RetournerLivre(int empruntId)`**
+**`bool RetournerDocument(int empruntId)`**
 - Trouve l'emprunt avec LINQ
 - Appelle Emprunt.Retourner()
-- Appelle Livre.Retourner()
-- Retourne true si succès, false sinon
+- Appelle Document.Retourner()
+- Retourne true si succès
 
 ---
 
-#### 2.2 Recherches LINQ (utilisez Where, OrderBy, Select)
+#### 2.2 Recherches LINQ avec polymorphisme
 
-**`List<Livre> ObtenirLivresDisponibles()`**
-- Retourne tous les livres où EstDisponible == true
-- Triés par Titre (ordre alphabétique)
-
-**`List<Livre> ObtenirLivresParGenre(GenreLivre genre)`**
-- Retourne tous les livres d'un genre spécifique
-- Triés par AnneePublication décroissant (plus récents d'abord)
-
-**`List<Livre> ObtenirLivresParAuteur(string auteur)`**
-- Retourne les livres dont l'auteur contient la chaîne donnée (ignore la casse)
+**`List<Document> ObtenirDocumentsDisponibles()`**
+- Retourne tous les documents disponibles
 - Triés par Titre
 
-**`List<Membre> ObtenirMembresParType(TypeMembre type)`**
-- Retourne tous les membres d'un type donné
-- Triés par Nom
+**`List<Livre> ObtenirLivresParGenre(GenreLivre genre)`**
+- Filtre les documents qui sont des Livre (utilisez `is` ou `OfType<Livre>()`)
+- Filtre par genre
+- Triés par AnneePublication décroissant
+
+**`List<Magazine> ObtenirMagazinesRecents()`**
+- Filtre les documents qui sont des Magazine
+- Où EstRecent == true
+- Triés par NumeroEdition décroissant
+
+**`List<Document> ObtenirDocumentsParAuteur(string auteur)`**
+- Filtre les documents qui sont des Livre
+- Dont l'auteur contient la chaîne (ignore casse)
+- Retourne comme List<Document> (polymorphisme!)
+- Triés par Titre
 
 **`List<Emprunt> ObtenirEmpruntsEnRetard()`**
-- Retourne tous les emprunts où EstEnRetard == true
-- Triés par JoursRetard décroissant (plus en retard d'abord)
+- Tous les emprunts où EstEnRetard == true
+- Triés par JoursRetard décroissant
 
 ---
 
-#### 2.3 Statistiques LINQ (utilisez Count, Sum, Average, Max, Min)
+#### 2.3 Statistiques LINQ
+
+**`int CompterDocumentsParType(string typeDocument)`**
+- Compte les documents où TypeDocument == paramètre
+- Exemple: CompterDocumentsParType("Livre")
 
 **`int CompterLivresParGenre(GenreLivre genre)`**
-- Compte le nombre de livres d'un genre donné
-
-**`int CompterEmpruntsActifsParMembre(int membreId)`**
-- Compte les emprunts en cours d'un membre spécifique
+- Filtre les Livre du genre donné
+- Compte le total
 
 **`decimal CalculerPenalitesTotales()`**
-- Somme toutes les pénalités de tous les emprunts
+- Somme toutes les pénalités
 
 **`double CalculerMoyenneEmpruntsParMembre()`**
-- Calcule le nombre moyen d'emprunts (total) par membre
+- Moyenne d'emprunts par membre
 
-**`Livre ObtenirLivreLePlusEmprunte()`**
-- Retourne le livre qui apparaît le plus souvent dans les emprunts
-- Indice: GroupBy sur Livre, OrderByDescending sur Count, puis First
+**`Document ObtenirDocumentLePlusEmprunte()`**
+- GroupBy sur Document
+- OrderByDescending par Count
+- Retourne le premier
 
 ---
 
-#### 2.4 Requêtes avancées LINQ (utilisez GroupBy, Join, SelectMany)
+#### 2.4 Requêtes avancées avec polymorphisme
 
-**`Dictionary<GenreLivre, int> ObtenirStatistiquesGenres()`**
-- Groupe les livres par genre
-- Retourne un dictionnaire: Genre → Nombre de livres
-- Trié par nombre de livres décroissant
+**`Dictionary<string, int> ObtenirStatistiquesParTypeDocument()`**
+- GroupBy sur TypeDocument
+- Retourne: "Livre" → 25, "Magazine" → 15
+- Trié par nombre décroissant
+
+**`var ObtenirStatistiquesCompletes()`**
+- Pour chaque type de document, retourne (type anonyme):
+```csharp
+new {
+    TypeDocument = "Livre",
+    Nombre = ...,
+    NombreDisponibles = ...,
+    TauxDisponibilite = ...
+}
+```
+
+**`List<IEmpruntable> ObtenirDocumentsEmpruntables()`**
+- Retourne tous les documents qui sont IEmpruntable
+- Où PeutEtreEmprunte() == true
+- **Important:** retour polymorphe comme IEmpruntable
 
 **`Dictionary<TypeMembre, List<Membre>> GrouperMembresParType()`**
-- Groupe les membres par type
-- Retourne un dictionnaire: Type → Liste de membres
-
-**`List<Livre> ObtenirLivresNonEmpruntes()`**
-- Retourne les livres qui n'apparaissent dans AUCUN emprunt
-- Indice: Utiliser Where avec !Emprunts.Any(...)
+- GroupBy par type
+- Retourne dictionnaire
 
 **`var ObtenirTop5MembresActifs()`**
-- Retourne les 5 membres avec le plus d'emprunts totaux
-- Format de retour (type anonyme):
-  ```csharp
-  new { 
-      Nom = membre.Nom, 
-      NombreEmprunts = membre.Emprunts.Count 
-  }
-  ```
-- Triés par NombreEmprunts décroissant
+- Top 5 par nombre d'emprunts totaux
+- Type anonyme avec Nom et NombreEmprunts
 
-**`List<Emprunt> ObtenirHistoriqueMembreParGenre(int membreId, GenreLivre genre)`**
-- Retourne tous les emprunts d'un membre pour un genre spécifique
-- Triés par DateEmprunt décroissant (plus récents d'abord)
+**`List<Emprunt> ObtenirHistoriqueMembreParType(int membreId, string typeDocument)`**
+- Emprunts d'un membre
+- Filtre par TypeDocument du Document
+- Triés par DateEmprunt décroissant
+
+---
+
+#### 2.5 Méthodes utilisant le polymorphisme (IMPORTANT!)
+
+**`void AfficherTousLesDocuments()`**
+- Parcourt la liste Documents
+- Pour chaque document, appelle **document.AfficherInfos()** (polymorphisme!)
+- La bonne méthode est appelée selon le type réel
+
+**`List<string> ObtenirDescriptionsTousDocuments()`**
+- Select sur Documents
+- Appelle **document.ObtenirDescription()** pour chacun (polymorphisme!)
+- Retourne la liste des descriptions
+
+**`Dictionary<string, int> CalculerDureeMoyenneParType()`**
+- GroupBy par TypeDocument
+- Pour chaque groupe, calcule la durée moyenne d'emprunt
+- Retourne: "Livre" → 18, "Magazine" → 7
 
 ---
 
 ## 📋 PARTIE 3: PROGRAMME PRINCIPAL
 
-Dans `Program.cs`, créez une méthode `Main` qui:
+Dans `Program.cs`:
 
-1. Crée une instance de `GestionnaireBibliotheque`
+1. **Créez un GestionnaireBibliotheque**
 
-2. Ajoute des données de test:
-   - Au moins 10 livres de différents genres
-   - Au moins 5 membres de différents types
-   - Au moins 8 emprunts (dont certains en retard)
+2. **Ajoutez des données de test:**
+   - Au moins 8 Livres (différents genres)
+   - Au moins 4 Magazines
+   - Au moins 5 Membres (différents types)
+   - Au moins 10 Emprunts (certains en retard, certains de livres, certains de magazines)
 
-3. Teste les méthodes suivantes et affiche les résultats:
-   - `ObtenirLivresDisponibles()` - Afficher le nombre
-   - `ObtenirEmpruntsEnRetard()` - Afficher chaque emprunt en retard avec la pénalité
-   - `CalculerPenalitesTotales()` - Afficher le montant total
-   - `ObtenirStatistiquesGenres()` - Afficher chaque genre avec son compte
-   - `ObtenirTop5MembresActifs()` - Afficher le classement
+3. **Démontrez le polymorphisme:**
+   ```csharp
+   // Ajout polymorphe
+   Document doc1 = new Livre { Titre = "1984", Auteur = "Orwell" };
+   Document doc2 = new Magazine { Titre = "Science et Vie", NumeroEdition = 125 };
+   
+   gestionnaire.AjouterDocument(doc1);
+   gestionnaire.AjouterDocument(doc2);
+   
+   // Affichage polymorphe
+   gestionnaire.AfficherTousLesDocuments();
+   ```
+
+4. **Testez et affichez:**
+   - Statistiques par type de document
+   - Documents disponibles (livres ET magazines)
+   - Emprunts en retard avec pénalités
+   - Top 5 membres actifs
+   - Descriptions de tous les documents (polymorphisme!)
 
 **Format d'affichage suggéré:**
 ```
@@ -273,93 +452,150 @@ Dans `Program.cs`, créez une méthode `Main` qui:
     SYSTÈME DE GESTION - BIBLIOTHÈQUE
 ═══════════════════════════════════════════════
 
-📚 LIVRES DISPONIBLES: 7
+📊 STATISTIQUES PAR TYPE:
+   • Livre: 8 documents (5 disponibles) - 62.5%
+   • Magazine: 4 documents (3 disponibles) - 75.0%
+
+📚 TOUS LES DOCUMENTS DISPONIBLES:
+   • Livre: 1984 par George Orwell (1949)
+   • Magazine: Science et Vie #125 - Editeur XYZ
+   • Livre: Le Petit Prince par Saint-Exupéry (1943)
 
 ⏰ EMPRUNTS EN RETARD:
-   • 1984 - Alice Tremblay - 5 jours - Pénalité: 2.50$
-   • Le Petit Prince - Bob Gagnon - 3 jours - Pénalité: 1.50$
+   • 1984 - Alice Tremblay - 5 jours - 2.50$
+   • Science et Vie #120 - Bob Gagnon - 2 jours - 1.00$
 
-💰 PÉNALITÉS TOTALES: 4.00$
-
-📊 STATISTIQUES PAR GENRE:
-   • Roman: 4 livres
-   • ScienceFiction: 3 livres
-   • Policier: 2 livres
+💰 PÉNALITÉS TOTALES: 3.50$
 
 🏆 TOP 5 MEMBRES ACTIFS:
-   1. Alice Tremblay - 12 emprunts
-   2. Bob Gagnon - 8 emprunts
-   3. Charlie Roy - 6 emprunts
+   1. Alice Tremblay - 8 emprunts
+   2. Bob Gagnon - 6 emprunts
+   3. Charlie Roy - 4 emprunts
 ```
 
 ---
 
 ## ✅ CRITÈRES D'ÉVALUATION
 
-### Modèle de données (30%)
-- [ ] Toutes les classes créées avec les propriétés demandées
-- [ ] Propriétés calculées fonctionnelles
-- [ ] Méthodes de base implémentées
-- [ ] Utilisation correcte des enums
+### POO Avancée (40%)
+- [ ] Interface IEmpruntable correctement définie et implémentée
+- [ ] Classe abstraite Document avec propriétés/méthodes abstraites et virtuelles
+- [ ] Héritage correct: Livre et Magazine héritent de Document
+- [ ] Implémentation correcte de l'interface dans les deux classes
+- [ ] Utilisation de `override` pour les méthodes virtuelles/abstraites
+- [ ] Utilisation de `base` dans les constructeurs
+- [ ] Polymorphisme démontré (Document peut référer Livre ou Magazine)
+- [ ] Propriété protégée (protected) utilisée correctement
 
-### Requêtes LINQ (50%)
-- [ ] Toutes les méthodes utilisent LINQ (pas de boucles for/foreach)
-- [ ] Utilisation correcte de Where, OrderBy, Select
-- [ ] Utilisation correcte de Count, Sum, Average
-- [ ] Utilisation correcte de GroupBy et types anonymes
-- [ ] Requêtes fonctionnelles et retournent les bons résultats
+### LINQ (40%)
+- [ ] Utilisation de `OfType<T>()` ou `is` pour filtrer par type
+- [ ] Toutes les méthodes utilisent LINQ (pas de boucles)
+- [ ] Where, OrderBy, Select correctement utilisés
+- [ ] GroupBy, Count, Sum, Average correctement utilisés
+- [ ] FirstOrDefault avec gestion du null
+- [ ] Types anonymes utilisés
 
 ### Qualité du code (20%)
-- [ ] Noms de variables significatifs
-- [ ] Code lisible et bien organisé
-- [ ] Gestion des cas null (FirstOrDefault, etc.)
-- [ ] Programme compile sans erreurs
-
+- [ ] Code compile sans erreurs
+- [ ] Noms significatifs
+- [ ] Gestion des cas null
+- [ ] Polymorphisme bien exploité
+- [ ] Programme principal démontre bien les concepts
 
 ---
 
-## 📚 RAPPELS LINQ UTILES
+## 🎓 CONCEPTS POO À MAÎTRISER
+
+### Classe abstraite vs Interface
+
+**Classe abstraite** (Document):
+- Peut avoir des propriétés concrètes ET abstraites
+- Peut avoir des méthodes implémentées ET abstraites
+- Peut avoir un constructeur
+- Héritage simple uniquement (une classe ne peut hériter que d'une classe abstraite)
+
+**Interface** (IEmpruntable):
+- Définit uniquement un contrat (signatures)
+- Pas d'implémentation
+- Pas de constructeur
+- Une classe peut implémenter plusieurs interfaces
+
+### Mots-clés importants
+
+**`abstract`** - Classe ou membre qui DOIT être implémenté
+```csharp
+public abstract string TypeDocument { get; }
+public abstract int ObtenirDureeEmpruntDefaut();
+```
+
+**`virtual`** - Membre qui PEUT être surchargé
+```csharp
+public virtual string ObtenirDescription() { ... }
+```
+
+**`override`** - Surcharge un membre virtual ou abstract
+```csharp
+public override string ObtenirDescription() { ... }
+```
+
+**`protected`** - Accessible dans la classe et les classes dérivées
+```csharp
+protected set { ... }
+```
+
+**`base`** - Appelle le constructeur/méthode de la classe parent
+```csharp
+public Livre() : base() { }
+```
+
+### Pattern matching avec `is` et `as`
 
 ```csharp
-// Filtrer
-var resultat = liste.Where(x => x.Propriete > 10);
+// Vérifier le type
+if (document is Livre livre)
+{
+    Console.WriteLine(livre.Auteur);
+}
 
-// Trier
-var resultat = liste.OrderBy(x => x.Nom).ThenBy(x => x.Age);
+// Cast sécuritaire
+IEmpruntable empruntable = document as IEmpruntable;
+if (empruntable != null)
+{
+    empruntable.Emprunter();
+}
 
-// Trier décroissant
-var resultat = liste.OrderByDescending(x => x.Date);
-
-// Compter
-int nombre = liste.Count(x => x.EstActif);
-
-// Somme
-decimal total = liste.Sum(x => x.Montant);
-
-// Moyenne
-double moyenne = liste.Average(x => x.Note);
-
-// Premier élément (ou null)
-var element = liste.FirstOrDefault(x => x.Id == 5);
-
-// Grouper
-var groupes = liste.GroupBy(x => x.Categorie);
-
-// Grouper et compter
-var stats = liste
-    .GroupBy(x => x.Categorie)
-    .ToDictionary(g => g.Key, g => g.Count());
-
-// Type anonyme
-var resultat = liste.Select(x => new { 
-    x.Nom, 
-    x.Age 
-});
-
-// Vérifier existence
-bool existe = liste.Any(x => x.Nom == "Alice");
+// Avec LINQ
+var livres = Documents.OfType<Livre>();
 ```
 
 ---
 
-*N'oubliez pas: LINQ partout, pas de boucles for/foreach dans les requêtes!*
+## 📚 RAPPELS LINQ SPÉCIFIQUES AU POLYMORPHISME
+
+```csharp
+// Filtrer par type avec OfType
+var livres = Documents.OfType<Livre>();
+
+// Filtrer par type avec Where et is
+var magazines = Documents.Where(d => d is Magazine);
+
+// Cast après filtrage
+var livresSciFi = Documents
+    .OfType<Livre>()
+    .Where(l => l.Genre == GenreLivre.ScienceFiction);
+
+// GroupBy sur propriété polymorphe
+var stats = Documents
+    .GroupBy(d => d.TypeDocument)
+    .Select(g => new { Type = g.Key, Count = g.Count() });
+
+// Utiliser l'interface
+var disponibles = Documents
+    .OfType<IEmpruntable>()
+    .Where(e => e.PeutEtreEmprunte());
+```
+
+---
+
+
+*Focus: Héritage, Interfaces, Polymorphisme et LINQ!*

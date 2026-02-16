@@ -110,7 +110,7 @@
       <link>http://localhost:1313/420-413/pratique_exam1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/pratique_exam1/index.html</guid>
-      <description>📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO + LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.</description>
+      <description>📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO Avancée + LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer différents types de documents (livres, magazines, DVD), les membres, les emprunts et générer des statistiques.</description>
     </item>
     <item>
       <title>WPF - intro</title>
