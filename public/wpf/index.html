@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Développement d’applications WPF avec C# Partie 1 : Installation de .NET Desktop Development 1.1 Pourquoi Visual Studio 2022 ? Visual Studio 2022 est l’IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WPF - intro :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Développement d’applications WPF avec C# Partie 1 : Installation de .NET Desktop Development 1.1 Pourquoi Visual Studio 2022 ? Visual Studio 2022 est l’IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.">
+    <meta property="og:url" content="http://localhost:1313/420-413/wpf/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="WPF - intro :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Développement d’applications WPF avec C# Partie 1 : Installation de .NET Desktop Development 1.1 Pourquoi Visual Studio 2022 ? Visual Studio 2022 est l’IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="WPF - intro :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Développement d’applications WPF avec C# Partie 1 : Installation de .NET Desktop Development 1.1 Pourquoi Visual Studio 2022 ? Visual Studio 2022 est l’IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.">
+    <meta itemprop="wordCount" content="2316">
+    <title>WPF - intro :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265607" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265607" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265607" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265607" defer></script>
+    <script src="/420-413/js/search.js?1771265607" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265607";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265607" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265607" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265607" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265607" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265607" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265607" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/wpf\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/wpf/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#partie-1--installation-de-net-desktop-development">Partie 1 : Installation de .NET Desktop Development</a>
+      <ul>
+        <li><a href="#11-pourquoi-visual-studio-2022-">1.1 Pourquoi Visual Studio 2022 ?</a></li>
+        <li><a href="#12-étapes-dinstallation">1.2 Étapes d&rsquo;installation</a></li>
+        <li><a href="#13-créer-votre-premier-projet-wpf">1.3 Créer votre premier projet WPF</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-2--introduction-à-la-programmation-de-bureau">Partie 2 : Introduction à la programmation de bureau</a>
+      <ul>
+        <li><a href="#21-quest-ce-quune-application-de-bureau-">2.1 Qu&rsquo;est-ce qu&rsquo;une application de bureau ?</a></li>
+        <li><a href="#22-différence-entre-console-et-wpf">2.2 Différence entre Console et WPF</a></li>
+        <li><a href="#23-les-3-technologies-de-bureau-en-net">2.3 Les 3 technologies de bureau en .NET</a></li>
+        <li><a href="#24-architecture-dune-application-wpf">2.4 Architecture d&rsquo;une application WPF</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-3--premiers-pas-avec-wpf">Partie 3 : Premiers pas avec WPF</a>
+      <ul>
+        <li><a href="#31-structure-dun-projet-wpf">3.1 Structure d&rsquo;un projet WPF</a></li>
+        <li><a href="#32-le-designer-visuel">3.2 Le Designer visuel</a></li>
+        <li><a href="#33-votre-premier-bouton">3.3 Votre premier bouton</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-4--xaml--le-langage-de-linterface">Partie 4 : XAML — Le langage de l&rsquo;interface</a>
+      <ul>
+        <li><a href="#41-quest-ce-que-xaml-">4.1 Qu&rsquo;est-ce que XAML ?</a></li>
+        <li><a href="#42-syntaxe-de-base-xaml">4.2 Syntaxe de base XAML</a></li>
+        <li><a href="#43-les-namespaces-xml">4.3 Les namespaces XML</a></li>
+        <li><a href="#44-lattribut-xname">4.4 L&rsquo;attribut x:Name</a></li>
+        <li><a href="#45-propriétés-complexes">4.5 Propriétés complexes</a></li>
+        <li><a href="#46-les-événements">4.6 Les événements</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-5--les-layouts-mise-en-page">Partie 5 : Les Layouts (mise en page)</a>
+      <ul>
+        <li><a href="#51-grid--le-layout-principal">5.1 Grid — Le layout principal</a></li>
+        <li><a href="#52-stackpanel--empilement">5.2 StackPanel — Empilement</a></li>
+        <li><a href="#53-wrappanel--empilement-avec-retour-automatique">5.3 WrapPanel — Empilement avec retour automatique</a></li>
+        <li><a href="#54-dockpanel--ancrage-sur-les-bords">5.4 DockPanel — Ancrage sur les bords</a></li>
+        <li><a href="#55-canvas--positionnement-absolu">5.5 Canvas — Positionnement absolu</a></li>
+        <li><a href="#56-exemple--interface-complète">5.6 Exemple : Interface complète</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-6--les-contrôles-de-base">Partie 6 : Les contrôles de base</a>
+      <ul>
+        <li><a href="#61-textbox--saisie-de-texte">6.1 TextBox — Saisie de texte</a></li>
+        <li><a href="#62-textblock--texte-non-modifiable">6.2 TextBlock — Texte non modifiable</a></li>
+        <li><a href="#63-button--bouton">6.3 Button — Bouton</a></li>
+        <li><a href="#64-checkbox--case-à-cocher">6.4 CheckBox — Case à cocher</a></li>
+        <li><a href="#65-radiobutton--bouton-radio">6.5 RadioButton — Bouton radio</a></li>
+        <li><a href="#66-combobox--liste-déroulante">6.6 ComboBox — Liste déroulante</a></li>
+        <li><a href="#67-listbox--liste">6.7 ListBox — Liste</a></li>
+        <li><a href="#68-image--afficher-une-image">6.8 Image — Afficher une image</a></li>
+        <li><a href="#69-progressbar--barre-de-progression">6.9 ProgressBar — Barre de progression</a></li>
+        <li><a href="#610-slider--curseur">6.10 Slider — Curseur</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-7--data-binding-liaison-de-données">Partie 7 : Data Binding (Liaison de données)</a>
+      <ul>
+        <li><a href="#71-pourquoi-le-data-binding-">7.1 Pourquoi le Data Binding ?</a></li>
+        <li><a href="#72-le-datacontext">7.2 Le DataContext</a></li>
+        <li><a href="#73-les-modes-de-binding">7.3 Les modes de Binding</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">WPF - intro</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/pratique_exam1/index.html" title="Pratique - Exam 1 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_observateur/index.html" title="Patron observateur (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="wpf---intro">WPF - intro</h1>
+
+<h1 id="développement-dapplications-wpf-avec-c">Développement d&rsquo;applications WPF avec C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<hr>
+<h2 id="partie-1--installation-de-net-desktop-development">Partie 1 : Installation de .NET Desktop Development<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="11-pourquoi-visual-studio-2022-">1.1 Pourquoi Visual Studio 2022 ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Visual Studio 2022</strong> est l&rsquo;IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.</p>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>Designer visuel pour WPF (glisser-déposer de contrôles)</li>
+<li>IntelliSense (auto-complétion intelligente)</li>
+<li>Débogueur puissant</li>
+<li>Gratuit dans la version Community</li>
+</ul>
+<h3 id="12-étapes-dinstallation">1.2 Étapes d&rsquo;installation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="étape-1--télécharger-visual-studio-2022">Étape 1 : Télécharger Visual Studio 2022<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li>Allez sur : <a href="https://visualstudio.microsoft.com/fr/" rel="external">https://visualstudio.microsoft.com/fr/</a></li>
+<li>Téléchargez <strong>Visual Studio 2022 Community</strong> (gratuit)</li>
+<li>Lancez le programme d&rsquo;installation téléchargé</li>
+</ol>
+<h4 id="étape-2--installer-la-charge-de-travail-net-desktop">Étape 2 : Installer la charge de travail .NET Desktop<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Quand le <strong>Visual Studio Installer</strong> s&rsquo;ouvre :</p>
+<ol>
+<li>
+<p><strong>Dans l&rsquo;onglet &ldquo;Charges de travail&rdquo;</strong>, cochez :</p>
+<ul>
+<li>✅ <strong>Développement .NET Desktop</strong> (en français)</li>
+<li>✅ <strong>&quot;.NET desktop development&quot;</strong> (en anglais)</li>
+</ul>
+</li>
+<li>
+<p>Cette charge de travail installe automatiquement :</p>
+<ul>
+<li>.NET SDK (kit de développement)</li>
+<li>Windows Forms</li>
+<li><strong>WPF (Windows Presentation Foundation)</strong></li>
+<li>Templates de projets pour applications de bureau</li>
+</ul>
+</li>
+<li>
+<p>Cliquez sur <strong>&ldquo;Installer&rdquo;</strong> ou <strong>&ldquo;Modifier&rdquo;</strong> (si VS est déjà installé)</p>
+</li>
+</ol>
+<h4 id="étape-3--vérifier-linstallation">Étape 3 : Vérifier l&rsquo;installation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Une fois l&rsquo;installation terminée :</p>
+<ol>
+<li>Lancez <strong>Visual Studio 2022</strong></li>
+<li>Cliquez sur <strong>&ldquo;Créer un projet&rdquo;</strong></li>
+<li>Dans la barre de recherche, tapez <strong>&ldquo;WPF&rdquo;</strong></li>
+<li>Vous devriez voir : <strong>&ldquo;Application WPF (.NET)&rdquo;</strong></li>
+</ol>
+<p>Si vous voyez ce template, <strong>l&rsquo;installation a réussi</strong> ! ✅</p>
+<h3 id="13-créer-votre-premier-projet-wpf">1.3 Créer votre premier projet WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Procédure complète :</strong></p>
+<ol>
+<li><strong>Fichier</strong> → <strong>Nouveau</strong> → <strong>Projet</strong></li>
+<li>Recherchez <strong>&ldquo;WPF&rdquo;</strong></li>
+<li>Sélectionnez <strong>&ldquo;Application WPF&rdquo;</strong> (assurez-vous que c&rsquo;est bien .NET et pas .NET Framework)</li>
+<li>Cliquez sur <strong>&ldquo;Suivant&rdquo;</strong></li>
+<li>Donnez un nom au projet : <code>MonPremierWPF</code></li>
+<li>Choisissez un emplacement sur votre disque</li>
+<li>Cliquez sur <strong>&ldquo;Suivant&rdquo;</strong></li>
+<li>Sélectionnez <strong>&quot;.NET 8.0&quot;</strong> ou <strong>&quot;.NET 7.0&quot;</strong> (la version la plus récente)</li>
+<li>Cliquez sur <strong>&ldquo;Créer&rdquo;</strong></li>
+</ol>
+<p><strong>Visual Studio va créer :</strong></p>
+<ul>
+<li>Un fichier <code>MainWindow.xaml</code> (l&rsquo;interface)</li>
+<li>Un fichier <code>MainWindow.xaml.cs</code> (le code C#)</li>
+<li>Un fichier <code>App.xaml</code> (configuration de l&rsquo;application)</li>
+</ul>
+<p>Appuyez sur <strong>F5</strong> pour lancer l&rsquo;application. Une fenêtre vide s&rsquo;ouvrira — c&rsquo;est votre première app WPF ! 🎉</p>
+<hr>
+<h2 id="partie-2--introduction-à-la-programmation-de-bureau">Partie 2 : Introduction à la programmation de bureau<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="21-quest-ce-quune-application-de-bureau-">2.1 Qu&rsquo;est-ce qu&rsquo;une application de bureau ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Jusqu&rsquo;à présent, vous avez probablement écrit des <strong>applications console</strong> (avec <code>Console.WriteLine</code>).</p>
+<p><strong>Application console :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>&gt; Entrez votre nom: Alice
+&gt; Bonjour Alice!</code></pre></div>
+<p><strong>Application de bureau (WPF) :</strong></p>
+<ul>
+<li>Fenêtres avec boutons, champs de texte, images</li>
+<li>Interface graphique (GUI)</li>
+<li>Interaction à la souris</li>
+<li>Exemple : Microsoft Word, Excel, calculatrice Windows</li>
+</ul>
+<h3 id="22-différence-entre-console-et-wpf">2.2 Différence entre Console et WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Application Console</th>
+          <th>Application WPF</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Interface</td>
+          <td>Texte uniquement</td>
+          <td>Graphique (boutons, images, etc.)</td>
+      </tr>
+      <tr>
+          <td>Interaction</td>
+          <td>Clavier (input/output)</td>
+          <td>Souris + clavier</td>
+      </tr>
+      <tr>
+          <td>Apparence</td>
+          <td>Noire et blanche</td>
+          <td>Couleurs, polices, animations</td>
+      </tr>
+      <tr>
+          <td>Complexité</td>
+          <td>Simple</td>
+          <td>Plus complexe mais plus puissante</td>
+      </tr>
+      <tr>
+          <td>Utilisation</td>
+          <td>Scripts, outils admin</td>
+          <td>Logiciels utilisateur final</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="23-les-3-technologies-de-bureau-en-net">2.3 Les 3 technologies de bureau en .NET<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Technologie</th>
+          <th>Année</th>
+          <th>Utilisation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Windows Forms</strong></td>
+          <td>2002</td>
+          <td>Ancienne, simple mais limitée</td>
+      </tr>
+      <tr>
+          <td><strong>WPF</strong></td>
+          <td>2006</td>
+          <td>Moderne, puissante, flexible</td>
+      </tr>
+      <tr>
+          <td><strong>WinUI 3</strong></td>
+          <td>2021</td>
+          <td>Très récente, encore en développement</td>
+      </tr>
+  </tbody>
+</table>
+<p>Dans ce cours, on se concentre sur <strong>WPF</strong> car c&rsquo;est le standard de l&rsquo;industrie.</p>
+<h3 id="24-architecture-dune-application-wpf">2.4 Architecture d&rsquo;une application WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>MonProjet/
+├── App.xaml                  ← Configuration de l&#39;application
+├── App.xaml.cs              ← Code-behind de App
+├── MainWindow.xaml          ← Interface de la fenêtre principale
+├── MainWindow.xaml.cs       ← Logique de la fenêtre principale
+└── (Autres fenêtres, classes, ressources...)</code></pre></div>
+<p><strong>Principe fondamental :</strong> WPF sépare l&rsquo;interface (XAML) de la logique (C#).</p>
+<hr>
+<h2 id="partie-3--premiers-pas-avec-wpf">Partie 3 : Premiers pas avec WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="31-structure-dun-projet-wpf">3.1 Structure d&rsquo;un projet WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Quand vous créez un projet WPF, Visual Studio génère automatiquement :</p>
+<p><strong>App.xaml</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Application</span> <span class="na">x:Class=</span><span class="s">&#34;MonPremierWPF.App&#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="na">StartupUri=</span><span class="s">&#34;MainWindow.xaml&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Application.Resources&gt;</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Application.Resources&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Application&gt;</span></span></span></code></pre></div>
+<ul>
+<li><code>StartupUri=&quot;MainWindow.xaml&quot;</code> → Quelle fenêtre s&rsquo;ouvre au démarrage</li>
+</ul>
+<p><strong>MainWindow.xaml</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;MonPremierWPF.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;MainWindow&#34;</span> <span class="na">Height=</span><span class="s">&#34;450&#34;</span> <span class="na">Width=</span><span class="s">&#34;800&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<ul>
+<li><code>Title</code> → Titre de la fenêtre</li>
+<li><code>Height</code> et <code>Width</code> → Dimensions en pixels</li>
+<li><code>&lt;Grid&gt;</code> → Conteneur pour placer les contrôles</li>
+</ul>
+<p><strong>MainWindow.xaml.cs</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonPremierWPF</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<ul>
+<li><code>InitializeComponent()</code> → Charge le XAML et construit l&rsquo;interface</li>
+</ul>
+<h3 id="32-le-designer-visuel">3.2 Le Designer visuel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Dans Visual Studio, quand vous ouvrez <code>MainWindow.xaml</code>, vous voyez <strong>deux panneaux</strong> :</p>
+<ol>
+<li><strong>En haut : Le Designer</strong> (aperçu visuel)</li>
+<li><strong>En bas : Le code XAML</strong></li>
+</ol>
+<p>Vous pouvez :</p>
+<ul>
+<li><strong>Glisser-déposer</strong> des contrôles depuis la <strong>Boîte à outils</strong> (View → Toolbox)</li>
+<li><strong>Modifier le XAML</strong> directement</li>
+<li>Les deux sont synchronisés !</li>
+</ul>
+<h3 id="33-votre-premier-bouton">3.3 Votre premier bouton<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Modifiez MainWindow.xaml :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;MonPremierWPF.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Ma première application&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;300&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;400&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Cliquez-moi !&#34;</span> 
+</span></span><span class="line"><span class="cl">                <span class="na">Width=</span><span class="s">&#34;150&#34;</span> 
+</span></span><span class="line"><span class="cl">                <span class="na">Height=</span><span class="s">&#34;50&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">Click=</span><span class="s">&#34;Button_Click&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<p><strong>Dans MainWindow.xaml.cs, ajoutez la méthode :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonPremierWPF</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">Button_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&#34;Bonjour du monde WPF !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Appuyez sur F5</strong> et cliquez sur le bouton. Un message apparaît ! 🎉</p>
+<p><strong>Explications :</strong></p>
+<ol>
+<li><code>Click=&quot;Button_Click&quot;</code> dans le XAML crée un lien vers la méthode C#</li>
+<li>Visual Studio peut créer cette méthode automatiquement : double-cliquez sur le bouton dans le Designer</li>
+<li><code>MessageBox.Show()</code> affiche une boîte de dialogue</li>
+</ol>
+<hr>
+<h2 id="partie-4--xaml--le-langage-de-linterface">Partie 4 : XAML — Le langage de l&rsquo;interface<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="41-quest-ce-que-xaml-">4.1 Qu&rsquo;est-ce que XAML ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>XAML</strong> (prononcez &ldquo;zamel&rdquo;) = <strong>eXtensible Application Markup Language</strong></p>
+<p>C&rsquo;est un langage basé sur <strong>XML</strong> pour décrire des interfaces graphiques.</p>
+<p><strong>Analogie :</strong></p>
+<ul>
+<li>XAML est à WPF ce que HTML est aux sites web</li>
+<li>C# est à WPF ce que JavaScript est aux sites web</li>
+</ul>
+<h3 id="42-syntaxe-de-base-xaml">4.2 Syntaxe de base XAML<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="les-balises-éléments">Les balises (éléments)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="nt">/&gt;</span>  <span class="c">&lt;!-- Balise auto-fermante --&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;Button&gt;</span>    <span class="c">&lt;!-- Balise avec contenu --&gt;</span>
+</span></span><span class="line"><span class="cl">    Texte du bouton
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Button&gt;</span></span></span></code></pre></div>
+<h4 id="les-attributs-propriétés">Les attributs (propriétés)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Mon bouton&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;40&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Background=</span><span class="s">&#34;Blue&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p>Chaque attribut configure une <strong>propriété</strong> de l&rsquo;objet C#.</p>
+<p><strong>Équivalent en C# pur :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Button</span> <span class="n">monBouton</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Button</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">monBouton</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="s">&#34;Mon bouton&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">monBouton</span><span class="p">.</span><span class="n">Width</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">monBouton</span><span class="p">.</span><span class="n">Height</span> <span class="p">=</span> <span class="m">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">monBouton</span><span class="p">.</span><span class="n">Background</span> <span class="p">=</span> <span class="n">Brushes</span><span class="p">.</span><span class="n">Blue</span><span class="p">;</span></span></span></code></pre></div>
+<h3 id="43-les-namespaces-xml">4.3 Les namespaces XML<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>En haut de chaque fichier XAML :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">xmlns=&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;
+</span></span><span class="line"><span class="cl">xmlns:x=&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span></span></code></pre></div>
+<ul>
+<li><strong>Premier namespace (par défaut)</strong> : Contient tous les contrôles WPF (Button, TextBox, Grid, etc.)</li>
+<li><strong>Namespace <code>x:</code></strong> : Contient les éléments spéciaux XAML (x:Name, x:Class, etc.)</li>
+</ul>
+<h3 id="44-lattribut-xname">4.4 L&rsquo;attribut x:Name<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Pour accéder à un contrôle depuis le code C#, donnez-lui un <strong>nom</strong> :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&#34;txtNom&#34;</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p>Ensuite, dans le C# :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">Button_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">nom</span> <span class="p">=</span> <span class="n">txtNom</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>  <span class="c1">// Accès direct !</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">$&#34;Bonjour {nom}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Convention de nommage :</strong></p>
+<ul>
+<li>TextBox → <code>txt</code> prefix (ex: <code>txtNom</code>, <code>txtCourriel</code>)</li>
+<li>Button → <code>btn</code> prefix (ex: <code>btnEnvoyer</code>, <code>btnAnnuler</code>)</li>
+<li>Label → <code>lbl</code> prefix</li>
+<li>ListBox → <code>lst</code> prefix</li>
+</ul>
+<h3 id="45-propriétés-complexes">4.5 Propriétés complexes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Certaines propriétés sont trop complexes pour un simple attribut.</p>
+<p><strong>Syntaxe avec attribut (simple) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Background=</span><span class="s">&#34;Blue&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Syntaxe avec balise (complexe) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button.Background&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;LinearGradientBrush&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;GradientStop</span> <span class="na">Color=</span><span class="s">&#34;LightBlue&#34;</span> <span class="na">Offset=</span><span class="s">&#34;0&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;GradientStop</span> <span class="na">Color=</span><span class="s">&#34;DarkBlue&#34;</span> <span class="na">Offset=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/LinearGradientBrush&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Button.Background&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button.Content&gt;</span>
+</span></span><span class="line"><span class="cl">        Mon bouton avec dégradé
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Button.Content&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Button&gt;</span></span></span></code></pre></div>
+<h3 id="46-les-événements">4.6 Les événements<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les événements relient l&rsquo;interface au code C#.</p>
+<p><strong>Événements courants :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Click=</span><span class="s">&#34;MonBouton_Click&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;TextBox</span> <span class="na">TextChanged=</span><span class="s">&#34;MonTexte_Changed&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;CheckBox</span> <span class="na">Checked=</span><span class="s">&#34;MaCase_Checked&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;ListBox</span> <span class="na">SelectionChanged=</span><span class="s">&#34;MaListe_SelectionChanged&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Dans le C# :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">MonBouton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code exécuté quand on clique</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">MonTexte_Changed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TextChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code exécuté quand le texte change</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="partie-5--les-layouts-mise-en-page">Partie 5 : Les Layouts (mise en page)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les <strong>Layouts</strong> sont des conteneurs qui <strong>organisent</strong> les contrôles à l&rsquo;écran.</p>
+<h3 id="51-grid--le-layout-principal">5.1 Grid — Le layout principal<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le <code>Grid</code> divise l&rsquo;espace en <strong>lignes</strong> et <strong>colonnes</strong>, comme un tableau Excel.</p>
+<h4 id="exemple-de-base">Exemple de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;50&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Placer les contrôles --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Content=</span><span class="s">&#34;Haut gauche&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span> <span class="na">Content=</span><span class="s">&#34;Haut droite&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBox</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.ColumnSpan=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Grid&gt;</span></span></span></code></pre></div>
+<h4 id="types-de-dimensions">Types de dimensions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Valeur</th>
+          <th>Signification</th>
+          <th>Exemple</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>100</code></td>
+          <td>Pixels fixes</td>
+          <td><code>Height=&quot;100&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>Auto</code></td>
+          <td>S&rsquo;adapte au contenu</td>
+          <td><code>Height=&quot;Auto&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>*</code></td>
+          <td>Prend l&rsquo;espace restant</td>
+          <td><code>Height=&quot;*&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>2*</code></td>
+          <td>Prend 2 fois plus d&rsquo;espace</td>
+          <td><code>Height=&quot;2*&quot;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exemple avec proportions :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>    <span class="c">&lt;!-- 1/3 de l&#39;espace --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;2*&#34;</span> <span class="nt">/&gt;</span>   <span class="c">&lt;!-- 2/3 de l&#39;espace --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span></span></span></code></pre></div>
+<p>Si la fenêtre fait 900 pixels de large :</p>
+<ul>
+<li>Colonne 0 : 300 pixels</li>
+<li>Colonne 1 : 600 pixels</li>
+</ul>
+<h4 id="fusionner-des-cellules">Fusionner des cellules<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- Prendre 2 colonnes --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.ColumnSpan=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;Large&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- Prendre 2 rangées --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.RowSpan=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;Haut&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<h3 id="52-stackpanel--empilement">5.2 StackPanel — Empilement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le <code>StackPanel</code> empile les éléments <strong>verticalement</strong> (défaut) ou <strong>horizontalement</strong>.</p>
+<h4 id="vertical-défaut">Vertical (défaut)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 1&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 2&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 3&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/StackPanel&gt;</span></span></span></code></pre></div>
+<p>Les boutons sont empilés du haut vers le bas.</p>
+<h4 id="horizontal">Horizontal<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 1&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 2&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 3&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/StackPanel&gt;</span></span></span></code></pre></div>
+<p>Les boutons sont côte à côte.</p>
+<h4 id="avec-margin-espacement">Avec Margin (espacement)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;StackPanel</span> <span class="na">Margin=</span><span class="s">&#34;20&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Nom :&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBox</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,5,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Courriel :&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBox</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,5,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Envoyer&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/StackPanel&gt;</span></span></span></code></pre></div>
+<p><strong>Margin</strong> : <code>Left, Top, Right, Bottom</code></p>
+<ul>
+<li><code>Margin=&quot;10&quot;</code> → 10 pixels de tous les côtés</li>
+<li><code>Margin=&quot;10,20&quot;</code> → 10 gauche/droite, 20 haut/bas</li>
+<li><code>Margin=&quot;10,20,30,40&quot;</code> → Gauche, Haut, Droite, Bas</li>
+</ul>
+<h3 id="53-wrappanel--empilement-avec-retour-automatique">5.3 WrapPanel — Empilement avec retour automatique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Comme <code>StackPanel</code>, mais retourne à la ligne si pas assez d&rsquo;espace.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;WrapPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;1&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;2&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;3&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;4&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;5&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/WrapPanel&gt;</span></span></span></code></pre></div>
+<p>Si la fenêtre est étroite, les boutons passent à la ligne suivante.</p>
+<h3 id="54-dockpanel--ancrage-sur-les-bords">5.4 DockPanel — Ancrage sur les bords<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;DockPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Menu</span> <span class="na">DockPanel.Dock=</span><span class="s">&#34;Top&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightGray&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;MenuItem</span> <span class="na">Header=</span><span class="s">&#34;Fichier&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;MenuItem</span> <span class="na">Header=</span><span class="s">&#34;Edition&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Menu&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;StatusBar</span> <span class="na">DockPanel.Dock=</span><span class="s">&#34;Bottom&#34;</span> <span class="na">Height=</span><span class="s">&#34;25&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightGray&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Prêt&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/StatusBar&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TreeView</span> <span class="na">DockPanel.Dock=</span><span class="s">&#34;Left&#34;</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;TextBox</span> <span class="nt">/&gt;</span>  <span class="c">&lt;!-- Remplit le centre --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/DockPanel&gt;</span></span></span></code></pre></div>
+<p><strong>Résultat :</strong> Interface classique avec menu en haut, barre de statut en bas, arbre à gauche, et zone centrale.</p>
+<h3 id="55-canvas--positionnement-absolu">5.5 Canvas — Positionnement absolu<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Canvas&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Bouton 1&#34;</span> 
+</span></span><span class="line"><span class="cl">            <span class="na">Canvas.Left=</span><span class="s">&#34;50&#34;</span> 
+</span></span><span class="line"><span class="cl">            <span class="na">Canvas.Top=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">            <span class="na">Width=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">            <span class="na">Height=</span><span class="s">&#34;40&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Ellipse</span> <span class="na">Fill=</span><span class="s">&#34;Red&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Canvas.Left=</span><span class="s">&#34;200&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Canvas.Top=</span><span class="s">&#34;150&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Width=</span><span class="s">&#34;80&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Height=</span><span class="s">&#34;80&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Canvas&gt;</span></span></span></code></pre></div>
+<p><strong>Rarement utilisé</strong> car pas responsive.</p>
+<h3 id="56-exemple--interface-complète">5.6 Exemple : Interface complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Application de calculatrice simple :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;Calculatrice.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Calculatrice&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;400&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;350&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid</span> <span class="na">Margin=</span><span class="s">&#34;10&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;80&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Affichage --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Border</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">                <span class="na">BorderBrush=</span><span class="s">&#34;Black&#34;</span> 
+</span></span><span class="line"><span class="cl">                <span class="na">BorderThickness=</span><span class="s">&#34;2&#34;</span> 
+</span></span><span class="line"><span class="cl">                <span class="na">Background=</span><span class="s">&#34;White&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">Padding=</span><span class="s">&#34;10&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBlock</span> <span class="na">x:Name=</span><span class="s">&#34;txtAffichage&#34;</span> 
+</span></span><span class="line"><span class="cl">                       <span class="na">Text=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">                       <span class="na">FontSize=</span><span class="s">&#34;36&#34;</span> 
+</span></span><span class="line"><span class="cl">                       <span class="na">HorizontalAlignment=</span><span class="s">&#34;Right&#34;</span>
+</span></span><span class="line"><span class="cl">                       <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Border&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Boutons --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,10,0,0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Ligne 0 --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Content=</span><span class="s">&#34;7&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span> <span class="na">Content=</span><span class="s">&#34;8&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;9&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;3&#34;</span> <span class="na">Content=</span><span class="s">&#34;÷&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightBlue&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Ligne 1 --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Content=</span><span class="s">&#34;4&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span> <span class="na">Content=</span><span class="s">&#34;5&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;6&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;3&#34;</span> <span class="na">Content=</span><span class="s">&#34;×&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightBlue&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Ligne 2 --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;2&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Content=</span><span class="s">&#34;1&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;2&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span> <span class="na">Content=</span><span class="s">&#34;2&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;2&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;3&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;2&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;3&#34;</span> <span class="na">Content=</span><span class="s">&#34;-&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightBlue&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Ligne 3 --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;3&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> <span class="na">Content=</span><span class="s">&#34;0&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Grid.ColumnSpan=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;3&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;2&#34;</span> <span class="na">Content=</span><span class="s">&#34;=&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Background=</span><span class="s">&#34;Orange&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Grid.Row=</span><span class="s">&#34;3&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;3&#34;</span> <span class="na">Content=</span><span class="s">&#34;+&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> <span class="na">Margin=</span><span class="s">&#34;2&#34;</span> <span class="na">Background=</span><span class="s">&#34;LightBlue&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<hr>
+<h2 id="partie-6--les-contrôles-de-base">Partie 6 : Les contrôles de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="61-textbox--saisie-de-texte">6.1 TextBox — Saisie de texte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&#34;txtNom&#34;</span> 
+</span></span><span class="line"><span class="cl">         <span class="na">Width=</span><span class="s">&#34;200&#34;</span> 
+</span></span><span class="line"><span class="cl">         <span class="na">Height=</span><span class="s">&#34;30&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">Text=</span><span class="s">&#34;Valeur par défaut&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Propriétés importantes :</strong></p>
+<ul>
+<li><code>Text</code> : Le contenu</li>
+<li><code>MaxLength</code> : Limite de caractères</li>
+<li><code>IsReadOnly</code> : Lecture seule</li>
+<li><code>AcceptsReturn</code> : Multi-lignes</li>
+</ul>
+<p><strong>Accès en C# :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">texte</span> <span class="p">=</span> <span class="n">txtNom</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">txtNom</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;Nouveau texte&#34;</span><span class="p">;</span></span></span></code></pre></div>
+<h3 id="62-textblock--texte-non-modifiable">6.2 TextBlock — Texte non modifiable<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Ceci est un texte&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">FontSize=</span><span class="s">&#34;16&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">Foreground=</span><span class="s">&#34;DarkBlue&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Différence avec TextBox :</strong></p>
+<ul>
+<li><code>TextBlock</code> : Affichage seulement (comme un label HTML)</li>
+<li><code>TextBox</code> : Saisie utilisateur (comme un input HTML)</li>
+</ul>
+<h3 id="63-button--bouton">6.3 Button — Bouton<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Cliquer ici&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;120&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;40&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Click=</span><span class="s">&#34;MonBouton_Click&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Propriétés :</strong></p>
+<ul>
+<li><code>Content</code> : Texte ou contenu</li>
+<li><code>IsEnabled</code> : Actif/désactivé</li>
+<li><code>Background</code> : Couleur de fond</li>
+</ul>
+<h3 id="64-checkbox--case-à-cocher">6.4 CheckBox — Case à cocher<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;CheckBox</span> <span class="na">Content=</span><span class="s">&#34;J&#39;accepte les conditions&#34;</span> 
+</span></span><span class="line"><span class="cl">          <span class="na">IsChecked=</span><span class="s">&#34;True&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">Checked=</span><span class="s">&#34;Case_Checked&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Accès en C# :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">estCoche</span> <span class="p">=</span> <span class="n">maCaseACocher</span><span class="p">.</span><span class="n">IsChecked</span> <span class="p">==</span> <span class="kc">true</span><span class="p">;</span></span></span></code></pre></div>
+<h3 id="65-radiobutton--bouton-radio">6.5 RadioButton — Bouton radio<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;RadioButton</span> <span class="na">Content=</span><span class="s">&#34;Option 1&#34;</span> <span class="na">GroupName=</span><span class="s">&#34;Options&#34;</span> <span class="na">IsChecked=</span><span class="s">&#34;True&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;RadioButton</span> <span class="na">Content=</span><span class="s">&#34;Option 2&#34;</span> <span class="na">GroupName=</span><span class="s">&#34;Options&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;RadioButton</span> <span class="na">Content=</span><span class="s">&#34;Option 3&#34;</span> <span class="na">GroupName=</span><span class="s">&#34;Options&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/StackPanel&gt;</span></span></span></code></pre></div>
+<p><strong>GroupName</strong> : Regroupe les RadioButtons (un seul sélectionnable par groupe)</p>
+<h3 id="66-combobox--liste-déroulante">6.6 ComboBox — Liste déroulante<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;ComboBox</span> <span class="na">x:Name=</span><span class="s">&#34;cbVilles&#34;</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Montréal&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Québec&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Laval&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ComboBox&gt;</span></span></span></code></pre></div>
+<p><strong>Accès en C# :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ComboBoxItem</span> <span class="n">item</span> <span class="p">=</span> <span class="p">(</span><span class="n">ComboBoxItem</span><span class="p">)</span><span class="n">cbVilles</span><span class="p">.</span><span class="n">SelectedItem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">ville</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span></span></span></code></pre></div>
+<h3 id="67-listbox--liste">6.7 ListBox — Liste<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;ListBox</span> <span class="na">x:Name=</span><span class="s">&#34;lstNoms&#34;</span> <span class="na">Height=</span><span class="s">&#34;200&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ListBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Alice&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ListBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Bob&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ListBoxItem</span> <span class="na">Content=</span><span class="s">&#34;Charlie&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ListBox&gt;</span></span></span></code></pre></div>
+<p><strong>Ajouter des éléments en C# :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">lstNoms</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;David&#34;</span><span class="p">);</span></span></span></code></pre></div>
+<h3 id="68-image--afficher-une-image">6.8 Image — Afficher une image<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">&#34;logo.png&#34;</span> 
+</span></span><span class="line"><span class="cl">       <span class="na">Width=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">       <span class="na">Height=</span><span class="s">&#34;100&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Note :</strong> L&rsquo;image doit être dans le dossier du projet et configurée en <strong>&ldquo;Copy to Output Directory&rdquo;</strong>.</p>
+<h3 id="69-progressbar--barre-de-progression">6.9 ProgressBar — Barre de progression<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;ProgressBar</span> <span class="na">x:Name=</span><span class="s">&#34;barreProgression&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Height=</span><span class="s">&#34;20&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Minimum=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Maximum=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">Value=</span><span class="s">&#34;50&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<h3 id="610-slider--curseur">6.10 Slider — Curseur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Slider</span> <span class="na">x:Name=</span><span class="s">&#34;sliderVolume&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Minimum=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Maximum=</span><span class="s">&#34;100&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Value=</span><span class="s">&#34;50&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">TickFrequency=</span><span class="s">&#34;10&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">IsSnapToTickEnabled=</span><span class="s">&#34;True&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<hr>
+<h2 id="partie-7--data-binding-liaison-de-données">Partie 7 : Data Binding (Liaison de données)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Le <strong>Data Binding</strong> est la fonctionnalité qui rend WPF <strong>vraiment puissant</strong>. Il synchronise automatiquement l&rsquo;interface avec les données.</p>
+<h3 id="71-pourquoi-le-data-binding-">7.1 Pourquoi le Data Binding ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Sans Data Binding (approche manuelle) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="kt">string</span> <span class="n">nom</span> <span class="p">=</span> <span class="s">&#34;Alice&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">ChangerNom</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nom</span> <span class="p">=</span> <span class="s">&#34;Bob&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">txtAffichage</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">nom</span><span class="p">;</span>  <span class="c1">// Mise à jour manuelle !</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Problème :</strong> À chaque changement, il faut <strong>manuellement</strong> mettre à jour l&rsquo;interface.</p>
+<p><strong>Avec Data Binding :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom}&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p>Maintenant, quand <code>Nom</code> change, le TextBox se met à jour <strong>automatiquement</strong> !</p>
+<h3 id="72-le-datacontext">7.2 Le DataContext<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le <strong>DataContext</strong> est l&rsquo;objet source auquel les contrôles se lient.</p>
+<p><strong>Exemple simple :</strong></p>
+<p><strong>Classe Personne.cs :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Personne</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>MainWindow.xaml :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;BindingDemo.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Data Binding Demo&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;200&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;350&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;StackPanel</span> <span class="na">Margin=</span><span class="s">&#34;20&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Nom :&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom}&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,5,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Âge :&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Age}&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,5,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom}&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;16&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<p><strong>MainWindow.xaml.cs :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">BindingDemo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Créer une personne</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Personne</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Personne</span> 
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">Age</span> <span class="p">=</span> <span class="m">25</span> 
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Définir le DataContext</span>
+</span></span><span class="line"><span class="cl">            <span class="k">this</span><span class="p">.</span><span class="n">DataContext</span> <span class="p">=</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Résultat :</strong> Les TextBox affichent &ldquo;Alice&rdquo; et &ldquo;25&rdquo;.</p>
+<h3 id="73-les-modes-de-binding">7.3 Les modes de Binding<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Mode</th>
+          <th>Direction</th>
+          <th>Usage</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>OneWay</code></td>
+          <td>Source → UI</td>
+          <td>Affichage (lecture seule)</td>
+      </tr>
+      <tr>
+          <td><code>TwoWay</code></td>
+          <td>Source ↔ UI</td>
+          <td>Édition (bidirectionnel)</td>
+      </tr>
+      <tr>
+          <td><code>OneTime</code></td>
+          <td>Source → UI (une seule fois)</td>
+          <td>Valeurs constantes</td>
+      </tr>
+      <tr>
+          <td><code>OneWayToSource</code></td>
+          <td>UI → Source</td>
+          <td>Rare</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exemples :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- TwoWay : modifications dans les deux sens --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom, Mode=TwoWay}&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- OneWay : lecture seule --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom, Mode=OneWay}&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Par défaut :</strong></p>
+<ul>
+<li>TextBox : <code>TwoWay</code></li>
+<li>TextBlock : <code>OneWay</code></li>
+</ul>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/pratique_exam1/index.html"><a class="padding" href="/420-413/pratique_exam1/index.html">Pratique - Exam 1</a></li>
+            <li class="active " data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265607" defer></script>
+    <script src="/420-413/js/theme.js?1771265607" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

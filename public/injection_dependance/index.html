@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content=": Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
+Vous développez une application qui doit envoyer des notifications :
+Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content=": Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
+Vous développez une application qui doit envoyer des notifications :
+Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :">
+    <meta property="og:url" content="http://localhost:1313/420-413/injection_dependance/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content=": Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
+Vous développez une application qui doit envoyer des notifications :
+Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content=": Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
+Vous développez une application qui doit envoyer des notifications :
+Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :">
+    <meta itemprop="wordCount" content="1025">
+    <title>Injection de dépendance :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265441" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265441" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265441" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265441" defer></script>
+    <script src="/420-413/js/search.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265441";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265441" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/injection_dependance\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/injection_dependance/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#-injection-de-dépendances-contexte-général">: Injection de dépendances (Contexte général)</a>
+      <ul>
+        <li><a href="#le-problème-des-dépendances">Le problème des dépendances</a></li>
+        <li><a href="#le-principe-dinversion-de-dépendance-dip">Le principe d&rsquo;inversion de dépendance (DIP)</a></li>
+        <li><a href="#implémentation-complète">Implémentation complète</a></li>
+        <li><a href="#comparaison-des-types-dinjection">Comparaison des types d&rsquo;injection</a></li>
+        <li><a href="#conteneur-dinjection-de-dépendances-ioc-container">Conteneur d&rsquo;injection de dépendances (IoC Container)</a></li>
+        <li><a href="#avantages-de-linjection-de-dépendances">Avantages de l&rsquo;injection de dépendances</a></li>
+        <li><a href="#le-lien-avec-mvvm-aperçu">Le lien avec MVVM (aperçu)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Injection de dépendance</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_commande/index.html" title="Patron commande (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/mvvm/index.html" title="MVVM (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="injection-de-dépendance">Injection de dépendance</h1>
+
+<h2 id="-injection-de-dépendances-contexte-général">: Injection de dépendances (Contexte général)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="le-problème-des-dépendances">Le problème des dépendances<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Mise en situation : Un système de notification</strong></p>
+<p>Vous développez une application qui doit envoyer des notifications :</p>
+<ul>
+<li>Par email</li>
+<li>Par SMS</li>
+<li>Par notification push</li>
+</ul>
+<p><strong>❌ Approche naïve (dépendances câblées en dur) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">EmailService</span> <span class="n">emailService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SMSService</span> <span class="n">smsService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ServiceUtilisateur</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Créer les dépendances directement</span>
+</span></span><span class="line"><span class="cl">        <span class="n">emailService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">smsService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SMSService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">email</span><span class="p">,</span> <span class="kt">string</span> <span class="n">telephone</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Logique d&#39;enregistrement</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Envoyer notifications</span>
+</span></span><span class="line"><span class="cl">        <span class="n">emailService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">smsService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">telephone</span><span class="p">,</span> <span class="s">&#34;Compte créé&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Problèmes de cette approche :</strong></p>
+<ol>
+<li><strong>Couplage fort</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ServiceUtilisateur DÉPEND DIRECTEMENT de EmailService et SMSService</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Si EmailService change, ServiceUtilisateur doit changer aussi</span></span></span></code></pre></div>
+<ol start="2">
+<li><strong>Difficile à tester</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Pour tester ServiceUtilisateur, je DOIS avoir un serveur email fonctionnel</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Les emails seront vraiment envoyés pendant les tests !</span></span></span></code></pre></div>
+<ol start="3">
+<li><strong>Pas flexible</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Et si je veux utiliser un autre service email ?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Je dois modifier ServiceUtilisateur</span></span></span></code></pre></div>
+<ol start="4">
+<li><strong>Pas réutilisable</strong></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ServiceUtilisateur est lié à des implémentations spécifiques</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Impossible de le réutiliser avec d&#39;autres services</span></span></span></code></pre></div>
+<h3 id="le-principe-dinversion-de-dépendance-dip">Le principe d&rsquo;inversion de dépendance (DIP)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Principe fondamental :</strong> Dépendre d&rsquo;abstractions, pas de concrétions.</p>
+<p><strong>Analogie :</strong> Les prises électriques</p>
+<ul>
+<li>Tous vos appareils utilisent une <strong>prise standard</strong> (abstraction)</li>
+<li>Vous ne câblez pas directement les appareils à l&rsquo;alimentation électrique</li>
+<li>Vous pouvez brancher n&rsquo;importe quel appareil (machine à café, ordinateur, lampe)</li>
+<li>L&rsquo;appareil ne sait pas <strong>d&rsquo;où vient</strong> l&rsquo;électricité (centrale nucléaire, solaire, etc.)</li>
+</ul>
+<p><strong>Diagramme :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>❌ AVANT (dépendance directe)
+┌──────────────────┐
+│ ServiceUtilisateur│
+└──────────────────┘
+        │
+        │ dépend de
+        ↓
+┌──────────────────┐
+│  EmailService    │  ← Classe concrète
+└──────────────────┘
+
+✅ APRÈS (inversion de dépendance)
+┌──────────────────┐
+│ ServiceUtilisateur│
+└──────────────────┘
+        │
+        │ dépend de
+        ↓
+┌──────────────────┐
+│ INotification    │  ← Interface (abstraction)
+└──────────────────┘
+        △
+        │ implémente
+    ┌───┴───┬────────────┐
+┌────────┐ │         ┌────────┐
+│Email   │ │         │SMS     │
+│Service │ │         │Service │
+└────────┘ │         └────────┘
+        ┌────────┐
+        │Push    │
+        │Service │
+        └────────┘</code></pre></div>
+<h3 id="implémentation-complète">Implémentation complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Étape 1 : Définir l&rsquo;abstraction (interface)</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">INotificationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Envoyer</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 2 : Créer les implémentations concrètes</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Service Email</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">EmailService</span> <span class="p">:</span> <span class="n">INotificationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Envoyer</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📧 Email envoyé à {destinataire}: {message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code réel pour envoyer un email</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Service SMS</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SMSService</span> <span class="p">:</span> <span class="n">INotificationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Envoyer</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📱 SMS envoyé à {destinataire}: {message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code réel pour envoyer un SMS</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Service Push</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">PushNotificationService</span> <span class="p">:</span> <span class="n">INotificationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Envoyer</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;🔔 Notification push à {destinataire}: {message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code réel pour envoyer une notification push</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Faux service pour les tests</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">FakeNotificationService</span> <span class="p">:</span> <span class="n">INotificationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">MessagesEnvoyes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Envoyer</span><span class="p">(</span><span class="kt">string</span> <span class="n">destinataire</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MessagesEnvoyes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{destinataire}: {message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;🧪 [TEST] Message enregistré (non envoyé)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 3 : Injection de dépendances</strong></p>
+<p>Il existe <strong>3 types d&rsquo;injection</strong> :</p>
+<p><strong>Type 1 : Injection par constructeur (recommandée)</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// La dépendance est INJECTÉE via le constructeur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✓ Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Utilisation :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// En production : Email</span>
+</span></span><span class="line"><span class="cl"><span class="n">INotificationService</span> <span class="n">emailService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">emailService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// En test : Fake</span>
+</span></span><span class="line"><span class="cl"><span class="n">INotificationService</span> <span class="n">fakeService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FakeNotificationService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">serviceTest</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">fakeService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">serviceTest</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;bob@test.com&#34;</span><span class="p">);</span></span></span></code></pre></div>
+<p><strong>Type 2 : Injection par propriété</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Propriété publique</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">INotificationService</span> <span class="n">NotificationService</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contact</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✓ Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">NotificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Utilisation :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">NotificationService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">();</span>  <span class="c1">// Injection</span>
+</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">);</span></span></span></code></pre></div>
+<p><strong>Type 3 : Injection par méthode</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contact</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                      <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✓ Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Utilisation :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">());</span></span></span></code></pre></div>
+<h3 id="comparaison-des-types-dinjection">Comparaison des types d&rsquo;injection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Avantages</th>
+          <th>Inconvénients</th>
+          <th>Quand utiliser</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Constructeur</strong></td>
+          <td>- Dépendances obligatoires<br>- Immutabilité (<code>readonly</code>)<br>- Dépendances claires</td>
+          <td>- Constructeur peut devenir long</td>
+          <td><strong>Par défaut</strong> (99% des cas)</td>
+      </tr>
+      <tr>
+          <td><strong>Propriété</strong></td>
+          <td>- Dépendances optionnelles<br>- Flexible</td>
+          <td>- Risque d&rsquo;oubli<br>- Mutable</td>
+          <td>Dépendances optionnelles</td>
+      </tr>
+      <tr>
+          <td><strong>Méthode</strong></td>
+          <td>- Dépendance ponctuelle</td>
+          <td>- Répétitif<br>- Pas de contrôle</td>
+          <td>Dépendance change souvent</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="conteneur-dinjection-de-dépendances-ioc-container">Conteneur d&rsquo;injection de dépendances (IoC Container)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Problème :</strong> Créer toutes les dépendances manuellement devient fastidieux.</p>
+<p><strong>Solution :</strong> Un conteneur IoC (Inversion of Control) gère la création des objets.</p>
+<p><strong>Exemple avec Microsoft.Extensions.DependencyInjection :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. Créer le conteneur</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">services</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. Enregistrer les dépendances</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">ServiceUtilisateur</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. Construire le provider</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">serviceProvider</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 4. Résoudre automatiquement les dépendances</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="n">serviceProvider</span><span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">ServiceUtilisateur</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ↑ Le conteneur crée automatiquement EmailService et l&#39;injecte</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 5. Utiliser</span>
+</span></span><span class="line"><span class="cl">        <span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Durées de vie :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Transient : Nouvelle instance à chaque demande</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Scoped : Une instance par &#34;scope&#34; (requête web par exemple)</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Singleton : UNE SEULE instance pour toute l&#39;application</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span></span></span></code></pre></div>
+<h3 id="avantages-de-linjection-de-dépendances">Avantages de l&rsquo;injection de dépendances<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>1. Testabilité</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[TestMethod]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Test_EnregistrerUtilisateur</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Utiliser un faux service</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">fakeService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FakeNotificationService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">fakeService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;bob@test.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Vérifier qu&#39;un message a été &#34;envoyé&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">fakeService</span><span class="p">.</span><span class="n">MessagesEnvoyes</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">fakeService</span><span class="p">.</span><span class="n">MessagesEnvoyes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;Bienvenue&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>2. Flexibilité</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Basculer facilement entre implémentations</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// En production</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// En développement</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">FakeNotificationService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Pas besoin de changer ServiceUtilisateur !</span></span></span></code></pre></div>
+<p><strong>3. Découplage</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ServiceUtilisateur ne sait PAS quelle implémentation il utilise</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Il dépend seulement de l&#39;interface INotificationService</span></span></span></code></pre></div>
+<p><strong>4. Maintenabilité</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Ajouter une nouvelle implémentation ne nécessite PAS de modifier les classes existantes</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SlackService</span> <span class="p">:</span> <span class="n">INotificationService</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Juste changer l&#39;enregistrement</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">SlackService</span><span class="p">&gt;();</span></span></span></code></pre></div>
+<h3 id="le-lien-avec-mvvm-aperçu">Le lien avec MVVM (aperçu)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>En MVVM, on injecte souvent des services dans les ViewModels :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ProduitViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Injection par constructeur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ProduitViewModel</span><span class="p">(</span><span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                           <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterProduit</span><span class="p">(</span><span class="n">Produit</span> <span class="n">produit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">produit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Nouveau produit ajouté&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Avantages en MVVM :</strong></p>
+<ul>
+<li>✅ ViewModel testable sans interface graphique</li>
+<li>✅ Réutilisable avec différents services</li>
+<li>✅ Découplé de l&rsquo;implémentation des services</li>
+</ul>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="active " data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265441" defer></script>
+    <script src="/420-413/js/theme.js?1771265441" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

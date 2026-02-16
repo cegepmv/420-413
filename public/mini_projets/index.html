@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire
+Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mini-projets :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire
+Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :">
+    <meta property="og:url" content="http://localhost:1313/420-413/mini_projets/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Mini-projets :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire
+Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Mini-projets :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire
+Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :">
+    <meta itemprop="wordCount" content="2931">
+    <title>Mini-projets :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265441" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265441" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265441" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265441" defer></script>
+    <script src="/420-413/js/search.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265441";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265441" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/mini_projets\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/mini_projets/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#mini-projet-1--calculatrice-avec-historique">Mini-projet 1 : Calculatrice avec historique</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques">Objectifs pédagogiques</a></li>
+        <li><a href="#spécifications">Spécifications</a></li>
+        <li><a href="#structure-du-projet">Structure du projet</a></li>
+        <li><a href="#critères-de-réussite">Critères de réussite</a></li>
+      </ul>
+    </li>
+    <li><a href="#mini-projet-2--gestionnaire-de-tâches-avec-priorités">Mini-projet 2 : Gestionnaire de tâches avec priorités</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques-1">Objectifs pédagogiques</a></li>
+        <li><a href="#spécifications-1">Spécifications</a></li>
+        <li><a href="#structure-du-projet-1">Structure du projet</a></li>
+        <li><a href="#critères-de-réussite-1">Critères de réussite</a></li>
+      </ul>
+    </li>
+    <li><a href="#mini-projet-3--application-de-chat-avec-patron-observateur">Mini-projet 3 : Application de chat avec patron Observateur</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques-2">Objectifs pédagogiques</a></li>
+        <li><a href="#spécifications-2">Spécifications</a></li>
+        <li><a href="#structure-du-projet-2">Structure du projet</a></li>
+        <li><a href="#xaml-suggéré">XAML suggéré</a></li>
+        <li><a href="#critères-de-réussite-2">Critères de réussite</a></li>
+      </ul>
+    </li>
+    <li><a href="#mini-projet-4--gestion-dinventaire-avec-commandes-et-injection">Mini-projet 4 : Gestion d&rsquo;inventaire avec commandes et injection</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques-3">Objectifs pédagogiques</a></li>
+        <li><a href="#spécifications-3">Spécifications</a></li>
+        <li><a href="#exemple-de-structure-partielle">Exemple de structure partielle</a></li>
+        <li><a href="#critères-de-réussite-3">Critères de réussite</a></li>
+      </ul>
+    </li>
+    <li><a href="#mini-projet-5--application-de-blog-avec-architecture-complète">Mini-projet 5 : Application de blog avec architecture complète</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques-4">Objectifs pédagogiques</a></li>
+        <li><a href="#spécifications-4">Spécifications</a></li>
+        <li><a href="#je-vous-fournis-un-squelette-de-départ">Je vous fournis un squelette de départ&hellip;</a></li>
+        <li><a href="#xaml-avec-navigation">XAML avec navigation</a></li>
+        <li><a href="#configuration-de-linjection-de-dépendances">Configuration de l&rsquo;injection de dépendances</a></li>
+        <li><a href="#critères-de-réussite-4">Critères de réussite</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion-des-mini-projets">Conclusion des mini-projets</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Mini-projets</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/mvvm/index.html" title="MVVM (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/rubrique/index.html" title="Rubrique  - Semaine 2 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="mini-projets">Mini-projets</h1>
+
+<h1 id="mini-projets-progressifs">Mini-projets progressifs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="mini-projet-1--calculatrice-avec-historique">Mini-projet 1 : Calculatrice avec historique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐ Intermédiaire</strong></p>
+<h3 id="objectifs-pédagogiques">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Patron Commande (annuler/refaire)</li>
+<li>INotifyPropertyChanged</li>
+<li>Data Binding de base</li>
+</ul>
+<h3 id="spécifications">Spécifications<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Fonctionnalités :</strong></p>
+<ol>
+<li>Opérations : Addition, Soustraction, Multiplication, Division</li>
+<li>Historique des calculs</li>
+<li>Annuler/Refaire les opérations</li>
+<li>Effacer l&rsquo;historique</li>
+</ol>
+<p><strong>Interface :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>┌──────────────────────────────┐
+│    CALCULATRICE              │
+├──────────────────────────────┤
+│  Résultat: [0]               │
+│                              │
+│  [7] [8] [9] [÷]             │
+│  [4] [5] [6] [×]             │
+│  [1] [2] [3] [-]             │
+│  [0] [.] [=] [+]             │
+│                              │
+│  [↩ Annuler] [↪ Refaire] [C] │
+├──────────────────────────────┤
+│  HISTORIQUE                  │
+│  - 5 + 3 = 8                 │
+│  - 8 × 2 = 16                │
+│  - 16 ÷ 4 = 4                │
+└──────────────────────────────┘</code></pre></div>
+<h3 id="structure-du-projet">Structure du projet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Operation.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Operation</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Operande1</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Operande2</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Operateur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Resultat</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">override</span> <span class="kt">string</span> <span class="n">ToString</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">$&#34;{Operande1} {Operateur} {Operande2} = {Resultat}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Commands/ICommande.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Executer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Annuler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Commands/CommandeCalculer.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeCalculer</span> <span class="p">:</span> <span class="n">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">CalculatriceViewModel</span> <span class="n">viewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Operation</span> <span class="n">operation</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">resultatPrecedent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommandeCalculer</span><span class="p">(</span><span class="n">CalculatriceViewModel</span> <span class="n">vm</span><span class="p">,</span> <span class="n">Operation</span> <span class="n">op</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span> <span class="p">=</span> <span class="n">vm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">operation</span> <span class="p">=</span> <span class="n">op</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">resultatPrecedent</span> <span class="p">=</span> <span class="n">vm</span><span class="p">.</span><span class="n">Resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculer selon l&#39;opérateur</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">operation</span><span class="p">.</span><span class="n">Operateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="s">&#34;+&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">operation</span><span class="p">.</span><span class="n">Resultat</span> <span class="p">=</span> <span class="n">operation</span><span class="p">.</span><span class="n">Operande1</span> <span class="p">+</span> <span class="n">operation</span><span class="p">.</span><span class="n">Operande2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ... autres opérations</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span><span class="p">.</span><span class="n">Resultat</span> <span class="p">=</span> <span class="n">operation</span><span class="p">.</span><span class="n">Resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span><span class="p">.</span><span class="n">Historique</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">operation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span><span class="p">.</span><span class="n">Resultat</span> <span class="p">=</span> <span class="n">resultatPrecedent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span><span class="p">.</span><span class="n">Historique</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">operation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModels/CalculatriceViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CalculatriceViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Resultat</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">resultat</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Operation</span><span class="p">&gt;</span> <span class="n">Historique</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span> <span class="n">historiqueCommandes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span> <span class="n">commandesAnnulees</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">CalculerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AnnulerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">RefaireCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... implémentation</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="critères-de-réussite">Critères de réussite<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Les 4 opérations fonctionnent correctement</li>
+<li><input disabled="" type="checkbox"> L&rsquo;historique se met à jour automatiquement</li>
+<li><input disabled="" type="checkbox"> Annuler restaure le résultat précédent</li>
+<li><input disabled="" type="checkbox"> Refaire réapplique l&rsquo;opération annulée</li>
+<li><input disabled="" type="checkbox"> Gestion des erreurs (division par zéro)</li>
+</ul>
+<hr>
+<h2 id="mini-projet-2--gestionnaire-de-tâches-avec-priorités">Mini-projet 2 : Gestionnaire de tâches avec priorités<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐⭐ Intermédiaire-Avancé</strong></p>
+<h3 id="objectifs-pédagogiques-1">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>MVVM complet</li>
+<li>ObservableCollection</li>
+<li>Filtrage et tri</li>
+<li>Sauvegarde/chargement (JSON)</li>
+</ul>
+<h3 id="spécifications-1">Spécifications<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Fonctionnalités :</strong></p>
+<ol>
+<li>Ajouter/modifier/supprimer des tâches</li>
+<li>Marquer comme terminé</li>
+<li>Assigner des priorités (Haute, Moyenne, Basse)</li>
+<li>Filtrer par statut et priorité</li>
+<li>Trier par date, priorité, ou titre</li>
+<li>Recherche par mots-clés</li>
+<li>Statistiques (nombre de tâches par statut/priorité)</li>
+<li>Sauvegarder/charger depuis un fichier</li>
+</ol>
+<p><strong>Interface :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>┌────────────────────────────────────────────────────┐
+│  GESTIONNAIRE DE TÂCHES                            │
+├────────────────────────────────────────────────────┤
+│  [🔍 Rechercher...] [Filtre: Tous ▼] [Tri: Date ▼]│
+├────────────────────────────────────────────────────┤
+│  ☐ Terminer le rapport    [🔴 Haute]  2024-02-20  │
+│  ☑ Répondre aux emails   [🟡 Moyenne] 2024-02-19  │
+│  ☐ Réviser pour l&#39;examen  [🔴 Haute]  2024-02-25  │
+├────────────────────────────────────────────────────┤
+│  Nouvelle tâche:                                   │
+│  Titre: [____________________]                     │
+│  Priorité: [Moyenne ▼]                            │
+│  Date limite: [📅 2024-02-20]                     │
+│  [➕ Ajouter]  [✏️ Modifier]  [🗑️ Supprimer]      │
+├────────────────────────────────────────────────────┤
+│  📊 STATISTIQUES                                   │
+│  Total: 3  | En cours: 2  | Terminées: 1          │
+│  🔴 Haute: 2  🟡 Moyenne: 1  🟢 Basse: 0          │
+└────────────────────────────────────────────────────┘</code></pre></div>
+<h3 id="structure-du-projet-1">Structure du projet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Tache.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">titre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">titre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">titre</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">estTerminee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstTerminee</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">estTerminee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">estTerminee</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Priorite</span> <span class="n">priorite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Priorite</span> <span class="n">Priorite</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">priorite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">priorite</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">DateTime</span> <span class="n">dateLimite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateLimite</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">dateLimite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">dateLimite</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Models/Priorite.cs (enum)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">Priorite</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Basse</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Moyenne</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Haute</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/ITacheRepository.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ITacheRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ChargerTaches</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">SauvegarderTaches</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">taches</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/TacheRepository.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">cheminFichier</span> <span class="p">=</span> <span class="s">&#34;taches.json&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ChargerTaches</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">cheminFichier</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="n">cheminFichier</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;&gt;(</span><span class="n">json</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SauvegarderTaches</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">taches</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">taches</span><span class="p">,</span> <span class="k">new</span> <span class="n">JsonSerializerOptions</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">WriteIndented</span> <span class="p">=</span> <span class="kc">true</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">cheminFichier</span><span class="p">,</span> <span class="n">json</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModels/TachesViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">toutesLesTaches</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">TachesAffichees</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Propriétés de filtrage</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">rechercheTexte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">RechercheTexte</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">rechercheTexte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">rechercheTexte</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AppliquerFiltres</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">filtreStatut</span> <span class="p">=</span> <span class="s">&#34;Tous&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">FiltreStatut</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">filtreStatut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">filtreStatut</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AppliquerFiltres</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Statistiques</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreTotal</span> <span class="p">=&gt;</span> <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreEnCours</span> <span class="p">=&gt;</span> <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreTerminees</span> <span class="p">=&gt;</span> <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreHaute</span> <span class="p">=&gt;</span> <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Priorite</span> <span class="p">==</span> <span class="n">Priorite</span><span class="p">.</span><span class="n">Haute</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Commandes</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">ModifierCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">SupprimerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">SauvegarderCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructeur avec injection de dépendances</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">TachesAffichees</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">toutesLesTaches</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// S&#39;abonner aux changements pour mettre à jour les stats</span>
+</span></span><span class="line"><span class="cl">        <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">CollectionChanged</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">MettreAJourStatistiques</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Initialiser les commandes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">AjouterTache</span><span class="p">,</span> <span class="n">PeutAjouter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SupprimerCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">SupprimerTache</span><span class="p">,</span> <span class="n">PeutSupprimer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SauvegarderCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">Sauvegarder</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Charger les tâches</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">ChargerTaches</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">taches</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="n">ChargerTaches</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">tache</span> <span class="k">in</span> <span class="n">taches</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AppliquerFiltres</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">AppliquerFiltres</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TachesAffichees</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">resultats</span> <span class="p">=</span> <span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Filtre de recherche</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">RechercheTexte</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">resultats</span> <span class="p">=</span> <span class="n">resultats</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">t</span><span class="p">.</span><span class="n">Titre</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">RechercheTexte</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Filtre de statut</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">FiltreStatut</span> <span class="p">==</span> <span class="s">&#34;En cours&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">resultats</span> <span class="p">=</span> <span class="n">resultats</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">FiltreStatut</span> <span class="p">==</span> <span class="s">&#34;Terminées&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">resultats</span> <span class="p">=</span> <span class="n">resultats</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">tache</span> <span class="k">in</span> <span class="n">resultats</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">TachesAffichees</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">MettreAJourStatistiques</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">NombreTotal</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">NombreEnCours</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">NombreTerminees</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">NombreHaute</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">Sauvegarder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">repository</span><span class="p">.</span><span class="n">SauvegarderTaches</span><span class="p">(</span><span class="n">toutesLesTaches</span><span class="p">.</span><span class="n">ToList</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="critères-de-réussite-1">Critères de réussite<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> CRUD complet (Create, Read, Update, Delete)</li>
+<li><input disabled="" type="checkbox"> Filtres et recherche fonctionnels</li>
+<li><input disabled="" type="checkbox"> Statistiques mises à jour automatiquement</li>
+<li><input disabled="" type="checkbox"> Sauvegarde/chargement persistant</li>
+<li><input disabled="" type="checkbox"> Interface responsive</li>
+<li><input disabled="" type="checkbox"> Validation des données</li>
+</ul>
+<hr>
+<h2 id="mini-projet-3--application-de-chat-avec-patron-observateur">Mini-projet 3 : Application de chat avec patron Observateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐⭐ Avancé</strong></p>
+<h3 id="objectifs-pédagogiques-2">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Patron Observateur avancé</li>
+<li>Services avec injection de dépendances</li>
+<li>Gestion d&rsquo;état complexe</li>
+<li>Temps réel (simulation)</li>
+</ul>
+<h3 id="spécifications-2">Spécifications<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Fonctionnalités :</strong></p>
+<ol>
+<li>Salons de discussion multiples</li>
+<li>Envoi/réception de messages</li>
+<li>Notifications en temps réel</li>
+<li>Liste des utilisateurs connectés</li>
+<li>Indicateur &ldquo;en train d&rsquo;écrire&hellip;&rdquo;</li>
+<li>Historique des messages</li>
+<li>Recherche dans les messages</li>
+</ol>
+<p><strong>Architecture :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>- IChatService (abstraction)
+  - ChatService (implémentation réelle)
+  - FakeChatService (pour tests)
+  
+- Observateurs:
+  - IMessageObservateur
+  - IUtilisateurObservateur
+  - INotificationObservateur</code></pre></div>
+<h3 id="structure-du-projet-2">Structure du projet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Message.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Message</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Expediteur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Contenu</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">Horodatage</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">SalonId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Models/Salon.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Salon</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Message</span><span class="p">&gt;</span> <span class="n">Messages</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">UtilisateursConnectes</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/IChatService.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IChatService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">AbonnerMessages</span><span class="p">(</span><span class="n">IMessageObservateur</span> <span class="n">observateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">DesabonnerMessages</span><span class="p">(</span><span class="n">IMessageObservateur</span> <span class="n">observateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">EnvoyerMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">expediteur</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contenu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">Message</span><span class="p">&gt;</span> <span class="n">ObtenirHistorique</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">RejoindreSalon</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">QuitterSalon</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/ChatService.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ChatService</span> <span class="p">:</span> <span class="n">IChatService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">IMessageObservateur</span><span class="p">&gt;</span> <span class="n">observateursMessages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">IMessageObservateur</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Salon</span><span class="p">&gt;</span> <span class="n">salons</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Salon</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AbonnerMessages</span><span class="p">(</span><span class="n">IMessageObservateur</span> <span class="n">observateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">observateursMessages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">observateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnvoyerMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">expediteur</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contenu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Message</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Id</span> <span class="p">=</span> <span class="n">GenererId</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SalonId</span> <span class="p">=</span> <span class="n">salonId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Expediteur</span> <span class="p">=</span> <span class="n">expediteur</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Contenu</span> <span class="p">=</span> <span class="n">contenu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Horodatage</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">salons</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">salonId</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">salons</span><span class="p">[</span><span class="n">salonId</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Salon</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="n">salonId</span><span class="p">,</span> <span class="n">Messages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Message</span><span class="p">&gt;()</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">salons</span><span class="p">[</span><span class="n">salonId</span><span class="p">].</span><span class="n">Messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Notifier tous les observateurs</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obs</span> <span class="k">in</span> <span class="n">observateursMessages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">obs</span><span class="p">.</span><span class="n">NouveauMessage</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Simulation de messages entrants (autre utilisateur)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SimulerReception</span><span class="p">(</span><span class="kt">string</span> <span class="n">salonId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">random</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">expediteurs</span> <span class="p">=</span> <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;Charlie&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">messages</span> <span class="p">=</span> <span class="k">new</span><span class="p">[]</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Salut!&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Comment ça va?&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Avez-vous vu le dernier rapport?&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">expediteur</span> <span class="p">=</span> <span class="n">expediteurs</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">expediteurs</span><span class="p">.</span><span class="n">Length</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">contenu</span> <span class="p">=</span> <span class="n">messages</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="n">messages</span><span class="p">.</span><span class="n">Length</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">EnvoyerMessage</span><span class="p">(</span><span class="n">salonId</span><span class="p">,</span> <span class="n">expediteur</span><span class="p">,</span> <span class="n">contenu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Observateurs/IMessageObservateur.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IMessageObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">NouveauMessage</span><span class="p">(</span><span class="n">Message</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModels/ChatViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ChatViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span><span class="p">,</span> <span class="n">IMessageObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IChatService</span> <span class="n">chatService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Salon</span> <span class="n">salonActuel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Salon</span> <span class="n">SalonActuel</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">salonActuel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">salonActuel</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Salon</span><span class="p">&gt;</span> <span class="n">Salons</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">messageActuel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">MessageActuel</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">messageActuel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">messageActuel</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">utilisateurActuel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">UtilisateurActuel</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">EnvoyerMessageCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">ChangerSalonCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ChatViewModel</span><span class="p">(</span><span class="n">IChatService</span> <span class="n">chatService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">chatService</span> <span class="p">=</span> <span class="n">chatService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// S&#39;abonner aux nouveaux messages</span>
+</span></span><span class="line"><span class="cl">        <span class="n">chatService</span><span class="p">.</span><span class="n">AbonnerMessages</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Salons</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Salon</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">EnvoyerMessageCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">EnvoyerMessage</span><span class="p">,</span> <span class="n">PeutEnvoyer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ChangerSalonCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="n">Salon</span><span class="p">&gt;(</span><span class="n">ChangerSalon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">InitialiserSalons</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">InitialiserSalons</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Salons</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Salon</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">Id</span> <span class="p">=</span> <span class="s">&#34;general&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Général&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Messages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Message</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Salons</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Salon</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">Id</span> <span class="p">=</span> <span class="s">&#34;technique&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Technique&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Messages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Message</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">SalonActuel</span> <span class="p">=</span> <span class="n">Salons</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Implémentation de IMessageObservateur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">NouveauMessage</span><span class="p">(</span><span class="n">Message</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Trouver le salon correspondant</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">salon</span> <span class="p">=</span> <span class="n">Salons</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">message</span><span class="p">.</span><span class="n">SalonId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">salon</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// WPF nécessite d&#39;être sur le thread UI</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(()</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">salon</span><span class="p">.</span><span class="n">Messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="c1">// Notification si ce n&#39;est pas le salon actuel</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">salon</span> <span class="p">!=</span> <span class="n">SalonActuel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">// Afficher une notification</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">EnvoyerMessage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">chatService</span><span class="p">.</span><span class="n">EnvoyerMessage</span><span class="p">(</span><span class="n">SalonActuel</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">UtilisateurActuel</span><span class="p">,</span> <span class="n">MessageActuel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MessageActuel</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">bool</span> <span class="n">PeutEnvoyer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">MessageActuel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="xaml-suggéré">XAML suggéré<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Liste des salons --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ListBox</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">             <span class="na">ItemsSource=</span><span class="s">&#34;{Binding Salons}&#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="na">SelectedItem=</span><span class="s">&#34;{Binding SalonActuel}&#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="na">DisplayMemberPath=</span><span class="s">&#34;Nom&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Zone de chat --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Messages --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ListBox</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">ItemsSource=</span><span class="s">&#34;{Binding SalonActuel.Messages}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;ListBox.ItemTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;StackPanel</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Expediteur}&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Contenu}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Horodatage}&#34;</span> 
+</span></span><span class="line"><span class="cl">                                   <span class="na">FontSize=</span><span class="s">&#34;10&#34;</span> 
+</span></span><span class="line"><span class="cl">                                   <span class="na">Foreground=</span><span class="s">&#34;Gray&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/ListBox.ItemTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/ListBox&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Zone de saisie --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span> <span class="na">Margin=</span><span class="s">&#34;5&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding MessageActuel, UpdateSourceTrigger=PropertyChanged}&#34;</span>
+</span></span><span class="line"><span class="cl">                     <span class="na">Width=</span><span class="s">&#34;400&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Envoyer&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding EnvoyerMessageCommand}&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Width=</span><span class="s">&#34;80&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Margin=</span><span class="s">&#34;5,0,0,0&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Grid&gt;</span></span></span></code></pre></div>
+<h3 id="critères-de-réussite-2">Critères de réussite<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Plusieurs salons fonctionnent indépendamment</li>
+<li><input disabled="" type="checkbox"> Messages apparaissent en temps réel</li>
+<li><input disabled="" type="checkbox"> Notification pour nouveau message</li>
+<li><input disabled="" type="checkbox"> Changement de salon fluide</li>
+<li><input disabled="" type="checkbox"> Historique conservé</li>
+<li><input disabled="" type="checkbox"> Tests unitaires du ChatService</li>
+</ul>
+<hr>
+<h2 id="mini-projet-4--gestion-dinventaire-avec-commandes-et-injection">Mini-projet 4 : Gestion d&rsquo;inventaire avec commandes et injection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐⭐⭐ Avancé</strong></p>
+<h3 id="objectifs-pédagogiques-3">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Architecture complète MVVM</li>
+<li>Patron Commande complet</li>
+<li>Injection de dépendances avancée</li>
+<li>Repository pattern</li>
+<li>Validation</li>
+<li>Export/Import de données</li>
+</ul>
+<h3 id="spécifications-3">Spécifications<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Fonctionnalités :</strong></p>
+<ol>
+<li>Gestion complète de produits (CRUD)</li>
+<li>Catégories de produits</li>
+<li>Gestion des stocks (entrées/sorties)</li>
+<li>Alertes de stock faible</li>
+<li>Historique des mouvements</li>
+<li>Recherche et filtres avancés</li>
+<li>Export Excel/CSV</li>
+<li>Rapports statistiques</li>
+</ol>
+<p><strong>Architecture :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Services/
+  - IProduitRepository
+  - ICategorieRepository  
+  - IExportService
+  - IValidationService
+
+Commands/
+  - CommandeAjouterProduit
+  - CommandeModifierProduit
+  - CommandeSupprimerProduit
+  - CommandeAjusterStock
+
+ViewModels/
+  - MainViewModel (orchestrateur)
+  - ProduitsViewModel
+  - CategoriesViewModel
+  - StockViewModel
+  - RapportsViewModel</code></pre></div>
+<h3 id="exemple-de-structure-partielle">Exemple de structure partielle<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Produit.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Produit</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">nom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">nom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">nom</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">decimal</span> <span class="n">prix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">decimal</span> <span class="n">Prix</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">prix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">prix</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">quantiteStock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">QuantiteStock</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">quantiteStock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">quantiteStock</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">EstEnRupture</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">EstStockFaible</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">SeuilAlerte</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstEnRupture</span> <span class="p">=&gt;</span> <span class="n">QuantiteStock</span> <span class="p">==</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstStockFaible</span> <span class="p">=&gt;</span> <span class="n">QuantiteStock</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="n">QuantiteStock</span> <span class="p">&lt;=</span> <span class="n">SeuilAlerte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Categorie</span> <span class="n">categorie</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Categorie</span> <span class="n">Categorie</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">categorie</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">categorie</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/IProduitRepository.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IProduitRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;&gt;</span> <span class="n">ObtenirTousAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">ObtenirParIdAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">AjouterAsync</span><span class="p">(</span><span class="n">Produit</span> <span class="n">produit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">ModifierAsync</span><span class="p">(</span><span class="n">Produit</span> <span class="n">produit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">SupprimerAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;&gt;</span> <span class="n">RechercherAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">critere</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/IExportService.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IExportService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">ExporterCSV</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">produits</span><span class="p">,</span> <span class="kt">string</span> <span class="n">cheminFichier</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">ExporterExcel</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">produits</span><span class="p">,</span> <span class="kt">string</span> <span class="n">cheminFichier</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Commands/CommandeAjouterProduit.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeAjouterProduit</span> <span class="p">:</span> <span class="n">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">collection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Produit</span> <span class="n">produit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Produit</span> <span class="n">produitAjoute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommandeAjouterProduit</span><span class="p">(</span><span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                   <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">collection</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">Produit</span> <span class="n">produit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">collection</span> <span class="p">=</span> <span class="n">collection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">produit</span> <span class="p">=</span> <span class="n">produit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">produitAjoute</span> <span class="p">=</span> <span class="k">await</span> <span class="n">repository</span><span class="p">.</span><span class="n">AjouterAsync</span><span class="p">(</span><span class="n">produit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">collection</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">produitAjoute</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">repository</span><span class="p">.</span><span class="n">SupprimerAsync</span><span class="p">(</span><span class="n">produitAjoute</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">collection</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">produitAjoute</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModels/ProduitsViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ProduitsViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IValidationService</span> <span class="n">validationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">GestionnaireCommandes</span> <span class="n">gestionnaireCommandes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">Produits</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">ProduitsAffichees</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">Categories</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Propriétés pour le formulaire</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Produit</span> <span class="n">produitSelectionne</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Produit</span> <span class="n">ProduitSelectionne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">produitSelectionne</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">produitSelectionne</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Statistiques</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreProduits</span> <span class="p">=&gt;</span> <span class="n">Produits</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreRuptures</span> <span class="p">=&gt;</span> <span class="n">Produits</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">EstEnRupture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NombreAlertes</span> <span class="p">=&gt;</span> <span class="n">Produits</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">EstStockFaible</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">decimal</span> <span class="n">ValeurTotaleStock</span> <span class="p">=&gt;</span> <span class="n">Produits</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Prix</span> <span class="p">*</span> <span class="n">p</span><span class="p">.</span><span class="n">QuantiteStock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Commandes</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">ModifierCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">SupprimerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AnnulerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">RefaireCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">ExporterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructeur avec injection</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ProduitsViewModel</span><span class="p">(</span><span class="n">IProduitRepository</span> <span class="n">repository</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">IValidationService</span> <span class="n">validationService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">validationService</span> <span class="p">=</span> <span class="n">validationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">gestionnaireCommandes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GestionnaireCommandes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Produits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ProduitsAffichees</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">AjouterProduit</span><span class="p">,</span> <span class="n">PeutAjouter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AnnulerCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">gestionnaireCommandes</span><span class="p">.</span><span class="n">Annuler</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">ChargerProduitsAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">ChargerProduitsAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">produits</span> <span class="p">=</span> <span class="k">await</span> <span class="n">repository</span><span class="p">.</span><span class="n">ObtenirTousAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Produits</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">produits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Produits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AppliquerFiltres</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">AjouterProduit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Valider d&#39;abord</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">erreurs</span> <span class="p">=</span> <span class="n">validationService</span><span class="p">.</span><span class="n">ValiderProduit</span><span class="p">(</span><span class="n">ProduitSelectionne</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">erreurs</span><span class="p">.</span><span class="n">Any</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Afficher les erreurs</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Créer et exécuter la commande</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">commande</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeAjouterProduit</span><span class="p">(</span><span class="n">repository</span><span class="p">,</span> <span class="n">Produits</span><span class="p">,</span> <span class="n">ProduitSelectionne</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaireCommandes</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">MettreAJourStatistiques</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="critères-de-réussite-3">Critères de réussite<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Architecture propre avec injection de dépendances</li>
+<li><input disabled="" type="checkbox"> Toutes les opérations CRUD avec annuler/refaire</li>
+<li><input disabled="" type="checkbox"> Validation complète des données</li>
+<li><input disabled="" type="checkbox"> Export fonctionnel</li>
+<li><input disabled="" type="checkbox"> Statistiques en temps réel</li>
+<li><input disabled="" type="checkbox"> Tests unitaires complets</li>
+<li><input disabled="" type="checkbox"> Documentation du code</li>
+</ul>
+<hr>
+<h2 id="mini-projet-5--application-de-blog-avec-architecture-complète">Mini-projet 5 : Application de blog avec architecture complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐⭐⭐⭐ Expert</strong></p>
+<h3 id="objectifs-pédagogiques-4">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Architecture N-tiers complète</li>
+<li>Tous les patrons intégrés</li>
+<li>API REST simulée</li>
+<li>Navigation multi-vues</li>
+<li>Authentification</li>
+<li>Gestion des erreurs avancée</li>
+</ul>
+<h3 id="spécifications-4">Spécifications<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Fonctionnalités :</strong></p>
+<ol>
+<li>Authentification (login/logout)</li>
+<li>Gestion d&rsquo;articles (CRUD)</li>
+<li>Commentaires</li>
+<li>Catégories et tags</li>
+<li>Recherche full-text</li>
+<li>Draft/Publié</li>
+<li>Rôles (Admin, Éditeur, Lecteur)</li>
+<li>Historique des modifications</li>
+<li>Upload d&rsquo;images</li>
+<li>Export PDF d&rsquo;article</li>
+</ol>
+<p><strong>Architecture complète :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Presentation/
+  - Views/
+    - LoginView
+    - ArticlesListView
+    - ArticleDetailView
+    - EditorView
+  - ViewModels/
+    - LoginViewModel
+    - ArticlesViewModel
+    - ArticleDetailViewModel
+  
+Business/
+  - Services/
+    - IAuthenticationService
+    - IArticleService
+    - ICommentaireService
+  - Commands/
+  - Validators/
+  
+Data/
+  - Repositories/
+    - IArticleRepository
+    - IUtilisateurRepository
+  - Models/
+  
+Infrastructure/
+  - API/
+    - ApiClient
+  - Storage/
+  - Logging/</code></pre></div>
+<h3 id="je-vous-fournis-un-squelette-de-départ">Je vous fournis un squelette de départ&hellip;<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Article.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Article</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">titre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">titre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">titre</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">contenu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Contenu</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">contenu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">contenu</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StatutArticle</span> <span class="n">statut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">StatutArticle</span> <span class="n">Statut</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">statut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">statut</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Utilisateur</span> <span class="n">Auteur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">DatePublication</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateModification</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Commentaire</span><span class="p">&gt;</span> <span class="n">Commentaires</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tag</span><span class="p">&gt;</span> <span class="n">Tags</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Categorie</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">StatutArticle</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Brouillon</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EnRevision</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Publie</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Archive</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/IArticleService.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IArticleService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Article</span><span class="p">&gt;&gt;</span> <span class="n">ObtenirArticlesAsync</span><span class="p">(</span><span class="n">FiltreBlog</span> <span class="n">filtre</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Article</span><span class="p">&gt;</span> <span class="n">ObtenirArticleAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">Article</span><span class="p">&gt;</span> <span class="n">CreerArticleAsync</span><span class="p">(</span><span class="n">Article</span> <span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">ModifierArticleAsync</span><span class="p">(</span><span class="n">Article</span> <span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">SupprimerArticleAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">PublierArticleAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Article</span><span class="p">&gt;&gt;</span> <span class="n">RechercherAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">termes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModels/MainViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INavigationService</span> <span class="n">navigationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IAuthenticationService</span> <span class="n">authService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">BaseViewModel</span> <span class="n">vueActuelle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">BaseViewModel</span> <span class="n">VueActuelle</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">vueActuelle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">vueActuelle</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Utilisateur</span> <span class="n">utilisateurConnecte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Utilisateur</span> <span class="n">UtilisateurConnecte</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">utilisateurConnecte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">utilisateurConnecte</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">NaviguerVersArticlesCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">NaviguerVersNouvelArticleCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">DeconnecterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MainViewModel</span><span class="p">(</span><span class="n">INavigationService</span> <span class="n">navigationService</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                        <span class="n">IAuthenticationService</span> <span class="n">authService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">navigationService</span> <span class="p">=</span> <span class="n">navigationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">authService</span> <span class="p">=</span> <span class="n">authService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">NaviguerVersArticlesCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(()</span> <span class="p">=&gt;</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">navigationService</span><span class="p">.</span><span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">ArticlesViewModel</span><span class="p">&gt;());</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">DeconnecterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">Deconnecter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vérifier si l&#39;utilisateur est déjà connecté</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UtilisateurConnecte</span> <span class="p">=</span> <span class="n">authService</span><span class="p">.</span><span class="n">ObtenirUtilisateurActuel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">UtilisateurConnecte</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">navigationService</span><span class="p">.</span><span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">LoginViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">navigationService</span><span class="p">.</span><span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">ArticlesViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Services/NavigationService.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">INavigationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">TViewModel</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">TViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">TViewModel</span><span class="p">&gt;(</span><span class="kt">object</span> <span class="n">parametre</span><span class="p">)</span> <span class="k">where</span> <span class="n">TViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">NaviguerRetour</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">NavigationService</span> <span class="p">:</span> <span class="n">INavigationService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">BaseViewModel</span><span class="p">&gt;</span> <span class="n">viewModelFactory</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">MainViewModel</span> <span class="n">mainViewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">BaseViewModel</span><span class="p">&gt;</span> <span class="n">historique</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">BaseViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">NavigationService</span><span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">BaseViewModel</span><span class="p">&gt;</span> <span class="n">viewModelFactory</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">MainViewModel</span> <span class="n">mainViewModel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">viewModelFactory</span> <span class="p">=</span> <span class="n">viewModelFactory</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">mainViewModel</span> <span class="p">=</span> <span class="n">mainViewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">NaviguerVers</span><span class="p">&lt;</span><span class="n">TViewModel</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">TViewModel</span> <span class="p">:</span> <span class="n">BaseViewModel</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="n">viewModelFactory</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">TViewModel</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">mainViewModel</span><span class="p">.</span><span class="n">VueActuelle</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">historique</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">mainViewModel</span><span class="p">.</span><span class="n">VueActuelle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">mainViewModel</span><span class="p">.</span><span class="n">VueActuelle</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">NaviguerRetour</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">historique</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mainViewModel</span><span class="p">.</span><span class="n">VueActuelle</span> <span class="p">=</span> <span class="n">historique</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="xaml-avec-navigation">XAML avec navigation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- MainWindow.xaml --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;Window&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Barre de navigation --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span> <span class="na">Background=</span><span class="s">&#34;#2196F3&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Articles&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding NaviguerVersArticlesCommand}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Nouvel Article&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding NaviguerVersNouvelArticleCommand}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding UtilisateurConnecte.Nom}&#34;</span> 
+</span></span><span class="line"><span class="cl">                       <span class="na">Foreground=</span><span class="s">&#34;White&#34;</span>
+</span></span><span class="line"><span class="cl">                       <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span>
+</span></span><span class="line"><span class="cl">                       <span class="na">Margin=</span><span class="s">&#34;20,0&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Déconnexion&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding DeconnecterCommand}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Zone de contenu dynamique --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ContentControl</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Content=</span><span class="s">&#34;{Binding VueActuelle}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;ContentControl.Resources&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="c">&lt;!-- Mapper les ViewModels aux Views --&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate</span> <span class="na">DataType=</span><span class="s">&#34;{x:Type vm:ArticlesViewModel}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;views:ArticlesView</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate</span> <span class="na">DataType=</span><span class="s">&#34;{x:Type vm:ArticleDetailViewModel}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;views:ArticleDetailView</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate</span> <span class="na">DataType=</span><span class="s">&#34;{x:Type vm:LoginViewModel}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;views:LoginView</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/ContentControl.Resources&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/ContentControl&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<h3 id="configuration-de-linjection-de-dépendances">Configuration de l&rsquo;injection de dépendances<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// App.xaml.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ServiceProvider</span> <span class="n">serviceProvider</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">base</span><span class="p">.</span><span class="n">OnStartup</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">services</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Repositories</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IArticleRepository</span><span class="p">,</span> <span class="n">ArticleRepository</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IUtilisateurRepository</span><span class="p">,</span> <span class="n">UtilisateurRepository</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Services</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IAuthenticationService</span><span class="p">,</span> <span class="n">AuthenticationService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IArticleService</span><span class="p">,</span> <span class="n">ArticleService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IExportService</span><span class="p">,</span> <span class="n">ExportService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ViewModels</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">MainViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">ArticlesViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">ArticleDetailViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">LoginViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Navigation</span>
+</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">INavigationService</span><span class="p">&gt;(</span><span class="n">provider</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">mainVM</span> <span class="p">=</span> <span class="n">provider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">MainViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">NavigationService</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">type</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">BaseViewModel</span><span class="p">)</span><span class="n">provider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">(</span><span class="n">type</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">mainVM</span>
+</span></span><span class="line"><span class="cl">            <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">serviceProvider</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Lancer la fenêtre principale</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">mainWindow</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MainWindow</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DataContext</span> <span class="p">=</span> <span class="n">serviceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">MainViewModel</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mainWindow</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="critères-de-réussite-4">Critères de réussite<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Architecture N-tiers complète</li>
+<li><input disabled="" type="checkbox"> Navigation fluide entre vues</li>
+<li><input disabled="" type="checkbox"> Authentification fonctionnelle</li>
+<li><input disabled="" type="checkbox"> CRUD complet avec validation</li>
+<li><input disabled="" type="checkbox"> Gestion des rôles</li>
+<li><input disabled="" type="checkbox"> Export PDF</li>
+<li><input disabled="" type="checkbox"> Gestion des erreurs</li>
+<li><input disabled="" type="checkbox"> Logging</li>
+<li><input disabled="" type="checkbox"> Tests unitaires complets</li>
+<li><input disabled="" type="checkbox"> Tests d&rsquo;intégration</li>
+</ul>
+<hr>
+<h2 id="conclusion-des-mini-projets">Conclusion des mini-projets<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Ces 5 mini-projets couvrent progressivement tous les concepts enseignés :</p>
+<ol>
+<li><strong>Calculatrice</strong> : Introduction aux commandes et historique</li>
+<li><strong>Tâches</strong> : MVVM complet avec sauvegarde</li>
+<li><strong>Chat</strong> : Observateur en temps réel</li>
+<li><strong>Inventaire</strong> : Architecture complète avec injection</li>
+<li><strong>Blog</strong> : Application professionnelle complète</li>
+</ol>
+<p>Chaque projet construit sur les acquis du précédent et introduit de nouveaux concepts.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="active " data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265441" defer></script>
+    <script src="/420-413/js/theme.js?1771265441" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

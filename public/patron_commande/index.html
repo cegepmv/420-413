@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte
+Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :
+Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Patron commande :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte
+Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :
+Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?">
+    <meta property="og:url" content="http://localhost:1313/420-413/patron_commande/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Patron commande :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte
+Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :
+Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Patron commande :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte
+Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :
+Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?">
+    <meta itemprop="wordCount" content="1276">
+    <title>Patron commande :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265441" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265441" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265441" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265441" defer></script>
+    <script src="/420-413/js/search.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265441";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265441" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/patron_commande\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/patron_commande/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#le-patron-commande-contexte-général">Le patron Commande (Contexte général)</a>
+      <ul>
+        <li><a href="#le-problème-quil-résout">Le problème qu&rsquo;il résout</a></li>
+        <li><a href="#le-patron-commande--la-solution">Le patron Commande — La solution</a></li>
+        <li><a href="#implémentation-complète">Implémentation complète</a></li>
+        <li><a href="#avantages-du-patron-commande">Avantages du patron Commande</a></li>
+        <li><a href="#variantes-du-patron-commande">Variantes du patron Commande</a></li>
+        <li><a href="#le-lien-avec-wpf-icommand-aperçu">Le lien avec WPF ICommand (aperçu)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Patron commande</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_observateur/index.html" title="Patron observateur (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/injection_dependance/index.html" title="Injection de dépendance (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="patron-commande">Patron commande</h1>
+
+<h2 id="le-patron-commande-contexte-général">Le patron Commande (Contexte général)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="le-problème-quil-résout">Le problème qu&rsquo;il résout<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Mise en situation : Un éditeur de texte</strong></p>
+<p>Vous développez un éditeur de texte (comme Notepad). L&rsquo;utilisateur peut :</p>
+<ul>
+<li>Couper du texte</li>
+<li>Copier du texte</li>
+<li>Coller du texte</li>
+<li>Annuler la dernière action</li>
+<li>Refaire une action annulée</li>
+</ul>
+<p><strong>Question :</strong> Comment organiser tout ça ?</p>
+<p><strong>❌ Approche naïve (code spaghetti) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">btnCouper_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code pour couper</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">texteSelectionne</span> <span class="p">=</span> <span class="n">txtEditeur</span><span class="p">.</span><span class="n">SelectedText</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">presse</span><span class="p">-</span><span class="n">papiers</span> <span class="p">=</span> <span class="n">texteSelectionne</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">txtEditeur</span><span class="p">.</span><span class="n">SelectedText</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ajouter à l&#39;historique pour annuler</span>
+</span></span><span class="line"><span class="cl">    <span class="n">historique</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">ActionCouper</span> <span class="p">{</span> <span class="n">Texte</span> <span class="p">=</span> <span class="n">texteSelectionne</span><span class="p">,</span> <span class="n">Position</span> <span class="p">=</span> <span class="p">...</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">btnCopier_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code pour copier</span>
+</span></span><span class="line"><span class="cl">    <span class="n">presse</span><span class="p">-</span><span class="n">papiers</span> <span class="p">=</span> <span class="n">txtEditeur</span><span class="p">.</span><span class="n">SelectedText</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ajouter à l&#39;historique</span>
+</span></span><span class="line"><span class="cl">    <span class="n">historique</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">ActionCopier</span> <span class="p">{</span> <span class="n">Texte</span> <span class="p">=</span> <span class="p">...</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">btnColler_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Code pour coller</span>
+</span></span><span class="line"><span class="cl">    <span class="n">txtEditeur</span><span class="p">.</span><span class="n">SelectedText</span> <span class="p">=</span> <span class="n">presse</span><span class="p">-</span><span class="n">papiers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Ajouter à l&#39;historique</span>
+</span></span><span class="line"><span class="cl">    <span class="n">historique</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">ActionColler</span> <span class="p">{</span> <span class="n">Texte</span> <span class="p">=</span> <span class="n">presse</span><span class="p">-</span><span class="n">papiers</span><span class="p">,</span> <span class="n">Position</span> <span class="p">=</span> <span class="p">...</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">btnAnnuler_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">derniere</span> <span class="p">=</span> <span class="n">historique</span><span class="p">.</span><span class="n">Last</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 😱 Comment annuler selon le type d&#39;action ?</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">derniere</span> <span class="k">is</span> <span class="n">ActionCouper</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code pour défaire une coupe</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">derniere</span> <span class="k">is</span> <span class="n">ActionCopier</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code pour défaire une copie</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">derniere</span> <span class="k">is</span> <span class="n">ActionColler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Code pour défaire un collage</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... et ainsi de suite pour chaque type d&#39;action !</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Problèmes :</strong></p>
+<ol>
+<li><strong>Code dupliqué</strong> : La logique d&rsquo;annulation est éparpillée partout</li>
+<li><strong>Difficile à tester</strong> : Impossible de tester une action sans l&rsquo;interface</li>
+<li><strong>Pas réutilisable</strong> : Si on ajoute un raccourci clavier, il faut dupliquer le code</li>
+<li><strong>Couplage fort</strong> : Les boutons sont directement couplés à la logique métier</li>
+<li><strong>Difficile à étendre</strong> : Ajouter une nouvelle action nécessite de modifier plein d&rsquo;endroits</li>
+</ol>
+<h3 id="le-patron-commande--la-solution">Le patron Commande — La solution<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Principe central :</strong> Encapsuler une action dans un objet.</p>
+<p><strong>Analogie :</strong> Pensez à une télécommande TV :</p>
+<ul>
+<li>Chaque <strong>bouton</strong> est une commande (Volume+, Volume-, Chaine+, etc.)</li>
+<li>La télécommande ne sait pas comment augmenter le volume</li>
+<li>Elle envoie juste la commande &ldquo;Volume+&rdquo; à la TV</li>
+<li>La TV exécute la commande</li>
+<li>On peut <strong>enregistrer</strong> les commandes (macro)</li>
+<li>On peut <strong>annuler</strong> des commandes</li>
+</ul>
+<p><strong>Diagramme conceptuel :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>┌─────────────────────────────┐
+│     INTERFACE COMMANDE      │
+│  + Executer()               │
+│  + Annuler()                │
+└─────────────────────────────┘
+              △
+              │ implémente
+     ┌────────┴────────┬────────────┐
+     │                 │            │
+┌─────────┐      ┌──────────┐  ┌─────────┐
+│Commande │      │Commande  │  │Commande │
+│Couper   │      │Copier    │  │Coller   │
+└─────────┘      └──────────┘  └─────────┘
+
+┌─────────────────────────────┐
+│        INVOCATEUR           │
+│   (Bouton, raccourci)       │
+│  - commande: ICommande      │
+│  + AppuiSurBouton()         │
+└─────────────────────────────┘
+              │
+              │ utilise
+              ↓
+┌─────────────────────────────┐
+│        RÉCEPTEUR            │
+│      (EditeurTexte)         │
+│  + Couper()                 │
+│  + Copier()                 │
+│  + Coller()                 │
+└─────────────────────────────┘</code></pre></div>
+<h3 id="implémentation-complète">Implémentation complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Étape 1 : Interface Commande</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Executer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Annuler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 2 : Le Récepteur (celui qui fait le vrai travail)</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">EditeurTexte</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StringBuilder</span> <span class="n">contenu</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">presse_papiers</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Contenu</span> <span class="p">=&gt;</span> <span class="n">contenu</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Couper</span><span class="p">(</span><span class="kt">int</span> <span class="n">debut</span><span class="p">,</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">presse_papiers</span> <span class="p">=</span> <span class="n">contenu</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">contenu</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✂️  Texte coupé : &#39;{presse_papiers}&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Copier</span><span class="p">(</span><span class="kt">int</span> <span class="n">debut</span><span class="p">,</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">presse_papiers</span> <span class="p">=</span> <span class="n">contenu</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📋 Texte copié : &#39;{presse_papiers}&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Coller</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">contenu</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">presse_papiers</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📌 Texte collé : &#39;{presse_papiers}&#39; à la position {position}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTexte</span><span class="p">(</span><span class="kt">string</span> <span class="n">texte</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">contenu</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">texte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📄 Contenu : &#39;{Contenu}&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 3 : Les Commandes concrètes</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Commande Couper</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeCouper</span> <span class="p">:</span> <span class="n">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">debut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">texteCoupe</span><span class="p">;</span>  <span class="c1">// Pour pouvoir annuler</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">,</span> <span class="kt">int</span> <span class="n">debut</span><span class="p">,</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">editeur</span> <span class="p">=</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">debut</span> <span class="p">=</span> <span class="n">debut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">longueur</span> <span class="p">=</span> <span class="n">longueur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">texteCoupe</span> <span class="p">=</span> <span class="n">editeur</span><span class="p">.</span><span class="n">Contenu</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Couper</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Restaurer le texte coupé</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">AjouterTexte</span><span class="p">(</span><span class="n">texteCoupe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;↩️  Annulation : texte &#39;{texteCoupe}&#39; restauré&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Commande Copier</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeCopier</span> <span class="p">:</span> <span class="n">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">debut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommandeCopier</span><span class="p">(</span><span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">,</span> <span class="kt">int</span> <span class="n">debut</span><span class="p">,</span> <span class="kt">int</span> <span class="n">longueur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">editeur</span> <span class="p">=</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">debut</span> <span class="p">=</span> <span class="n">debut</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">longueur</span> <span class="p">=</span> <span class="n">longueur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Copier</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">longueur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Copier ne modifie pas le texte, donc pas besoin d&#39;annuler</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;↩️  Copier annulé (aucun changement au texte)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Commande Coller</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeColler</span> <span class="p">:</span> <span class="n">ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">longueurCollee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommandeColler</span><span class="p">(</span><span class="n">EditeurTexte</span> <span class="n">editeur</span><span class="p">,</span> <span class="kt">int</span> <span class="n">position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">editeur</span> <span class="p">=</span> <span class="n">editeur</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="n">position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// On suppose qu&#39;on connaît la longueur du presse-papiers</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Coller</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Retirer le texte collé</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;↩️  Annulation du collage&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 4 : L&rsquo;Invocateur (gestionnaire de commandes)</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GestionnaireCommandes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span> <span class="n">historique</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span> <span class="n">historiqueAnnule</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">ICommande</span> <span class="n">commande</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commande</span><span class="p">.</span><span class="n">Executer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historique</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Vider l&#39;historique d&#39;annulation (comme dans Word)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueAnnule</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">historique</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;❌ Rien à annuler&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">ICommande</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">historique</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commande</span><span class="p">.</span><span class="n">Annuler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historiqueAnnule</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Refaire</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">historiqueAnnule</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;❌ Rien à refaire&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">ICommande</span> <span class="n">commande</span> <span class="p">=</span> <span class="n">historiqueAnnule</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commande</span><span class="p">.</span><span class="n">Executer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">historique</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">commande</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Étape 5 : Utilisation</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Créer l&#39;éditeur et le gestionnaire</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EditeurTexte</span> <span class="n">editeur</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EditeurTexte</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GestionnaireCommandes</span> <span class="n">gestionnaire</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GestionnaireCommandes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Ajouter du texte initial</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;=== Initialisation ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">AjouterTexte</span><span class="p">(</span><span class="s">&#34;Bonjour le monde!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Afficher</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Créer et exécuter des commandes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Copier &#39;Bonjour&#39; ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICommande</span> <span class="n">copier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeCopier</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">7</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaire</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">copier</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Coller à la fin ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICommande</span> <span class="n">coller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeColler</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="n">editeur</span><span class="p">.</span><span class="n">Contenu</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaire</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">coller</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Afficher</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Couper &#39; le monde&#39; ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ICommande</span> <span class="n">couper</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">9</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaire</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">couper</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Afficher</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Annuler la dernière action ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaire</span><span class="p">.</span><span class="n">Annuler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Afficher</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;\n=== Refaire ===&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gestionnaire</span><span class="p">.</span><span class="n">Refaire</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">editeur</span><span class="p">.</span><span class="n">Afficher</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="avantages-du-patron-commande">Avantages du patron Commande<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>1. Découplage</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Le bouton ne connaît PAS l&#39;éditeur</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Il connaît seulement l&#39;interface ICommande</span>
+</span></span><span class="line"><span class="cl"><span class="n">Button</span> <span class="n">btnCouper</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Button</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">btnCouper</span><span class="p">.</span><span class="n">Command</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span></span></span></code></pre></div>
+<p><strong>2. Historique automatique</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Toutes les commandes sont automatiquement historisées</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Annuler/Refaire gratuit !</span></span></span></code></pre></div>
+<p><strong>3. Testabilité</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[TestMethod]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Test_CommandeCouper</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditeurTexte</span> <span class="n">editeur</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EditeurTexte</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">editeur</span><span class="p">.</span><span class="n">AjouterTexte</span><span class="p">(</span><span class="s">&#34;Test&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">CommandeCouper</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmd</span><span class="p">.</span><span class="n">Executer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&#34;st&#34;</span><span class="p">,</span> <span class="n">editeur</span><span class="p">.</span><span class="n">Contenu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>4. Réutilisabilité</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Même commande utilisable de plusieurs façons</span>
+</span></span><span class="line"><span class="cl"><span class="n">ICommande</span> <span class="n">couper</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Via un bouton</span>
+</span></span><span class="line"><span class="cl"><span class="n">button</span><span class="p">.</span><span class="n">Command</span> <span class="p">=</span> <span class="n">couper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Via un raccourci clavier</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Key</span> <span class="p">==</span> <span class="n">Key</span><span class="p">.</span><span class="n">X</span> <span class="p">&amp;&amp;</span> <span class="n">e</span><span class="p">.</span><span class="n">Control</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gestionnaire</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">couper</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Via un menu</span>
+</span></span><span class="line"><span class="cl"><span class="n">menuItem</span><span class="p">.</span><span class="n">Command</span> <span class="p">=</span> <span class="n">couper</span><span class="p">;</span></span></span></code></pre></div>
+<p><strong>5. Macros et scripts</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// On peut créer des séquences de commandes</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span> <span class="n">macro</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ICommande</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="n">CommandeCopier</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="n">CommandeColler</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="n">CommandeCouper</span><span class="p">(</span><span class="n">editeur</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Exécuter la macro</span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="k">in</span> <span class="n">macro</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gestionnaire</span><span class="p">.</span><span class="n">ExecuterCommande</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span></span></span></code></pre></div>
+<h3 id="variantes-du-patron-commande">Variantes du patron Commande<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>1. Commandes paramétrées</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICommande</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Executer</span><span class="p">(</span><span class="n">T</span> <span class="n">parametre</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Annuler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeRechercher</span> <span class="p">:</span> <span class="n">ICommande</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Executer</span><span class="p">(</span><span class="kt">string</span> <span class="n">motCle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Rechercher le mot-clé</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Annuler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Annuler la recherche</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>2. Commandes asynchrones</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICommandeAsync</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">ExecuterAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">AnnulerAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">CommandeSauvegarder</span> <span class="p">:</span> <span class="n">ICommandeAsync</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">ExecuterAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">SauvegarderDansFichierAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">AnnulerAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">RestaurerVersionPrecedenteAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="le-lien-avec-wpf-icommand-aperçu">Le lien avec WPF ICommand (aperçu)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>WPF utilise le patron Commande !</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ICommand dans WPF</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICommand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">CanExecute</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameter</span><span class="p">);</span>  <span class="c1">// Peut-on exécuter ?</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Execute</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameter</span><span class="p">);</span>      <span class="c1">// Exécuter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">CanExecuteChanged</span><span class="p">;</span> <span class="c1">// Notifier changement d&#39;état</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Différences avec notre version :</strong></p>
+<ul>
+<li>WPF n&rsquo;a pas de méthode <code>Annuler()</code> (on peut l&rsquo;ajouter)</li>
+<li>WPF a <code>CanExecute()</code> pour activer/désactiver les boutons</li>
+<li>WPF a un événement pour notifier les changements d&rsquo;état</li>
+</ul>
+<p><strong>Utilisation en WPF :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Sauvegarder&#34;</span> <span class="na">Command=</span><span class="s">&#34;{Binding SauvegarderCommand}&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p>Quand le bouton est cliqué :</p>
+<ol>
+<li>WPF vérifie <code>CanExecute()</code> → Active/désactive le bouton</li>
+<li>WPF appelle <code>Execute()</code> → Exécute l&rsquo;action</li>
+</ol>
+<p><strong>C&rsquo;est exactement le patron Commande appliqué à WPF !</strong></p>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="active " data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265441" defer></script>
+    <script src="/420-413/js/theme.js?1771265441" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

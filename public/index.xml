@@ -92,6 +92,13 @@
       <description>Mini-Projets : Programmation Orientée Objet en C# Progression recommandée Niveau Projets Débutant Projet 8 (Formes), Projet 5 (Tâches) Intermédiaire Projet 1 (Banque), Projet 2 (Bibliothèque), Projet 6 (Zoo) Avancé Projet 3 (RPG), Projet 4 (Restaurant), Projet 7 (Hôtel) Table des matières Projet 1 : Système de Gestion Bancaire Projet 2 : Gestion d’une Bibliothèque Projet 3 : Jeu de Combat RPG Projet 4 : Système de Commandes Restaurant Projet 5 : Gestionnaire de Tâches Projet 6 : Simulateur de Zoo Projet 7 : Système de Réservation Hôtel Projet 8 : Calculatrice de Formes Géométriques Projet 1 : Système de Gestion Bancaire 📋 Objectif Créer un système de gestion de comptes bancaires avec différents types de comptes et opérations.</description>
     </item>
     <item>
+      <title>Agile - Scrum</title>
+      <link>http://localhost:1313/420-413/agile-_scrum/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/agile-_scrum/index.html</guid>
+      <description>Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.</description>
+    </item>
+    <item>
       <title>LINQ</title>
       <link>http://localhost:1313/420-413/linq/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -99,11 +106,53 @@
       <description>📘 LINQ en C# Language Integrated Query 📋 Table des matières Introduction à LINQ Pourquoi utiliser LINQ ? Les Bases de LINQ Les Deux Syntaxes LINQ Opérations de Filtrage Opérations de Projection Opérations de Tri Opérations d’Agrégation Opérations de Regroupement Opérations de Jointure Opérations d’Ensemble Opérations de Quantification Opérations de Partition LINQ avec Objets Complexes Cas Pratiques Réels Bonnes Pratiques et Pièges 1. Introduction à LINQ 1.1 Qu’est-ce que LINQ ? LINQ (Language Integrated Query) est une fonctionnalité de C# qui permet d’interroger des collections de données directement dans le code, avec une syntaxe élégante et lisible.</description>
     </item>
     <item>
-      <title>Agile - Scrum</title>
-      <link>http://localhost:1313/420-413/agile-_scrum/index.html</link>
+      <title>Pratique - Exam 1</title>
+      <link>http://localhost:1313/420-413/pratique_exam1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/agile-_scrum/index.html</guid>
-      <description>Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.</description>
+      <guid>http://localhost:1313/420-413/pratique_exam1/index.html</guid>
+      <description>📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO + LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.</description>
+    </item>
+    <item>
+      <title>WPF - intro</title>
+      <link>http://localhost:1313/420-413/wpf/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/wpf/index.html</guid>
+      <description>Développement d’applications WPF avec C# Partie 1 : Installation de .NET Desktop Development 1.1 Pourquoi Visual Studio 2022 ? Visual Studio 2022 est l’IDE (environnement de développement intégré) officiel de Microsoft pour créer des applications .NET.</description>
+    </item>
+    <item>
+      <title>Patron observateur</title>
+      <link>http://localhost:1313/420-413/patron_observateur/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/patron_observateur/index.html</guid>
+      <description>Partie 1 : Le patron Observateur (Contexte général) Qu’est-ce qu’un patron de conception ? Définition simple : Un patron de conception est une solution éprouvée à un problème récurrent en programmation.&#xA;Analogie : C’est comme une recette de cuisine. Si vous voulez faire un gâteau, vous n’inventez pas la méthode à chaque fois — vous suivez une recette qui a fait ses preuves.</description>
+    </item>
+    <item>
+      <title>Patron commande</title>
+      <link>http://localhost:1313/420-413/patron_commande/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/patron_commande/index.html</guid>
+      <description>Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte&#xA;Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :&#xA;Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?</description>
+    </item>
+    <item>
+      <title>Injection de dépendance</title>
+      <link>http://localhost:1313/420-413/injection_dependance/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/injection_dependance/index.html</guid>
+      <description>: Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification&#xA;Vous développez une application qui doit envoyer des notifications :&#xA;Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :</description>
+    </item>
+    <item>
+      <title>MVVM</title>
+      <link>http://localhost:1313/420-413/mvvm/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/mvvm/index.html</guid>
+      <description>Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel&#xA;C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :&#xA;Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :</description>
+    </item>
+    <item>
+      <title>Mini-projets</title>
+      <link>http://localhost:1313/420-413/mini_projets/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/mini_projets/index.html</guid>
+      <description>Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire&#xA;Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :</description>
     </item>
     <item>
       <title>Rubrique  - Semaine 2</title>

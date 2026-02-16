@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel
+C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :
+Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MVVM :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel
+C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :
+Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :">
+    <meta property="og:url" content="http://localhost:1313/420-413/mvvm/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="MVVM :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel
+C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :
+Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="MVVM :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel
+C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :
+Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :">
+    <meta itemprop="wordCount" content="978">
+    <title>MVVM :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265441" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265441" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265441" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265441" defer></script>
+    <script src="/420-413/js/search.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265441";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265441" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265441" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265441" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265441" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265441" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/mvvm\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/mvvm/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#le-patron-mvvm-model-view-viewmodel">Le patron MVVM (Model-View-ViewModel)</a>
+      <ul>
+        <li><a href="#quest-ce-que-mvvm-">Qu&rsquo;est-ce que MVVM ?</a></li>
+        <li><a href="#pourquoi-mvvm-">Pourquoi MVVM ?</a></li>
+        <li><a href="#architecture-mvvm">Architecture MVVM</a></li>
+        <li><a href="#exemple-complet-mvvm--gestion-de-produits">Exemple complet MVVM : Gestion de produits</a></li>
+        <li><a href="#observablecollection-vs-list">ObservableCollection vs List</a></li>
+        <li><a href="#commands-amélioration-avancée">Commands (amélioration avancée)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">MVVM</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/injection_dependance/index.html" title="Injection de dépendance (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/mini_projets/index.html" title="Mini-projets (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="mvvm">MVVM</h1>
+
+<h2 id="le-patron-mvvm-model-view-viewmodel">Le patron MVVM (Model-View-ViewModel)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-que-mvvm-">Qu&rsquo;est-ce que MVVM ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>MVVM</strong> = <strong>Model-View-ViewModel</strong></p>
+<p>C&rsquo;est un <strong>patron de conception</strong> (design pattern) qui organise le code d&rsquo;une application WPF en <strong>3 couches</strong> :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Couche</th>
+          <th>Responsabilité</th>
+          <th>Fichier</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Model</strong></td>
+          <td>Les données brutes (classes métier)</td>
+          <td><code>Personne.cs</code>, <code>Produit.cs</code></td>
+      </tr>
+      <tr>
+          <td><strong>View</strong></td>
+          <td>L&rsquo;interface graphique (XAML)</td>
+          <td><code>MainWindow.xaml</code></td>
+      </tr>
+      <tr>
+          <td><strong>ViewModel</strong></td>
+          <td>Logique de présentation, data binding</td>
+          <td><code>MainViewModel.cs</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="pourquoi-mvvm-">Pourquoi MVVM ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Problème avec le code-behind (approche traditionnelle) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// MainWindow.xaml.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">Button_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Logique métier mélangée avec l&#39;UI</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">nom</span> <span class="p">=</span> <span class="n">txtNom</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">prix</span> <span class="p">=</span> <span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">txtPrix</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Calculs...</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Accès base de données...</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Mise à jour de l&#39;interface...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Problèmes :</strong></p>
+<ul>
+<li>Logique mélangée avec l&rsquo;interface</li>
+<li>Difficile à tester</li>
+<li>Difficile à réutiliser</li>
+<li>Code-behind devient énorme</li>
+</ul>
+<p><strong>Avec MVVM :</strong></p>
+<ul>
+<li>✅ Séparation claire des responsabilités</li>
+<li>✅ Code testable (ViewModel peut être testé sans UI)</li>
+<li>✅ Réutilisable</li>
+<li>✅ Code-behind quasi vide</li>
+</ul>
+<h3 id="architecture-mvvm">Architecture MVVM<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>View (XAML)
+    ↕ Data Binding
+ViewModel (Logique de présentation)
+    ↕ 
+Model (Données)</code></pre></div>
+<p><strong>Règles :</strong></p>
+<ol>
+<li>La <strong>View</strong> ne contient QUE du XAML (et un code-behind minimal)</li>
+<li>Le <strong>ViewModel</strong> ne connaît PAS la View (pas de <code>MessageBox</code>, pas de <code>txtNom.Text</code>)</li>
+<li>Le <strong>Model</strong> ne connaît ni View ni ViewModel</li>
+</ol>
+<h3 id="exemple-complet-mvvm--gestion-de-produits">Exemple complet MVVM : Gestion de produits<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="étape-1--le-model">Étape 1 : Le Model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Produit.cs</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Produit</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Prix</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Stock</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>C&rsquo;est juste une classe de données, rien de spécial.</p>
+<h4 id="étape-2--le-viewmodel">Étape 2 : Le ViewModel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>ProduitViewModel.cs</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.CompilerServices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ProduitViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Collection observable pour la liste</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">Produits</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Produit sélectionné dans la liste</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Produit</span> <span class="n">produitSelectionne</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Produit</span> <span class="n">ProduitSelectionne</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">produitSelectionne</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">produitSelectionne</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Champs pour le nouveau produit</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">nouveauNom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">NouveauNom</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">nouveauNom</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">nouveauNom</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">nouveauPrix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">NouveauPrix</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">nouveauPrix</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">nouveauPrix</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">nouveauStock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">NouveauStock</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">nouveauStock</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">set</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">nouveauStock</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructeur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ProduitViewModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Produits</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">Produit</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Clavier&#34;</span><span class="p">,</span> <span class="n">Prix</span> <span class="p">=</span> <span class="m">49.99</span><span class="p">,</span> <span class="n">Stock</span> <span class="p">=</span> <span class="m">15</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">Produit</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Souris&#34;</span><span class="p">,</span> <span class="n">Prix</span> <span class="p">=</span> <span class="m">29.99</span><span class="p">,</span> <span class="n">Stock</span> <span class="p">=</span> <span class="m">25</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="n">Produit</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Écran&#34;</span><span class="p">,</span> <span class="n">Prix</span> <span class="p">=</span> <span class="m">299.99</span><span class="p">,</span> <span class="n">Stock</span> <span class="p">=</span> <span class="m">8</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Méthodes publiques (appelées par les boutons via Commands)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterProduit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">nouveau</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Produit</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Id</span> <span class="p">=</span> <span class="n">Produits</span><span class="p">.</span><span class="n">Count</span> <span class="p">+</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Nom</span> <span class="p">=</span> <span class="n">NouveauNom</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Prix</span> <span class="p">=</span> <span class="n">NouveauPrix</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Stock</span> <span class="p">=</span> <span class="n">NouveauStock</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">Produits</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">nouveau</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Réinitialiser les champs</span>
+</span></span><span class="line"><span class="cl">        <span class="n">NouveauNom</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">NouveauPrix</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">NouveauStock</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SupprimerProduit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ProduitSelectionne</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Produits</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">ProduitSelectionne</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// INotifyPropertyChanged</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="k">void</span> <span class="n">OnPropertyChanged</span><span class="p">([</span><span class="n">CallerMemberName</span><span class="p">]</span> <span class="kt">string</span> <span class="n">propertyName</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">PropertyChanged</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="étape-3--la-view">Étape 3 : La View<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>MainWindow.xaml</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;GestionProduits.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Gestion de Produits - MVVM&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Height=</span><span class="s">&#34;500&#34;</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">Width=</span><span class="s">&#34;700&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid</span> <span class="na">Margin=</span><span class="s">&#34;15&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;50&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Titre --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;TextBlock</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">                   <span class="na">Text=</span><span class="s">&#34;📦 Gestion de Produits&#34;</span> 
+</span></span><span class="line"><span class="cl">                   <span class="na">FontSize=</span><span class="s">&#34;24&#34;</span> 
+</span></span><span class="line"><span class="cl">                   <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span>
+</span></span><span class="line"><span class="cl">                   <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Contenu --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,10,0,0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;2*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Liste des produits (gauche) --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;DataGrid</span> <span class="na">Grid.Column=</span><span class="s">&#34;0&#34;</span> 
+</span></span><span class="line"><span class="cl">                      <span class="na">ItemsSource=</span><span class="s">&#34;{Binding Produits}&#34;</span>
+</span></span><span class="line"><span class="cl">                      <span class="na">SelectedItem=</span><span class="s">&#34;{Binding ProduitSelectionne}&#34;</span>
+</span></span><span class="line"><span class="cl">                      <span class="na">AutoGenerateColumns=</span><span class="s">&#34;False&#34;</span>
+</span></span><span class="line"><span class="cl">                      <span class="na">Margin=</span><span class="s">&#34;0,0,10,0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataGrid.Columns&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;DataGridTextColumn</span> <span class="na">Header=</span><span class="s">&#34;ID&#34;</span> <span class="na">Binding=</span><span class="s">&#34;{Binding Id}&#34;</span> <span class="na">Width=</span><span class="s">&#34;50&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;DataGridTextColumn</span> <span class="na">Header=</span><span class="s">&#34;Nom&#34;</span> <span class="na">Binding=</span><span class="s">&#34;{Binding Nom}&#34;</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;DataGridTextColumn</span> <span class="na">Header=</span><span class="s">&#34;Prix&#34;</span> <span class="na">Binding=</span><span class="s">&#34;{Binding Prix, StringFormat={}{0:C}}&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;DataGridTextColumn</span> <span class="na">Header=</span><span class="s">&#34;Stock&#34;</span> <span class="na">Binding=</span><span class="s">&#34;{Binding Stock}&#34;</span> <span class="na">Width=</span><span class="s">&#34;80&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataGrid.Columns&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/DataGrid&gt;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&lt;!-- Panneau de contrôle (droite) --&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Border</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">BorderBrush=</span><span class="s">&#34;LightGray&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">BorderThickness=</span><span class="s">&#34;1&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="na">Padding=</span><span class="s">&#34;10&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Ajouter un produit&#34;</span> 
+</span></span><span class="line"><span class="cl">                               <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> 
+</span></span><span class="line"><span class="cl">                               <span class="na">FontSize=</span><span class="s">&#34;16&#34;</span>
+</span></span><span class="line"><span class="cl">                               <span class="na">Margin=</span><span class="s">&#34;0,0,0,15&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&#34;Nom :&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding NouveauNom}&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&#34;Prix :&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding NouveauPrix}&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&#34;Stock :&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding NouveauStock}&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,20&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter&#34;</span> 
+</span></span><span class="line"><span class="cl">                            <span class="na">Height=</span><span class="s">&#34;40&#34;</span> 
+</span></span><span class="line"><span class="cl">                            <span class="na">Background=</span><span class="s">&#34;Green&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Foreground=</span><span class="s">&#34;White&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Click=</span><span class="s">&#34;BtnAjouter_Click&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Supprimer&#34;</span> 
+</span></span><span class="line"><span class="cl">                            <span class="na">Height=</span><span class="s">&#34;40&#34;</span> 
+</span></span><span class="line"><span class="cl">                            <span class="na">Background=</span><span class="s">&#34;Red&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Foreground=</span><span class="s">&#34;White&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Click=</span><span class="s">&#34;BtnSupprimer_Click&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Border&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<h4 id="étape-4--code-behind-minimal">Étape 4 : Code-behind (minimal)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>MainWindow.xaml.cs</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">GestionProduits</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="n">ProduitViewModel</span> <span class="n">viewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Créer et assigner le ViewModel</span>
+</span></span><span class="line"><span class="cl">            <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ProduitViewModel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">this</span><span class="p">.</span><span class="n">DataContext</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">BtnAjouter_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">viewModel</span><span class="p">.</span><span class="n">AjouterProduit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">BtnSupprimer_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">viewModel</span><span class="p">.</span><span class="n">SupprimerProduit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="observablecollection-vs-list">ObservableCollection vs List<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Pourquoi <code>ObservableCollection</code> et pas <code>List</code> ?</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ❌ Avec List - l&#39;interface ne se met pas à jour</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">Produits</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ✅ Avec ObservableCollection - l&#39;interface se met à jour automatiquement</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Produit</span><span class="p">&gt;</span> <span class="n">Produits</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span></span></span></code></pre></div>
+<p><code>ObservableCollection&lt;T&gt;</code> implémente automatiquement <code>INotifyCollectionChanged</code> :</p>
+<ul>
+<li>Quand on ajoute un élément : l&rsquo;interface se met à jour</li>
+<li>Quand on supprime un élément : l&rsquo;interface se met à jour</li>
+</ul>
+<h3 id="commands-amélioration-avancée">Commands (amélioration avancée)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Dans un MVVM pur, on ne devrait pas avoir de <code>Click=&quot;...&quot;</code> dans le XAML. À la place, on utilise des <strong>Commands</strong>.</p>
+<p><strong>RelayCommand.cs</strong> (classe utilitaire) :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">RelayCommand</span> <span class="p">:</span> <span class="n">ICommand</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Action</span> <span class="n">execute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Func</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">canExecute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">Action</span> <span class="n">execute</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">canExecute</span> <span class="p">=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">execute</span> <span class="p">=</span> <span class="n">execute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">canExecute</span> <span class="p">=</span> <span class="n">canExecute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">CanExecuteChanged</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">add</span> <span class="p">{</span> <span class="n">CommandManager</span><span class="p">.</span><span class="n">RequerySuggested</span> <span class="p">+=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">remove</span> <span class="p">{</span> <span class="n">CommandManager</span><span class="p">.</span><span class="n">RequerySuggested</span> <span class="p">-=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">CanExecute</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">canExecute</span> <span class="p">==</span> <span class="kc">null</span> <span class="p">||</span> <span class="n">canExecute</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Execute</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">execute</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>ProduitViewModel avec Commands :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ProduitViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... propriétés ...</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">SupprimerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ProduitViewModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ... initialisation ...</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">AjouterProduit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SupprimerCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">SupprimerProduit</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">ProduitSelectionne</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... méthodes ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>XAML avec Commands :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter&#34;</span> <span class="na">Command=</span><span class="s">&#34;{Binding AjouterCommand}&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Supprimer&#34;</span> <span class="na">Command=</span><span class="s">&#34;{Binding SupprimerCommand}&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></div>
+<p><strong>Avantage :</strong> Aucun code-behind nécessaire !</p>
+<hr>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="active " data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265441" defer></script>
+    <script src="/420-413/js/theme.js?1771265441" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

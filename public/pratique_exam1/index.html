@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO &#43; LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pratique - Exam 1 :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO &#43; LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.">
+    <meta property="og:url" content="http://localhost:1313/420-413/pratique_exam1/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Pratique - Exam 1 :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO &#43; LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Pratique - Exam 1 :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="📝 EXERCICE DE PRÉPARATION À L’EXAMEN Système de Gestion d’une Bibliothèque Municipale POO &#43; LINQ 🎯 CONTEXTE Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.">
+    <meta itemprop="wordCount" content="1313">
+    <title>Pratique - Exam 1 :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1771265607" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1771265607" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1771265607" defer></script>
+    <script src="/420-413/js/search-lunr.js?1771265607" defer></script>
+    <script src="/420-413/js/search.js?1771265607" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1771265607";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1771265607" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1771265607" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1771265607" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1771265607" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1771265607" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1771265607" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1771265607" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/pratique_exam1\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/pratique_exam1/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#système-de-gestion-dune-bibliothèque-municipale">Système de Gestion d&rsquo;une Bibliothèque Municipale</a>
+      <ul>
+        <li><a href="#poo--linq">POO + LINQ</a></li>
+      </ul>
+    </li>
+    <li><a href="#-contexte">🎯 CONTEXTE</a></li>
+    <li><a href="#-partie-1-modèle-de-données">📋 PARTIE 1: MODÈLE DE DONNÉES</a>
+      <ul>
+        <li><a href="#11-énumérations-à-créer">1.1 Énumérations à créer</a></li>
+        <li><a href="#12-classes-à-créer">1.2 Classes à créer</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-2-classe-gestionnaire">📋 PARTIE 2: CLASSE GESTIONNAIRE</a>
+      <ul>
+        <li><a href="#classe-gestionnairebibliotheque">Classe <code>GestionnaireBibliotheque</code></a></li>
+        <li><a href="#méthodes-à-implémenter-avec-linq-obligatoire">MÉTHODES À IMPLÉMENTER AVEC LINQ (OBLIGATOIRE!)</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-3-programme-principal">📋 PARTIE 3: PROGRAMME PRINCIPAL</a></li>
+    <li><a href="#-critères-dévaluation">✅ CRITÈRES D&rsquo;ÉVALUATION</a>
+      <ul>
+        <li><a href="#modèle-de-données-30">Modèle de données (30%)</a></li>
+        <li><a href="#requêtes-linq-50">Requêtes LINQ (50%)</a></li>
+        <li><a href="#qualité-du-code-20">Qualité du code (20%)</a></li>
+      </ul>
+    </li>
+    <li><a href="#-rappels-linq-utiles">📚 RAPPELS LINQ UTILES</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Pratique - Exam 1</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/linq/index.html" title="LINQ (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/wpf/index.html" title="WPF - intro (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="pratique---exam-1">Pratique - Exam 1</h1>
+
+<h1 id="-exercice-de-préparation-à-lexamen">📝 EXERCICE DE PRÉPARATION À L&rsquo;EXAMEN<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="système-de-gestion-dune-bibliothèque-municipale">Système de Gestion d&rsquo;une Bibliothèque Municipale<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="poo--linq">POO + LINQ<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<hr>
+<h2 id="-contexte">🎯 CONTEXTE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Vous travaillez pour la Ville de Montréal et devez créer un système de gestion pour la bibliothèque municipale. Le système doit gérer les livres, les membres, les emprunts et générer des statistiques.</p>
+<p><strong>Technologies:</strong> Application Console C# (.NET), POO avancée, LINQ obligatoire pour toutes les requêtes</p>
+<hr>
+<h2 id="-partie-1-modèle-de-données">📋 PARTIE 1: MODÈLE DE DONNÉES<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="11-énumérations-à-créer">1.1 Énumérations à créer<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Enum <code>GenreLivre</code></strong></p>
+<ul>
+<li>Roman</li>
+<li>ScienceFiction</li>
+<li>Policier</li>
+<li>Biographie</li>
+<li>Histoire</li>
+<li>Science</li>
+<li>Jeunesse</li>
+<li>BD</li>
+</ul>
+<p><strong>Enum <code>StatutEmprunt</code></strong></p>
+<ul>
+<li>EnCours</li>
+<li>Retourne</li>
+<li>EnRetard</li>
+<li>Perdu</li>
+</ul>
+<p><strong>Enum <code>TypeMembre</code></strong></p>
+<ul>
+<li>Regulier</li>
+<li>Etudiant</li>
+<li>Senior</li>
+</ul>
+<hr>
+<h3 id="12-classes-à-créer">1.2 Classes à créer<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="classe-livre">Classe <code>Livre</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Propriétés:</strong></p>
+<ul>
+<li><code>int Id</code> - Identifiant unique</li>
+<li><code>string Titre</code> - Titre du livre</li>
+<li><code>string Auteur</code> - Nom de l&rsquo;auteur</li>
+<li><code>string ISBN</code> - Numéro ISBN (format: XXX-X-XXXX-XXXX-X)</li>
+<li><code>int AnneePublication</code> - Année de publication</li>
+<li><code>GenreLivre Genre</code> - Genre du livre</li>
+<li><code>int NombrePages</code> - Nombre de pages</li>
+<li><code>bool EstDisponible</code> - Disponibilité actuelle</li>
+<li><code>int NombreExemplaires</code> - Nombre total d&rsquo;exemplaires</li>
+<li><code>int NombreDisponibles</code> - Nombre d&rsquo;exemplaires disponibles</li>
+</ul>
+<p><strong>Propriétés calculées à implémenter:</strong></p>
+<ul>
+<li><code>int Age</code> - Retourne l&rsquo;âge du livre (année actuelle - année publication)</li>
+<li><code>bool EstRecent</code> - Retourne true si publié dans les 5 dernières années</li>
+<li><code>string Description</code> - Retourne &ldquo;{Titre} par {Auteur} ({AnneePublication})&rdquo;</li>
+</ul>
+<p><strong>Méthodes à implémenter:</strong></p>
+<ul>
+<li><code>bool Emprunter()</code> - Diminue NombreDisponibles de 1 si possible, retourne true si succès</li>
+<li><code>void Retourner()</code> - Augmente NombreDisponibles de 1</li>
+<li><code>override string ToString()</code> - Format: &ldquo;Titre - Auteur (Genre)&rdquo;</li>
+</ul>
+<hr>
+<h4 id="classe-membre">Classe <code>Membre</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Propriétés:</strong></p>
+<ul>
+<li><code>int Id</code> - Identifiant unique - auto-généré (pas de set)</li>
+<li><code>string Nom</code> - Nom complet</li>
+<li><code>string NumeroMembre</code> - Format: MEM-XXXXX (ex: MEM-00123)</li>
+<li><code>string Courriel</code> - Adresse courriel</li>
+<li><code>TypeMembre Type</code> - Type de membre</li>
+<li><code>DateTime DateInscription</code> - Date d&rsquo;inscription</li>
+<li><code>List&lt;Emprunt&gt; Emprunts</code> - Liste de tous les emprunts (historique)</li>
+</ul>
+<p><strong>Propriétés calculées à implémenter:</strong></p>
+<ul>
+<li><code>int NombreEmpruntsActuels</code> - Nombre d&rsquo;emprunts en cours (StatutEmprunt.EnCours)</li>
+<li><code>int NombreEmpruntsTotal</code> - Nombre total d&rsquo;emprunts dans l&rsquo;historique</li>
+<li><code>bool PeutEmprunter</code> - true si NombreEmpruntsActuels &lt; LimiteEmprunts</li>
+<li><code>int LimiteEmprunts</code> - Retourne la limite selon le type:
+<ul>
+<li>Regulier: 5 livres</li>
+<li>Etudiant: 10 livres</li>
+<li>Senior: 8 livres</li>
+</ul>
+</li>
+<li><code>int JoursMembre</code> - Nombre de jours depuis l&rsquo;inscription</li>
+</ul>
+<p><strong>Méthodes à implémenter:</strong></p>
+<ul>
+<li><code>void AjouterEmprunt(Emprunt emprunt)</code> - Ajoute un emprunt à la liste</li>
+<li><code>override string ToString()</code> - Format: &ldquo;NumeroMembre - Nom (Type)&rdquo;</li>
+</ul>
+<hr>
+<h4 id="classe-emprunt">Classe <code>Emprunt</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Propriétés:</strong></p>
+<ul>
+<li><code>int Id</code> - Identifiant unique</li>
+<li><code>Livre Livre</code> - Le livre emprunté</li>
+<li><code>Membre Membre</code> - Le membre qui emprunte</li>
+<li><code>DateTime DateEmprunt</code> - Date de l&rsquo;emprunt</li>
+<li><code>DateTime DateRetourPrevue</code> - Date de retour prévue (DateEmprunt + durée)</li>
+<li><code>DateTime? DateRetourReelle</code> - Date de retour effective (nullable)</li>
+<li><code>StatutEmprunt Statut</code> - Statut actuel de l&rsquo;emprunt</li>
+</ul>
+<p><strong>Propriétés calculées à implémenter:</strong></p>
+<ul>
+<li><code>int DureeEmprunt</code> - Durée selon le type de membre:
+<ul>
+<li>Regulier: 14 jours</li>
+<li>Etudiant: 21 jours</li>
+<li>Senior: 21 jours</li>
+</ul>
+</li>
+<li><code>int JoursEmprunt</code> - Nombre de jours depuis l&rsquo;emprunt</li>
+<li><code>bool EstEnRetard</code> - true si date actuelle &gt; DateRetourPrevue ET Statut == EnCours</li>
+<li><code>int JoursRetard</code> - Nombre de jours de retard (0 si pas en retard)</li>
+<li><code>decimal Penalite</code> - Calcul: JoursRetard × 0.50$ (0 si pas de retard)</li>
+</ul>
+<p><strong>Méthodes à implémenter:</strong></p>
+<ul>
+<li><code>void Retourner()</code> - Met DateRetourReelle à aujourd&rsquo;hui, change Statut à Retourne ou EnRetard</li>
+<li><code>override string ToString()</code> - Format: &ldquo;Livre.Titre - Membre.Nom - Statut&rdquo;</li>
+</ul>
+<hr>
+<h2 id="-partie-2-classe-gestionnaire">📋 PARTIE 2: CLASSE GESTIONNAIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="classe-gestionnairebibliotheque">Classe <code>GestionnaireBibliotheque</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Cette classe contient toutes les méthodes de gestion et requêtes LINQ.</p>
+<p><strong>Propriétés:</strong></p>
+<ul>
+<li><code>List&lt;Livre&gt; Livres</code> - Collection de tous les livres</li>
+<li><code>List&lt;Membre&gt; Membres</code> - Collection de tous les membres</li>
+<li><code>List&lt;Emprunt&gt; Emprunts</code> - Collection de tous les emprunts</li>
+</ul>
+<p><strong>Constructeur:</strong></p>
+<ul>
+<li>Initialise les 3 listes vides</li>
+</ul>
+<hr>
+<h3 id="méthodes-à-implémenter-avec-linq-obligatoire">MÉTHODES À IMPLÉMENTER AVEC LINQ (OBLIGATOIRE!)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="21-gestion-de-base">2.1 Gestion de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong><code>void AjouterLivre(Livre livre)</code></strong></p>
+<ul>
+<li>Ajoute un livre à la liste</li>
+<li>Valide que l&rsquo;ISBN n&rsquo;existe pas déjà</li>
+</ul>
+<p><strong><code>void AjouterMembre(Membre membre)</code></strong></p>
+<ul>
+<li>Ajoute un membre à la liste</li>
+<li>Valide que le courriel n&rsquo;existe pas déjà</li>
+</ul>
+<p><strong><code>bool CreerEmprunt(int livreId, int membreId)</code></strong></p>
+<ul>
+<li>Trouve le livre et le membre avec LINQ (FirstOrDefault)</li>
+<li>Vérifie que le membre peut emprunter (PeutEmprunter)</li>
+<li>Vérifie que le livre est disponible (EstDisponible)</li>
+<li>Crée l&rsquo;emprunt et l&rsquo;ajoute aux deux listes (Emprunts et Membre.Emprunts)</li>
+<li>Appelle Livre.Emprunter()</li>
+<li>Retourne true si succès, false sinon</li>
+</ul>
+<p><strong><code>bool RetournerLivre(int empruntId)</code></strong></p>
+<ul>
+<li>Trouve l&rsquo;emprunt avec LINQ</li>
+<li>Appelle Emprunt.Retourner()</li>
+<li>Appelle Livre.Retourner()</li>
+<li>Retourne true si succès, false sinon</li>
+</ul>
+<hr>
+<h4 id="22-recherches-linq-utilisez-where-orderby-select">2.2 Recherches LINQ (utilisez Where, OrderBy, Select)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong><code>List&lt;Livre&gt; ObtenirLivresDisponibles()</code></strong></p>
+<ul>
+<li>Retourne tous les livres où EstDisponible == true</li>
+<li>Triés par Titre (ordre alphabétique)</li>
+</ul>
+<p><strong><code>List&lt;Livre&gt; ObtenirLivresParGenre(GenreLivre genre)</code></strong></p>
+<ul>
+<li>Retourne tous les livres d&rsquo;un genre spécifique</li>
+<li>Triés par AnneePublication décroissant (plus récents d&rsquo;abord)</li>
+</ul>
+<p><strong><code>List&lt;Livre&gt; ObtenirLivresParAuteur(string auteur)</code></strong></p>
+<ul>
+<li>Retourne les livres dont l&rsquo;auteur contient la chaîne donnée (ignore la casse)</li>
+<li>Triés par Titre</li>
+</ul>
+<p><strong><code>List&lt;Membre&gt; ObtenirMembresParType(TypeMembre type)</code></strong></p>
+<ul>
+<li>Retourne tous les membres d&rsquo;un type donné</li>
+<li>Triés par Nom</li>
+</ul>
+<p><strong><code>List&lt;Emprunt&gt; ObtenirEmpruntsEnRetard()</code></strong></p>
+<ul>
+<li>Retourne tous les emprunts où EstEnRetard == true</li>
+<li>Triés par JoursRetard décroissant (plus en retard d&rsquo;abord)</li>
+</ul>
+<hr>
+<h4 id="23-statistiques-linq-utilisez-count-sum-average-max-min">2.3 Statistiques LINQ (utilisez Count, Sum, Average, Max, Min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong><code>int CompterLivresParGenre(GenreLivre genre)</code></strong></p>
+<ul>
+<li>Compte le nombre de livres d&rsquo;un genre donné</li>
+</ul>
+<p><strong><code>int CompterEmpruntsActifsParMembre(int membreId)</code></strong></p>
+<ul>
+<li>Compte les emprunts en cours d&rsquo;un membre spécifique</li>
+</ul>
+<p><strong><code>decimal CalculerPenalitesTotales()</code></strong></p>
+<ul>
+<li>Somme toutes les pénalités de tous les emprunts</li>
+</ul>
+<p><strong><code>double CalculerMoyenneEmpruntsParMembre()</code></strong></p>
+<ul>
+<li>Calcule le nombre moyen d&rsquo;emprunts (total) par membre</li>
+</ul>
+<p><strong><code>Livre ObtenirLivreLePlusEmprunte()</code></strong></p>
+<ul>
+<li>Retourne le livre qui apparaît le plus souvent dans les emprunts</li>
+<li>Indice: GroupBy sur Livre, OrderByDescending sur Count, puis First</li>
+</ul>
+<hr>
+<h4 id="24-requêtes-avancées-linq-utilisez-groupby-join-selectmany">2.4 Requêtes avancées LINQ (utilisez GroupBy, Join, SelectMany)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong><code>Dictionary&lt;GenreLivre, int&gt; ObtenirStatistiquesGenres()</code></strong></p>
+<ul>
+<li>Groupe les livres par genre</li>
+<li>Retourne un dictionnaire: Genre → Nombre de livres</li>
+<li>Trié par nombre de livres décroissant</li>
+</ul>
+<p><strong><code>Dictionary&lt;TypeMembre, List&lt;Membre&gt;&gt; GrouperMembresParType()</code></strong></p>
+<ul>
+<li>Groupe les membres par type</li>
+<li>Retourne un dictionnaire: Type → Liste de membres</li>
+</ul>
+<p><strong><code>List&lt;Livre&gt; ObtenirLivresNonEmpruntes()</code></strong></p>
+<ul>
+<li>Retourne les livres qui n&rsquo;apparaissent dans AUCUN emprunt</li>
+<li>Indice: Utiliser Where avec !Emprunts.Any(&hellip;)</li>
+</ul>
+<p><strong><code>var ObtenirTop5MembresActifs()</code></strong></p>
+<ul>
+<li>Retourne les 5 membres avec le plus d&rsquo;emprunts totaux</li>
+<li>Format de retour (type anonyme):
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">new</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">Nom</span> <span class="p">=</span> <span class="n">membre</span><span class="p">.</span><span class="n">Nom</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">NombreEmprunts</span> <span class="p">=</span> <span class="n">membre</span><span class="p">.</span><span class="n">Emprunts</span><span class="p">.</span><span class="n">Count</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+</li>
+<li>Triés par NombreEmprunts décroissant</li>
+</ul>
+<p><strong><code>List&lt;Emprunt&gt; ObtenirHistoriqueMembreParGenre(int membreId, GenreLivre genre)</code></strong></p>
+<ul>
+<li>Retourne tous les emprunts d&rsquo;un membre pour un genre spécifique</li>
+<li>Triés par DateEmprunt décroissant (plus récents d&rsquo;abord)</li>
+</ul>
+<hr>
+<h2 id="-partie-3-programme-principal">📋 PARTIE 3: PROGRAMME PRINCIPAL<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Dans <code>Program.cs</code>, créez une méthode <code>Main</code> qui:</p>
+<ol>
+<li>
+<p>Crée une instance de <code>GestionnaireBibliotheque</code></p>
+</li>
+<li>
+<p>Ajoute des données de test:</p>
+<ul>
+<li>Au moins 10 livres de différents genres</li>
+<li>Au moins 5 membres de différents types</li>
+<li>Au moins 8 emprunts (dont certains en retard)</li>
+</ul>
+</li>
+<li>
+<p>Teste les méthodes suivantes et affiche les résultats:</p>
+<ul>
+<li><code>ObtenirLivresDisponibles()</code> - Afficher le nombre</li>
+<li><code>ObtenirEmpruntsEnRetard()</code> - Afficher chaque emprunt en retard avec la pénalité</li>
+<li><code>CalculerPenalitesTotales()</code> - Afficher le montant total</li>
+<li><code>ObtenirStatistiquesGenres()</code> - Afficher chaque genre avec son compte</li>
+<li><code>ObtenirTop5MembresActifs()</code> - Afficher le classement</li>
+</ul>
+</li>
+</ol>
+<p><strong>Format d&rsquo;affichage suggéré:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>═══════════════════════════════════════════════
+    SYSTÈME DE GESTION - BIBLIOTHÈQUE
+═══════════════════════════════════════════════
+
+📚 LIVRES DISPONIBLES: 7
+
+⏰ EMPRUNTS EN RETARD:
+   • 1984 - Alice Tremblay - 5 jours - Pénalité: 2.50$
+   • Le Petit Prince - Bob Gagnon - 3 jours - Pénalité: 1.50$
+
+💰 PÉNALITÉS TOTALES: 4.00$
+
+📊 STATISTIQUES PAR GENRE:
+   • Roman: 4 livres
+   • ScienceFiction: 3 livres
+   • Policier: 2 livres
+
+🏆 TOP 5 MEMBRES ACTIFS:
+   1. Alice Tremblay - 12 emprunts
+   2. Bob Gagnon - 8 emprunts
+   3. Charlie Roy - 6 emprunts</code></pre></div>
+<hr>
+<h2 id="-critères-dévaluation">✅ CRITÈRES D&rsquo;ÉVALUATION<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="modèle-de-données-30">Modèle de données (30%)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Toutes les classes créées avec les propriétés demandées</li>
+<li><input disabled="" type="checkbox"> Propriétés calculées fonctionnelles</li>
+<li><input disabled="" type="checkbox"> Méthodes de base implémentées</li>
+<li><input disabled="" type="checkbox"> Utilisation correcte des enums</li>
+</ul>
+<h3 id="requêtes-linq-50">Requêtes LINQ (50%)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Toutes les méthodes utilisent LINQ (pas de boucles for/foreach)</li>
+<li><input disabled="" type="checkbox"> Utilisation correcte de Where, OrderBy, Select</li>
+<li><input disabled="" type="checkbox"> Utilisation correcte de Count, Sum, Average</li>
+<li><input disabled="" type="checkbox"> Utilisation correcte de GroupBy et types anonymes</li>
+<li><input disabled="" type="checkbox"> Requêtes fonctionnelles et retournent les bons résultats</li>
+</ul>
+<h3 id="qualité-du-code-20">Qualité du code (20%)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Noms de variables significatifs</li>
+<li><input disabled="" type="checkbox"> Code lisible et bien organisé</li>
+<li><input disabled="" type="checkbox"> Gestion des cas null (FirstOrDefault, etc.)</li>
+<li><input disabled="" type="checkbox"> Programme compile sans erreurs</li>
+</ul>
+<hr>
+<h2 id="-rappels-linq-utiles">📚 RAPPELS LINQ UTILES<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Filtrer</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Propriete</span> <span class="p">&gt;</span> <span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Trier</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Nom</span><span class="p">).</span><span class="n">ThenBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Age</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Trier décroissant</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">OrderByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Date</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Compter</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">nombre</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">EstActif</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Somme</span>
+</span></span><span class="line"><span class="cl"><span class="kt">decimal</span> <span class="n">total</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Montant</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Moyenne</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">moyenne</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Average</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Note</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Premier élément (ou null)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">element</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="m">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Grouper</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">groupes</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">GroupBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Categorie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Grouper et compter</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">stats</span> <span class="p">=</span> <span class="n">liste</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">GroupBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Categorie</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">ToDictionary</span><span class="p">(</span><span class="n">g</span> <span class="p">=&gt;</span> <span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">g</span> <span class="p">=&gt;</span> <span class="n">g</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Type anonyme</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="p">.</span><span class="n">Nom</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="p">.</span><span class="n">Age</span> 
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Vérifier existence</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">existe</span> <span class="p">=</span> <span class="n">liste</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Nom</span> <span class="p">==</span> <span class="s">&#34;Alice&#34;</span><span class="p">);</span></span></span></code></pre></div>
+<hr>
+<p><em>N&rsquo;oubliez pas: LINQ partout, pas de boucles for/foreach dans les requêtes!</em></p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/agile-_scrum/index.html"><a class="padding" href="/420-413/agile-_scrum/index.html">Agile - Scrum</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="active " data-nav-id="/420-413/pratique_exam1/index.html"><a class="padding" href="/420-413/pratique_exam1/index.html">Pratique - Exam 1</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1771265607" defer></script>
+    <script src="/420-413/js/theme.js?1771265607" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
