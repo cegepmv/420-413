@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\gestionnairebibliotheque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\gestionnairebibliotheque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\membre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\membre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\iempruntable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\iempruntable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\livre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\livre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\magazine .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\magazine .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|c:\\users\\fostsam0\\source\\repos\\gestionbibliothequemunicipale\\gestionbibliothequemunicipale\\emprunt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1726D1C-57A6-40CB-96D4-6442809D9701}|GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale.csproj|solutionrelative:gestionbibliothequemunicipale\\emprunt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GestionnaireBibliotheque.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\GestionnaireBibliotheque.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\GestionnaireBibliotheque.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\GestionnaireBibliotheque.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\GestionnaireBibliotheque.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAwwIIAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:51:40.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Emprunt.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Emprunt.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Emprunt.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Emprunt.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Emprunt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:46:29.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Membre.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Membre.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Membre.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Membre.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Membre.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA3wCcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:45:16.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Magazine .cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Magazine .cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Magazine .cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Magazine .cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Magazine .cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAIwCkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:40:16.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Livre.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Livre.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Livre.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Livre.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Livre.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAADwvxgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:34:30.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Document.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Document.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Document.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Document.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Document.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAADwvyUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:32:03.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IEmpruntable.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\IEmpruntable.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\IEmpruntable.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\IEmpruntable.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\IEmpruntable.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T02:31:32.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Program.cs",
+              "RelativeDocumentMoniker": "GestionBibliothequeMunicipale\\Program.cs",
+              "ToolTip": "C:\\Users\\fostsam0\\Source\\Repos\\GestionBibliothequeMunicipale\\GestionBibliothequeMunicipale\\Program.cs",
+              "RelativeToolTip": "GestionBibliothequeMunicipale\\Program.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAAAKQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T19:55:39.962Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
