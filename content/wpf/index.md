@@ -555,6 +555,9 @@ Si la fenêtre est étroite, les boutons passent à la ligne suivante.
 
 **Application de calculatrice simple :**
 
+<details>
+<summary>💡 Solution</summary>
+
 ```xml
 <Window x:Class="Calculatrice.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -625,6 +628,7 @@ Si la fenêtre est étroite, les boutons passent à la ligne suivante.
     
 </Window>
 ```
+</details>
 
 ---
 
