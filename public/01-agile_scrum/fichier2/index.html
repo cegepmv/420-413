@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="Système d’authentification WPF - Epics, Fonctionnalités et User Stories Table des matières Vue d’ensemble des Epics EPIC-01 : Authentification de base EPIC-02 : Validation et sécurité EPIC-03 : Expérience utilisateur EPIC-04 : Récupération et aide EPIC-05 : Navigation et flux Tableau récapitulatif Roadmap recommandée 1. Vue d’ensemble des Epics Epic ID Nom Priorité Stories Valeur métier EPIC-01 Authentification de base 🔴 Critique 6 Fonctionnalité cœur EPIC-02 Validation et sécurité 🔴 Critique 7 Protection des données EPIC-03 Expérience utilisateur 🟡 Haute 5 Satisfaction client EPIC-04 Récupération et aide 🟢 Moyenne 3 Support autonome EPIC-05 Navigation et flux 🔴 Critique 4 Parcours utilisateur TOTAL 25 2. EPIC-01 : Authentification de base Objectif : Permettre aux utilisateurs de s’authentifier et d’accéder à l’application de manière sécurisée.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Loi de Ohm :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="Système d’authentification WPF - Epics, Fonctionnalités et User Stories Table des matières Vue d’ensemble des Epics EPIC-01 : Authentification de base EPIC-02 : Validation et sécurité EPIC-03 : Expérience utilisateur EPIC-04 : Récupération et aide EPIC-05 : Navigation et flux Tableau récapitulatif Roadmap recommandée 1. Vue d’ensemble des Epics Epic ID Nom Priorité Stories Valeur métier EPIC-01 Authentification de base 🔴 Critique 6 Fonctionnalité cœur EPIC-02 Validation et sécurité 🔴 Critique 7 Protection des données EPIC-03 Expérience utilisateur 🟡 Haute 5 Satisfaction client EPIC-04 Récupération et aide 🟢 Moyenne 3 Support autonome EPIC-05 Navigation et flux 🔴 Critique 4 Parcours utilisateur TOTAL 25 2. EPIC-01 : Authentification de base Objectif : Permettre aux utilisateurs de s’authentifier et d’accéder à l’application de manière sécurisée.">
+    <meta property="og:url" content="http://localhost:1313/420-413/01-agile_scrum/fichier2/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Loi de Ohm :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="Système d’authentification WPF - Epics, Fonctionnalités et User Stories Table des matières Vue d’ensemble des Epics EPIC-01 : Authentification de base EPIC-02 : Validation et sécurité EPIC-03 : Expérience utilisateur EPIC-04 : Récupération et aide EPIC-05 : Navigation et flux Tableau récapitulatif Roadmap recommandée 1. Vue d’ensemble des Epics Epic ID Nom Priorité Stories Valeur métier EPIC-01 Authentification de base 🔴 Critique 6 Fonctionnalité cœur EPIC-02 Validation et sécurité 🔴 Critique 7 Protection des données EPIC-03 Expérience utilisateur 🟡 Haute 5 Satisfaction client EPIC-04 Récupération et aide 🟢 Moyenne 3 Support autonome EPIC-05 Navigation et flux 🔴 Critique 4 Parcours utilisateur TOTAL 25 2. EPIC-01 : Authentification de base Objectif : Permettre aux utilisateurs de s’authentifier et d’accéder à l’application de manière sécurisée.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Définitions">
+    <meta property="article:published_time" content="2024-08-01T17:54:17-04:00">
+    <meta property="article:modified_time" content="2024-08-01T17:54:17-04:00">
+    <meta itemprop="name" content="Loi de Ohm :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="Système d’authentification WPF - Epics, Fonctionnalités et User Stories Table des matières Vue d’ensemble des Epics EPIC-01 : Authentification de base EPIC-02 : Validation et sécurité EPIC-03 : Expérience utilisateur EPIC-04 : Récupération et aide EPIC-05 : Navigation et flux Tableau récapitulatif Roadmap recommandée 1. Vue d’ensemble des Epics Epic ID Nom Priorité Stories Valeur métier EPIC-01 Authentification de base 🔴 Critique 6 Fonctionnalité cœur EPIC-02 Validation et sécurité 🔴 Critique 7 Protection des données EPIC-03 Expérience utilisateur 🟡 Haute 5 Satisfaction client EPIC-04 Récupération et aide 🟢 Moyenne 3 Support autonome EPIC-05 Navigation et flux 🔴 Critique 4 Parcours utilisateur TOTAL 25 2. EPIC-01 : Authentification de base Objectif : Permettre aux utilisateurs de s’authentifier et d’accéder à l’application de manière sécurisée.">
+    <meta itemprop="datePublished" content="2024-08-01T17:54:17-04:00">
+    <meta itemprop="dateModified" content="2024-08-01T17:54:17-04:00">
+    <meta itemprop="wordCount" content="3661">
+    <title>Loi de Ohm :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1772171615" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1772171615" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1772171615" defer></script>
+    <script src="/420-413/js/search-lunr.js?1772171615" defer></script>
+    <script src="/420-413/js/search.js?1772171615" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1772171615";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1772171615" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1772171615" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1772171615" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1772171615" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1772171615" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1772171615" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1772171615" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1772171615" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1772171615" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/01-agile_scrum\/fichier2\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/01-agile_scrum/fichier2/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#table-des-matières">Table des matières</a></li>
+    <li><a href="#1-vue-densemble-des-epics">1. Vue d&rsquo;ensemble des Epics</a></li>
+    <li><a href="#2-epic-01--authentification-de-base">2. EPIC-01 : Authentification de base</a>
+      <ul>
+        <li><a href="#fonctionnalités-de-lepic">Fonctionnalités de l&rsquo;Epic</a></li>
+        <li><a href="#user-stories---epic-01">User Stories - EPIC-01</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-epic-02--validation-et-sécurité">3. EPIC-02 : Validation et sécurité</a>
+      <ul>
+        <li><a href="#fonctionnalités-de-lepic-1">Fonctionnalités de l&rsquo;Epic</a></li>
+        <li><a href="#user-stories---epic-02">User Stories - EPIC-02</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-epic-03--expérience-utilisateur">4. EPIC-03 : Expérience utilisateur</a>
+      <ul>
+        <li><a href="#fonctionnalités-de-lepic-2">Fonctionnalités de l&rsquo;Epic</a></li>
+        <li><a href="#user-stories---epic-03">User Stories - EPIC-03</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-epic-04--récupération-et-aide">5. EPIC-04 : Récupération et aide</a>
+      <ul>
+        <li><a href="#fonctionnalités-de-lepic-3">Fonctionnalités de l&rsquo;Epic</a></li>
+        <li><a href="#user-stories---epic-04">User Stories - EPIC-04</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-epic-05--navigation-et-flux">6. EPIC-05 : Navigation et flux</a>
+      <ul>
+        <li><a href="#fonctionnalités-de-lepic-4">Fonctionnalités de l&rsquo;Epic</a></li>
+        <li><a href="#user-stories---epic-05">User Stories - EPIC-05</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-tableau-récapitulatif">7. Tableau récapitulatif</a>
+      <ul>
+        <li><a href="#vue-densemble-par-epic">Vue d&rsquo;ensemble par Epic</a></li>
+        <li><a href="#détail-des-user-stories">Détail des User Stories</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-roadmap-recommandée">8. Roadmap recommandée</a>
+      <ul>
+        <li><a href="#sprint-1-2-semaines---mvp-core">Sprint 1 (2 semaines) - MVP Core</a></li>
+        <li><a href="#sprint-2-2-semaines---sécurité-et-validation">Sprint 2 (2 semaines) - Sécurité et Validation</a></li>
+        <li><a href="#sprint-3-1-semaine---expérience-utilisateur">Sprint 3 (1 semaine) - Expérience utilisateur</a></li>
+        <li><a href="#sprint-4-1-semaine---support-et-finition">Sprint 4 (1 semaine) - Support et finition</a></li>
+        <li><a href="#timeline-visuelle">Timeline visuelle</a></li>
+        <li><a href="#critères-de-succès-du-projet">Critères de succès du projet</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/01-agile_scrum/index.html"><span itemprop="name">Définitions</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Loi de Ohm</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/01-agile_scrum/index.html" title="Définitions (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/intro/index.html" title="Intro à Visual Studio 2022 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 01-agile_scrum" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="loi-de-ohm">Loi de Ohm</h1>
+
+<h1 id="système-dauthentification-wpf---epics-fonctionnalités-et-user-stories">Système d&rsquo;authentification WPF - Epics, Fonctionnalités et User Stories<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<hr>
+<h2 id="table-des-matières">Table des matières<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ol>
+<li>Vue d&rsquo;ensemble des Epics</li>
+<li>EPIC-01 : Authentification de base</li>
+<li>EPIC-02 : Validation et sécurité</li>
+<li>EPIC-03 : Expérience utilisateur</li>
+<li>EPIC-04 : Récupération et aide</li>
+<li>EPIC-05 : Navigation et flux</li>
+<li>Tableau récapitulatif</li>
+<li>Roadmap recommandée</li>
+</ol>
+<hr>
+<h2 id="1-vue-densemble-des-epics">1. Vue d&rsquo;ensemble des Epics<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Epic ID</th>
+          <th>Nom</th>
+          <th>Priorité</th>
+          <th>Stories</th>
+          <th>Valeur métier</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>EPIC-01</td>
+          <td>Authentification de base</td>
+          <td>🔴 Critique</td>
+          <td>6</td>
+          <td>Fonctionnalité cœur</td>
+      </tr>
+      <tr>
+          <td>EPIC-02</td>
+          <td>Validation et sécurité</td>
+          <td>🔴 Critique</td>
+          <td>7</td>
+          <td>Protection des données</td>
+      </tr>
+      <tr>
+          <td>EPIC-03</td>
+          <td>Expérience utilisateur</td>
+          <td>🟡 Haute</td>
+          <td>5</td>
+          <td>Satisfaction client</td>
+      </tr>
+      <tr>
+          <td>EPIC-04</td>
+          <td>Récupération et aide</td>
+          <td>🟢 Moyenne</td>
+          <td>3</td>
+          <td>Support autonome</td>
+      </tr>
+      <tr>
+          <td>EPIC-05</td>
+          <td>Navigation et flux</td>
+          <td>🔴 Critique</td>
+          <td>4</td>
+          <td>Parcours utilisateur</td>
+      </tr>
+      <tr>
+          <td><strong>TOTAL</strong></td>
+          <td></td>
+          <td></td>
+          <td><strong>25</strong></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-epic-01--authentification-de-base">2. EPIC-01 : Authentification de base<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Objectif :</strong> Permettre aux utilisateurs de s&rsquo;authentifier et d&rsquo;accéder à l&rsquo;application de manière sécurisée.</p>
+<p><strong>Valeur métier :</strong> Sans cette fonctionnalité, l&rsquo;application ne peut pas fonctionner. C&rsquo;est le cœur du système.</p>
+<h3 id="fonctionnalités-de-lepic">Fonctionnalités de l&rsquo;Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="f-011--connexion-utilisateur">F-01.1 : Connexion utilisateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Permettre à un utilisateur existant de se connecter avec ses identifiants.</p>
+<h4 id="f-012--création-de-compte">F-01.2 : Création de compte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Permettre à un nouvel utilisateur de créer un compte dans le système.</p>
+<h4 id="f-013--gestion-des-sessions">F-01.3 : Gestion des sessions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Maintenir la session utilisateur active après connexion.</p>
+<hr>
+<h3 id="user-stories---epic-01">User Stories - EPIC-01<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="us-011--saisie-des-identifiants-de-connexion">US-01.1 : Saisie des identifiants de connexion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.1 - Connexion utilisateur<br>
+<strong>En tant qu&rsquo;</strong> utilisateur enregistré<br>
+<strong>Je veux</strong> saisir mon email et mon mot de passe<br>
+<strong>Afin de</strong> me connecter à mon compte</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Email&rdquo; est présent et fonctionnel</li>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Mot de passe&rdquo; masque les caractères saisis</li>
+<li><input disabled="" type="checkbox"> Les deux champs acceptent la saisie au clavier</li>
+<li><input disabled="" type="checkbox"> Le champ email accepte jusqu&rsquo;à 100 caractères</li>
+<li><input disabled="" type="checkbox"> Le champ mot de passe accepte jusqu&rsquo;à 50 caractères</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Saisir un email valide</li>
+<li>✅ Saisir un mot de passe</li>
+<li>✅ Vérifier que le mot de passe est masqué</li>
+</ol>
+<hr>
+<h4 id="us-012--vérification-des-identifiants">US-01.2 : Vérification des identifiants<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.1 - Connexion utilisateur<br>
+<strong>En tant qu&rsquo;</strong> utilisateur enregistré<br>
+<strong>Je veux</strong> que le système vérifie mes identifiants<br>
+<strong>Afin de</strong> accéder à mon compte si ils sont corrects</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Le système vérifie l&rsquo;email dans la base de données</li>
+<li><input disabled="" type="checkbox"> Le système compare le mot de passe hashé</li>
+<li><input disabled="" type="checkbox"> Si correct, l&rsquo;utilisateur est redirigé vers la page principale</li>
+<li><input disabled="" type="checkbox"> Si incorrect, un message d&rsquo;erreur s&rsquo;affiche</li>
+<li><input disabled="" type="checkbox"> Le message d&rsquo;erreur ne révèle pas si c&rsquo;est l&rsquo;email ou le mot de passe qui est incorrect</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Connexion avec identifiants valides</li>
+<li>❌ Connexion avec email invalide</li>
+<li>❌ Connexion avec mot de passe invalide</li>
+<li>❌ Connexion avec email inexistant</li>
+</ol>
+<hr>
+<h4 id="us-013--saisie-des-informations-de-création-de-compte">US-01.3 : Saisie des informations de création de compte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.2 - Création de compte<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> saisir mes informations personnelles<br>
+<strong>Afin de</strong> créer un nouveau compte</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Nom complet&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Email&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Mot de passe&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Confirmer mot de passe&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Tous les champs sont obligatoires</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Remplir tous les champs avec des données valides</li>
+<li>❌ Tenter de soumettre avec des champs vides</li>
+<li>❌ Soumettre avec seulement certains champs remplis</li>
+</ol>
+<hr>
+<h4 id="us-014--création-du-compte-dans-le-système">US-01.4 : Création du compte dans le système<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.2 - Création de compte<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> que mon compte soit créé dans le système<br>
+<strong>Afin de</strong> pouvoir me connecter par la suite</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Le système crée un nouvel enregistrement dans la base de données</li>
+<li><input disabled="" type="checkbox"> Le mot de passe est hashé avant d&rsquo;être stocké</li>
+<li><input disabled="" type="checkbox"> Un ID unique est généré pour l&rsquo;utilisateur</li>
+<li><input disabled="" type="checkbox"> La date de création est enregistrée</li>
+<li><input disabled="" type="checkbox"> L&rsquo;utilisateur reçoit une confirmation visuelle</li>
+<li><input disabled="" type="checkbox"> L&rsquo;utilisateur est automatiquement connecté après création</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Créer un compte avec toutes les informations valides</li>
+<li>✅ Vérifier que le compte existe dans la base de données</li>
+<li>✅ Vérifier que le mot de passe est hashé</li>
+</ol>
+<hr>
+<h4 id="us-015--unicité-de-lemail">US-01.5 : Unicité de l&rsquo;email<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.2 - Création de compte<br>
+<strong>En tant que</strong> système<br>
+<strong>Je veux</strong> vérifier que l&rsquo;email n&rsquo;existe pas déjà<br>
+<strong>Afin de</strong> garantir un email unique par utilisateur</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Le système vérifie l&rsquo;email dans la base avant création</li>
+<li><input disabled="" type="checkbox"> Si l&rsquo;email existe, un message d&rsquo;erreur s&rsquo;affiche</li>
+<li><input disabled="" type="checkbox"> Le message suggère de se connecter à la place</li>
+<li><input disabled="" type="checkbox"> Le message propose un lien &ldquo;Mot de passe oublié?&rdquo;</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Tenter de créer un compte avec un email existant</li>
+<li>✅ Créer un compte avec un email non utilisé</li>
+<li>✅ Vérifier le message d&rsquo;erreur approprié</li>
+</ol>
+<hr>
+<h4 id="us-016--maintien-de-la-session">US-01.6 : Maintien de la session<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-01.3 - Gestion des sessions<br>
+<strong>En tant qu&rsquo;</strong> utilisateur connecté<br>
+<strong>Je veux</strong> que ma session reste active<br>
+<strong>Afin de</strong> ne pas avoir à me reconnecter constamment</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un token de session est généré à la connexion</li>
+<li><input disabled="" type="checkbox"> La session reste active pendant 30 minutes d&rsquo;inactivité</li>
+<li><input disabled="" type="checkbox"> L&rsquo;activité de l&rsquo;utilisateur prolonge la session</li>
+<li><input disabled="" type="checkbox"> L&rsquo;utilisateur peut se déconnecter manuellement</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Rester connecté pendant 15 minutes</li>
+<li>✅ Vérifier que la session expire après 30 minutes d&rsquo;inactivité</li>
+<li>✅ Utiliser l&rsquo;application et vérifier la prolongation</li>
+</ol>
+<hr>
+<h2 id="3-epic-02--validation-et-sécurité">3. EPIC-02 : Validation et sécurité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Objectif :</strong> Garantir l&rsquo;intégrité des données et la sécurité des comptes utilisateurs.</p>
+<p><strong>Valeur métier :</strong> Protège l&rsquo;application contre les failles de sécurité et garantit la qualité des données.</p>
+<h3 id="fonctionnalités-de-lepic-1">Fonctionnalités de l&rsquo;Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="f-021--validation-des-champs">F-02.1 : Validation des champs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Vérifier que tous les champs requis sont remplis et ont le bon format.</p>
+<h4 id="f-022--validation-du-mot-de-passe">F-02.2 : Validation du mot de passe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Assurer que les mots de passe respectent les critères de sécurité.</p>
+<h4 id="f-023--protection-contre-les-attaques">F-02.3 : Protection contre les attaques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Implémenter des mesures de sécurité contre les attaques courantes.</p>
+<hr>
+<h3 id="user-stories---epic-02">User Stories - EPIC-02<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="us-021--validation-champs-obligatoires">US-02.1 : Validation champs obligatoires<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.1 - Validation des champs<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> être averti si j&rsquo;ai oublié de remplir un champ<br>
+<strong>Afin de</strong> corriger mon erreur avant de soumettre</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Les champs vides affichent un message d&rsquo;erreur</li>
+<li><input disabled="" type="checkbox"> Le bouton de soumission est désactivé si des champs sont vides</li>
+<li><input disabled="" type="checkbox"> Le message d&rsquo;erreur disparaît quand le champ est rempli</li>
+<li><input disabled="" type="checkbox"> Chaque champ a un message d&rsquo;erreur spécifique</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Soumettre le formulaire avec email vide</li>
+<li>❌ Soumettre le formulaire avec mot de passe vide</li>
+<li>❌ Soumettre le formulaire avec tous les champs vides</li>
+<li>✅ Remplir tous les champs et voir les erreurs disparaître</li>
+</ol>
+<hr>
+<h4 id="us-022--validation-format-email">US-02.2 : Validation format email<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.1 - Validation des champs<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> être averti si mon email n&rsquo;a pas le bon format<br>
+<strong>Afin de</strong> entrer une adresse email valide</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> L&rsquo;email doit contenir un @</li>
+<li><input disabled="" type="checkbox"> L&rsquo;email doit contenir un point après le @</li>
+<li><input disabled="" type="checkbox"> L&rsquo;email ne peut pas commencer ou finir par @</li>
+<li><input disabled="" type="checkbox"> Un message d&rsquo;erreur s&rsquo;affiche pour les formats invalides</li>
+<li><input disabled="" type="checkbox"> La validation se fait en temps réel pendant la saisie</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Entrer &ldquo;email&rdquo; (sans @)</li>
+<li>❌ Entrer &ldquo;email@domain&rdquo; (sans extension)</li>
+<li>❌ Entrer &ldquo;@domain.com&rdquo; (sans nom)</li>
+<li>✅ Entrer &ldquo;<a href="mailto:email@domain.com" rel="external">email@domain.com</a>&rdquo;</li>
+</ol>
+<hr>
+<h4 id="us-023--force-du-mot-de-passe---longueur">US-02.3 : Force du mot de passe - Longueur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.2 - Validation du mot de passe<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> savoir si mon mot de passe est assez long<br>
+<strong>Afin de</strong> créer un mot de passe sécurisé</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Le mot de passe doit contenir minimum 8 caractères</li>
+<li><input disabled="" type="checkbox"> Un message d&rsquo;erreur s&rsquo;affiche si trop court</li>
+<li><input disabled="" type="checkbox"> Le compteur de caractères est visible</li>
+<li><input disabled="" type="checkbox"> Le message disparaît quand la longueur est suffisante</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Entrer un mot de passe de 5 caractères</li>
+<li>❌ Entrer un mot de passe de 7 caractères</li>
+<li>✅ Entrer un mot de passe de 8 caractères</li>
+<li>✅ Entrer un mot de passe de 20 caractères</li>
+</ol>
+<hr>
+<h4 id="us-024--force-du-mot-de-passe---complexité">US-02.4 : Force du mot de passe - Complexité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.2 - Validation du mot de passe<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> voir la force de mon mot de passe<br>
+<strong>Afin de</strong> créer un mot de passe robuste</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un indicateur visuel montre la force (Faible/Moyen/Fort/Excellent)</li>
+<li><input disabled="" type="checkbox"> La force augmente avec les majuscules</li>
+<li><input disabled="" type="checkbox"> La force augmente avec les chiffres</li>
+<li><input disabled="" type="checkbox"> La force augmente avec les caractères spéciaux</li>
+<li><input disabled="" type="checkbox"> Un code couleur accompagne l&rsquo;indicateur (rouge/orange/vert/bleu)</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>Mot de passe &ldquo;password&rdquo; → Faible (rouge)</li>
+<li>Mot de passe &ldquo;Password1&rdquo; → Moyen (orange)</li>
+<li>Mot de passe &ldquo;Password1!&rdquo; → Fort (vert)</li>
+<li>Mot de passe &ldquo;P@ssw0rd!2024&rdquo; → Excellent (bleu)</li>
+</ol>
+<hr>
+<h4 id="us-025--confirmation-du-mot-de-passe">US-02.5 : Confirmation du mot de passe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.2 - Validation du mot de passe<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> confirmer mon mot de passe<br>
+<strong>Afin de</strong> m&rsquo;assurer de ne pas avoir fait de faute de frappe</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un champ &ldquo;Confirmer le mot de passe&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Un message d&rsquo;erreur s&rsquo;affiche si les mots de passe diffèrent</li>
+<li><input disabled="" type="checkbox"> La validation se fait en temps réel</li>
+<li><input disabled="" type="checkbox"> Une icône de validation (✓) apparaît quand ils correspondent</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Entrer deux mots de passe différents</li>
+<li>✅ Entrer deux mots de passe identiques</li>
+<li>✅ Modifier le premier et voir l&rsquo;erreur apparaître</li>
+</ol>
+<hr>
+<h4 id="us-026--exigences-du-mot-de-passe-visibles">US-02.6 : Exigences du mot de passe visibles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.2 - Validation du mot de passe<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> voir les exigences du mot de passe<br>
+<strong>Afin de</strong> savoir ce qui est attendu</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Une liste des exigences est visible près du champ mot de passe</li>
+<li><input disabled="" type="checkbox"> Chaque exigence est cochée (✓) quand respectée</li>
+<li><input disabled="" type="checkbox"> Les exigences incluent : longueur, majuscule, minuscule, chiffre, spécial</li>
+<li><input disabled="" type="checkbox"> Les exigences sont mises à jour en temps réel</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>Champ vide → Aucune exigence cochée</li>
+<li>Entrer &ldquo;password&rdquo; → Longueur et minuscule cochées</li>
+<li>Entrer &ldquo;Password1!&rdquo; → Toutes les exigences cochées</li>
+</ol>
+<hr>
+<h4 id="us-027--limitation-des-tentatives-de-connexion">US-02.7 : Limitation des tentatives de connexion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-02.3 - Protection contre les attaques<br>
+<strong>En tant que</strong> système<br>
+<strong>Je veux</strong> limiter les tentatives de connexion échouées<br>
+<strong>Afin de</strong> protéger contre les attaques par force brute</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Après 5 tentatives échouées, le compte est temporairement verrouillé</li>
+<li><input disabled="" type="checkbox"> Le verrouillage dure 15 minutes</li>
+<li><input disabled="" type="checkbox"> Un message informe l&rsquo;utilisateur du verrouillage</li>
+<li><input disabled="" type="checkbox"> Un compteur de tentatives restantes est visible</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Échouer 3 fois → Voir &ldquo;2 tentatives restantes&rdquo;</li>
+<li>❌ Échouer 5 fois → Compte verrouillé</li>
+<li>⏱️ Attendre 15 minutes → Pouvoir réessayer</li>
+</ol>
+<hr>
+<h2 id="4-epic-03--expérience-utilisateur">4. EPIC-03 : Expérience utilisateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Objectif :</strong> Améliorer le confort et la satisfaction des utilisateurs lors de l&rsquo;authentification.</p>
+<p><strong>Valeur métier :</strong> Augmente la rétention utilisateur et réduit les frustrations.</p>
+<h3 id="fonctionnalités-de-lepic-2">Fonctionnalités de l&rsquo;Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="f-031--mémorisation-des-informations">F-03.1 : Mémorisation des informations<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Permettre aux utilisateurs de sauvegarder leurs préférences.</p>
+<h4 id="f-032--feedback-visuel">F-03.2 : Feedback visuel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Fournir des retours visuels clairs sur les actions.</p>
+<h4 id="f-033--accessibilité">F-03.3 : Accessibilité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Assurer que l&rsquo;interface est accessible à tous.</p>
+<hr>
+<h3 id="user-stories---epic-03">User Stories - EPIC-03<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="us-031--se-souvenir-de-moi">US-03.1 : Se souvenir de moi<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-03.1 - Mémorisation des informations<br>
+<strong>En tant qu&rsquo;</strong> utilisateur régulier<br>
+<strong>Je veux</strong> cocher &ldquo;Se souvenir de moi&rdquo;<br>
+<strong>Afin de</strong> ne pas avoir à saisir mon email à chaque connexion</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Une case à cocher &ldquo;Se souvenir de moi&rdquo; est présente</li>
+<li><input disabled="" type="checkbox"> Si cochée, l&rsquo;email est sauvegardé localement (de façon sécurisée)</li>
+<li><input disabled="" type="checkbox"> À la prochaine ouverture, l&rsquo;email est pré-rempli</li>
+<li><input disabled="" type="checkbox"> L&rsquo;utilisateur peut décocher pour supprimer l&rsquo;email sauvegardé</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Cocher &ldquo;Se souvenir&rdquo; et se connecter</li>
+<li>✅ Fermer et rouvrir → Email pré-rempli</li>
+<li>✅ Se connecter sans cocher → Email non sauvegardé</li>
+</ol>
+<hr>
+<h4 id="us-032--indicateur-de-chargement">US-03.2 : Indicateur de chargement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-03.2 - Feedback visuel<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> voir un indicateur pendant la connexion<br>
+<strong>Afin de</strong> savoir que ma requête est en cours de traitement</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un indicateur de chargement (spinner) apparaît lors de la connexion</li>
+<li><input disabled="" type="checkbox"> Le bouton &ldquo;Se connecter&rdquo; est désactivé pendant le chargement</li>
+<li><input disabled="" type="checkbox"> Un overlay empêche les clics pendant le traitement</li>
+<li><input disabled="" type="checkbox"> Un texte &ldquo;Connexion en cours&hellip;&rdquo; est affiché</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Cliquer sur &ldquo;Se connecter&rdquo; et voir le spinner</li>
+<li>✅ Vérifier que le bouton est grisé</li>
+<li>✅ Tenter de cliquer pendant le chargement → Aucun effet</li>
+</ol>
+<hr>
+<h4 id="us-033--messages-derreur-clairs">US-03.3 : Messages d&rsquo;erreur clairs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-03.2 - Feedback visuel<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> des messages d&rsquo;erreur compréhensibles<br>
+<strong>Afin de</strong> savoir exactement ce qui ne va pas</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Les messages d&rsquo;erreur sont en français clair</li>
+<li><input disabled="" type="checkbox"> Chaque erreur a un message spécifique (pas de &ldquo;Erreur générique&rdquo;)</li>
+<li><input disabled="" type="checkbox"> Les messages sont affichés dans une boîte colorée (rouge)</li>
+<li><input disabled="" type="checkbox"> Une icône d&rsquo;avertissement accompagne le message</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>Email invalide → &ldquo;Format d&rsquo;email invalide&rdquo;</li>
+<li>Mot de passe trop court → &ldquo;Le mot de passe doit contenir au moins 8 caractères&rdquo;</li>
+<li>Mots de passe différents → &ldquo;Les mots de passe ne correspondent pas&rdquo;</li>
+</ol>
+<hr>
+<h4 id="us-034--acceptation-des-conditions">US-03.4 : Acceptation des conditions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-03.1 - Mémorisation des informations<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> accepter les conditions d&rsquo;utilisation<br>
+<strong>Afin de</strong> créer mon compte en toute transparence</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Une case &ldquo;J&rsquo;accepte les conditions d&rsquo;utilisation&rdquo; est présente</li>
+<li><input disabled="" type="checkbox"> Le bouton de création est désactivé si non cochée</li>
+<li><input disabled="" type="checkbox"> Un lien &ldquo;Voir les conditions&rdquo; ouvre une fenêtre</li>
+<li><input disabled="" type="checkbox"> Les conditions sont affichées de manière lisible</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>❌ Tenter de créer un compte sans cocher</li>
+<li>✅ Cocher la case → Bouton activé</li>
+<li>✅ Cliquer sur &ldquo;Voir les conditions&rdquo; → Fenêtre s&rsquo;ouvre</li>
+</ol>
+<hr>
+<h4 id="us-035--affichagemasquage-du-mot-de-passe">US-03.5 : Affichage/masquage du mot de passe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-03.2 - Feedback visuel<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> pouvoir afficher temporairement mon mot de passe<br>
+<strong>Afin de</strong> vérifier ce que j&rsquo;ai tapé</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Une icône &ldquo;œil&rdquo; est présente à côté du champ mot de passe</li>
+<li><input disabled="" type="checkbox"> Cliquer sur l&rsquo;icône affiche le mot de passe en clair</li>
+<li><input disabled="" type="checkbox"> Cliquer à nouveau le masque</li>
+<li><input disabled="" type="checkbox"> Un tooltip indique &ldquo;Afficher le mot de passe&rdquo;</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Entrer un mot de passe (masqué)</li>
+<li>✅ Cliquer sur l&rsquo;œil → Voir le texte en clair</li>
+<li>✅ Cliquer à nouveau → Masqué de nouveau</li>
+</ol>
+<hr>
+<h2 id="5-epic-04--récupération-et-aide">5. EPIC-04 : Récupération et aide<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Objectif :</strong> Aider les utilisateurs qui rencontrent des problèmes d&rsquo;accès à leur compte.</p>
+<p><strong>Valeur métier :</strong> Réduit les demandes de support et améliore l&rsquo;autonomie des utilisateurs.</p>
+<h3 id="fonctionnalités-de-lepic-3">Fonctionnalités de l&rsquo;Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="f-041--récupération-de-mot-de-passe">F-04.1 : Récupération de mot de passe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Permettre aux utilisateurs de réinitialiser leur mot de passe oublié.</p>
+<h4 id="f-042--support-et-aide">F-04.2 : Support et aide<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Fournir de l&rsquo;aide contextuelle aux utilisateurs.</p>
+<hr>
+<h3 id="user-stories---epic-04">User Stories - EPIC-04<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="us-041--lien-mot-de-passe-oublié">US-04.1 : Lien mot de passe oublié<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-04.1 - Récupération de mot de passe<br>
+<strong>En tant qu&rsquo;</strong> utilisateur ayant oublié son mot de passe<br>
+<strong>Je veux</strong> cliquer sur &ldquo;Mot de passe oublié?&rdquo;<br>
+<strong>Afin de</strong> accéder à la récupération</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un lien &ldquo;Mot de passe oublié?&rdquo; est visible sur la page de connexion</li>
+<li><input disabled="" type="checkbox"> Le lien est clairement identifiable (souligné ou en couleur)</li>
+<li><input disabled="" type="checkbox"> Le clic ouvre une nouvelle fenêtre de récupération</li>
+<li><input disabled="" type="checkbox"> Le lien est accessible au clavier (Tab + Enter)</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Cliquer sur le lien → Fenêtre s&rsquo;ouvre</li>
+<li>✅ Naviguer au clavier et appuyer sur Enter</li>
+<li>✅ Vérifier que la fenêtre de récupération s&rsquo;affiche</li>
+</ol>
+<hr>
+<h4 id="us-042--demande-de-réinitialisation">US-04.2 : Demande de réinitialisation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-04.1 - Récupération de mot de passe<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> entrer mon email pour demander une réinitialisation<br>
+<strong>Afin de</strong> recevoir un lien de réinitialisation</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un champ email est présent dans la fenêtre de récupération</li>
+<li><input disabled="" type="checkbox"> Un bouton &ldquo;Envoyer le lien&rdquo; est présent</li>
+<li><input disabled="" type="checkbox"> Le système vérifie que l&rsquo;email existe dans la base</li>
+<li><input disabled="" type="checkbox"> Un email est envoyé avec un lien temporaire (valide 1 heure)</li>
+<li><input disabled="" type="checkbox"> Un message de confirmation s&rsquo;affiche</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Entrer un email existant → Email envoyé</li>
+<li>❌ Entrer un email inexistant → Message &ldquo;Email non trouvé&rdquo;</li>
+<li>✅ Vérifier le message de confirmation</li>
+</ol>
+<hr>
+<h4 id="us-043--aide-contextuelle">US-04.3 : Aide contextuelle<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-04.2 - Support et aide<br>
+<strong>En tant qu&rsquo;</strong> utilisateur confus<br>
+<strong>Je veux</strong> voir des tooltips d&rsquo;aide<br>
+<strong>Afin de</strong> comprendre ce qu&rsquo;on attend de moi</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Des icônes &ldquo;?&rdquo; sont présentes près des champs complexes</li>
+<li><input disabled="" type="checkbox"> Survoler l&rsquo;icône affiche un tooltip explicatif</li>
+<li><input disabled="" type="checkbox"> Les tooltips expliquent les exigences en langage simple</li>
+<li><input disabled="" type="checkbox"> Les tooltips restent affichés tant que la souris est dessus</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Survoler &ldquo;?&rdquo; près du mot de passe → Voir les exigences</li>
+<li>✅ Survoler &ldquo;?&rdquo; près de l&rsquo;email → Voir le format attendu</li>
+<li>✅ Déplacer la souris → Tooltip disparaît</li>
+</ol>
+<hr>
+<h2 id="6-epic-05--navigation-et-flux">6. EPIC-05 : Navigation et flux<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Objectif :</strong> Assurer une navigation fluide et intuitive entre les différentes pages du système d&rsquo;authentification.</p>
+<p><strong>Valeur métier :</strong> Améliore l&rsquo;expérience utilisateur et réduit les abandons.</p>
+<h3 id="fonctionnalités-de-lepic-4">Fonctionnalités de l&rsquo;Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="f-051--navigation-entre-pages">F-05.1 : Navigation entre pages<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Permettre aux utilisateurs de naviguer facilement entre connexion et inscription.</p>
+<h4 id="f-052--raccourcis-clavier">F-05.2 : Raccourcis clavier<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Faciliter les actions avec le clavier.</p>
+<hr>
+<h3 id="user-stories---epic-05">User Stories - EPIC-05<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="us-051--navigation-vers-création-de-compte">US-05.1 : Navigation vers création de compte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-05.1 - Navigation entre pages<br>
+<strong>En tant que</strong> nouvel utilisateur<br>
+<strong>Je veux</strong> cliquer sur &ldquo;Créer un compte&rdquo;<br>
+<strong>Afin de</strong> accéder à la page d&rsquo;inscription</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un lien/bouton &ldquo;Créer un compte&rdquo; est visible en bas de la page de connexion</li>
+<li><input disabled="" type="checkbox"> Le texte est clair : &ldquo;Pas encore de compte? Créer un compte&rdquo;</li>
+<li><input disabled="" type="checkbox"> Le clic charge la page de création de compte</li>
+<li><input disabled="" type="checkbox"> La transition est fluide (pas de flash)</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Cliquer sur &ldquo;Créer un compte&rdquo; → Page d&rsquo;inscription s&rsquo;affiche</li>
+<li>✅ Vérifier que les champs de connexion sont réinitialisés</li>
+<li>✅ Vérifier la fluidité de la transition</li>
+</ol>
+<hr>
+<h4 id="us-052--navigation-vers-connexion">US-05.2 : Navigation vers connexion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-05.1 - Navigation entre pages<br>
+<strong>En tant qu&rsquo;</strong> utilisateur ayant déjà un compte<br>
+<strong>Je veux</strong> cliquer sur &ldquo;Se connecter&rdquo;<br>
+<strong>Afin de</strong> revenir à la page de connexion</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Un lien &ldquo;Déjà un compte? Se connecter&rdquo; est visible sur la page d&rsquo;inscription</li>
+<li><input disabled="" type="checkbox"> Le clic charge la page de connexion</li>
+<li><input disabled="" type="checkbox"> Les données saisies dans l&rsquo;inscription ne sont pas perdues si on revient</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Cliquer sur &ldquo;Se connecter&rdquo; → Page de connexion s&rsquo;affiche</li>
+<li>✅ Remplir un formulaire, naviguer, revenir → Données préservées</li>
+<li>✅ Vérifier la fluidité de la transition</li>
+</ol>
+<hr>
+<h4 id="us-053--touche-enter-pour-soumettre">US-05.3 : Touche Enter pour soumettre<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-05.2 - Raccourcis clavier<br>
+<strong>En tant qu&rsquo;</strong> utilisateur<br>
+<strong>Je veux</strong> appuyer sur Enter pour me connecter<br>
+<strong>Afin de</strong> soumettre rapidement le formulaire</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Appuyer sur Enter dans n&rsquo;importe quel champ soumet le formulaire</li>
+<li><input disabled="" type="checkbox"> Le comportement est identique à cliquer sur le bouton</li>
+<li><input disabled="" type="checkbox"> La validation se fait avant la soumission</li>
+<li><input disabled="" type="checkbox"> Si des erreurs existent, Enter ne soumet pas</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Remplir email et mot de passe, appuyer sur Enter → Connexion</li>
+<li>❌ Laisser un champ vide, appuyer sur Enter → Erreur affichée</li>
+<li>✅ Vérifier que ça fonctionne depuis les deux champs</li>
+</ol>
+<hr>
+<h4 id="us-054--navigation-au-clavier">US-05.4 : Navigation au clavier<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Fonctionnalité :</strong> F-05.2 - Raccourcis clavier<br>
+<strong>En tant qu&rsquo;</strong> utilisateur utilisant le clavier<br>
+<strong>Je veux</strong> naviguer entre les champs avec Tab<br>
+<strong>Afin de</strong> remplir le formulaire sans la souris</p>
+<p><strong>Critères d&rsquo;acceptation :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Tab passe au champ suivant dans l&rsquo;ordre logique</li>
+<li><input disabled="" type="checkbox"> Shift+Tab revient au champ précédent</li>
+<li><input disabled="" type="checkbox"> Les boutons et liens sont accessibles avec Tab</li>
+<li><input disabled="" type="checkbox"> Le focus est visuellement visible (contour)</li>
+</ul>
+<p><strong>Scénarios de test :</strong></p>
+<ol>
+<li>✅ Appuyer sur Tab répétitivement → Parcourt tous les champs</li>
+<li>✅ Utiliser Shift+Tab → Retour en arrière</li>
+<li>✅ Vérifier que le focus est visible</li>
+<li>✅ Atteindre le bouton et appuyer sur Enter → Soumission</li>
+</ol>
+<hr>
+<h2 id="7-tableau-récapitulatif">7. Tableau récapitulatif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="vue-densemble-par-epic">Vue d&rsquo;ensemble par Epic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Epic</th>
+          <th>Fonctionnalités</th>
+          <th>User Stories</th>
+          <th>Points estimés</th>
+          <th>Priorité</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>EPIC-01: Authentification de base</strong></td>
+          <td>3</td>
+          <td>6</td>
+          <td>21</td>
+          <td>🔴 Critique</td>
+      </tr>
+      <tr>
+          <td><strong>EPIC-02: Validation et sécurité</strong></td>
+          <td>3</td>
+          <td>7</td>
+          <td>28</td>
+          <td>🔴 Critique</td>
+      </tr>
+      <tr>
+          <td><strong>EPIC-03: Expérience utilisateur</strong></td>
+          <td>3</td>
+          <td>5</td>
+          <td>13</td>
+          <td>🟡 Haute</td>
+      </tr>
+      <tr>
+          <td><strong>EPIC-04: Récupération et aide</strong></td>
+          <td>2</td>
+          <td>3</td>
+          <td>8</td>
+          <td>🟢 Moyenne</td>
+      </tr>
+      <tr>
+          <td><strong>EPIC-05: Navigation et flux</strong></td>
+          <td>2</td>
+          <td>4</td>
+          <td>8</td>
+          <td>🔴 Critique</td>
+      </tr>
+      <tr>
+          <td><strong>TOTAL</strong></td>
+          <td><strong>13</strong></td>
+          <td><strong>25</strong></td>
+          <td><strong>78</strong></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="détail-des-user-stories">Détail des User Stories<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Epic</th>
+          <th>Titre</th>
+          <th>Priorité</th>
+          <th>Complexité</th>
+          <th>Effort</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>US-01.1</td>
+          <td>EPIC-01</td>
+          <td>Saisie des identifiants de connexion</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-01.2</td>
+          <td>EPIC-01</td>
+          <td>Vérification des identifiants</td>
+          <td>🔴</td>
+          <td>Moyenne</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>US-01.3</td>
+          <td>EPIC-01</td>
+          <td>Saisie des informations de création</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-01.4</td>
+          <td>EPIC-01</td>
+          <td>Création du compte dans le système</td>
+          <td>🔴</td>
+          <td>Haute</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>US-01.5</td>
+          <td>EPIC-01</td>
+          <td>Unicité de l&rsquo;email</td>
+          <td>🔴</td>
+          <td>Moyenne</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>US-01.6</td>
+          <td>EPIC-01</td>
+          <td>Maintien de la session</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>US-02.1</td>
+          <td>EPIC-02</td>
+          <td>Validation champs obligatoires</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>US-02.2</td>
+          <td>EPIC-02</td>
+          <td>Validation format email</td>
+          <td>🔴</td>
+          <td>Moyenne</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>US-02.3</td>
+          <td>EPIC-02</td>
+          <td>Force mot de passe - Longueur</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-02.4</td>
+          <td>EPIC-02</td>
+          <td>Force mot de passe - Complexité</td>
+          <td>🔴</td>
+          <td>Moyenne</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>US-02.5</td>
+          <td>EPIC-02</td>
+          <td>Confirmation du mot de passe</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-02.6</td>
+          <td>EPIC-02</td>
+          <td>Exigences mot de passe visibles</td>
+          <td>🔴</td>
+          <td>Moyenne</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>US-02.7</td>
+          <td>EPIC-02</td>
+          <td>Limitation tentatives connexion</td>
+          <td>🔴</td>
+          <td>Haute</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>US-03.1</td>
+          <td>EPIC-03</td>
+          <td>Se souvenir de moi</td>
+          <td>🟡</td>
+          <td>Moyenne</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>US-03.2</td>
+          <td>EPIC-03</td>
+          <td>Indicateur de chargement</td>
+          <td>🟡</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-03.3</td>
+          <td>EPIC-03</td>
+          <td>Messages d&rsquo;erreur clairs</td>
+          <td>🟡</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-03.4</td>
+          <td>EPIC-03</td>
+          <td>Acceptation des conditions</td>
+          <td>🟡</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-03.5</td>
+          <td>EPIC-03</td>
+          <td>Affichage/masquage mot de passe</td>
+          <td>🟡</td>
+          <td>Moyenne</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>US-04.1</td>
+          <td>EPIC-04</td>
+          <td>Lien mot de passe oublié</td>
+          <td>🟢</td>
+          <td>Faible</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>US-04.2</td>
+          <td>EPIC-04</td>
+          <td>Demande de réinitialisation</td>
+          <td>🟢</td>
+          <td>Haute</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>US-04.3</td>
+          <td>EPIC-04</td>
+          <td>Aide contextuelle</td>
+          <td>🟢</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-05.1</td>
+          <td>EPIC-05</td>
+          <td>Navigation vers création compte</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-05.2</td>
+          <td>EPIC-05</td>
+          <td>Navigation vers connexion</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-05.3</td>
+          <td>EPIC-05</td>
+          <td>Touche Enter pour soumettre</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>US-05.4</td>
+          <td>EPIC-05</td>
+          <td>Navigation au clavier</td>
+          <td>🔴</td>
+          <td>Faible</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="8-roadmap-recommandée">8. Roadmap recommandée<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="sprint-1-2-semaines---mvp-core">Sprint 1 (2 semaines) - MVP Core<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Connexion et création de compte fonctionnels</p>
+<p><strong>Stories incluses :</strong></p>
+<ul>
+<li>EPIC-01 : US-01.1, US-01.2, US-01.3, US-01.4, US-01.5 (5 stories)</li>
+<li>EPIC-05 : US-05.1, US-05.2 (2 stories)</li>
+</ul>
+<p><strong>Effort total :</strong> 22 points<br>
+<strong>Livrable :</strong> Utilisateurs peuvent créer un compte et se connecter</p>
+<hr>
+<h3 id="sprint-2-2-semaines---sécurité-et-validation">Sprint 2 (2 semaines) - Sécurité et Validation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Sécuriser l&rsquo;application et valider les données</p>
+<p><strong>Stories incluses :</strong></p>
+<ul>
+<li>EPIC-02 : US-02.1, US-02.2, US-02.3, US-02.4, US-02.5, US-02.6, US-02.7 (7 stories)</li>
+<li>EPIC-01 : US-01.6 (1 story)</li>
+</ul>
+<p><strong>Effort total :</strong> 29 points<br>
+<strong>Livrable :</strong> Application sécurisée avec validation complète</p>
+<hr>
+<h3 id="sprint-3-1-semaine---expérience-utilisateur">Sprint 3 (1 semaine) - Expérience utilisateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Améliorer le confort d&rsquo;utilisation</p>
+<p><strong>Stories incluses :</strong></p>
+<ul>
+<li>EPIC-03 : US-03.1, US-03.2, US-03.3, US-03.4, US-03.5 (5 stories)</li>
+<li>EPIC-05 : US-05.3, US-05.4 (2 stories)</li>
+</ul>
+<p><strong>Effort total :</strong> 17 points<br>
+<strong>Livrable :</strong> Application polie avec excellente UX</p>
+<hr>
+<h3 id="sprint-4-1-semaine---support-et-finition">Sprint 4 (1 semaine) - Support et finition<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Ajouter les fonctionnalités de support</p>
+<p><strong>Stories incluses :</strong></p>
+<ul>
+<li>EPIC-04 : US-04.1, US-04.2, US-04.3 (3 stories)</li>
+</ul>
+<p><strong>Effort total :</strong> 8 points<br>
+<strong>Livrable :</strong> Application complète et autonome</p>
+<hr>
+<h3 id="timeline-visuelle">Timeline visuelle<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Sprint 1 (2 sem)  |  Sprint 2 (2 sem)  |  Sprint 3 (1 sem)  |  Sprint 4 (1 sem)
+──────────────────────────────────────────────────────────────────────────────
+MVP Core          |  Sécurité          |  UX                |  Support
+7 stories         |  8 stories         |  7 stories         |  3 stories
+22 points         |  29 points         |  17 points         |  8 points
+──────────────────────────────────────────────────────────────────────────────
+                              TOTAL: 6 semaines, 25 stories, 76 points</code></pre></div>
+<hr>
+<h3 id="critères-de-succès-du-projet">Critères de succès du projet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Techniques :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 100% des User Stories implémentées</li>
+<li><input disabled="" type="checkbox"> Tests unitaires &gt; 80% de couverture</li>
+<li><input disabled="" type="checkbox"> Temps de réponse &lt; 2 secondes</li>
+<li><input disabled="" type="checkbox"> Aucune faille de sécurité critique</li>
+</ul>
+<p><strong>Utilisateur :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Taux de création de compte réussie &gt; 95%</li>
+<li><input disabled="" type="checkbox"> Taux de connexion réussie &gt; 98%</li>
+<li><input disabled="" type="checkbox"> Satisfaction utilisateur &gt; 4/5</li>
+<li><input disabled="" type="checkbox"> Support tickets &lt; 5% des utilisateurs</li>
+</ul>
+<p><strong>Métier :</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Authentification fonctionnelle</li>
+<li><input disabled="" type="checkbox"> Sécurité conforme aux standards</li>
+<li><input disabled="" type="checkbox"> Expérience utilisateur fluide</li>
+<li><input disabled="" type="checkbox"> Application maintenable et évolutive</li>
+</ul>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Aug 1, 2024
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="parent " data-nav-id="/420-413/01-agile_scrum/index.html"><a class="padding default-animation" href="/420-413/01-agile_scrum/index.html">1.Définitions</a><ul id="R-subsections-acae4de8d9735f7b850092ca7c3936ee" class="collapsible-menu">
+            <li class="active " data-nav-id="/420-413/01-agile_scrum/fichier2/index.html"><a class="padding" href="/420-413/01-agile_scrum/fichier2/index.html">Loi de Ohm</a></li></ul></li>
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/pratique_exam1/index.html"><a class="padding" href="/420-413/pratique_exam1/index.html">Pratique - Exam 1</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1772171615" defer></script>
+    <script src="/420-413/js/theme.js?1772171615" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

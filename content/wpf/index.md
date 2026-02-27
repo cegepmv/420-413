@@ -807,10 +807,33 @@ Le **DataContext** est l'objet source auquel les contrôles se lient.
 
 **Classe Personne.cs :**
 ```csharp
-public class Personne
+public class Personne : INotifyPropertyChanged
 {
-    public string Nom { get; set; }
-    public int Age { get; set; }
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private string nom;
+    private int age;
+
+    public string Nom
+    {
+        get => nom;
+        set
+        {
+            nom = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Nom)));
+        }
+    }
+
+    public int Age
+    {
+        get => age;
+        set
+        {
+            age = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Age)));
+        }
+    }
+}
 }
 ```
 

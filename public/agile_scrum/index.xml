@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SCRUM :: Développement d&#39;applications pour entreprises</title>
+    <link>http://localhost:1313/420-413/agile_scrum/index.html</link>
+    <description>Table des matières Introduction à Agile Qu’est-ce que Scrum ? Les Rôles Scrum Les Artefacts Scrum Les Cérémonies Scrum Epics, Stories et Sprints Exercice Pratique pour Étudiants Introduction à Agile Qu’est-ce que l’Agile ? Agile est un ensemble de valeurs et de principes qui servent de philosophie de travail pour le développement de produits et de projets. La méthodologie Agile a révolutionné la façon dont le travail est effectué, non seulement dans le développement logiciel, mais aussi dans d’autres domaines.</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="http://localhost:1313/420-413/agile_scrum/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

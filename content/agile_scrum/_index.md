@@ -1,9 +1,9 @@
 ---
-title: "Agile - Scrum"
+title: "SCRUM"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 12
+weight: 20
 ---
 
 ## Table des matières
