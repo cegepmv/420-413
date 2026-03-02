@@ -333,6 +333,272 @@ station.SetMesures(25, 60, 1015);  // Un appel
 - Les observateurs sont très peu nombreux et fixes (une simple méthode suffit)
 - Performance critique (chaque notification a un coût)
 
+### Exercice - 📈 Système d'Alerte Boursière — Patron de Conception Observateur
+
+#### Contexte
+
+Vous devez concevoir un **système de suivi d'actions boursières** basé sur le patron de conception **Observateur (Observer Pattern)**. Lorsqu'une action (ex. : `NVDA`, `AAPL`) enregistre une variation de prix significative, tous les investisseurs abonnés à cette action doivent en être **notifiés automatiquement et en temps réel**.
+
+---
+
+#### Travail demandé
+
+#### Partie 1 — Diagramme de classes *(à réaliser avant tout développement)*
+
+Concevez le **diagramme de classes UML** correspondant au système décrit ci-dessous.
+
+Votre diagramme devra faire apparaître :
+- Les classes et interfaces avec leurs attributs et méthodes
+- Les relations entre les classes (association, implémentation, dépendance)
+- Les multiplicités lorsqu'elles sont pertinentes
+
+---
+
+#### Partie 2 — Implémentation
+
+#### 2.1 L'interface `Observateur`
+
+Définissez une interface `Observateur` représentant toute entité souhaitant être notifiée d'un changement de prix.
+
+**Méthode requise :**
+```java
+void mettreAJour(String codeAction, double prix);
+```
+
+---
+
+#### 2.2 La classe `Action` *(Le Sujet / Observable)*
+
+Cette classe représente une action cotée en bourse. Elle joue le rôle de **sujet observable**.
+
+**Attributs :**
+- `nom` : le code de l'action (ex. : `"NVDA"`)
+- `prix` : le prix courant de l'action
+
+**Responsabilités :**
+- Maintenir une **liste d'abonnés** (observateurs)
+- Permettre l'**ajout** et la **suppression** d'abonnés
+- Notifier les abonnés lors d'un changement de prix
+
+**⚠️ Condition Spéciale :**
+> La notification ne doit se déclencher **que si la variation de prix est supérieure à 2%** par rapport au dernier prix enregistré.
+
+**Formule de variation :**
+```
+variation (%) = |nouveau_prix - ancien_prix| / ancien_prix × 100
+```
+
+---
+
+#### 2.3 Les observateurs concrets
+
+##### 🧑‍💼 `AgentBoursier`
+Simule un agent financier qui réagit aux alertes de prix.
+
+**Comportement attendu à la réception d'une notification :**
+```
+Achat/Vente suggéré pour [codeAction] — Nouveau prix : [prix] €
+```
+
+---
+
+##### 📱 `ApplicationMobile`
+Simule une application mobile qui envoie des notifications push à l'utilisateur.
+
+**Comportement attendu à la réception d'une notification :**
+```
+🔔 Alerte de prix ! [codeAction] est désormais à [prix] €
+```
+
+---
+
+#### Exemple de scénario de test
+```java
+Action nvda = new Action("NVDA", 100.0);
+
+AgentBoursier agent = new AgentBoursier("Alice");
+ApplicationMobile app = new ApplicationMobile("Bob");
+
+nvda.abonner(agent);
+nvda.abonner(app);
+
+nvda.setPrix(101.0); // variation : 1% → aucune notification
+nvda.setPrix(104.0); // variation : ~3% → notification déclenchée ✅
+nvda.setPrix(105.0); // variation : ~1% → aucune notification
+```
+
+---
+
+## Délégués et Événements en C#
+
+### 1. Les Délégués
+
+Un **délégué** est un type qui représente une référence vers une méthode.
+Il définit une **signature** (paramètres + type de retour) que toute méthode associée doit respecter.
+
+> 💡 Un délégué est un **contrat** : toute méthode qui respecte ce contrat peut lui être assignée.
+
+#### Déclaration
+```csharp
+delegate void MonDélégué(string message);
+```
+
+#### Utilisation
+```csharp
+delegate void MonDélégué(string message);
+
+static void Afficher(string message)
+{
+    Console.WriteLine(message);
+}
+
+static void Main()
+{
+    MonDélégué d = Afficher;
+    d("Bonjour !");  // Bonjour !
+}
+```
+
+#### Multicast — Plusieurs méthodes
+
+Un délégué peut pointer vers **plusieurs méthodes** à la fois.
+```csharp
+MonDélégué d = Afficher;
+d += Enregistrer;  // Ajouter une méthode
+
+d("Bonjour !");    // Les deux méthodes sont appelées
+
+d -= Afficher;     // Retirer une méthode
+```
+
+---
+
+### 2. Les Expressions Lambda
+
+Une **lambda** est une méthode anonyme concise, souvent utilisée avec les délégués.
+```csharp
+// Syntaxe : (paramètres) => expression
+delegate int Operation(int a, int b);
+
+Operation additionner = (a, b) => a + b;
+Console.WriteLine(additionner(3, 4));  // 7
+
+// Avec un bloc d'instructions
+delegate void Salutation(string nom);
+
+Salutation saluer = nom =>
+{
+    string msg = $"Bonjour, {nom} !";
+    Console.WriteLine(msg);
+};
+saluer("Alice");  // Bonjour, Alice !
+```
+
+---
+
+### 3. Les Événements
+
+Un **événement** permet à une classe de **notifier d'autres classes** qu'il s'est passé
+quelque chose. Il est basé sur un délégué.
+
+> 💡 Un événement est un **bouton d'alarme** : quand il est déclenché, tous les abonnés sont prévenus.
+
+#### Déclaration
+```csharp
+public class Minuterie
+{
+    // 1. Déclarer le délégué
+    public delegate void SonnerieDélégué(string message);
+
+    // 2. Déclarer l'événement
+    public event SonnerieDélégué Sonnerie;
+
+    public void Démarrer()
+    {
+        // 3. Déclencher l'événement
+        Sonnerie?.Invoke("⏰ Temps écoulé !");
+    }
+}
+```
+
+#### Abonnement
+```csharp
+Minuterie m = new Minuterie();
+
+m.Sonnerie += msg => Console.WriteLine($"Reçu : {msg}");
+
+m.Démarrer();
+// Reçu : ⏰ Temps écoulé !
+```
+
+---
+
+### 4. Convention `EventHandler<TEventArgs>`
+
+La convention standard en C# utilise `EventHandler<TEventArgs>` avec une classe
+d'arguments qui hérite de `EventArgs`.
+```csharp
+// 1. Créer la classe d'arguments
+public class TemperatureEventArgs : EventArgs
+{
+    public double Temperature { get; set; }
+}
+
+// 2. Déclarer l'événement
+public class Capteur
+{
+    public event EventHandler<TemperatureEventArgs> TemperatureChangée;
+
+    public void SetTemperature(double temp)
+    {
+        TemperatureChangée?.Invoke(this, new TemperatureEventArgs
+        {
+            Temperature = temp
+        });
+    }
+}
+
+// 3. S'abonner
+Capteur capteur = new Capteur();
+
+capteur.TemperatureChangée += (sender, e) =>
+    Console.WriteLine($"Température : {e.Temperature}°C");
+
+capteur.SetTemperature(25);
+// Température : 25°C
+```
+
+---
+
+### 5. Délégué vs Événement
+
+| Caractéristique | Délégué | Événement |
+|---|---|---|
+| Assignation `=` depuis l'extérieur | ✅ | ❌ |
+| Invocation depuis l'extérieur | ✅ | ❌ |
+| `+=` / `-=` depuis l'extérieur | ✅ | ✅ |
+| Usage typique | Callback | Notification |
+
+> ⚠️ Un événement **encapsule** le délégué : seule la classe qui le déclare peut le déclencher.
+
+---
+
+### 6. Résumé
+```
+DÉLÉGUÉ
+  └─ Type pointant vers une ou plusieurs méthodes
+  └─ Définit une signature (paramètres + retour)
+  └─ Supporte le multicast (+=  /  -=)
+       │
+       │ est la base de
+       ▼
+ÉVÉNEMENT
+  └─ Délégué encapsulé dans une classe
+  └─ Seule la classe propriétaire peut le déclencher
+  └─ Les abonnés utilisent += et -=
+```
+
+
 ### Variantes du patron Observateur
 
 **1. Push vs Pull**
@@ -407,6 +673,130 @@ station.MesuresChangees += (sender, e) =>
 // Déclencher
 station.SetTemperature(25);
 ```
+
+## Une version améliorée pour encapsuler les détails d'implémentation
+
+### L'interface `IObservateur`
+```csharp
+// Le contrat que tout observateur doit respecter
+public interface IObservateur
+{
+    void Réagir(object sender, MesuresEventArgs e);
+}
+```
+
+### `MesuresEventArgs`
+```csharp
+public class MesuresEventArgs : EventArgs
+{
+    public double Temperature { get; set; }
+    public double Humidite    { get; set; }
+    public double Pression    { get; set; }
+}
+```
+
+### `StationMeteo` *(Le Sujet)*
+```csharp
+public class StationMeteo
+{
+    private event EventHandler<MesuresEventArgs> MesuresChangees;
+
+    private double _temperature;
+    private double _humidite;
+    private double _pression;
+
+    public void Abonner(IObservateur observateur)    => MesuresChangees += observateur.Réagir;
+    public void Désabonner(IObservateur observateur) => MesuresChangees -= observateur.Réagir;
+
+    // ✅ Un seul appel pour mettre à jour les 3 valeurs et notifier
+    public void SetMesures(double temperature, double humidite, double pression)
+    {
+        _temperature = temperature;
+        _humidite    = humidite;
+        _pression    = pression;
+
+        MesuresChangees?.Invoke(this, new MesuresEventArgs
+        {
+            Temperature = _temperature,
+            Humidite    = _humidite,
+            Pression    = _pression
+        });
+    }
+}
+```
+
+### Les observateurs concrets
+```csharp
+public class AfficheurTemperature : IObservateur
+{
+    private string _nom;
+    public AfficheurTemperature(string nom) => _nom = nom;
+
+    public void Réagir(object sender, MesuresEventArgs e)
+        => Console.WriteLine($"[{_nom}] Température : {e.Temperature}°C | Humidité : {e.Humidite}% | Pression : {e.Pression}hPa");
+}
+
+public class EnregistreurDonnées : IObservateur
+{
+    public void Réagir(object sender, MesuresEventArgs e)
+        => Console.WriteLine($"📁 Sauvegardé — T:{e.Temperature}°C | H:{e.Humidite}% | P:{e.Pression}hPa");
+}
+
+
+// ✅ Déclenche une alerte si une valeur dépasse un seuil
+public class AlerteClimatique : IObservateur
+{
+    public void Réagir(object sender, MesuresEventArgs e)
+    {
+        if (e.Temperature > 40)
+            Console.WriteLine($"🌡 ALERTE — Température critique : {e.Temperature}°C !");
+        if (e.Humidite > 90)
+            Console.WriteLine($"💧 ALERTE — Humidité critique : {e.Humidite}% !");
+        if (e.Pression < 950)
+            Console.WriteLine($"🌪 ALERTE — Pression critique : {e.Pression}hPa !");
+    }
+}
+
+```
+
+### `Main`
+```csharp
+StationMeteo station = new StationMeteo();
+
+station.Abonner(new AfficheurMesures("Écran principal"));
+station.Abonner(new EnregistreurDonnées());
+station.Abonner(new AlerteClimatique());
+
+station.SetMesures(temperature: 42, humidite: 95, pression: 945);
+// [Écran principal] Température : 42°C | Humidité : 95% | Pression : 945hPa
+// 📁 Sauvegardé — T:42°C | H:95% | P:945hPa
+// 🌡 ALERTE — Température critique : 42°C !
+// 💧 ALERTE — Humidité critique : 95% !
+// 🌪 ALERTE — Pression critique : 945hPa !
+```
+
+---
+
+### Résumé des responsabilités
+
+| Classe | Responsabilité |
+|---|---|
+| `IObservateur` | Définit le contrat de réaction |
+| `MesuresEventArgs` | Transporte les données de l'événement |
+| `StationMeteo` | Gère les abonnés et déclenche les notifications |
+| `AfficheurTemperature` | Réagit en affichant la température |
+| `EnregistreurDonnées` | Réagit en sauvegardant les données |
+| `Main` | Crée les objets, les relie, simule les actions |
+
+---
+
+### Règles d'encapsulation respectées
+
+- L'événement est `private` — on ne peut pas s'abonner directement depuis l'extérieur
+- `Abonner()` prend une `IObservateur` — aucun couplage avec les classes concrètes
+- `Main` ne connaît aucune méthode interne — il change juste l'état
+- Ajouter un nouvel observateur ne nécessite **aucune modification** de `StationMeteo`
+---
 
 ## Partie 2 : Le patron Observateur (INotifyPropertyChanged)
 
@@ -578,3 +968,4 @@ public class Personne : BaseViewModel
 ```
 
 ---
+

@@ -23,29 +23,29 @@ Analogie : C’est comme une recette de cuisine. Si vous voulez faire un gâteau
     <meta itemprop="name" content="Patron observateur :: Développement d&#39;applications pour entreprises">
     <meta itemprop="description" content="Partie 1 : Le patron Observateur (Contexte général) Qu’est-ce qu’un patron de conception ? Définition simple : Un patron de conception est une solution éprouvée à un problème récurrent en programmation.
 Analogie : C’est comme une recette de cuisine. Si vous voulez faire un gâteau, vous n’inventez pas la méthode à chaque fois — vous suivez une recette qui a fait ses preuves.">
-    <meta itemprop="wordCount" content="1735">
+    <meta itemprop="wordCount" content="2992">
     <title>Patron observateur :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1772172444" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1772172444" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1772172444" defer></script>
-    <script src="/420-413/js/search-lunr.js?1772172444" defer></script>
-    <script src="/420-413/js/search.js?1772172444" defer></script>
+    <link href="/420-413/images/favicon.png?1772472219" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1772472219" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1772472219" defer></script>
+    <script src="/420-413/js/search-lunr.js?1772472219" defer></script>
+    <script src="/420-413/js/search.js?1772472219" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1772172444";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1772472219";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1772172444" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1772172444" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1772172444" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1772172444" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1772472219" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1772472219" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1772472219" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1772472219" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1772172444" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1772172444" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1772172444" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1772172444" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1772172444" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1772472219" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1772472219" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1772472219" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1772472219" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1772472219" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -125,7 +125,29 @@ Analogie : C’est comme une recette de cuisine. Si vous voulez faire un gâteau
         <li><a href="#implémentation-complète">Implémentation complète</a></li>
         <li><a href="#avantages-du-patron-observateur">Avantages du patron Observateur</a></li>
         <li><a href="#quand-utiliser-le-patron-observateur-">Quand utiliser le patron Observateur ?</a></li>
+        <li><a href="#exercice----système-dalerte-boursière--patron-de-conception-observateur">Exercice - 📈 Système d&rsquo;Alerte Boursière — Patron de Conception Observateur</a></li>
+      </ul>
+    </li>
+    <li><a href="#délégués-et-événements-en-c">Délégués et Événements en C#</a>
+      <ul>
+        <li><a href="#1-les-délégués">1. Les Délégués</a></li>
+        <li><a href="#2-les-expressions-lambda">2. Les Expressions Lambda</a></li>
+        <li><a href="#3-les-événements">3. Les Événements</a></li>
+        <li><a href="#4-convention-eventhandlerteventargs">4. Convention <code>EventHandler&lt;TEventArgs&gt;</code></a></li>
+        <li><a href="#5-délégué-vs-événement">5. Délégué vs Événement</a></li>
+        <li><a href="#6-résumé">6. Résumé</a></li>
         <li><a href="#variantes-du-patron-observateur">Variantes du patron Observateur</a></li>
+      </ul>
+    </li>
+    <li><a href="#une-version-améliorée-pour-encapsuler-les-détails-dimplémentation">Une version améliorée pour encapsuler les détails d&rsquo;implémentation</a>
+      <ul>
+        <li><a href="#linterface-iobservateur">L&rsquo;interface <code>IObservateur</code></a></li>
+        <li><a href="#mesureseventargs"><code>MesuresEventArgs</code></a></li>
+        <li><a href="#stationmeteo-le-sujet"><code>StationMeteo</code> <em>(Le Sujet)</em></a></li>
+        <li><a href="#les-observateurs-concrets">Les observateurs concrets</a></li>
+        <li><a href="#main"><code>Main</code></a></li>
+        <li><a href="#résumé-des-responsabilités">Résumé des responsabilités</a></li>
+        <li><a href="#règles-dencapsulation-respectées">Règles d&rsquo;encapsulation respectées</a></li>
       </ul>
     </li>
     <li><a href="#partie-2--le-patron-observateur-inotifypropertychanged">Partie 2 : Le patron Observateur (INotifyPropertyChanged)</a>
@@ -460,6 +482,224 @@ SiteWeb s&#39;est désabonné
 <li>Les observateurs sont très peu nombreux et fixes (une simple méthode suffit)</li>
 <li>Performance critique (chaque notification a un coût)</li>
 </ul>
+<h3 id="exercice----système-dalerte-boursière--patron-de-conception-observateur">Exercice - 📈 Système d&rsquo;Alerte Boursière — Patron de Conception Observateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="contexte">Contexte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Vous devez concevoir un <strong>système de suivi d&rsquo;actions boursières</strong> basé sur le patron de conception <strong>Observateur (Observer Pattern)</strong>. Lorsqu&rsquo;une action (ex. : <code>NVDA</code>, <code>AAPL</code>) enregistre une variation de prix significative, tous les investisseurs abonnés à cette action doivent en être <strong>notifiés automatiquement et en temps réel</strong>.</p>
+<hr>
+<h4 id="travail-demandé">Travail demandé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<h4 id="partie-1--diagramme-de-classes-à-réaliser-avant-tout-développement">Partie 1 — Diagramme de classes <em>(à réaliser avant tout développement)</em><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Concevez le <strong>diagramme de classes UML</strong> correspondant au système décrit ci-dessous.</p>
+<p>Votre diagramme devra faire apparaître :</p>
+<ul>
+<li>Les classes et interfaces avec leurs attributs et méthodes</li>
+<li>Les relations entre les classes (association, implémentation, dépendance)</li>
+<li>Les multiplicités lorsqu&rsquo;elles sont pertinentes</li>
+</ul>
+<hr>
+<h4 id="partie-2--implémentation">Partie 2 — Implémentation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<h4 id="21-linterface-observateur">2.1 L&rsquo;interface <code>Observateur</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Définissez une interface <code>Observateur</code> représentant toute entité souhaitant être notifiée d&rsquo;un changement de prix.</p>
+<p><strong>Méthode requise :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kt">void</span><span class="w"> </span><span class="nf">mettreAJour</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">codeAction</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">prix</span><span class="p">);</span></span></span></code></pre></div>
+<hr>
+<h4 id="22-la-classe-action-le-sujet--observable">2.2 La classe <code>Action</code> <em>(Le Sujet / Observable)</em><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Cette classe représente une action cotée en bourse. Elle joue le rôle de <strong>sujet observable</strong>.</p>
+<p><strong>Attributs :</strong></p>
+<ul>
+<li><code>nom</code> : le code de l&rsquo;action (ex. : <code>&quot;NVDA&quot;</code>)</li>
+<li><code>prix</code> : le prix courant de l&rsquo;action</li>
+</ul>
+<p><strong>Responsabilités :</strong></p>
+<ul>
+<li>Maintenir une <strong>liste d&rsquo;abonnés</strong> (observateurs)</li>
+<li>Permettre l&rsquo;<strong>ajout</strong> et la <strong>suppression</strong> d&rsquo;abonnés</li>
+<li>Notifier les abonnés lors d&rsquo;un changement de prix</li>
+</ul>
+<p><strong>⚠️ Condition Spéciale :</strong></p>
+<blockquote>
+<p>La notification ne doit se déclencher <strong>que si la variation de prix est supérieure à 2%</strong> par rapport au dernier prix enregistré.</p></blockquote>
+<p><strong>Formule de variation :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>variation (%) = |nouveau_prix - ancien_prix| / ancien_prix × 100</code></pre></div>
+<hr>
+<h4 id="23-les-observateurs-concrets">2.3 Les observateurs concrets<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<h5 id="-agentboursier">🧑‍💼 <code>AgentBoursier</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h5>
+<p>Simule un agent financier qui réagit aux alertes de prix.</p>
+<p><strong>Comportement attendu à la réception d&rsquo;une notification :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Achat/Vente suggéré pour [codeAction] — Nouveau prix : [prix] €</code></pre></div>
+<hr>
+<h5 id="-applicationmobile">📱 <code>ApplicationMobile</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h5>
+<p>Simule une application mobile qui envoie des notifications push à l&rsquo;utilisateur.</p>
+<p><strong>Comportement attendu à la réception d&rsquo;une notification :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>🔔 Alerte de prix ! [codeAction] est désormais à [prix] €</code></pre></div>
+<hr>
+<h4 id="exemple-de-scénario-de-test">Exemple de scénario de test<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Action</span><span class="w"> </span><span class="n">nvda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Action</span><span class="p">(</span><span class="s">&#34;NVDA&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">100</span><span class="p">.</span><span class="na">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">AgentBoursier</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgentBoursier</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ApplicationMobile</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ApplicationMobile</span><span class="p">(</span><span class="s">&#34;Bob&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nvda</span><span class="p">.</span><span class="na">abonner</span><span class="p">(</span><span class="n">agent</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nvda</span><span class="p">.</span><span class="na">abonner</span><span class="p">(</span><span class="n">app</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nvda</span><span class="p">.</span><span class="na">setPrix</span><span class="p">(</span><span class="n">101</span><span class="p">.</span><span class="na">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// variation : 1% → aucune notification</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nvda</span><span class="p">.</span><span class="na">setPrix</span><span class="p">(</span><span class="n">104</span><span class="p">.</span><span class="na">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// variation : ~3% → notification déclenchée ✅</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nvda</span><span class="p">.</span><span class="na">setPrix</span><span class="p">(</span><span class="n">105</span><span class="p">.</span><span class="na">0</span><span class="p">);</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">variation</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">~</span><span class="n">1</span><span class="o">%</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">aucune</span><span class="w"> </span><span class="n">notification</span></span></span></code></pre></div>
+<hr>
+<h2 id="délégués-et-événements-en-c">Délégués et Événements en C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-les-délégués">1. Les Délégués<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un <strong>délégué</strong> est un type qui représente une référence vers une méthode.
+Il définit une <strong>signature</strong> (paramètres + type de retour) que toute méthode associée doit respecter.</p>
+<blockquote>
+<p>💡 Un délégué est un <strong>contrat</strong> : toute méthode qui respecte ce contrat peut lui être assignée.</p></blockquote>
+<h4 id="déclaration">Déclaration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">delegate</span> <span class="k">void</span> <span class="n">MonDélégué</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span></span></span></code></pre></div>
+<h4 id="utilisation">Utilisation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">delegate</span> <span class="k">void</span> <span class="n">MonDélégué</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">static</span> <span class="k">void</span> <span class="n">Afficher</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MonDélégué</span> <span class="n">d</span> <span class="p">=</span> <span class="n">Afficher</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span><span class="p">(</span><span class="s">&#34;Bonjour !&#34;</span><span class="p">);</span>  <span class="c1">// Bonjour !</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="multicast--plusieurs-méthodes">Multicast — Plusieurs méthodes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Un délégué peut pointer vers <strong>plusieurs méthodes</strong> à la fois.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">MonDélégué</span> <span class="n">d</span> <span class="p">=</span> <span class="n">Afficher</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="p">+=</span> <span class="n">Enregistrer</span><span class="p">;</span>  <span class="c1">// Ajouter une méthode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">(</span><span class="s">&#34;Bonjour !&#34;</span><span class="p">);</span>    <span class="c1">// Les deux méthodes sont appelées</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="p">-=</span> <span class="n">Afficher</span><span class="p">;</span>     <span class="c1">// Retirer une méthode</span></span></span></code></pre></div>
+<hr>
+<h3 id="2-les-expressions-lambda">2. Les Expressions Lambda<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Une <strong>lambda</strong> est une méthode anonyme concise, souvent utilisée avec les délégués.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Syntaxe : (paramètres) =&gt; expression</span>
+</span></span><span class="line"><span class="cl"><span class="k">delegate</span> <span class="kt">int</span> <span class="n">Operation</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Operation</span> <span class="n">additionner</span> <span class="p">=</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">additionner</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">));</span>  <span class="c1">// 7</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Avec un bloc d&#39;instructions</span>
+</span></span><span class="line"><span class="cl"><span class="k">delegate</span> <span class="k">void</span> <span class="n">Salutation</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Salutation</span> <span class="n">saluer</span> <span class="p">=</span> <span class="n">nom</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">msg</span> <span class="p">=</span> <span class="s">$&#34;Bonjour, {nom} !&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">saluer</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">);</span>  <span class="c1">// Bonjour, Alice !</span></span></span></code></pre></div>
+<hr>
+<h3 id="3-les-événements">3. Les Événements<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un <strong>événement</strong> permet à une classe de <strong>notifier d&rsquo;autres classes</strong> qu&rsquo;il s&rsquo;est passé
+quelque chose. Il est basé sur un délégué.</p>
+<blockquote>
+<p>💡 Un événement est un <strong>bouton d&rsquo;alarme</strong> : quand il est déclenché, tous les abonnés sont prévenus.</p></blockquote>
+<h4 id="déclaration-1">Déclaration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Minuterie</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. Déclarer le délégué</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="n">SonnerieDélégué</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. Déclarer l&#39;événement</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">SonnerieDélégué</span> <span class="n">Sonnerie</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Démarrer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. Déclencher l&#39;événement</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Sonnerie</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="s">&#34;⏰ Temps écoulé !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h4 id="abonnement">Abonnement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Minuterie</span> <span class="n">m</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Minuterie</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span><span class="p">.</span><span class="n">Sonnerie</span> <span class="p">+=</span> <span class="n">msg</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Reçu : {msg}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span><span class="p">.</span><span class="n">Démarrer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Reçu : ⏰ Temps écoulé !</span></span></span></code></pre></div>
+<hr>
+<h3 id="4-convention-eventhandlerteventargs">4. Convention <code>EventHandler&lt;TEventArgs&gt;</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La convention standard en C# utilise <code>EventHandler&lt;TEventArgs&gt;</code> avec une classe
+d&rsquo;arguments qui hérite de <code>EventArgs</code>.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 1. Créer la classe d&#39;arguments</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TemperatureEventArgs</span> <span class="p">:</span> <span class="n">EventArgs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Temperature</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. Déclarer l&#39;événement</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Capteur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">TemperatureEventArgs</span><span class="p">&gt;</span> <span class="n">TemperatureChangée</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SetTemperature</span><span class="p">(</span><span class="kt">double</span> <span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TemperatureChangée</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">TemperatureEventArgs</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Temperature</span> <span class="p">=</span> <span class="n">temp</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 3. S&#39;abonner</span>
+</span></span><span class="line"><span class="cl"><span class="n">Capteur</span> <span class="n">capteur</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Capteur</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">capteur</span><span class="p">.</span><span class="n">TemperatureChangée</span> <span class="p">+=</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;Température : {e.Temperature}°C&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">capteur</span><span class="p">.</span><span class="n">SetTemperature</span><span class="p">(</span><span class="m">25</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Température : 25°C</span></span></span></code></pre></div>
+<hr>
+<h3 id="5-délégué-vs-événement">5. Délégué vs Événement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Caractéristique</th>
+          <th>Délégué</th>
+          <th>Événement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Assignation <code>=</code> depuis l&rsquo;extérieur</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td>Invocation depuis l&rsquo;extérieur</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><code>+=</code> / <code>-=</code> depuis l&rsquo;extérieur</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>Usage typique</td>
+          <td>Callback</td>
+          <td>Notification</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>⚠️ Un événement <strong>encapsule</strong> le délégué : seule la classe qui le déclare peut le déclencher.</p></blockquote>
+<hr>
+<h3 id="6-résumé">6. Résumé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>DÉLÉGUÉ
+  └─ Type pointant vers une ou plusieurs méthodes
+  └─ Définit une signature (paramètres + retour)
+  └─ Supporte le multicast (+=  /  -=)
+       │
+       │ est la base de
+       ▼
+ÉVÉNEMENT
+  └─ Délégué encapsulé dans une classe
+  └─ Seule la classe propriétaire peut le déclencher
+  └─ Les abonnés utilisent += et -=</code></pre></div>
 <h3 id="variantes-du-patron-observateur">Variantes du patron Observateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p><strong>1. Push vs Pull</strong></p>
 <p><strong>Push (ce qu&rsquo;on a fait) :</strong> Le sujet envoie les données</p>
@@ -522,6 +762,135 @@ SiteWeb s&#39;est désabonné
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Déclencher</span>
 </span></span><span class="line"><span class="cl"><span class="n">station</span><span class="p">.</span><span class="n">SetTemperature</span><span class="p">(</span><span class="m">25</span><span class="p">);</span></span></span></code></pre></div>
+<h2 id="une-version-améliorée-pour-encapsuler-les-détails-dimplémentation">Une version améliorée pour encapsuler les détails d&rsquo;implémentation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="linterface-iobservateur">L&rsquo;interface <code>IObservateur</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Le contrat que tout observateur doit respecter</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Réagir</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">MesuresEventArgs</span> <span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="mesureseventargs"><code>MesuresEventArgs</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MesuresEventArgs</span> <span class="p">:</span> <span class="n">EventArgs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Temperature</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Humidite</span>    <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">double</span> <span class="n">Pression</span>    <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="stationmeteo-le-sujet"><code>StationMeteo</code> <em>(Le Sujet)</em><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">StationMeteo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">MesuresEventArgs</span><span class="p">&gt;</span> <span class="n">MesuresChangees</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">_temperature</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">_humidite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">double</span> <span class="n">_pression</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Abonner</span><span class="p">(</span><span class="n">IObservateur</span> <span class="n">observateur</span><span class="p">)</span>    <span class="p">=&gt;</span> <span class="n">MesuresChangees</span> <span class="p">+=</span> <span class="n">observateur</span><span class="p">.</span><span class="n">Réagir</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Désabonner</span><span class="p">(</span><span class="n">IObservateur</span> <span class="n">observateur</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">MesuresChangees</span> <span class="p">-=</span> <span class="n">observateur</span><span class="p">.</span><span class="n">Réagir</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Un seul appel pour mettre à jour les 3 valeurs et notifier</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SetMesures</span><span class="p">(</span><span class="kt">double</span> <span class="n">temperature</span><span class="p">,</span> <span class="kt">double</span> <span class="n">humidite</span><span class="p">,</span> <span class="kt">double</span> <span class="n">pression</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_temperature</span> <span class="p">=</span> <span class="n">temperature</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_humidite</span>    <span class="p">=</span> <span class="n">humidite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_pression</span>    <span class="p">=</span> <span class="n">pression</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">MesuresChangees</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">MesuresEventArgs</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Temperature</span> <span class="p">=</span> <span class="n">_temperature</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Humidite</span>    <span class="p">=</span> <span class="n">_humidite</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Pression</span>    <span class="p">=</span> <span class="n">_pression</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="les-observateurs-concrets">Les observateurs concrets<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">AfficheurTemperature</span> <span class="p">:</span> <span class="n">IObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">_nom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">AfficheurTemperature</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">_nom</span> <span class="p">=</span> <span class="n">nom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Réagir</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">MesuresEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;[{_nom}] Température : {e.Temperature}°C | Humidité : {e.Humidite}% | Pression : {e.Pression}hPa&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">EnregistreurDonnées</span> <span class="p">:</span> <span class="n">IObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Réagir</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">MesuresEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📁 Sauvegardé — T:{e.Temperature}°C | H:{e.Humidite}% | P:{e.Pression}hPa&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ✅ Déclenche une alerte si une valeur dépasse un seuil</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">AlerteClimatique</span> <span class="p">:</span> <span class="n">IObservateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Réagir</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">MesuresEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Temperature</span> <span class="p">&gt;</span> <span class="m">40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;🌡 ALERTE — Température critique : {e.Temperature}°C !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Humidite</span> <span class="p">&gt;</span> <span class="m">90</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;💧 ALERTE — Humidité critique : {e.Humidite}% !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Pression</span> <span class="p">&lt;</span> <span class="m">950</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;🌪 ALERTE — Pression critique : {e.Pression}hPa !&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="main"><code>Main</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">StationMeteo</span> <span class="n">station</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StationMeteo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">station</span><span class="p">.</span><span class="n">Abonner</span><span class="p">(</span><span class="k">new</span> <span class="n">AfficheurMesures</span><span class="p">(</span><span class="s">&#34;Écran principal&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">station</span><span class="p">.</span><span class="n">Abonner</span><span class="p">(</span><span class="k">new</span> <span class="n">EnregistreurDonnées</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">station</span><span class="p">.</span><span class="n">Abonner</span><span class="p">(</span><span class="k">new</span> <span class="n">AlerteClimatique</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">station</span><span class="p">.</span><span class="n">SetMesures</span><span class="p">(</span><span class="n">temperature</span><span class="p">:</span> <span class="m">42</span><span class="p">,</span> <span class="n">humidite</span><span class="p">:</span> <span class="m">95</span><span class="p">,</span> <span class="n">pression</span><span class="p">:</span> <span class="m">945</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// [Écran principal] Température : 42°C | Humidité : 95% | Pression : 945hPa</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 📁 Sauvegardé — T:42°C | H:95% | P:945hPa</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 🌡 ALERTE — Température critique : 42°C !</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 💧 ALERTE — Humidité critique : 95% !</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 🌪 ALERTE — Pression critique : 945hPa !</span></span></span></code></pre></div>
+<hr>
+<h3 id="résumé-des-responsabilités">Résumé des responsabilités<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Classe</th>
+          <th>Responsabilité</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>IObservateur</code></td>
+          <td>Définit le contrat de réaction</td>
+      </tr>
+      <tr>
+          <td><code>MesuresEventArgs</code></td>
+          <td>Transporte les données de l&rsquo;événement</td>
+      </tr>
+      <tr>
+          <td><code>StationMeteo</code></td>
+          <td>Gère les abonnés et déclenche les notifications</td>
+      </tr>
+      <tr>
+          <td><code>AfficheurTemperature</code></td>
+          <td>Réagit en affichant la température</td>
+      </tr>
+      <tr>
+          <td><code>EnregistreurDonnées</code></td>
+          <td>Réagit en sauvegardant les données</td>
+      </tr>
+      <tr>
+          <td><code>Main</code></td>
+          <td>Crée les objets, les relie, simule les actions</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="règles-dencapsulation-respectées">Règles d&rsquo;encapsulation respectées<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>L&rsquo;événement est <code>private</code> — on ne peut pas s&rsquo;abonner directement depuis l&rsquo;extérieur</li>
+<li><code>Abonner()</code> prend une <code>IObservateur</code> — aucun couplage avec les classes concrètes</li>
+<li><code>Main</code> ne connaît aucune méthode interne — il change juste l&rsquo;état</li>
+<li>Ajouter un nouvel observateur ne nécessite <strong>aucune modification</strong> de <code>StationMeteo</code></li>
+</ul>
+<hr>
 <h2 id="partie-2--le-patron-observateur-inotifypropertychanged">Partie 2 : Le patron Observateur (INotifyPropertyChanged)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="le-problème">Le problème<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Avec le code précédent, si on modifie une propriété en C#, <strong>l&rsquo;interface ne se met PAS à jour</strong> :</p>
@@ -715,8 +1084,6 @@ SiteWeb s&#39;est désabonné
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">1.Définitions</a></li>
-            <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Interfaces Humain Machine</a></li>
             <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
             <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
             <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
@@ -737,6 +1104,8 @@ SiteWeb s&#39;est désabonné
             <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
             <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
             <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">SCRUM</a></li>
+            <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Epics et User Stories</a></li>
             <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
           </ul>
         </div>
@@ -773,8 +1142,8 @@ SiteWeb s&#39;est désabonné
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1772172444" defer></script>
-    <script src="/420-413/js/theme.js?1772172444" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1772472219" defer></script>
+    <script src="/420-413/js/theme.js?1772472219" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
