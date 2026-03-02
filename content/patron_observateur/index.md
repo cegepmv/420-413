@@ -362,7 +362,7 @@ Définissez une interface `Observateur` représentant toute entité souhaitant �
 
 **Méthode requise :**
 ```java
-void mettreAJour(String codeAction, double prix);
+void MettreAJour(String codeAction, double prix);
 ```
 
 ---
@@ -419,12 +419,12 @@ Action nvda = new Action("NVDA", 100.0);
 AgentBoursier agent = new AgentBoursier("Alice");
 ApplicationMobile app = new ApplicationMobile("Bob");
 
-nvda.abonner(agent);
-nvda.abonner(app);
+nvda.Abonner(agent);
+nvda.Abonner(app);
 
-nvda.setPrix(101.0); // variation : 1% → aucune notification
-nvda.setPrix(104.0); // variation : ~3% → notification déclenchée ✅
-nvda.setPrix(105.0); // variation : ~1% → aucune notification
+nvda.SetPrix(101.0); // variation : 1% → aucune notification
+nvda.SetPrix(104.0); // variation : ~3% → notification déclenchée ✅
+nvda.SetPrix(105.0); // variation : ~1% → aucune notification
 ```
 
 ---
