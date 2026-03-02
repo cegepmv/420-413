@@ -397,7 +397,7 @@ Simule un agent financier qui réagit aux alertes de prix.
 
 **Comportement attendu à la réception d'une notification :**
 ```
-Achat/Vente suggéré pour [codeAction] — Nouveau prix : [prix] €
+Achat/Vente suggéré pour [codeAction] — Nouveau prix : [prix] $
 ```
 
 ---
@@ -407,7 +407,7 @@ Simule une application mobile qui envoie des notifications push à l'utilisateur
 
 **Comportement attendu à la réception d'une notification :**
 ```
-🔔 Alerte de prix ! [codeAction] est désormais à [prix] €
+🔔 Alerte de prix ! [codeAction] est désormais à [prix] $
 ```
 
 ---
@@ -599,7 +599,7 @@ DÉLÉGUÉ
 ```
 
 
-### Variantes du patron Observateur
+## Variantes du patron Observateur
 
 **1. Push vs Pull**
 
