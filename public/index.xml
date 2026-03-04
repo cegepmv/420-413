@@ -120,20 +120,6 @@
       <description>Partie 1 : Le patron Observateur (Contexte général) Qu’est-ce qu’un patron de conception ? Définition simple : Un patron de conception est une solution éprouvée à un problème récurrent en programmation.&#xA;Analogie : C’est comme une recette de cuisine. Si vous voulez faire un gâteau, vous n’inventez pas la méthode à chaque fois — vous suivez une recette qui a fait ses preuves.</description>
     </item>
     <item>
-      <title>Patron commande</title>
-      <link>http://localhost:1313/420-413/patron_commande/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/patron_commande/index.html</guid>
-      <description>Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte&#xA;Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :&#xA;Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?</description>
-    </item>
-    <item>
-      <title>Injection de dépendance</title>
-      <link>http://localhost:1313/420-413/injection_dependance/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/injection_dependance/index.html</guid>
-      <description>: Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification&#xA;Vous développez une application qui doit envoyer des notifications :&#xA;Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :</description>
-    </item>
-    <item>
       <title>MVVM</title>
       <link>http://localhost:1313/420-413/mvvm/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -141,11 +127,25 @@
       <description>Le patron MVVM (Model-View-ViewModel) Qu’est-ce que MVVM ? MVVM = Model-View-ViewModel&#xA;C’est un patron de conception (design pattern) qui organise le code d’une application WPF en 3 couches :&#xA;Couche Responsabilité Fichier Model Les données brutes (classes métier) Personne.cs, Produit.cs View L’interface graphique (XAML) MainWindow.xaml ViewModel Logique de présentation, data binding MainViewModel.cs Pourquoi MVVM ? Problème avec le code-behind (approche traditionnelle) :</description>
     </item>
     <item>
+      <title>Patron commande</title>
+      <link>http://localhost:1313/420-413/patron_commande/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/patron_commande/index.html</guid>
+      <description>Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte&#xA;Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :&#xA;Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?</description>
+    </item>
+    <item>
       <title>Mini-projets</title>
       <link>http://localhost:1313/420-413/mini_projets/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/mini_projets/index.html</guid>
       <description>Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire&#xA;Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :</description>
+    </item>
+    <item>
+      <title>Injection de dépendance</title>
+      <link>http://localhost:1313/420-413/injection_dependance/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/injection_dependance/index.html</guid>
+      <description>: Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification&#xA;Vous développez une application qui doit envoyer des notifications :&#xA;Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :</description>
     </item>
     <item>
       <title>SCRUM</title>

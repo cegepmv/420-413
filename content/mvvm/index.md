@@ -68,9 +68,339 @@ Model (Données)
 2. Le **ViewModel** ne connaît PAS la View (pas de `MessageBox`, pas de `txtNom.Text`)
 3. Le **Model** ne connaît ni View ni ViewModel
 
-### Exemple complet MVVM : Gestion de produits
+---
 
-#### Étape 1 : Le Model
+## Progression pédagogique : du simple au complexe
+
+Nous allons apprendre MVVM en 3 étapes :
+1. **Exemple 1** : 2 champs texte simples (carte de visite)
+2. **Exemple 2** : Ajout d'un bouton et d'une action (calculatrice d'âge)
+3. **Exemple 3** : Ajout d'une liste (gestion de produits)
+
+---
+
+## Exemple 1 - MVVM simple : Carte de visite
+
+**Objectif :** Créer une interface pour saisir un prénom et un nom, et afficher automatiquement le nom complet.
+
+### Étape 1 : Le Model
+
+**Personne.cs**
+```csharp
+public class Personne
+{
+    public string Prenom { get; set; }
+    public string Nom { get; set; }
+}
+```
+
+C'est juste une classe de données, rien de spécial. Pas de `INotifyPropertyChanged` ici car le Model représente juste les données brutes.
+
+### Étape 2 : Le ViewModel
+
+**PersonneViewModel.cs**
+```csharp
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+public class PersonneViewModel : INotifyPropertyChanged
+{
+    // On contient l'objet métier ici !
+    private Personne _personneMetier;
+
+    public PersonneViewModel()
+    {
+        _personneMetier = new Personne { Prenom = "Jean", Nom = "Tremblay" };
+    }
+
+    public string Prenom
+    {
+        get => _personneMetier.Prenom;
+        set 
+        {
+            _personneMetier.Prenom = value; // On écrit directement dans le Model
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(NomComplet));
+        }
+    }
+
+    public string Nom
+    {
+        get => _personneMetier.Nom;
+        set 
+        {
+            _personneMetier.Nom = value; // On écrit directement dans le Model
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(NomComplet));
+        }
+    }
+
+    public string NomComplet => $"{Prenom} {Nom}";
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string name = null) 
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+}
+```
+
+**Explications importantes :**
+
+1. **Champs privés** (`prenom`, `nom`) : Stockent les valeurs
+2. **Propriétés publiques** (`Prenom`, `Nom`) : Accessibles depuis le XAML
+3. **`OnPropertyChanged()`** : Notifie WPF que la propriété a changé
+4. **`nameof(NomComplet)`** : Quand prénom ou nom change, le nom complet doit se mettre à jour aussi
+5. **`NomComplet`** : Propriété calculée, pas besoin de setter
+
+### Étape 3 : La View
+
+**MainWindow.xaml**
+```xml
+<Window x:Class="CarteVisite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Carte de visite - MVVM" 
+        Height="300" 
+        Width="400">
+    
+    <StackPanel Margin="20">
+        <!-- Titre -->
+        <TextBlock Text="👤 Carte de visite" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   Margin="0,0,0,30" />
+        
+        <!-- Prénom -->
+        <Label Content="Prénom :" FontWeight="Bold" />
+        <TextBox Text="{Binding Prenom, UpdateSourceTrigger=PropertyChanged}" 
+                 Height="30" 
+                 FontSize="14"
+                 Margin="0,0,0,15" />
+        
+        <!-- Nom -->
+        <Label Content="Nom :" FontWeight="Bold" />
+        <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}" 
+                 Height="30" 
+                 FontSize="14"
+                 Margin="0,0,0,30" />
+        
+        <!-- Affichage du nom complet (lecture seule) -->
+        <Border BorderBrush="LightGray" 
+                BorderThickness="2" 
+                Padding="15"
+                Background="#F0F0F0">
+            <StackPanel>
+                <TextBlock Text="Nom complet :" 
+                           FontSize="12" 
+                           Foreground="Gray" />
+                <TextBlock Text="{Binding NomComplet}" 
+                           FontSize="20" 
+                           FontWeight="Bold"
+                           Foreground="DarkBlue" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+    
+</Window>
+```
+
+**Points importants dans le XAML :**
+
+1. **`{Binding Prenom}`** : Lie le TextBox à la propriété `Prenom` du ViewModel
+2. **`UpdateSourceTrigger=PropertyChanged`** : Met à jour immédiatement à chaque frappe (sinon, seulement quand on quitte le champ)
+3. **`{Binding NomComplet}`** : Affiche automatiquement le nom complet
+4. **Aucun `x:Name`** : Pas besoin, on utilise le binding !
+
+### Étape 4 : Code-behind (quasi vide !)
+
+**MainWindow.xaml.cs**
+```csharp
+using System.Windows;
+
+namespace CarteVisite
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            
+            // C'est TOUT le code nécessaire !
+            this.DataContext = new PersonneViewModel();
+        }
+    }
+}
+```
+
+**C'est tout !** Aucune méthode `Button_Click`, aucun `txtNom.Text` !
+
+### Comment ça fonctionne ?
+
+**Quand vous tapez dans le TextBox "Prénom" :**
+1. WPF détecte que le texte a changé
+2. WPF appelle automatiquement `Prenom = "Alice"` dans le ViewModel
+3. Le setter de `Prenom` déclenche `OnPropertyChanged()`
+4. WPF reçoit la notification et met à jour tous les contrôles liés
+5. Le TextBlock `NomComplet` se met à jour automatiquement !
+
+**Résultat :** Vous tapez "Alice" puis "Tremblay" et vous voyez immédiatement "Alice Tremblay" s'afficher en bas !
+
+---
+
+## Exemple 2 - MVVM avec bouton : Calculatrice d'âge
+
+**Objectif :** Entrer une année de naissance et calculer l'âge quand on clique sur un bouton.
+
+### Le ViewModel avec une action
+
+**AgeViewModel.cs**
+```csharp
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+public class AgeViewModel : INotifyPropertyChanged
+{
+    // Année de naissance
+    private int anneeNaissance;
+    public int AnneeNaissance
+    {
+        get { return anneeNaissance; }
+        set 
+        { 
+            anneeNaissance = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    // Âge calculé (résultat)
+    private int age;
+    public int Age
+    {
+        get { return age; }
+        set 
+        { 
+            age = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    // Message à afficher
+    private string message;
+    public string Message
+    {
+        get { return message; }
+        set 
+        { 
+            message = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    // Constructeur
+    public AgeViewModel()
+    {
+        AnneeNaissance = 2000;
+        Age = 0;
+        Message = "Entrez votre année de naissance et cliquez sur Calculer";
+    }
+    
+    // Méthode appelée par le bouton
+    public void CalculerAge()
+    {
+        int anneeActuelle = DateTime.Now.Year;
+        Age = anneeActuelle - AnneeNaissance;
+        Message = $"Vous avez {Age} ans !";
+    }
+    
+    // INotifyPropertyChanged
+    public event PropertyChangedEventHandler PropertyChanged;
+    
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+```
+
+### La View
+
+**MainWindow.xaml**
+```xml
+<Window x:Class="CalculatriceAge.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Calculatrice d'âge - MVVM" 
+        Height="300" 
+        Width="400">
+    
+    <StackPanel Margin="20">
+        <TextBlock Text="🎂 Calculatrice d'âge" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   Margin="0,0,0,30" />
+        
+        <Label Content="Année de naissance :" FontWeight="Bold" />
+        <TextBox Text="{Binding AnneeNaissance}" 
+                 Height="30" 
+                 FontSize="14"
+                 Margin="0,0,0,20" />
+        
+        <Button Content="Calculer mon âge" 
+                Height="40" 
+                FontSize="14"
+                Background="DodgerBlue"
+                Foreground="White"
+                Click="BtnCalculer_Click"
+                Margin="0,0,0,20" />
+        
+        <TextBlock Text="{Binding Message}" 
+                   FontSize="16" 
+                   TextAlignment="Center"
+                   Foreground="Green"
+                   FontWeight="Bold" />
+    </StackPanel>
+    
+</Window>
+```
+
+### Code-behind (minimal)
+
+**MainWindow.xaml.cs**
+```csharp
+using System.Windows;
+
+namespace CalculatriceAge
+{
+    public partial class MainWindow : Window
+    {
+        private AgeViewModel viewModel;
+        
+        public MainWindow()
+        {
+            InitializeComponent();
+            
+            viewModel = new AgeViewModel();
+            this.DataContext = viewModel;
+        }
+        
+        // Seule méthode nécessaire : appeler le ViewModel
+        private void BtnCalculer_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CalculerAge();
+        }
+    }
+}
+```
+
+**Notez :** On a encore `Click="..."` ici, mais tout ce qu'on fait c'est appeler une méthode du ViewModel. La logique est dans le ViewModel, pas dans le code-behind !
+
+---
+
+## Exemple 3 - MVVM avec liste : Gestion de produits
+
+Maintenant qu'on comprend les bases, passons à un exemple avec une liste.
+
+### Le Model
 
 **Produit.cs**
 ```csharp
@@ -79,13 +409,10 @@ public class Produit
     public int Id { get; set; }
     public string Nom { get; set; }
     public double Prix { get; set; }
-    public int Stock { get; set; }
 }
 ```
 
-C'est juste une classe de données, rien de spécial.
-
-#### Étape 2 : Le ViewModel
+### Le ViewModel
 
 **ProduitViewModel.cs**
 ```csharp
@@ -97,18 +424,6 @@ public class ProduitViewModel : INotifyPropertyChanged
 {
     // Collection observable pour la liste
     public ObservableCollection<Produit> Produits { get; set; }
-    
-    // Produit sélectionné dans la liste
-    private Produit produitSelectionne;
-    public Produit ProduitSelectionne
-    {
-        get { return produitSelectionne; }
-        set 
-        { 
-            produitSelectionne = value;
-            OnPropertyChanged();
-        }
-    }
     
     // Champs pour le nouveau produit
     private string nouveauNom;
@@ -133,37 +448,32 @@ public class ProduitViewModel : INotifyPropertyChanged
         }
     }
     
-    private int nouveauStock;
-    public int NouveauStock
-    {
-        get { return nouveauStock; }
-        set 
-        { 
-            nouveauStock = value;
-            OnPropertyChanged();
-        }
-    }
-    
     // Constructeur
     public ProduitViewModel()
     {
+        // Initialiser la collection avec des données de test
         Produits = new ObservableCollection<Produit>
         {
-            new Produit { Id = 1, Nom = "Clavier", Prix = 49.99, Stock = 15 },
-            new Produit { Id = 2, Nom = "Souris", Prix = 29.99, Stock = 25 },
-            new Produit { Id = 3, Nom = "Écran", Prix = 299.99, Stock = 8 }
+            new Produit { Id = 1, Nom = "Clavier", Prix = 49.99 },
+            new Produit { Id = 2, Nom = "Souris", Prix = 29.99 },
+            new Produit { Id = 3, Nom = "Écran", Prix = 299.99 }
         };
+        
+        NouveauNom = "";
+        NouveauPrix = 0;
     }
     
-    // Méthodes publiques (appelées par les boutons via Commands)
+    // Méthode pour ajouter un produit
     public void AjouterProduit()
     {
+        if (string.IsNullOrWhiteSpace(NouveauNom))
+            return;
+        
         var nouveau = new Produit
         {
             Id = Produits.Count + 1,
             Nom = NouveauNom,
-            Prix = NouveauPrix,
-            Stock = NouveauStock
+            Prix = NouveauPrix
         };
         
         Produits.Add(nouveau);
@@ -171,15 +481,6 @@ public class ProduitViewModel : INotifyPropertyChanged
         // Réinitialiser les champs
         NouveauNom = "";
         NouveauPrix = 0;
-        NouveauStock = 0;
-    }
-    
-    public void SupprimerProduit()
-    {
-        if (ProduitSelectionne != null)
-        {
-            Produits.Remove(ProduitSelectionne);
-        }
     }
     
     // INotifyPropertyChanged
@@ -192,7 +493,7 @@ public class ProduitViewModel : INotifyPropertyChanged
 }
 ```
 
-#### Étape 3 : La View
+### La View
 
 **MainWindow.xaml**
 ```xml
@@ -200,13 +501,14 @@ public class ProduitViewModel : INotifyPropertyChanged
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gestion de Produits - MVVM" 
-        Height="500" 
-        Width="700">
+        Height="400" 
+        Width="500">
     
     <Grid Margin="15">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <!-- Titre -->
@@ -214,70 +516,66 @@ public class ProduitViewModel : INotifyPropertyChanged
                    Text="📦 Gestion de Produits" 
                    FontSize="24" 
                    FontWeight="Bold"
-                   VerticalAlignment="Center" />
+                   Margin="0,0,0,15" />
         
-        <!-- Contenu -->
-        <Grid Grid.Row="1" Margin="0,10,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <!-- Liste des produits -->
+        <Border Grid.Row="1" 
+                BorderBrush="LightGray" 
+                BorderThickness="1"
+                Margin="0,0,0,15">
+            <ListBox ItemsSource="{Binding Produits}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="{Binding Nom}" 
+                                       Width="150" 
+                                       FontWeight="Bold" />
+                            <TextBlock Text="{Binding Prix, StringFormat={}{0:C}}" 
+                                       Foreground="Green" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        
+        <!-- Formulaire d'ajout -->
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Ajouter un produit" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,10" />
             
-            <!-- Liste des produits (gauche) -->
-            <DataGrid Grid.Column="0" 
-                      ItemsSource="{Binding Produits}"
-                      SelectedItem="{Binding ProduitSelectionne}"
-                      AutoGenerateColumns="False"
-                      Margin="0,0,10,0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" />
-                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="*" />
-                    <DataGridTextColumn Header="Prix" Binding="{Binding Prix, StringFormat={}{0:C}}" Width="100" />
-                    <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" Width="80" />
-                </DataGrid.Columns>
-            </DataGrid>
-            
-            <!-- Panneau de contrôle (droite) -->
-            <Border Grid.Column="1" 
-                    BorderBrush="LightGray" 
-                    BorderThickness="1" 
-                    Padding="10">
-                <StackPanel>
-                    <TextBlock Text="Ajouter un produit" 
-                               FontWeight="Bold" 
-                               FontSize="16"
-                               Margin="0,0,0,15" />
-                    
-                    <Label Content="Nom :" />
-                    <TextBox Text="{Binding NouveauNom}" Height="30" Margin="0,0,0,10" />
-                    
-                    <Label Content="Prix :" />
-                    <TextBox Text="{Binding NouveauPrix}" Height="30" Margin="0,0,0,10" />
-                    
-                    <Label Content="Stock :" />
-                    <TextBox Text="{Binding NouveauStock}" Height="30" Margin="0,0,0,20" />
-                    
-                    <Button Content="Ajouter" 
-                            Height="40" 
-                            Background="Green"
-                            Foreground="White"
-                            Click="BtnAjouter_Click"
-                            Margin="0,0,0,10" />
-                    
-                    <Button Content="Supprimer" 
-                            Height="40" 
-                            Background="Red"
-                            Foreground="White"
-                            Click="BtnSupprimer_Click" />
-                </StackPanel>
-            </Border>
-        </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBox Grid.Column="0"
+                         Text="{Binding NouveauNom, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="30"
+                         Margin="0,0,5,0" />
+                
+                <TextBox Grid.Column="1"
+                         Text="{Binding NouveauPrix}" 
+                         Height="30"
+                         Margin="0,0,5,0" />
+                
+                <Button Grid.Column="2"
+                        Content="Ajouter" 
+                        Width="80"
+                        Height="30"
+                        Background="Green"
+                        Foreground="White"
+                        Click="BtnAjouter_Click" />
+            </Grid>
+        </StackPanel>
     </Grid>
     
 </Window>
 ```
 
-#### Étape 4 : Code-behind (minimal)
+### Code-behind
 
 **MainWindow.xaml.cs**
 ```csharp
@@ -293,7 +591,6 @@ namespace GestionProduits
         {
             InitializeComponent();
             
-            // Créer et assigner le ViewModel
             viewModel = new ProduitViewModel();
             this.DataContext = viewModel;
         }
@@ -302,16 +599,15 @@ namespace GestionProduits
         {
             viewModel.AjouterProduit();
         }
-        
-        private void BtnSupprimer_Click(object sender, RoutedEventArgs e)
-        {
-            viewModel.SupprimerProduit();
-        }
     }
 }
 ```
 
-### ObservableCollection vs List
+**Point clé :** Remarquez comment la ListBox se met à jour automatiquement quand on ajoute un produit grâce à `ObservableCollection` !
+
+---
+
+## ObservableCollection vs List
 
 **Pourquoi `ObservableCollection` et pas `List` ?**
 
@@ -327,11 +623,14 @@ public ObservableCollection<Produit> Produits { get; set; }
 - Quand on ajoute un élément : l'interface se met à jour
 - Quand on supprime un élément : l'interface se met à jour
 
-### Commands (amélioration avancée)
+---
+
+## Commands (amélioration avancée - optionnel)
 
 Dans un MVVM pur, on ne devrait pas avoir de `Click="..."` dans le XAML. À la place, on utilise des **Commands**.
 
-**RelayCommand.cs** (classe utilitaire) :
+### RelayCommand.cs (classe utilitaire)
+
 ```csharp
 using System;
 using System.Windows.Input;
@@ -365,34 +664,62 @@ public class RelayCommand : ICommand
 }
 ```
 
-**ProduitViewModel avec Commands :**
+### ProduitViewModel avec Commands
+
 ```csharp
 public class ProduitViewModel : INotifyPropertyChanged
 {
     // ... propriétés ...
     
     public ICommand AjouterCommand { get; }
-    public ICommand SupprimerCommand { get; }
     
     public ProduitViewModel()
     {
         // ... initialisation ...
         
-        AjouterCommand = new RelayCommand(AjouterProduit);
-        SupprimerCommand = new RelayCommand(SupprimerProduit, () => ProduitSelectionne != null);
+        // Créer la command
+        AjouterCommand = new RelayCommand(AjouterProduit, () => !string.IsNullOrWhiteSpace(NouveauNom));
     }
     
     // ... méthodes ...
 }
 ```
 
-**XAML avec Commands :**
+### XAML avec Commands
+
 ```xml
 <Button Content="Ajouter" Command="{Binding AjouterCommand}" />
-<Button Content="Supprimer" Command="{Binding SupprimerCommand}" />
 ```
 
-**Avantage :** Aucun code-behind nécessaire !
+**Avantage :** 
+- Aucun code-behind nécessaire !
+- Le bouton se désactive automatiquement si la condition n'est pas remplie
 
 ---
 
+## Résumé MVVM
+
+### Checklist de vérification
+
+✅ **Votre application suit MVVM si :**
+- [ ] Le code-behind est (quasi) vide
+- [ ] Tous les contrôles utilisent `{Binding}`
+- [ ] Les ViewModels implémentent `INotifyPropertyChanged`
+- [ ] Les ViewModels utilisent `ObservableCollection` pour les listes
+- [ ] Aucun `MessageBox` ou contrôle UI dans le ViewModel
+
+❌ **Vous n'êtes PAS en MVVM si :**
+- [ ] Vous avez de la logique dans les méthodes `Button_Click`
+- [ ] Vous accédez à `txtNom.Text` directement
+- [ ] Vous avez `MessageBox.Show()` dans le ViewModel
+- [ ] Le code-behind contient de la logique métier
+
+### Les 3 couches en résumé
+
+| Couche | Contient | Ne contient PAS |
+|--------|----------|-----------------|
+| **Model** | Données brutes, propriétés simples | Logique UI, INotifyPropertyChanged |
+| **ViewModel** | Logique métier, INotifyPropertyChanged, Collections observables | Références à la View, MessageBox |
+| **View** | XAML, bindings | Logique métier, calculs |
+
+---

@@ -49,16 +49,16 @@
     <loc>http://localhost:1313/420-413/patron_observateur/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/420-413/patron_commande/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/420-413/injection_dependance/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/420-413/mvvm/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/420-413/patron_commande/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/420-413/mini_projets/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/420-413/injection_dependance/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/420-413/agile_scrum/index.html</loc>
