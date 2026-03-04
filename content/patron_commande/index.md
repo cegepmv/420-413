@@ -3,7 +3,7 @@ title: "Patron commande"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 16
+weight: 17
 ---
 
 ## Le patron Commande (Contexte général)

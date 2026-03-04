@@ -3,7 +3,7 @@ title: "MVVM"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 18
+weight: 16
 ---
 
 ## Le patron MVVM (Model-View-ViewModel)
