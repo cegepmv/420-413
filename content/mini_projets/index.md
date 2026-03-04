@@ -3,7 +3,7 @@ title: "Mini-projets"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 19
+weight: 18
 ---
 
 # Mini-projets progressifs

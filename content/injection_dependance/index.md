@@ -3,7 +3,7 @@ title: "Injection de dépendance"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 18
+weight: 19
 ---
 
 ## : Injection de dépendances (Contexte général)
