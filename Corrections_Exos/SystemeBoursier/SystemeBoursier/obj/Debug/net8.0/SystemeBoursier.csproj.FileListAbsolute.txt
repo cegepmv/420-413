@@ -1,0 +1,14 @@
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\bin\Debug\net8.0\SystemeBoursier.exe
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\bin\Debug\net8.0\SystemeBoursier.deps.json
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\bin\Debug\net8.0\SystemeBoursier.runtimeconfig.json
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\bin\Debug\net8.0\SystemeBoursier.dll
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\bin\Debug\net8.0\SystemeBoursier.pdb
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.AssemblyInfoInputs.cache
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.AssemblyInfo.cs
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.csproj.CoreCompileInputs.cache
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.dll
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\refint\SystemeBoursier.dll
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.pdb
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\SystemeBoursier.genruntimeconfig.cache
+C:\Users\fostsam0\Source\Repos\SystemeBoursier\SystemeBoursier\obj\Debug\net8.0\ref\SystemeBoursier.dll
