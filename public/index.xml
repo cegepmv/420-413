@@ -134,18 +134,18 @@
       <description>Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte&#xA;Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :&#xA;Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?</description>
     </item>
     <item>
-      <title>Mini-projets</title>
-      <link>http://localhost:1313/420-413/mini_projets/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/420-413/mini_projets/index.html</guid>
-      <description>Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire&#xA;Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :</description>
-    </item>
-    <item>
       <title>Injection de dépendance</title>
       <link>http://localhost:1313/420-413/injection_dependance/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/injection_dependance/index.html</guid>
       <description>: Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification&#xA;Vous développez une application qui doit envoyer des notifications :&#xA;Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :</description>
+    </item>
+    <item>
+      <title>Mini-projets</title>
+      <link>http://localhost:1313/420-413/mini_projets/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/mini_projets/index.html</guid>
+      <description>Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire&#xA;Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :</description>
     </item>
     <item>
       <title>SCRUM</title>
