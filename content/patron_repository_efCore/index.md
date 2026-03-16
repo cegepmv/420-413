@@ -17,7 +17,7 @@ weight: 20
 
 ---
 
-## 📌 Partie 1 : Le problème sans Repository (10 min)
+## 📌 Partie 1 : Le problème sans Repository
 
 ### Scénario : Une application de gestion de tâches
 
@@ -75,7 +75,7 @@ public class TachesViewModel : INotifyPropertyChanged
 
 ---
 
-## 🔧 Partie 2 : La solution - Le patron Repository (15 min)
+## 🔧 Partie 2 : La solution - Le patron Repository
 
 ### Qu'est-ce que le patron Repository ?
 
@@ -129,7 +129,7 @@ public class TachesViewModel : INotifyPropertyChanged
 
 ---
 
-## 💻 Partie 3 : Implémentation complète avec EF Core (30 min)
+## 💻 Partie 3 : Implémentation complète avec EF Core
 
 ### Étape 1 : Installation des packages NuGet
 
@@ -408,7 +408,7 @@ namespace MonApp.ViewModels
 
 ---
 
-## 🗄️ Partie 4 : Les Migrations (15 min)
+## 🗄️ Partie 4 : Les Migrations
 
 ### Qu'est-ce qu'une migration ?
 
@@ -523,7 +523,7 @@ Remove-Migration
 
 ---
 
-## 🏗️ Partie 5 : Intégration complète avec MVVM (15 min)
+## 🏗️ Partie 5 : Intégration complète avec MVVM
 
 ### Structure du projet
 
@@ -635,7 +635,7 @@ namespace MonApp.Views
 
 ---
 
-## ✅ Avantages du patron Repository (5 min)
+## ✅ Avantages du patron Repository
 
 ### 1. Séparation des responsabilités
 
@@ -704,7 +704,7 @@ var taches = _repository.ObtenirTachesNonTerminees();
 
 ---
 
-## 📝 Exercice pratique (20 min)
+## 📝 Exercice pratique
 
 ### Exercice : Ajouter une gestion de catégories
 

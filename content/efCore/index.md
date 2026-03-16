@@ -6,12 +6,6 @@ author: Samuel Fostiné
 weight: 18
 ---
 
-
-# Introduction à Entity Framework Core
-**Cours pour débutants - Développement d'applications pour entreprises**
-
----
-
 ## 🎯 Objectifs du cours
 
 À la fin de ce cours, vous serez capable de :
@@ -24,7 +18,7 @@ weight: 18
 
 ---
 
-## 📌 Partie 1 : C'est quoi Entity Framework Core ? (15 min)
+## 📌 Partie 1 : C'est quoi Entity Framework Core ?
 
 ### Le problème : Accéder à une base de données en C#
 
@@ -137,7 +131,7 @@ using (var context = new EcoleDbContext())
 
 ---
 
-## 💻 Partie 2 : Première application avec EF Core (30 min)
+## 💻 Partie 2 : Première application avec EF Core
 
 ### Étape 1 : Installer les packages NuGet
 
@@ -861,7 +855,7 @@ class Program
 
 ---
 
-## 🔧 Partie 3 : Fonctionnalités avancées (20 min)
+## 🔧 Partie 3 : Fonctionnalités avancées
 
 ### Annotations de données (Data Annotations)
 
@@ -1043,7 +1037,7 @@ Les données seront automatiquement insérées !
 
 ---
 
-## 🗄️ Partie 4 : Les Migrations en détail (15 min)
+## 🗄️ Partie 4 : Les Migrations en détail
 
 ### Qu'est-ce qu'une migration ?
 
@@ -1199,7 +1193,7 @@ public partial class RemplacerAgeParDateNaissance : Migration
 
 ---
 
-## 🆚 Partie 5 : Code First vs Database First (10 min)
+## 🆚 Partie 5 : Code First vs Database First
 
 Il existe **deux approches** pour travailler avec EF Core :
 
@@ -1265,7 +1259,7 @@ Scaffold-DbContext "Data Source=ecole.db" Microsoft.EntityFrameworkCore.Sqlite -
 
 ---
 
-## 📝 Exercices pratiques (20 min)
+## 📝 Exercices pratiques
 
 ### Exercice 1 : Bibliothèque (Débutant)
 

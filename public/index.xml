@@ -138,7 +138,7 @@
       <link>http://localhost:1313/420-413/efcore/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/efcore/index.html</guid>
-      <description>Introduction à Entity Framework Core Cours pour débutants - Développement d’applications pour entreprises&#xA;🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :&#xA;Comprendre ce qu’est Entity Framework Core et pourquoi on l’utilise Créer une base de données à partir de classes C# Effectuer des opérations CRUD (Create, Read, Update, Delete) Utiliser les migrations pour gérer le schéma de base de données Comprendre la différence entre Code First et Database First Choisir entre SQLite et SQL Server selon vos besoins 📌 Partie 1 : C’est quoi Entity Framework Core ? (15 min) Le problème : Accéder à une base de données en C# Imaginez que vous voulez créer une application pour gérer des étudiants. Vous avez besoin de :</description>
+      <description>🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :&#xA;Comprendre ce qu’est Entity Framework Core et pourquoi on l’utilise Créer une base de données à partir de classes C# Effectuer des opérations CRUD (Create, Read, Update, Delete) Utiliser les migrations pour gérer le schéma de base de données Comprendre la différence entre Code First et Database First Choisir entre SQLite et SQL Server selon vos besoins 📌 Partie 1 : C’est quoi Entity Framework Core ? Le problème : Accéder à une base de données en C# Imaginez que vous voulez créer une application pour gérer des étudiants. Vous avez besoin de :</description>
     </item>
     <item>
       <title>Injection de dépendance</title>
@@ -152,7 +152,7 @@
       <link>http://localhost:1313/420-413/patron_repository_efcore/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/patron_repository_efcore/index.html</guid>
-      <description>🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :&#xA;Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository (10 min) Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :</description>
+      <description>🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :&#xA;Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :</description>
     </item>
     <item>
       <title>Mini-projets</title>
