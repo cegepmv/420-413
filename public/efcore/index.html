@@ -23,29 +23,29 @@ Comprendre ce qu’est Entity Framework Core et pourquoi on l’utilise Créer u
     <meta itemprop="name" content="Entity Framework Core :: Développement d&#39;applications pour entreprises">
     <meta itemprop="description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :
 Comprendre ce qu’est Entity Framework Core et pourquoi on l’utilise Créer une base de données à partir de classes C# Effectuer des opérations CRUD (Create, Read, Update, Delete) Utiliser les migrations pour gérer le schéma de base de données Comprendre la différence entre Code First et Database First Choisir entre SQLite et SQL Server selon vos besoins 📌 Partie 1 : C’est quoi Entity Framework Core ? Le problème : Accéder à une base de données en C# Imaginez que vous voulez créer une application pour gérer des étudiants. Vous avez besoin de :">
-    <meta itemprop="wordCount" content="5455">
+    <meta itemprop="wordCount" content="5486">
     <title>Entity Framework Core :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1773647434" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773647434" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773647434" defer></script>
-    <script src="/420-413/js/search-lunr.js?1773647434" defer></script>
-    <script src="/420-413/js/search.js?1773647434" defer></script>
+    <link href="/420-413/images/favicon.png?1773647888" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773647888" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773647888" defer></script>
+    <script src="/420-413/js/search-lunr.js?1773647888" defer></script>
+    <script src="/420-413/js/search.js?1773647888" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1773647434";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1773647888";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1773647434" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773647434" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1773647434" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1773647434" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1773647888" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773647888" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1773647888" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1773647888" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773647434" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773647434" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773647434" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1773647434" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1773647434" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773647888" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773647888" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773647888" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1773647888" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1773647888" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -1331,6 +1331,14 @@ Objets      ←→                   ←→  Lignes</code></pre></div>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="n">options</span><span class="p">.</span><span class="n">UseSqlite</span><span class="p">(</span><span class="s">$&#34;Data Source={dbPath}&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//Ceci est important surtout quand on utilise SQLServer pou</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Etudiant</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">Property</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">ValueGeneratedOnAdd</span><span class="p">();</span> <span class="c1">// Indique qu&#39;il faut générer la valeur lors de l&#39;ajout</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p><strong>Utilisation :</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EcoleDbContext</span><span class="p">())</span>
@@ -2227,8 +2235,8 @@ Objets      ←→                   ←→  Lignes</code></pre></div>
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773647434" defer></script>
-    <script src="/420-413/js/theme.js?1773647434" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773647888" defer></script>
+    <script src="/420-413/js/theme.js?1773647888" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

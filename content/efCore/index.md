@@ -957,6 +957,14 @@ public class EcoleDbContext : DbContext
 
         options.UseSqlite($"Data Source={dbPath}");
     }
+
+    //Ceci est important surtout quand on utilise SQLServer pou
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Etudiant>()
+            .Property(e => e.Id)
+            .ValueGeneratedOnAdd(); // Indique qu'il faut générer la valeur lors de l'ajout
+    }
 }
 ```
 
