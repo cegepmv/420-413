@@ -944,7 +944,18 @@ public class EcoleDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseSqlite("Data Source=ecole.db");
+         string folderPath = @"C:\Users\fostsam0\Source\Repos\bd";
+
+        // On s'assure que le dossier existe sur ta machine
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        // On définit le chemin complet vers le fichier .db
+        string dbPath = Path.Combine(folderPath, "ecole.db");
+
+        options.UseSqlite($"Data Source={dbPath}");
     }
 }
 ```
