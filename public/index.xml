@@ -131,7 +131,7 @@
       <link>http://localhost:1313/420-413/patron_commande/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/patron_commande/index.html</guid>
-      <description>Le patron Commande (Contexte général) Le problème qu’il résout Mise en situation : Un éditeur de texte&#xA;Vous développez un éditeur de texte (comme Notepad). L’utilisateur peut :&#xA;Couper du texte Copier du texte Coller du texte Annuler la dernière action Refaire une action annulée Question : Comment organiser tout ça ?</description>
+      <description>🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :</description>
     </item>
     <item>
       <title>Injection de dépendance</title>
