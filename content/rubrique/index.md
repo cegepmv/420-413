@@ -3,7 +3,7 @@ title: "Rubrique  - Semaine 2"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 22
+weight: 52
 ---
 
 ## Noms Significatifs et Fonctions Claires

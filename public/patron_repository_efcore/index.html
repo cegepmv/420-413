@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html id="R-html" lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/420-413/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-413/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
+    <meta name="description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :
+Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository (10 min) Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Patron Repository et EF Core :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :
+Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository (10 min) Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :">
+    <meta property="og:url" content="http://localhost:1313/420-413/patron_repository_efcore/index.html">
+    <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
+    <meta property="og:title" content="Patron Repository et EF Core :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :
+Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository (10 min) Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Développement d&#39;applications pour entreprise">
+    <meta itemprop="name" content="Patron Repository et EF Core :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :
+Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository (10 min) Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :">
+    <meta itemprop="wordCount" content="2575">
+    <title>Patron Repository et EF Core :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1773645265" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773645265" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773645265" defer></script>
+    <script src="/420-413/js/search-lunr.js?1773645265" defer></script>
+    <script src="/420-413/js/search.js?1773645265" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1773645265";
+    </script>
+    <script src="/420-413/js/lunr/lunr.min.js?1773645265" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773645265" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1773645265" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1773645265" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773645265" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773645265" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773645265" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1773645265" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1773645265" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/patron_repository_efcore\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-413';
+      window.relearn.disableInlineCopyToClipboard=true;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'learn', 'relearn-auto', 'zen-light', 'zen-dark', 'neon' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+:root {
+    --MENU-WIDTH-S: 14.375rem;
+    --MENU-WIDTH-M: 14.375rem;
+    --MENU-WIDTH-L: 16rem;
+}
+</style>
+  </head>
+  <body class="mobile-support html" data-origin="/420-413/patron_repository_efcore/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#-objectifs-du-cours">🎯 Objectifs du cours</a></li>
+    <li><a href="#-partie-1--le-problème-sans-repository-10-min">📌 Partie 1 : Le problème sans Repository (10 min)</a>
+      <ul>
+        <li><a href="#scénario--une-application-de-gestion-de-tâches">Scénario : Une application de gestion de tâches</a></li>
+        <li><a href="#-problèmes-">❌ Problèmes :</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-2--la-solution---le-patron-repository-15-min">🔧 Partie 2 : La solution - Le patron Repository (15 min)</a>
+      <ul>
+        <li><a href="#quest-ce-que-le-patron-repository-">Qu&rsquo;est-ce que le patron Repository ?</a></li>
+        <li><a href="#architecture-en-couches">Architecture en couches</a></li>
+        <li><a href="#les-composants">Les composants</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-3--implémentation-complète-avec-ef-core-30-min">💻 Partie 3 : Implémentation complète avec EF Core (30 min)</a>
+      <ul>
+        <li><a href="#étape-1--installation-des-packages-nuget">Étape 1 : Installation des packages NuGet</a></li>
+        <li><a href="#étape-2--créer-le-modèle-entité">Étape 2 : Créer le modèle (entité)</a></li>
+        <li><a href="#étape-3--créer-le-dbcontext">Étape 3 : Créer le DbContext</a></li>
+        <li><a href="#étape-4--créer-linterface-repository">Étape 4 : Créer l&rsquo;interface Repository</a></li>
+        <li><a href="#étape-5--implémenter-le-repository-avec-ef-core">Étape 5 : Implémenter le Repository avec EF Core</a></li>
+        <li><a href="#étape-6--utiliser-le-repository-dans-le-viewmodel">Étape 6 : Utiliser le Repository dans le ViewModel</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-4--les-migrations-15-min">🗄️ Partie 4 : Les Migrations (15 min)</a>
+      <ul>
+        <li><a href="#quest-ce-quune-migration-">Qu&rsquo;est-ce qu&rsquo;une migration ?</a></li>
+        <li><a href="#créer-la-première-migration">Créer la première migration</a></li>
+        <li><a href="#structure-dune-migration">Structure d&rsquo;une migration</a></li>
+        <li><a href="#modifier-le-modèle-et-créer-une-nouvelle-migration">Modifier le modèle et créer une nouvelle migration</a></li>
+        <li><a href="#commandes-utiles-des-migrations">Commandes utiles des migrations</a></li>
+      </ul>
+    </li>
+    <li><a href="#-partie-5--intégration-complète-avec-mvvm-15-min">🏗️ Partie 5 : Intégration complète avec MVVM (15 min)</a>
+      <ul>
+        <li><a href="#structure-du-projet">Structure du projet</a></li>
+        <li><a href="#mainwindowxaml">MainWindow.xaml</a></li>
+        <li><a href="#mainwindowxamlcs">MainWindow.xaml.cs</a></li>
+      </ul>
+    </li>
+    <li><a href="#-avantages-du-patron-repository-5-min">✅ Avantages du patron Repository (5 min)</a>
+      <ul>
+        <li><a href="#1-séparation-des-responsabilités">1. Séparation des responsabilités</a></li>
+        <li><a href="#2-testabilité">2. Testabilité</a></li>
+        <li><a href="#3-réutilisabilité">3. Réutilisabilité</a></li>
+        <li><a href="#4-changement-de-technologie-facile">4. Changement de technologie facile</a></li>
+        <li><a href="#5-code-plus-propre">5. Code plus propre</a></li>
+      </ul>
+    </li>
+    <li><a href="#-exercice-pratique-20-min">📝 Exercice pratique (20 min)</a>
+      <ul>
+        <li><a href="#exercice--ajouter-une-gestion-de-catégories">Exercice : Ajouter une gestion de catégories</a></li>
+        <li><a href="#categoriecs">Categorie.cs</a></li>
+        <li><a href="#tachecs-modifiée">Tache.cs (modifiée)</a></li>
+        <li><a href="#applicationdbcontextcs-modifié">ApplicationDbContext.cs (modifié)</a></li>
+        <li><a href="#icategorierepositorycs">ICategorieRepository.cs</a></li>
+        <li><a href="#categorierepositorycs">CategorieRepository.cs</a></li>
+        <li><a href="#tacherepositorycs-modifié-pour-inclure-les-catégories">TacheRepository.cs (modifié pour inclure les catégories)</a></li>
+        <li><a href="#migration">Migration</a></li>
+      </ul>
+    </li>
+    <li><a href="#-résumé">🎓 Résumé</a>
+      <ul>
+        <li><a href="#ce-quon-a-appris">Ce qu&rsquo;on a appris</a></li>
+        <li><a href="#architecture-finale">Architecture finale</a></li>
+        <li><a href="#commandes-essentielles">Commandes essentielles</a></li>
+      </ul>
+    </li>
+    <li><a href="#-pour-aller-plus-loin">📚 Pour aller plus loin</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Patron Repository et EF Core</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/injection_dependance/index.html" title="Injection de dépendance (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/mini_projets/index.html" title="Mini-projets (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="patron-repository-et-ef-core">Patron Repository et EF Core</h1>
+
+<h2 id="-objectifs-du-cours">🎯 Objectifs du cours<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>À la fin de ce cours, vous serez capable de :</p>
+<ul>
+<li>Comprendre le patron Repository et son utilité</li>
+<li>Utiliser Entity Framework Core pour accéder à une base de données</li>
+<li>Créer et appliquer des migrations</li>
+<li>Générer automatiquement le schéma de base de données</li>
+<li>Intégrer le tout dans une architecture MVVM</li>
+</ul>
+<hr>
+<h2 id="-partie-1--le-problème-sans-repository-10-min">📌 Partie 1 : Le problème sans Repository (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="scénario--une-application-de-gestion-de-tâches">Scénario : Une application de gestion de tâches<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">taches</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ❌ Le ViewModel parle directement à la base de données !</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">taches</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">ToList</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ❌ Logique de base de données dans le ViewModel</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">SupprimerTache</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ❌ Encore du code de base de données !</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">taches</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="-problèmes-">❌ Problèmes :<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Couplage fort</strong> : Le ViewModel dépend directement d&rsquo;Entity Framework</li>
+<li><strong>Code dupliqué</strong> : <code>using (var context = ...)</code> partout</li>
+<li><strong>Difficile à tester</strong> : Impossible de tester sans base de données réelle</li>
+<li><strong>Violation de MVVM</strong> : Le ViewModel ne devrait pas connaître la base de données</li>
+<li><strong>Pas réutilisable</strong> : Si on veut accéder aux tâches ailleurs, on duplique le code</li>
+</ol>
+<hr>
+<h2 id="-partie-2--la-solution---le-patron-repository-15-min">🔧 Partie 2 : La solution - Le patron Repository (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-que-le-patron-repository-">Qu&rsquo;est-ce que le patron Repository ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Définition :</strong> Le Repository agit comme une <strong>collection en mémoire</strong> d&rsquo;objets, mais qui sont en réalité stockés dans une base de données.</p>
+<p><strong>Analogie :</strong> C&rsquo;est comme une bibliothèque :</p>
+<ul>
+<li>Vous demandez un livre au bibliothécaire (Repository)</li>
+<li>Vous ne savez pas où le livre est stocké (base de données, fichier, cloud&hellip;)</li>
+<li>Le bibliothécaire s&rsquo;occupe de tout</li>
+</ul>
+<h3 id="architecture-en-couches">Architecture en couches<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>┌─────────────────────────────────────┐
+│         Vue (XAML)                  │
+│  - MainWindow.xaml                  │
+└─────────────────┬───────────────────┘
+                  │
+┌─────────────────▼───────────────────┐
+│         ViewModel                    │
+│  - TachesViewModel                  │
+│  - Commandes ICommand               │
+└─────────────────┬───────────────────┘
+                  │ utilise
+┌─────────────────▼───────────────────┐
+│      Repository (Interface)         │
+│  - ITacheRepository                 │
+│    + ObtenirTout()                  │
+│    + Ajouter(tache)                 │
+│    + Supprimer(id)                  │
+└─────────────────┬───────────────────┘
+                  │ implémente
+┌─────────────────▼───────────────────┐
+│  Repository Concret (EF Core)       │
+│  - TacheRepository                  │
+│  - Utilise DbContext                │
+└─────────────────┬───────────────────┘
+                  │
+┌─────────────────▼───────────────────┐
+│      Base de données                │
+│  - SQL Server / SQLite / etc.       │
+└─────────────────────────────────────┘</code></pre></div>
+<h3 id="les-composants">Les composants<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Interface Repository</strong> : Définit les opérations (contrat)</li>
+<li><strong>Repository concret</strong> : Implémente les opérations avec EF Core</li>
+<li><strong>DbContext</strong> : Point d&rsquo;accès à la base de données (EF Core)</li>
+<li><strong>Modèle</strong> : Classes qui représentent les tables</li>
+</ol>
+<hr>
+<h2 id="-partie-3--implémentation-complète-avec-ef-core-30-min">💻 Partie 3 : Implémentation complète avec EF Core (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="étape-1--installation-des-packages-nuget">Étape 1 : Installation des packages NuGet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Entity Framework Core</span>
+</span></span><span class="line"><span class="cl">Install-Package Microsoft.EntityFrameworkCore
+</span></span><span class="line"><span class="cl">Install-Package Microsoft.EntityFrameworkCore.SqlServer
+</span></span><span class="line"><span class="cl"><span class="c1"># OU pour SQLite (plus simple pour débuter)</span>
+</span></span><span class="line"><span class="cl">Install-Package Microsoft.EntityFrameworkCore.Sqlite
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Outils pour les migrations</span>
+</span></span><span class="line"><span class="cl">Install-Package Microsoft.EntityFrameworkCore.Tools
+</span></span><span class="line"><span class="cl">Install-Package Microsoft.EntityFrameworkCore.Design</span></span></code></pre></div>
+<h3 id="étape-2--créer-le-modèle-entité">Étape 2 : Créer le modèle (entité)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Tache.cs</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Models</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Clé primaire (EF détecte automatiquement &#34;Id&#34; ou &#34;TacheId&#34;)</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Champ obligatoire</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [MaxLength(200)]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstTerminee</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Constructeur par défaut nécessaire pour EF</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">Tache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">EstTerminee</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="étape-3--créer-le-dbcontext">Étape 3 : Créer le DbContext<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Data/ApplicationDbContext.cs</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Data</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ DbSet = Table dans la base de données</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Configuration de la connexion</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptionsBuilder</span> <span class="n">options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Option 1 : SQLite (fichier local - simple pour débuter)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">options</span><span class="p">.</span><span class="n">UseSqlite</span><span class="p">(</span><span class="s">&#34;Data Source=taches.db&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Option 2 : SQL Server</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// options.UseSqlServer(&#34;Server=(localdb)\\mssqllocaldb;Database=TachesDb;Trusted_Connection=True;&#34;);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Configuration avancée (optionnel)</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">base</span><span class="p">.</span><span class="n">OnModelCreating</span><span class="p">(</span><span class="n">modelBuilder</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Configuration de la table</span>
+</span></span><span class="line"><span class="cl">            <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">entity</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">entity</span><span class="p">.</span><span class="n">ToTable</span><span class="p">(</span><span class="s">&#34;Taches&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">entity</span><span class="p">.</span><span class="n">HasKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">entity</span><span class="p">.</span><span class="n">Property</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Titre</span><span class="p">).</span><span class="n">IsRequired</span><span class="p">().</span><span class="n">HasMaxLength</span><span class="p">(</span><span class="m">200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="c1">// Seed data (données initiales)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">entity</span><span class="p">.</span><span class="n">HasData</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Titre</span> <span class="p">=</span> <span class="s">&#34;Apprendre EF Core&#34;</span><span class="p">,</span> <span class="n">EstTerminee</span> <span class="p">=</span> <span class="kc">false</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">Titre</span> <span class="p">=</span> <span class="s">&#34;Créer une migration&#34;</span><span class="p">,</span> <span class="n">EstTerminee</span> <span class="p">=</span> <span class="kc">false</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="étape-4--créer-linterface-repository">Étape 4 : Créer l&rsquo;interface Repository<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Repositories/ITacheRepository.cs</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Repositories</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">interface</span> <span class="nc">ITacheRepository</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Opérations CRUD (Create, Read, Update, Delete)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Tache</span> <span class="n">ObtenirParId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">Modifier</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Opérations spécifiques</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTachesNonTerminees</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">CompterTaches</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="étape-5--implémenter-le-repository-avec-ef-core">Étape 5 : Implémenter le Repository avec EF Core<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Repositories/TacheRepository.cs</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Repositories</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">TacheRepository</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">Tache</span> <span class="n">ObtenirParId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span> <span class="c1">// ✅ Persiste les changements</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">Modifier</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">tache</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTachesNonTerminees</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span>
+</span></span><span class="line"><span class="cl">                <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">CompterTaches</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="étape-6--utiliser-le-repository-dans-le-viewmodel">Étape 6 : Utiliser le Repository dans le ViewModel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ViewModels/TachesViewModel.cs</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Repositories</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.ViewModels</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">_repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">SupprimerCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">ToggleTermineeCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Charger les tâches depuis la base de données</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ChargerTaches</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Créer les commandes</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">AjouterTache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SupprimerCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">SupprimerTache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ToggleTermineeCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">ToggleTerminee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">ChargerTaches</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">taches</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Taches</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">taches</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">titre</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Le Repository s&#39;occupe de la base de données</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Ajouter à l&#39;UI</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">SupprimerTache</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">tache</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Le Repository s&#39;occupe de la base de données</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_repository</span><span class="p">.</span><span class="n">Supprimer</span><span class="p">(</span><span class="n">tache</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Retirer de l&#39;UI</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Taches</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">ToggleTerminee</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">tache</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">tache</span><span class="p">.</span><span class="n">EstTerminee</span> <span class="p">=</span> <span class="p">!</span><span class="n">tache</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Mettre à jour dans la base de données</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_repository</span><span class="p">.</span><span class="n">Modifier</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Notifier l&#39;UI</span>
+</span></span><span class="line"><span class="cl">            <span class="n">PropertyChanged</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">Taches</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="-partie-4--les-migrations-15-min">🗄️ Partie 4 : Les Migrations (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="quest-ce-quune-migration-">Qu&rsquo;est-ce qu&rsquo;une migration ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Une <strong>migration</strong> est un fichier qui contient les instructions pour :</p>
+<ul>
+<li>Créer/modifier le schéma de la base de données</li>
+<li>Ajouter/supprimer des tables ou colonnes</li>
+<li>Garder un historique des changements</li>
+</ul>
+<p><strong>Avantage :</strong> Vous pouvez versionner votre base de données comme votre code !</p>
+<h3 id="créer-la-première-migration">Créer la première migration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Dans la <strong>Console du Gestionnaire de package</strong> (Tools &gt; NuGet Package Manager &gt; Package Manager Console) :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Créer la migration initiale</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">InitialCreate</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Appliquer la migration (créer la base de données)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span></span></span></code></pre></div>
+<p><strong>Ce qui se passe :</strong></p>
+<ol>
+<li>EF Core analyse votre <code>DbContext</code> et vos modèles</li>
+<li>Génère un fichier de migration dans <code>Migrations/</code></li>
+<li><code>Update-Database</code> exécute le SQL pour créer les tables</li>
+</ol>
+<h3 id="structure-dune-migration">Structure d&rsquo;une migration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Migrations/20240316120000_InitialCreate.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">InitialCreate</span> <span class="p">:</span> <span class="n">Migration</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">Up</span><span class="p">(</span><span class="n">MigrationBuilder</span> <span class="n">migrationBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Code pour appliquer la migration</span>
+</span></span><span class="line"><span class="cl">        <span class="n">migrationBuilder</span><span class="p">.</span><span class="n">CreateTable</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">name</span><span class="p">:</span> <span class="s">&#34;Taches&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">columns</span><span class="p">:</span> <span class="n">table</span> <span class="p">=&gt;</span> <span class="k">new</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Id</span> <span class="p">=</span> <span class="n">table</span><span class="p">.</span><span class="n">Column</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="n">nullable</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">Annotation</span><span class="p">(</span><span class="s">&#34;Sqlite:Autoincrement&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Titre</span> <span class="p">=</span> <span class="n">table</span><span class="p">.</span><span class="n">Column</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">maxLength</span><span class="p">:</span> <span class="m">200</span><span class="p">,</span> <span class="n">nullable</span><span class="p">:</span> <span class="kc">false</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Description</span> <span class="p">=</span> <span class="n">table</span><span class="p">.</span><span class="n">Column</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">nullable</span><span class="p">:</span> <span class="kc">true</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">EstTerminee</span> <span class="p">=</span> <span class="n">table</span><span class="p">.</span><span class="n">Column</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;(</span><span class="n">nullable</span><span class="p">:</span> <span class="kc">false</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">table</span><span class="p">.</span><span class="n">Column</span><span class="p">&lt;</span><span class="n">DateTime</span><span class="p">&gt;(</span><span class="n">nullable</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="n">constraints</span><span class="p">:</span> <span class="n">table</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">table</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">(</span><span class="s">&#34;PK_Taches&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">Down</span><span class="p">(</span><span class="n">MigrationBuilder</span> <span class="n">migrationBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Code pour annuler la migration</span>
+</span></span><span class="line"><span class="cl">        <span class="n">migrationBuilder</span><span class="p">.</span><span class="n">DropTable</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&#34;Taches&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="modifier-le-modèle-et-créer-une-nouvelle-migration">Modifier le modèle et créer une nouvelle migration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Supposons qu&rsquo;on veut ajouter une priorité aux tâches :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Tache.cs</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstTerminee</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Nouveau champ !</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Priorite</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// 1 = Basse, 2 = Moyenne, 3 = Haute</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>Créer la migration :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Créer une nouvelle migration</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">AjouterPriorite</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Appliquer</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span></span></span></code></pre></div>
+<h3 id="commandes-utiles-des-migrations">Commandes utiles des migrations<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Créer une migration</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">NomDeLaMigration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Appliquer toutes les migrations</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Annuler la dernière migration</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span> <span class="n">-Migration</span> <span class="n">NomMigrationPrecedente</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Voir les migrations appliquées</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Migration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Générer le script SQL (sans l&#39;appliquer)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Script-Migration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Supprimer la dernière migration (si pas encore appliquée)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Remove-Migration</span></span></span></code></pre></div>
+<hr>
+<h2 id="-partie-5--intégration-complète-avec-mvvm-15-min">🏗️ Partie 5 : Intégration complète avec MVVM (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="structure-du-projet">Structure du projet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>MonApp/
+├── Models/
+│   └── Tache.cs
+├── Data/
+│   └── ApplicationDbContext.cs
+├── Repositories/
+│   ├── ITacheRepository.cs
+│   └── TacheRepository.cs
+├── ViewModels/
+│   └── TachesViewModel.cs
+├── Views/
+│   ├── MainWindow.xaml
+│   └── MainWindow.xaml.cs
+└── Migrations/
+    └── (fichiers générés automatiquement)</code></pre></div>
+<h3 id="mainwindowxaml">MainWindow.xaml<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;MonApp.Views.MainWindow&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Gestionnaire de Tâches&#34;</span> <span class="na">Height=</span><span class="s">&#34;500&#34;</span> <span class="na">Width=</span><span class="s">&#34;600&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid</span> <span class="na">Margin=</span><span class="s">&#34;10&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Zone d&#39;ajout --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&#34;txtNouvelleTache&#34;</span> <span class="na">Width=</span><span class="s">&#34;400&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> 
+</span></span><span class="line"><span class="cl">                     <span class="na">VerticalContentAlignment=</span><span class="s">&#34;Center&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter&#34;</span> <span class="na">Width=</span><span class="s">&#34;80&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding AjouterCommand}&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Text, ElementName=txtNouvelleTache}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Liste des tâches --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ListView</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">ItemsSource=</span><span class="s">&#34;{Binding Taches}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;ListView.View&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;GridView&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;GridViewColumn</span> <span class="na">Header=</span><span class="s">&#34;✓&#34;</span> <span class="na">Width=</span><span class="s">&#34;40&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;GridViewColumn.CellTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="nt">&lt;CheckBox</span> <span class="na">IsChecked=</span><span class="s">&#34;{Binding EstTerminee}&#34;</span>
+</span></span><span class="line"><span class="cl">                                         <span class="na">Command=</span><span class="s">&#34;{Binding DataContext.ToggleTermineeCommand, 
+</span></span></span><span class="line"><span class="cl"><span class="s">                                                  RelativeSource={RelativeSource AncestorType=ListView}}&#34;</span>
+</span></span><span class="line"><span class="cl">                                         <span class="na">CommandParameter=</span><span class="s">&#34;{Binding}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;/GridViewColumn.CellTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/GridViewColumn&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;GridViewColumn</span> <span class="na">Header=</span><span class="s">&#34;Tâche&#34;</span> <span class="na">Width=</span><span class="s">&#34;300&#34;</span> <span class="na">DisplayMemberBinding=</span><span class="s">&#34;{Binding Titre}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;GridViewColumn</span> <span class="na">Header=</span><span class="s">&#34;Date&#34;</span> <span class="na">Width=</span><span class="s">&#34;120&#34;</span> <span class="na">DisplayMemberBinding=</span><span class="s">&#34;{Binding DateCreation, StringFormat=dd/MM/yyyy}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;GridViewColumn</span> <span class="na">Header=</span><span class="s">&#34;Actions&#34;</span> <span class="na">Width=</span><span class="s">&#34;80&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;GridViewColumn.CellTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                                <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;🗑️&#34;</span> 
+</span></span><span class="line"><span class="cl">                                       <span class="na">Command=</span><span class="s">&#34;{Binding DataContext.SupprimerCommand,
+</span></span></span><span class="line"><span class="cl"><span class="s">                                                RelativeSource={RelativeSource AncestorType=ListView}}&#34;</span>
+</span></span><span class="line"><span class="cl">                                       <span class="na">CommandParameter=</span><span class="s">&#34;{Binding}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;/GridViewColumn.CellTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/GridViewColumn&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/GridView&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/ListView.View&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/ListView&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<h3 id="mainwindowxamlcs">MainWindow.xaml.cs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Repositories</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.ViewModels</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Views</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Créer le DbContext</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Créer le Repository</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">repository</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TacheRepository</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// ✅ Créer le ViewModel avec le Repository</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DataContext</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">repository</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h2 id="-avantages-du-patron-repository-5-min">✅ Avantages du patron Repository (5 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-séparation-des-responsabilités">1. Séparation des responsabilités<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>ViewModel → Ne connaît PAS Entity Framework
+Repository → S&#39;occupe de TOUTE la logique de données</code></pre></div>
+<h3 id="2-testabilité">2. Testabilité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✅ Facile à tester avec un mock</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MockTacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">taches</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">taches</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... etc</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Dans les tests</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MockTacheRepository</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Tester sans base de données réelle !</span></span></span></code></pre></div>
+<h3 id="3-réutilisabilité">3. Réutilisabilité<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Utiliser le même Repository partout</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repo</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">StatistiquesViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">StatistiquesViewModel</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repo</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="4-changement-de-technologie-facile">4. Changement de technologie facile<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Passer de Entity Framework à Dapper ? Facile !</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepositoryDapper</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Nouvelle implémentation avec Dapper</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Le ViewModel ne change PAS !</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="5-code-plus-propre">5. Code plus propre<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ❌ Avant (sans Repository)</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">taches</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ✅ Après (avec Repository)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">taches</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTachesNonTerminees</span><span class="p">();</span></span></span></code></pre></div>
+<hr>
+<h2 id="-exercice-pratique-20-min">📝 Exercice pratique (20 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="exercice--ajouter-une-gestion-de-catégories">Exercice : Ajouter une gestion de catégories<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez une fonctionnalité de catégories pour les tâches :</p>
+<p><strong>1. Créer le modèle Categorie</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Categorie</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Couleur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>2. Modifier le modèle Tache</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... propriétés existantes</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int?</span> <span class="n">CategorieId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Clé étrangère</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Categorie</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Navigation property</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>3. Mettre à jour le DbContext</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">Categories</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// ✅ Ajouter</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... reste du code</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>4. Créer une migration</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">AjouterCategories</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span></span></span></code></pre></div>
+<p><strong>5. Créer ICategorieRepository et l&rsquo;implémentation</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICategorieRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Categorie</span> <span class="n">categorie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>6. Modifier le ViewModel pour gérer les catégories</strong></p>
+<details>
+<summary>📖 Voir la solution complète</summary>
+<h3 id="categoriecs">Categorie.cs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Models</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">Categorie</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">        
+</span></span></span><span class="line"><span class="cl"><span class="na">        [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [MaxLength(50)]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">        
+</span></span></span><span class="line"><span class="cl"><span class="na">        [MaxLength(7)]</span> <span class="c1">// Format: #RRGGBB</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">Couleur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">Categorie</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Couleur</span> <span class="p">=</span> <span class="s">&#34;#808080&#34;</span><span class="p">;</span> <span class="c1">// Gris par défaut</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="tachecs-modifiée">Tache.cs (modifiée)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">    
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MaxLength(200)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstTerminee</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Relation avec Categorie</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int?</span> <span class="n">CategorieId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Categorie</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Tache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EstTerminee</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="applicationdbcontextcs-modifié">ApplicationDbContext.cs (modifié)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">Categories</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptionsBuilder</span> <span class="n">options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">options</span><span class="p">.</span><span class="n">UseSqlite</span><span class="p">(</span><span class="s">&#34;Data Source=taches.db&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">base</span><span class="p">.</span><span class="n">OnModelCreating</span><span class="p">(</span><span class="n">modelBuilder</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Configuration Categorie</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;(</span><span class="n">entity</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">ToTable</span><span class="p">(</span><span class="s">&#34;Categories&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">HasKey</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Données initiales</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">HasData</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Travail&#34;</span><span class="p">,</span> <span class="n">Couleur</span> <span class="p">=</span> <span class="s">&#34;#2196F3&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Personnel&#34;</span><span class="p">,</span> <span class="n">Couleur</span> <span class="p">=</span> <span class="s">&#34;#4CAF50&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">Categorie</span> <span class="p">{</span> <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">Nom</span> <span class="p">=</span> <span class="s">&#34;Urgent&#34;</span><span class="p">,</span> <span class="n">Couleur</span> <span class="p">=</span> <span class="s">&#34;#F44336&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Configuration Tache avec relation</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">entity</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">ToTable</span><span class="p">(</span><span class="s">&#34;Taches&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">HasKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// Relation avec Categorie</span>
+</span></span><span class="line"><span class="cl">            <span class="n">entity</span><span class="p">.</span><span class="n">HasOne</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Categorie</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">.</span><span class="n">WithMany</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">.</span><span class="n">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">CategorieId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">.</span><span class="n">OnDelete</span><span class="p">(</span><span class="n">DeleteBehavior</span><span class="p">.</span><span class="n">SetNull</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="icategorierepositorycs">ICategorieRepository.cs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Repositories</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">interface</span> <span class="nc">ICategorieRepository</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Categorie</span> <span class="n">ObtenirParId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Categorie</span> <span class="n">categorie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="categorierepositorycs">CategorieRepository.cs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Repositories</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">CategorieRepository</span> <span class="p">:</span> <span class="n">ICategorieRepository</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">CategorieRepository</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Categorie</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">Categorie</span> <span class="n">ObtenirParId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Categorie</span> <span class="n">categorie</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">categorie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">categorie</span> <span class="p">=</span> <span class="n">_context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">categorie</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_context</span><span class="p">.</span><span class="n">Categories</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">categorie</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="tacherepositorycs-modifié-pour-inclure-les-catégories">TacheRepository.cs (modifié pour inclure les catégories)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheRepository</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Inclure la catégorie dans la requête</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">Include</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Categorie</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// ... autres méthodes</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<h3 id="migration">Migration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">AjouterCategories</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span></span></span></code></pre></div>
+</details>
+<hr>
+<h2 id="-résumé">🎓 Résumé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="ce-quon-a-appris">Ce qu&rsquo;on a appris<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>✅ <strong>Le patron Repository</strong> : Sépare la logique de données du ViewModel</p>
+<p>✅ <strong>Entity Framework Core</strong> : ORM pour accéder à la base de données</p>
+<p>✅ <strong>DbContext</strong> : Point d&rsquo;entrée vers la base de données</p>
+<p>✅ <strong>Migrations</strong> : Versionner le schéma de base de données</p>
+<ul>
+<li><code>Add-Migration</code> : Créer une migration</li>
+<li><code>Update-Database</code> : Appliquer les migrations</li>
+</ul>
+<p>✅ <strong>Intégration MVVM</strong> : Repository → ViewModel → Vue</p>
+<h3 id="architecture-finale">Architecture finale<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Vue (XAML)
+    ↕ Binding
+ViewModel (Commandes, Propriétés)
+    ↕ Utilise
+Repository (Interface)
+    ↕ Implémente
+Repository Concret (EF Core)
+    ↕ Utilise
+DbContext (EF Core)
+    ↕ Accède
+Base de données</code></pre></div>
+<h3 id="commandes-essentielles">Commandes essentielles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Créer une migration</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Migration</span> <span class="n">NomMigration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Appliquer les migrations</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Annuler une migration</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Update-Database</span> <span class="n">-Migration</span> <span class="n">NomMigrationPrecedente</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Supprimer la dernière migration (non appliquée)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Remove-Migration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Voir les migrations</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Migration</span></span></span></code></pre></div>
+<hr>
+<h2 id="-pour-aller-plus-loin">📚 Pour aller plus loin<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Unit of Work</strong> : Gérer plusieurs repositories ensemble</li>
+<li><strong>LINQ avancé</strong> : Requêtes complexes avec Entity Framework</li>
+<li><strong>Async/Await</strong> : Rendre les opérations de base de données asynchrones</li>
+<li><strong>AutoMapper</strong> : Mapper entre entités et ViewModels</li>
+<li><strong>Validation</strong> : Valider les données avant de sauvegarder</li>
+</ul>
+<hr>
+<p><strong>Fin du cours ! 🎉</strong></p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a id="R-logo" 
+   style="display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+   href="/420-413/index.html">
+
+    <img src="/420-413/images/favicon.jpg" width="40" height="40" alt="logo" style="margin-right: 8px;">
+
+    <div style="display: flex; flex-direction: column; font-size: 130%; text-align: center;">
+        <span>Développement d'applications pour entreprises</span>
+    </div>
+</a>
+
+        <search><form action="/420-413/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/420-413/index.html"><a class="padding" href="/420-413/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/420-413/intro/index.html"><a class="padding" href="/420-413/intro/index.html">Intro à Visual Studio 2022</a></li>
+            <li class="" data-nav-id="/420-413/architecture/index.html"><a class="padding" href="/420-413/architecture/index.html">Architecture .NET</a></li>
+            <li class="" data-nav-id="/420-413/intro_syntaxe_c_sharp/index.html"><a class="padding" href="/420-413/intro_syntaxe_c_sharp/index.html">Intro et syntaxe du C#</a></li>
+            <li class="" data-nav-id="/420-413/variables/index.html"><a class="padding" href="/420-413/variables/index.html">Variables</a></li>
+            <li class="" data-nav-id="/420-413/operateurs/index.html"><a class="padding" href="/420-413/operateurs/index.html">Opérateurs</a></li>
+            <li class="" data-nav-id="/420-413/structures_de_controles/index.html"><a class="padding" href="/420-413/structures_de_controles/index.html">Structures de contrôles</a></li>
+            <li class="" data-nav-id="/420-413/tableaux_collections/index.html"><a class="padding" href="/420-413/tableaux_collections/index.html">Tableaux et collections</a></li>
+            <li class="" data-nav-id="/420-413/methodes/index.html"><a class="padding" href="/420-413/methodes/index.html">Les méthodes en c#</a></li>
+            <li class="" data-nav-id="/420-413/serie_exos_1/index.html"><a class="padding" href="/420-413/serie_exos_1/index.html">Série d&#39;exercices 1</a></li>
+            <li class="" data-nav-id="/420-413/poo/index.html"><a class="padding" href="/420-413/poo/index.html">Programmation orientée objet - partie 1</a></li>
+            <li class="" data-nav-id="/420-413/poo_2/index.html"><a class="padding" href="/420-413/poo_2/index.html">Programmation orientée objet - partie 2</a></li>
+            <li class="" data-nav-id="/420-413/poo_exos/index.html"><a class="padding" href="/420-413/poo_exos/index.html">Exercices - POO</a></li>
+            <li class="" data-nav-id="/420-413/linq/index.html"><a class="padding" href="/420-413/linq/index.html">LINQ</a></li>
+            <li class="" data-nav-id="/420-413/pratique_exam1/index.html"><a class="padding" href="/420-413/pratique_exam1/index.html">Pratique - Exam 1</a></li>
+            <li class="" data-nav-id="/420-413/wpf/index.html"><a class="padding" href="/420-413/wpf/index.html">WPF - intro</a></li>
+            <li class="" data-nav-id="/420-413/patron_observateur/index.html"><a class="padding" href="/420-413/patron_observateur/index.html">Patron observateur</a></li>
+            <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
+            <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
+            <li class="" data-nav-id="/420-413/efcore/index.html"><a class="padding" href="/420-413/efcore/index.html">Entity Framework Core</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="active " data-nav-id="/420-413/patron_repository_efcore/index.html"><a class="padding" href="/420-413/patron_repository_efcore/index.html">Patron Repository et EF Core</a></li>
+            <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
+            <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">SCRUM</a></li>
+            <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Epics et User Stories</a></li>
+            <li class="" data-nav-id="/420-413/rubrique/index.html"><a class="padding" href="/420-413/rubrique/index.html">Rubrique  - Semaine 2</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-learn" value="learn" selected>Learn</option>
+                    <option id="R-select-variant-relearn-auto" value="relearn-auto">Relearn Light/Dark</option>
+                    <option id="R-select-variant-zen-light" value="zen-light">Zen Light</option>
+                    <option id="R-select-variant-zen-dark" value="zen-dark">Zen Dark</option>
+                    <option id="R-select-variant-neon" value="neon">Neon</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"></div>
+      </div>
+    </aside>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773645265" defer></script>
+    <script src="/420-413/js/theme.js?1773645265" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

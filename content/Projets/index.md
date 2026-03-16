@@ -3,7 +3,7 @@ title: "Epics et User Stories"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 21
+weight: 51
 ---
 
 ---
