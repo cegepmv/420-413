@@ -23,29 +23,29 @@ Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged
     <meta itemprop="name" content="Mini-projets :: Développement d&#39;applications pour entreprises">
     <meta itemprop="description" content="Mini-projets progressifs Mini-projet 1 : Calculatrice avec historique Niveau : ⭐⭐ Intermédiaire
 Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged Data Binding de base Spécifications Fonctionnalités :">
-    <meta itemprop="wordCount" content="2931">
+    <meta itemprop="wordCount" content="4084">
     <title>Mini-projets :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1773977968" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773977968" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773977968" defer></script>
-    <script src="/420-413/js/search-lunr.js?1773977968" defer></script>
-    <script src="/420-413/js/search.js?1773977968" defer></script>
+    <link href="/420-413/images/favicon.png?1773984925" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773984925" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773984925" defer></script>
+    <script src="/420-413/js/search-lunr.js?1773984925" defer></script>
+    <script src="/420-413/js/search.js?1773984925" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1773977968";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1773984925";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1773977968" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1773984925" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773977968" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773977968" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773977968" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1773977968" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1773977968" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773984925" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1773984925" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1773984925" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -150,9 +150,31 @@ Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged
         <li><a href="#critères-de-réussite-3">Critères de réussite</a></li>
       </ul>
     </li>
-    <li><a href="#mini-projet-5--application-de-blog-avec-architecture-complète">Mini-projet 5 : Application de blog avec architecture complète</a>
+    <li><a href="#mini-projet-5--application-wpf-avec-mvvm-et-repository">Mini-projet 5 : Application WPF avec MVVM et Repository</a>
       <ul>
+        <li><a href="#contexte">Contexte</a></li>
         <li><a href="#objectifs-pédagogiques-4">Objectifs pédagogiques</a></li>
+        <li><a href="#structure-de-la-solution">Structure de la solution</a></li>
+        <li><a href="#travail-demandé">Travail demandé</a></li>
+        <li><a href="#1-userappdomain">1. <code>UserApp.Domain</code></a></li>
+        <li><a href="#2-userappinfrastructure">2. <code>UserApp.Infrastructure</code></a></li>
+        <li><a href="#3-userappapplication">3. <code>UserApp.Application</code></a></li>
+        <li><a href="#4-userappwpf">4. <code>UserApp.WPF</code></a></li>
+        <li><a href="#question-de-réflexion">Question de réflexion</a></li>
+        <li><a href="#critères-dévaluation">Critères d&rsquo;évaluation</a></li>
+      </ul>
+    </li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#userappdomain--entité-et-interface"><code>UserApp.Domain</code> — Entité et interface</a></li>
+        <li><a href="#userappinfrastructure--données"><code>UserApp.Infrastructure</code> — Données</a></li>
+        <li><a href="#userappapplication--service"><code>UserApp.Application</code> — Service</a></li>
+        <li><a href="#userappwpf--interface-utilisateur"><code>UserApp.WPF</code> — Interface utilisateur</a></li>
+      </ul>
+    </li>
+    <li><a href="#mini-projet-6--application-de-blog-avec-architecture-complète">Mini-projet 6 : Application de blog avec architecture complète</a>
+      <ul>
+        <li><a href="#objectifs-pédagogiques-5">Objectifs pédagogiques</a></li>
         <li><a href="#spécifications-4">Spécifications</a></li>
         <li><a href="#je-vous-fournis-un-squelette-de-départ">Je vous fournis un squelette de départ&hellip;</a></li>
         <li><a href="#xaml-avec-navigation">XAML avec navigation</a></li>
@@ -171,7 +193,7 @@ Objectifs pédagogiques Patron Commande (annuler/refaire) INotifyPropertyChanged
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_repository_efcore/index.html" title="Patron Repository et EF Core (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/injection_dependance/index.html" title="Injection de dépendance (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
 <span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/agile_scrum/index.html" title="SCRUM (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
@@ -1052,9 +1074,418 @@ ViewModels/
 <li><input disabled="" type="checkbox"> Documentation du code</li>
 </ul>
 <hr>
-<h2 id="mini-projet-5--application-de-blog-avec-architecture-complète">Mini-projet 5 : Application de blog avec architecture complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<p><strong>Niveau : ⭐⭐⭐⭐⭐ Expert</strong></p>
+<h2 id="mini-projet-5--application-wpf-avec-mvvm-et-repository">Mini-projet 5 : Application WPF avec MVVM et Repository<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="contexte">Contexte<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Vous devez créer une application de bureau en <strong>WPF</strong> permettant d&rsquo;ajouter un utilisateur dans une base de données. Le projet doit respecter les bonnes pratiques d&rsquo;architecture logicielle en séparant les responsabilités dans <strong>plusieurs projets distincts</strong>.</p>
+<hr>
 <h3 id="objectifs-pédagogiques-4">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Appliquer le patron d&rsquo;architecture <strong>MVVM</strong> (Model-View-ViewModel)</li>
+<li>Implémenter le <strong>patron Repository</strong> pour abstraire l&rsquo;accès aux données</li>
+<li>Utiliser les <strong>attributs de validation</strong> (<code>[Required]</code>, <code>[MaxLength]</code>, <code>[Key]</code>) plutôt que la Fluent API</li>
+<li>Utiliser <strong>CommunityToolkit.Mvvm</strong> (<code>[ObservableProperty]</code>, <code>[RelayCommand]</code>, <code>ObservableObject</code>)</li>
+</ul>
+<hr>
+<h3 id="structure-de-la-solution">Structure de la solution<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La solution doit être divisée en <strong>4 projets</strong> :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Projet</th>
+          <th>Type</th>
+          <th>Rôle</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>UserApp.Domain</code></td>
+          <td><code>net8.0</code></td>
+          <td>Entités et interfaces</td>
+      </tr>
+      <tr>
+          <td><code>UserApp.Infrastructure</code></td>
+          <td><code>net8.0</code></td>
+          <td>Accès aux données (EF Core + SQLite)</td>
+      </tr>
+      <tr>
+          <td><code>UserApp.Application</code></td>
+          <td><code>net8.0</code></td>
+          <td>Services et logique métier</td>
+      </tr>
+      <tr>
+          <td><code>UserApp.WPF</code></td>
+          <td><code>net8.0-windows</code></td>
+          <td>Interface utilisateur WPF</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="dépendances-entre-projets">Dépendances entre projets<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>UserApp.WPF
+  ├── UserApp.Application
+  └── UserApp.Infrastructure
+        └── UserApp.Domain
+UserApp.Application
+  └── UserApp.Domain</code></pre></div>
+<hr>
+<h3 id="travail-demandé">Travail demandé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h3 id="1-userappdomain">1. <code>UserApp.Domain</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez la classe <code>Utilisateur</code> avec les propriétés suivantes :</p>
+<ul>
+<li><code>Id</code> (int) — clé primaire</li>
+<li><code>Nom</code> (string) — obligatoire, max 100 caractères</li>
+<li><code>Prenom</code> (string) — obligatoire, max 100 caractères</li>
+<li><code>NomUtilisateur</code> (string) — obligatoire, max 50 caractères</li>
+<li><code>DateCreation</code> (DateTime) — valeur par défaut : <code>DateTime.Now</code></li>
+</ul>
+<blockquote>
+<p>Utilisez les attributs <code>[Key]</code>, <code>[Required]</code> et <code>[MaxLength]</code> de <code>System.ComponentModel.DataAnnotations</code>.</p></blockquote>
+<p>Créez ensuite l&rsquo;interface <code>IUtilisateurRepository</code> avec les méthodes :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Task</span> <span class="n">AjouterAsync</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">NomUtilisateurExisteAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">);</span></span></span></code></pre></div>
+<hr>
+<h3 id="2-userappinfrastructure">2. <code>UserApp.Infrastructure</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Créez un <code>AppDbContext</code> héritant de <code>DbContext</code> avec un <code>DbSet&lt;Utilisateur&gt;</code></li>
+<li>Aucune Fluent API n&rsquo;est nécessaire : toutes les contraintes sont portées par les attributs de l&rsquo;entité</li>
+<li>Implémentez <code>UtilisateurRepository</code> qui implémente <code>IUtilisateurRepository</code></li>
+</ul>
+<p><strong>Packages NuGet requis :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Sqlite</code></pre></div>
+<hr>
+<h3 id="3-userappapplication">3. <code>UserApp.Application</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez l&rsquo;interface <code>IUtilisateurService</code> :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="cs">/// &lt;exception cref=&#34;InvalidOperationException&#34;&gt;Si la validation échoue ou si le nom d&#39;utilisateur est déjà pris.&lt;/exception&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Task</span> <span class="n">AjouterUtilisateurAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">);</span></span></span></code></pre></div>
+<p>Implémentez <code>UtilisateurService</code> qui :</p>
+<ul>
+<li>Valide que les champs ne sont pas vides</li>
+<li>Vérifie que <code>NomUtilisateur</code> fait au moins 3 caractères et ne contient pas d&rsquo;espaces</li>
+<li>Vérifie l&rsquo;unicité du <code>NomUtilisateur</code> via le repository</li>
+<li>Lance une <strong><code>InvalidOperationException</code></strong> avec un message explicite en cas d&rsquo;erreur</li>
+</ul>
+<hr>
+<h3 id="4-userappwpf">4. <code>UserApp.WPF</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez un ViewModel <code>AjoutUtilisateurViewModel</code> qui :</p>
+<ul>
+<li>Hérite de <strong><code>ObservableObject</code></strong> (CommunityToolkit.Mvvm)</li>
+<li>Expose trois propriétés bindables avec <strong><code>[ObservableProperty]</code></strong> : <code>Nom</code>, <code>Prenom</code>, <code>NomUtilisateur</code></li>
+<li>Expose une commande <strong><code>[RelayCommand]</code></strong> <code>AjouterUtilisateur</code> qui appelle le service et affiche un <code>MessageBox</code></li>
+</ul>
+<p>Créez la vue <code>MainWindow.xaml</code> avec :</p>
+<ul>
+<li>Un champ texte pour chaque propriété</li>
+<li><strong>Un seul bouton</strong> « Ajouter l&rsquo;utilisateur » lié à la commande</li>
+<li>Un résultat affiché via <code>MessageBox</code> (succès ou erreur)</li>
+</ul>
+<p>Dans le constructeur de <code>MainWindow</code>, instanciez manuellement le <code>DbContext</code>, le <code>Repository</code>, le <code>Service</code> et le <code>ViewModel</code> dans l&rsquo;ordre, puis assignez le ViewModel au <code>DataContext</code>.</p>
+<p><strong>Package NuGet requis :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>CommunityToolkit.Mvvm</code></pre></div>
+<hr>
+<h3 id="question-de-réflexion">Question de réflexion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La méthode <code>AjouterUtilisateurAsync</code> du service doit communiquer un succès ou une erreur à l&rsquo;appelant. Trois approches sont possibles :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Approche</th>
+          <th>Signature</th>
+          <th>Avantages</th>
+          <th>Inconvénients</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Exception</strong></td>
+          <td><code>Task</code></td>
+          <td>Simple, flux clair, pas de valeur de retour à inspecter</td>
+          <td>Les exceptions ne devraient pas gérer le flux normal</td>
+      </tr>
+      <tr>
+          <td><strong>Tuple</strong></td>
+          <td><code>Task&lt;(bool Succes, string Message)&gt;</code></td>
+          <td>Explicite, pas d&rsquo;exception</td>
+          <td>Verbeux, pas orienté objet</td>
+      </tr>
+      <tr>
+          <td><strong>Classe Result</strong></td>
+          <td><code>Task&lt;Result&gt;</code></td>
+          <td>Extensible, expressif, pattern moderne</td>
+          <td>Plus de code à écrire</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Laquelle choisiriez-vous et pourquoi ?</strong> Discutez des compromis selon le contexte (application interne, API publique, taille de l&rsquo;équipe, etc.).</p>
+<hr>
+<h3 id="critères-dévaluation">Critères d&rsquo;évaluation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Les 4 projets sont créés et les références entre eux sont correctes</li>
+<li><input disabled="" type="checkbox"> Les attributs <code>[Key]</code>, <code>[Required]</code>, <code>[MaxLength]</code> sont utilisés dans l&rsquo;entité</li>
+<li><input disabled="" type="checkbox"> Le <code>DbContext</code> n&rsquo;utilise pas de Fluent API, tout est géré par les attributs</li>
+<li><input disabled="" type="checkbox"> <code>IUtilisateurRepository</code> est défini dans <code>Domain</code> et implémenté dans <code>Infrastructure</code></li>
+<li><input disabled="" type="checkbox"> La validation métier est dans <code>Application</code>, pas dans le ViewModel</li>
+<li><input disabled="" type="checkbox"> <code>ObservableObject</code>, <code>[ObservableProperty]</code> et <code>[RelayCommand]</code> sont utilisés</li>
+<li><input disabled="" type="checkbox"> Un seul bouton dans l&rsquo;interface, le résultat est affiché en <code>MessageBox</code></li>
+<li><input disabled="" type="checkbox"> Le <code>DbContext</code>, le <code>Repository</code>, le <code>Service</code> et le <code>ViewModel</code> sont instanciés manuellement dans le constructeur de <code>MainWindow</code></li>
+</ul>
+<hr>
+<details>
+<summary><strong>💡 Solution complète (cliquez pour afficher)</strong></summary>
+<h2 id="solution">Solution<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="userappdomain--entité-et-interface"><code>UserApp.Domain</code> — Entité et interface<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong><code>Entities/Utilisateur.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Domain.Entities</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Utilisateur</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Key]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MaxLength(100)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MaxLength(100)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Prenom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Required]</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MaxLength(50)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">NomUtilisateur</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong><code>Interfaces/IUtilisateurRepository.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Entities</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Domain.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IUtilisateurRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">AjouterAsync</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">NomUtilisateurExisteAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h3 id="userappinfrastructure--données"><code>UserApp.Infrastructure</code> — Données<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong><code>Data/AppDbContext.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Entities</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Infrastructure.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">AppDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Utilisateur</span><span class="p">&gt;</span> <span class="n">Utilisateurs</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">AppDbContext</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptionsBuilder</span> <span class="n">optionsBuilder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">optionsBuilder</span><span class="p">.</span><span class="n">UseSqlite</span><span class="p">(</span><span class="s">&#34;Data Source=utilisateurs.db&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong><code>Repositories/UtilisateurRepository.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Entities</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Infrastructure.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Infrastructure.Repositories</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">UtilisateurRepository</span> <span class="p">:</span> <span class="n">IUtilisateurRepository</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">AppDbContext</span> <span class="n">_context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">UtilisateurRepository</span><span class="p">(</span><span class="n">AppDbContext</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">AjouterAsync</span><span class="p">(</span><span class="n">Utilisateur</span> <span class="n">utilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Utilisateurs</span><span class="p">.</span><span class="n">AddAsync</span><span class="p">(</span><span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">NomUtilisateurExisteAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Utilisateurs</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">AnyAsync</span><span class="p">(</span><span class="n">u</span> <span class="p">=&gt;</span> <span class="n">u</span><span class="p">.</span><span class="n">NomUtilisateur</span> <span class="p">==</span> <span class="n">nomUtilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h3 id="userappapplication--service"><code>UserApp.Application</code> — Service<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong><code>Interfaces/IUtilisateurService.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Application.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IUtilisateurService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;exception cref=&#34;InvalidOperationException&#34;&gt;Si la validation échoue ou si le nom d&#39;utilisateur est déjà pris.&lt;/exception&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Task</span> <span class="n">AjouterUtilisateurAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong><code>Services/UtilisateurService.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Application.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Entities</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Domain.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.Application.Services</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">UtilisateurService</span> <span class="p">:</span> <span class="n">IUtilisateurService</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IUtilisateurRepository</span> <span class="n">_repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">UtilisateurService</span><span class="p">(</span><span class="n">IUtilisateurRepository</span> <span class="n">repository</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;exception cref=&#34;InvalidOperationException&#34;&gt;Si la validation échoue ou si le nom d&#39;utilisateur est déjà pris.&lt;/exception&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">AjouterUtilisateurAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">prenom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nomUtilisateur</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">nom</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&#34;Le nom est obligatoire.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">prenom</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&#34;Le prénom est obligatoire.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">nomUtilisateur</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&#34;Le nom d&#39;utilisateur est obligatoire.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">nomUtilisateur</span><span class="p">.</span><span class="n">Length</span> <span class="p">&lt;</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&#34;Le nom d&#39;utilisateur doit contenir au moins 3 caractères.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">nomUtilisateur</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&#34;Le nom d&#39;utilisateur ne peut pas contenir d&#39;espaces.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">_repository</span><span class="p">.</span><span class="n">NomUtilisateurExisteAsync</span><span class="p">(</span><span class="n">nomUtilisateur</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">$&#34;Le nom d&#39;utilisateur &#39;{nomUtilisateur}&#39; est déjà pris.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">utilisateur</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Utilisateur</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Nom</span> <span class="p">=</span> <span class="n">nom</span><span class="p">.</span><span class="n">Trim</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Prenom</span> <span class="p">=</span> <span class="n">prenom</span><span class="p">.</span><span class="n">Trim</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">NomUtilisateur</span> <span class="p">=</span> <span class="n">nomUtilisateur</span><span class="p">.</span><span class="n">Trim</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">_repository</span><span class="p">.</span><span class="n">AjouterAsync</span><span class="p">(</span><span class="n">utilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<hr>
+<h3 id="userappwpf--interface-utilisateur"><code>UserApp.WPF</code> — Interface utilisateur<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong><code>ViewModels/AjoutUtilisateurViewModel.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.ComponentModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Application.Interfaces</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.WPF.ViewModels</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">AjoutUtilisateurViewModel</span> <span class="p">:</span> <span class="n">ObservableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IUtilisateurService</span> <span class="n">_service</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [ObservableProperty]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">_nom</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [ObservableProperty]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">_prenom</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [ObservableProperty]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">string</span> <span class="n">_nomUtilisateur</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">AjoutUtilisateurViewModel</span><span class="p">(</span><span class="n">IUtilisateurService</span> <span class="n">service</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [RelayCommand]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">async</span> <span class="n">Task</span> <span class="n">AjouterUtilisateurAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">_service</span><span class="p">.</span><span class="n">AjouterUtilisateurAsync</span><span class="p">(</span><span class="n">Nom</span><span class="p">,</span> <span class="n">Prenom</span><span class="p">,</span> <span class="n">NomUtilisateur</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s">$&#34;L&#39;utilisateur &#39;{NomUtilisateur}&#39; a été créé avec succès.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;Succès&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">OK</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MessageBoxImage</span><span class="p">.</span><span class="n">Information</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">Nom</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Prenom</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">NomUtilisateur</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">catch</span> <span class="p">(</span><span class="n">InvalidOperationException</span> <span class="n">ex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span> <span class="s">&#34;Erreur&#34;</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">MessageBoxImage</span><span class="p">.</span><span class="n">Warning</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong><code>Views/MainWindow.xaml</code></strong> <em>(extrait simplifié)</em></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="err">...</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Border</span> <span class="na">Background=</span><span class="s">&#34;White&#34;</span> <span class="na">Margin=</span><span class="s">&#34;28&#34;</span> <span class="na">CornerRadius=</span><span class="s">&#34;12&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">BorderBrush=</span><span class="s">&#34;#E2E8F0&#34;</span> <span class="na">BorderThickness=</span><span class="s">&#34;1&#34;</span> <span class="na">Padding=</span><span class="s">&#34;28&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Nom *&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;SemiBold&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,6&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Nom, UpdateSourceTrigger=PropertyChanged}&#34;</span>
+</span></span><span class="line"><span class="cl">                     <span class="na">Margin=</span><span class="s">&#34;0,0,0,14&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Prénom *&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;SemiBold&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,6&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding Prenom, UpdateSourceTrigger=PropertyChanged}&#34;</span>
+</span></span><span class="line"><span class="cl">                     <span class="na">Margin=</span><span class="s">&#34;0,0,0,14&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;Nom d&#39;utilisateur *&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;SemiBold&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,6&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">Text=</span><span class="s">&#34;{Binding NomUtilisateur, UpdateSourceTrigger=PropertyChanged}&#34;</span>
+</span></span><span class="line"><span class="cl">                     <span class="na">Margin=</span><span class="s">&#34;0,0,0,28&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter l&#39;utilisateur&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding AjouterUtilisateurCommand}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Border&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
+<p><strong><code>App.xaml.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.WPF.Views</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.WPF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">base</span><span class="p">.</span><span class="n">OnStartup</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">new</span> <span class="n">MainWindow</span><span class="p">().</span><span class="n">Show</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong><code>Views/MainWindow.xaml.cs</code></strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Application.Services</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Infrastructure.Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.Infrastructure.Repositories</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UserApp.WPF.ViewModels</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">UserApp.WPF.Views</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AppDbContext</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="n">EnsureCreated</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">repository</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UtilisateurRepository</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UtilisateurService</span><span class="p">(</span><span class="n">repository</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">DataContext</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AjoutUtilisateurViewModel</span><span class="p">(</span><span class="n">service</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+</details>
+<h2 id="mini-projet-6--application-de-blog-avec-architecture-complète">Mini-projet 6 : Application de blog avec architecture complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Niveau : ⭐⭐⭐⭐⭐ Expert</strong></p>
+<h3 id="objectifs-pédagogiques-5">Objectifs pédagogiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <ul>
 <li>Architecture N-tiers complète</li>
 <li>Tous les patrons intégrés</li>
@@ -1429,8 +1860,8 @@ Infrastructure/
             <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
             <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
             <li class="" data-nav-id="/420-413/efcore/index.html"><a class="padding" href="/420-413/efcore/index.html">Entity Framework Core</a></li>
-            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
             <li class="" data-nav-id="/420-413/patron_repository_efcore/index.html"><a class="padding" href="/420-413/patron_repository_efcore/index.html">Patron Repository et EF Core</a></li>
+            <li class="" data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
             <li class="active " data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
             <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">SCRUM</a></li>
             <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Epics et User Stories</a></li>
@@ -1470,8 +1901,8 @@ Infrastructure/
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773977968" defer></script>
-    <script src="/420-413/js/theme.js?1773977968" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773984925" defer></script>
+    <script src="/420-413/js/theme.js?1773984925" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

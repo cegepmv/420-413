@@ -894,7 +894,449 @@ public class ProduitsViewModel : BaseViewModel
 
 ---
 
-## Mini-projet 5 : Application de blog avec architecture complète
+
+## Mini-projet 5 : Application WPF avec MVVM et Repository
+
+### Contexte
+
+Vous devez créer une application de bureau en **WPF** permettant d'ajouter un utilisateur dans une base de données. Le projet doit respecter les bonnes pratiques d'architecture logicielle en séparant les responsabilités dans **plusieurs projets distincts**.
+
+---
+
+### Objectifs pédagogiques
+
+- Appliquer le patron d'architecture **MVVM** (Model-View-ViewModel)
+- Implémenter le **patron Repository** pour abstraire l'accès aux données
+- Utiliser les **attributs de validation** (`[Required]`, `[MaxLength]`, `[Key]`) plutôt que la Fluent API
+- Utiliser **CommunityToolkit.Mvvm** (`[ObservableProperty]`, `[RelayCommand]`, `ObservableObject`)
+
+---
+
+### Structure de la solution
+
+La solution doit être divisée en **4 projets** :
+
+| Projet | Type | Rôle |
+|---|---|---|
+| `UserApp.Domain` | `net8.0` | Entités et interfaces |
+| `UserApp.Infrastructure` | `net8.0` | Accès aux données (EF Core + SQLite) |
+| `UserApp.Application` | `net8.0` | Services et logique métier |
+| `UserApp.WPF` | `net8.0-windows` | Interface utilisateur WPF |
+
+#### Dépendances entre projets
+
+```
+UserApp.WPF
+  ├── UserApp.Application
+  └── UserApp.Infrastructure
+        └── UserApp.Domain
+UserApp.Application
+  └── UserApp.Domain
+```
+
+---
+
+### Travail demandé
+
+### 1. `UserApp.Domain`
+
+Créez la classe `Utilisateur` avec les propriétés suivantes :
+
+- `Id` (int) — clé primaire
+- `Nom` (string) — obligatoire, max 100 caractères
+- `Prenom` (string) — obligatoire, max 100 caractères
+- `NomUtilisateur` (string) — obligatoire, max 50 caractères
+- `DateCreation` (DateTime) — valeur par défaut : `DateTime.Now`
+
+> Utilisez les attributs `[Key]`, `[Required]` et `[MaxLength]` de `System.ComponentModel.DataAnnotations`.
+
+Créez ensuite l'interface `IUtilisateurRepository` avec les méthodes :
+
+```csharp
+Task AjouterAsync(Utilisateur utilisateur);
+Task<bool> NomUtilisateurExisteAsync(string nomUtilisateur);
+```
+
+---
+
+### 2. `UserApp.Infrastructure`
+
+- Créez un `AppDbContext` héritant de `DbContext` avec un `DbSet<Utilisateur>`
+- Aucune Fluent API n'est nécessaire : toutes les contraintes sont portées par les attributs de l'entité
+- Implémentez `UtilisateurRepository` qui implémente `IUtilisateurRepository`
+
+**Packages NuGet requis :**
+```
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Sqlite
+```
+
+---
+
+### 3. `UserApp.Application`
+
+Créez l'interface `IUtilisateurService` :
+
+```csharp
+/// <exception cref="InvalidOperationException">Si la validation échoue ou si le nom d'utilisateur est déjà pris.</exception>
+Task AjouterUtilisateurAsync(string nom, string prenom, string nomUtilisateur);
+```
+
+Implémentez `UtilisateurService` qui :
+
+- Valide que les champs ne sont pas vides
+- Vérifie que `NomUtilisateur` fait au moins 3 caractères et ne contient pas d'espaces
+- Vérifie l'unicité du `NomUtilisateur` via le repository
+- Lance une **`InvalidOperationException`** avec un message explicite en cas d'erreur
+
+---
+
+### 4. `UserApp.WPF`
+
+Créez un ViewModel `AjoutUtilisateurViewModel` qui :
+
+- Hérite de **`ObservableObject`** (CommunityToolkit.Mvvm)
+- Expose trois propriétés bindables avec **`[ObservableProperty]`** : `Nom`, `Prenom`, `NomUtilisateur`
+- Expose une commande **`[RelayCommand]`** `AjouterUtilisateur` qui appelle le service et affiche un `MessageBox`
+
+Créez la vue `MainWindow.xaml` avec :
+
+- Un champ texte pour chaque propriété
+- **Un seul bouton** « Ajouter l'utilisateur » lié à la commande
+- Un résultat affiché via `MessageBox` (succès ou erreur)
+
+Dans le constructeur de `MainWindow`, instanciez manuellement le `DbContext`, le `Repository`, le `Service` et le `ViewModel` dans l'ordre, puis assignez le ViewModel au `DataContext`.
+
+**Package NuGet requis :**
+```
+CommunityToolkit.Mvvm
+```
+
+---
+
+### Question de réflexion
+
+La méthode `AjouterUtilisateurAsync` du service doit communiquer un succès ou une erreur à l'appelant. Trois approches sont possibles :
+
+| Approche | Signature | Avantages | Inconvénients |
+|---|---|---|---|
+| **Exception** | `Task` | Simple, flux clair, pas de valeur de retour à inspecter | Les exceptions ne devraient pas gérer le flux normal |
+| **Tuple** | `Task<(bool Succes, string Message)>` | Explicite, pas d'exception | Verbeux, pas orienté objet |
+| **Classe Result** | `Task<Result>` | Extensible, expressif, pattern moderne | Plus de code à écrire |
+
+**Laquelle choisiriez-vous et pourquoi ?** Discutez des compromis selon le contexte (application interne, API publique, taille de l'équipe, etc.).
+
+---
+
+### Critères d'évaluation
+
+- [ ] Les 4 projets sont créés et les références entre eux sont correctes
+- [ ] Les attributs `[Key]`, `[Required]`, `[MaxLength]` sont utilisés dans l'entité
+- [ ] Le `DbContext` n'utilise pas de Fluent API, tout est géré par les attributs
+- [ ] `IUtilisateurRepository` est défini dans `Domain` et implémenté dans `Infrastructure`
+- [ ] La validation métier est dans `Application`, pas dans le ViewModel
+- [ ] `ObservableObject`, `[ObservableProperty]` et `[RelayCommand]` sont utilisés
+- [ ] Un seul bouton dans l'interface, le résultat est affiché en `MessageBox`
+- [ ] Le `DbContext`, le `Repository`, le `Service` et le `ViewModel` sont instanciés manuellement dans le constructeur de `MainWindow`
+
+---
+
+<details>
+<summary><strong>💡 Solution complète (cliquez pour afficher)</strong></summary>
+
+## Solution
+
+### `UserApp.Domain` — Entité et interface
+
+**`Entities/Utilisateur.cs`**
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace UserApp.Domain.Entities;
+
+public class Utilisateur
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    [MaxLength(100)]
+    public string Nom { get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(100)]
+    public string Prenom { get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(50)]
+    public string NomUtilisateur { get; set; } = string.Empty;
+
+    public DateTime DateCreation { get; set; } = DateTime.Now;
+}
+```
+
+**`Interfaces/IUtilisateurRepository.cs`**
+```csharp
+using UserApp.Domain.Entities;
+
+namespace UserApp.Domain.Interfaces;
+
+public interface IUtilisateurRepository
+{
+    Task AjouterAsync(Utilisateur utilisateur);
+    Task<bool> NomUtilisateurExisteAsync(string nomUtilisateur);
+}
+```
+
+---
+
+### `UserApp.Infrastructure` — Données
+
+**`Data/AppDbContext.cs`**
+```csharp
+using Microsoft.EntityFrameworkCore;
+using UserApp.Domain.Entities;
+
+namespace UserApp.Infrastructure.Data;
+
+public class AppDbContext : DbContext
+{
+    public DbSet<Utilisateur> Utilisateurs { get; set; }
+
+    public AppDbContext() { }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite("Data Source=utilisateurs.db");
+    }
+}
+```
+
+**`Repositories/UtilisateurRepository.cs`**
+```csharp
+using Microsoft.EntityFrameworkCore;
+using UserApp.Domain.Entities;
+using UserApp.Domain.Interfaces;
+using UserApp.Infrastructure.Data;
+
+namespace UserApp.Infrastructure.Repositories;
+
+public class UtilisateurRepository : IUtilisateurRepository
+{
+    private readonly AppDbContext _context;
+
+    public UtilisateurRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task AjouterAsync(Utilisateur utilisateur)
+    {
+        await _context.Utilisateurs.AddAsync(utilisateur);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> NomUtilisateurExisteAsync(string nomUtilisateur)
+    {
+        return await _context.Utilisateurs
+            .AnyAsync(u => u.NomUtilisateur == nomUtilisateur);
+    }
+}
+```
+
+---
+
+### `UserApp.Application` — Service
+
+**`Interfaces/IUtilisateurService.cs`**
+```csharp
+namespace UserApp.Application.Interfaces;
+
+public interface IUtilisateurService
+{
+    /// <exception cref="InvalidOperationException">Si la validation échoue ou si le nom d'utilisateur est déjà pris.</exception>
+    Task AjouterUtilisateurAsync(string nom, string prenom, string nomUtilisateur);
+}
+```
+
+**`Services/UtilisateurService.cs`**
+```csharp
+using UserApp.Application.Interfaces;
+using UserApp.Domain.Entities;
+using UserApp.Domain.Interfaces;
+
+namespace UserApp.Application.Services;
+
+public class UtilisateurService : IUtilisateurService
+{
+    private readonly IUtilisateurRepository _repository;
+
+    public UtilisateurService(IUtilisateurRepository repository)
+    {
+        _repository = repository;
+    }
+
+    /// <exception cref="InvalidOperationException">Si la validation échoue ou si le nom d'utilisateur est déjà pris.</exception>
+    public async Task AjouterUtilisateurAsync(string nom, string prenom, string nomUtilisateur)
+    {
+        if (string.IsNullOrWhiteSpace(nom))
+            throw new InvalidOperationException("Le nom est obligatoire.");
+
+        if (string.IsNullOrWhiteSpace(prenom))
+            throw new InvalidOperationException("Le prénom est obligatoire.");
+
+        if (string.IsNullOrWhiteSpace(nomUtilisateur))
+            throw new InvalidOperationException("Le nom d'utilisateur est obligatoire.");
+
+        if (nomUtilisateur.Length < 3)
+            throw new InvalidOperationException("Le nom d'utilisateur doit contenir au moins 3 caractères.");
+
+        if (nomUtilisateur.Contains(' '))
+            throw new InvalidOperationException("Le nom d'utilisateur ne peut pas contenir d'espaces.");
+
+        if (await _repository.NomUtilisateurExisteAsync(nomUtilisateur))
+            throw new InvalidOperationException($"Le nom d'utilisateur '{nomUtilisateur}' est déjà pris.");
+
+        var utilisateur = new Utilisateur
+        {
+            Nom = nom.Trim(),
+            Prenom = prenom.Trim(),
+            NomUtilisateur = nomUtilisateur.Trim()
+        };
+
+        await _repository.AjouterAsync(utilisateur);
+    }
+}
+```
+
+---
+
+### `UserApp.WPF` — Interface utilisateur
+
+**`ViewModels/AjoutUtilisateurViewModel.cs`**
+```csharp
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows;
+using UserApp.Application.Interfaces;
+
+namespace UserApp.WPF.ViewModels;
+
+public partial class AjoutUtilisateurViewModel : ObservableObject
+{
+    private readonly IUtilisateurService _service;
+
+    [ObservableProperty]
+    private string _nom = string.Empty;
+
+    [ObservableProperty]
+    private string _prenom = string.Empty;
+
+    [ObservableProperty]
+    private string _nomUtilisateur = string.Empty;
+
+    public AjoutUtilisateurViewModel(IUtilisateurService service)
+    {
+        _service = service;
+    }
+
+    [RelayCommand]
+    private async Task AjouterUtilisateurAsync()
+    {
+        try
+        {
+            await _service.AjouterUtilisateurAsync(Nom, Prenom, NomUtilisateur);
+
+            MessageBox.Show(
+                $"L'utilisateur '{NomUtilisateur}' a été créé avec succès.",
+                "Succès",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+
+            Nom = string.Empty;
+            Prenom = string.Empty;
+            NomUtilisateur = string.Empty;
+        }
+        catch (InvalidOperationException ex)
+        {
+            MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+    }
+}
+```
+
+**`Views/MainWindow.xaml`** *(extrait simplifié)*
+```xml
+<Window ...>
+    <Border Background="White" Margin="28" CornerRadius="12"
+            BorderBrush="#E2E8F0" BorderThickness="1" Padding="28">
+        <StackPanel>
+            <TextBlock Text="Nom *" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,0,14"/>
+
+            <TextBlock Text="Prénom *" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBox Text="{Binding Prenom, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,0,14"/>
+
+            <TextBlock Text="Nom d'utilisateur *" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBox Text="{Binding NomUtilisateur, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,0,28"/>
+
+            <Button Content="Ajouter l'utilisateur"
+                    Command="{Binding AjouterUtilisateurCommand}"/>
+        </StackPanel>
+    </Border>
+</Window>
+```
+
+**`App.xaml.cs`**
+```csharp
+using System.Windows;
+using UserApp.WPF.Views;
+
+namespace UserApp.WPF;
+
+public partial class App : Application
+{
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+        new MainWindow().Show();
+    }
+}
+```
+
+**`Views/MainWindow.xaml.cs`**
+```csharp
+using System.Windows;
+using UserApp.Application.Services;
+using UserApp.Infrastructure.Data;
+using UserApp.Infrastructure.Repositories;
+using UserApp.WPF.ViewModels;
+
+namespace UserApp.WPF.Views;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        var context = new AppDbContext();
+        context.Database.EnsureCreated();
+
+        var repository = new UtilisateurRepository(context);
+        var service = new UtilisateurService(repository);
+
+        DataContext = new AjoutUtilisateurViewModel(service);
+    }
+}
+```
+
+</details>
+
+## Mini-projet 6 : Application de blog avec architecture complète
 **Niveau : ⭐⭐⭐⭐⭐ Expert**
 
 ### Objectifs pédagogiques

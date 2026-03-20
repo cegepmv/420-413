@@ -31,29 +31,29 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 Vous développez une application qui doit envoyer des notifications :
 Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :
 public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :">
-    <meta itemprop="wordCount" content="2554">
+    <meta itemprop="wordCount" content="2447">
     <title>Injection de dépendance :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1773977968" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773977968" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773977968" defer></script>
-    <script src="/420-413/js/search-lunr.js?1773977968" defer></script>
-    <script src="/420-413/js/search.js?1773977968" defer></script>
+    <link href="/420-413/images/favicon.png?1773984925" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773984925" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773984925" defer></script>
+    <script src="/420-413/js/search-lunr.js?1773984925" defer></script>
+    <script src="/420-413/js/search.js?1773984925" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1773977968";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1773984925";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1773977968" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1773977968" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1773984925" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773977968" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773977968" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773977968" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1773977968" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1773977968" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773984925" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1773984925" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1773984925" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -140,8 +140,8 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
       <ul>
         <li><a href="#installation-des-packages-nuget">Installation des packages NuGet</a></li>
         <li><a href="#configuration-complète-dune-application-wpf">Configuration complète d&rsquo;une application WPF</a></li>
-        <li><a href="#appxaml---retirer-le-startupuri">App.xaml - Retirer le StartupUri</a></li>
-        <li><a href="#appxamlcs---configuration-du-conteneur-ioc">App.xaml.cs - Configuration du conteneur IoC</a></li>
+        <li><a href="#appxaml--retirer-le-startupuri">App.xaml — Retirer le StartupUri</a></li>
+        <li><a href="#appxamlcs--configuration-du-conteneur-ioc-avec-servicecollection">App.xaml.cs — Configuration du conteneur IoC avec ServiceCollection</a></li>
         <li><a href="#architecture-complète-avec-di">Architecture complète avec DI</a></li>
         <li><a href="#exemple-complet--application-de-gestion-de-tâches">Exemple complet : Application de gestion de tâches</a></li>
         <li><a href="#avantages-de-cette-architecture">Avantages de cette architecture</a></li>
@@ -156,7 +156,7 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
     <li><a href="#résumé">Résumé</a>
       <ul>
         <li><a href="#principes-clés">Principes clés</a></li>
-        <li><a href="#configuration-wpf">Configuration WPF</a></li>
+        <li><a href="#configuration-wpf-avec-servicecollection">Configuration WPF avec ServiceCollection</a></li>
         <li><a href="#architecture-complète">Architecture complète</a></li>
       </ul>
     </li>
@@ -170,10 +170,10 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/efcore/index.html" title="Entity Framework Core (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_repository_efcore/index.html" title="Patron Repository et EF Core (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/patron_repository_efcore/index.html" title="Patron Repository et EF Core (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/420-413/mini_projets/index.html" title="Mini-projets (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 <span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
@@ -434,10 +434,10 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 <hr>
 <h3 id="conteneur-dinjection-de-dépendances-ioc-container">Conteneur d&rsquo;injection de dépendances (IoC Container)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p><strong>Problème :</strong> Créer toutes les dépendances manuellement devient fastidieux.</p>
-<p><strong>Solution :</strong> Un conteneur IoC (Inversion of Control) gère la création des objets.</p>
-<p><strong>Exemple avec Microsoft.Extensions.DependencyInjection :</strong></p>
+<p><strong>Solution :</strong> Un conteneur IoC (Inversion of Control) gère la création des objets automatiquement.</p>
+<p><strong>Exemple avec <code>Microsoft.Extensions.DependencyInjection</code> :</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Program</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
@@ -463,12 +463,13 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 <p><strong>Durées de vie :</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Transient : Nouvelle instance à chaque demande</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Scoped : Une instance par &#34;scope&#34; (requête web par exemple)</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1">// Scoped : Une instance par &#34;scope&#34; (requête web, par exemple)</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Singleton : UNE SEULE instance pour toute l&#39;application</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span></span></span></code></pre></div>
+<hr>
 <h3 id="comprendre-les-durées-de-vie">Comprendre les durées de vie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <table>
   <thead>
@@ -484,19 +485,19 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
           <td><strong>Transient</strong></td>
           <td>À chaque injection</td>
           <td>Après utilisation</td>
-          <td>Services légers sans état<br>ViewModels, Views</td>
+          <td>Services légers sans état, ViewModels, Views</td>
       </tr>
       <tr>
           <td><strong>Scoped</strong></td>
           <td>Au début du scope</td>
           <td>À la fin du scope</td>
-          <td>DbContext, Repositories<br>Services avec état temporaire</td>
+          <td>DbContext, Repositories, Services avec état temporaire</td>
       </tr>
       <tr>
           <td><strong>Singleton</strong></td>
           <td>Au démarrage</td>
           <td>À la fermeture</td>
-          <td>Configuration, Logger<br>Cache, Services sans état</td>
+          <td>Configuration, Logger, Cache, Services sans état</td>
       </tr>
   </tbody>
 </table>
@@ -504,7 +505,7 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ❌ ERREUR !</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MonSingleton</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// DbContext est Scoped, impossible de l&#39;injecter dans un Singleton</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// DbContext est Scoped — impossible de l&#39;injecter dans un Singleton</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MonSingleton</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <hr>
@@ -513,86 +514,55 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[TestMethod]</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Test_EnregistrerUtilisateur</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Utiliser un faux service</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">fakeService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FakeNotificationService</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">fakeService</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;bob@test.com&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1">// Vérifier qu&#39;un message a été &#34;envoyé&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">fakeService</span><span class="p">.</span><span class="n">MessagesEnvoyes</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">fakeService</span><span class="p">.</span><span class="n">MessagesEnvoyes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Contains</span><span class="p">(</span><span class="s">&#34;Bienvenue&#34;</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p><strong>2. Flexibilité</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Basculer facilement entre implémentations</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// En production</span>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// En production</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// En développement</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1">// En développement / tests</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">FakeNotificationService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Pas besoin de changer ServiceUtilisateur !</span></span></span></code></pre></div>
-<p><strong>3. Découplage</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ServiceUtilisateur ne sait PAS quelle implémentation il utilise</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// Il dépend seulement de l&#39;interface INotificationService</span></span></span></code></pre></div>
-<p><strong>4. Maintenabilité</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Ajouter une nouvelle implémentation ne nécessite PAS de modifier les classes existantes</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SlackService</span> <span class="p">:</span> <span class="n">INotificationService</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+<p><strong>3. Découplage</strong> — <code>ServiceUtilisateur</code> ne sait pas quelle implémentation il utilise.</p>
+<p><strong>4. Maintenabilité</strong> — Ajouter une implémentation ne nécessite pas de modifier les classes existantes.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SlackService</span> <span class="p">:</span> <span class="n">INotificationService</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Juste changer l&#39;enregistrement</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">SlackService</span><span class="p">&gt;();</span></span></span></code></pre></div>
 <hr>
 <h2 id="injection-de-dépendances-avec-wpf-et-mvvm">Injection de dépendances avec WPF et MVVM<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="installation-des-packages-nuget">Installation des packages NuGet<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Avant de commencer, vous devez installer les packages suivants dans votre projet WPF.</p>
-<p><strong>Dans Visual Studio :</strong></p>
-<ol>
-<li>Clic droit sur le projet → <strong>Manage NuGet Packages</strong></li>
-<li>Onglet <strong>Browse</strong></li>
-<li>Installer ces packages :</li>
-</ol>
-<p><strong>Packages obligatoires pour l&rsquo;injection de dépendances :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Conteneur d&#39;injection de dépendances</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">Extensions</span><span class="p">.</span><span class="py">DependencyInjection</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Host et configuration (inclut DependencyInjection)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">Extensions</span><span class="p">.</span><span class="n">Hosting</span></span></span></code></pre></div>
-<p><strong>Packages pour Entity Framework Core (si vous utilisez une base de données) :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Entity Framework Core</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">EntityFrameworkCore</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Provider SQL Server</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">EntityFrameworkCore</span><span class="p">.</span><span class="py">SqlServer</span>
-</span></span><span class="line"><span class="cl"><span class="c"># OU pour SQLite</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">EntityFrameworkCore</span><span class="p">.</span><span class="py">Sqlite</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Outils pour les migrations</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">EntityFrameworkCore</span><span class="p">.</span><span class="py">Tools</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">EntityFrameworkCore</span><span class="p">.</span><span class="n">Design</span></span></span></code></pre></div>
-<p><strong>Packages optionnels mais recommandés :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Pour les commandes MVVM (RelayCommand)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">CommunityToolkit</span><span class="p">.</span><span class="py">Mvvm</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Pour lire les fichiers de configuration JSON</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">Extensions</span><span class="p">.</span><span class="py">Configuration</span><span class="p">.</span><span class="py">Json</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Pour les User Secrets (développement)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Install-Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="py">Extensions</span><span class="p">.</span><span class="py">Configuration</span><span class="p">.</span><span class="n">UserSecrets</span></span></span></code></pre></div>
-<p><strong>⚠️ Note importante :</strong> Le package <code>Microsoft.Extensions.Hosting</code> <strong>inclut déjà</strong> <code>Microsoft.Extensions.DependencyInjection</code>, donc techniquement vous n&rsquo;avez besoin que de <code>Hosting</code>. Mais on peut installer les deux pour plus de clarté.</p>
+<p>Dans Visual Studio : clic droit sur le projet → <strong>Manage NuGet Packages</strong> → onglet <strong>Browse</strong>.</p>
+<p><strong>Package obligatoire :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Install-Package Microsoft.Extensions.DependencyInjection</code></pre></div>
+<p><strong>Packages pour Entity Framework Core (si base de données) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.Sqlite   # ou SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.EntityFrameworkCore.Design</code></pre></div>
+<p><strong>Packages optionnels recommandés :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Install-Package CommunityToolkit.Mvvm
+Install-Package Microsoft.Extensions.Configuration.Json</code></pre></div>
 <hr>
 <h3 id="configuration-complète-dune-application-wpf">Configuration complète d&rsquo;une application WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Dans une application WPF professionnelle, on configure l&rsquo;injection de dépendances dans <code>App.xaml.cs</code>.</p>
+<p>On configure l&rsquo;injection de dépendances dans <code>App.xaml.cs</code> en utilisant directement <strong><code>ServiceCollection</code></strong>, sans passer par <code>Host</code>.</p>
 <hr>
-<h3 id="appxaml---retirer-le-startupuri">App.xaml - Retirer le StartupUri<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h3 id="appxaml--retirer-le-startupuri">App.xaml — Retirer le StartupUri<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Application</span> <span class="na">x:Class=</span><span class="s">&#34;MonApp.App&#34;</span>
 </span></span><span class="line"><span class="cl">             <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
 </span></span><span class="line"><span class="cl">             <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ✅ Pas de StartupUri - on gère le démarrage manuellement --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ✅ Pas de StartupUri — on gère le démarrage manuellement --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/Application&gt;</span></span></span></code></pre></div>
 <hr>
-<h3 id="appxamlcs---configuration-du-conteneur-ioc">App.xaml.cs - Configuration du conteneur IoC<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h3 id="appxamlcs--configuration-du-conteneur-ioc-avec-servicecollection">App.xaml.cs — Configuration du conteneur IoC avec ServiceCollection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.Hosting</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Data</span><span class="p">;</span>
@@ -600,86 +570,80 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Services</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.ViewModels</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Views</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IHost</span> <span class="n">_host</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">App</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// On expose le fournisseur de services de manière statique pour y accéder au besoin</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kd">static</span> <span class="n">IServiceProvider</span> <span class="n">ServiceProvider</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_host</span> <span class="p">=</span> <span class="n">Host</span><span class="p">.</span><span class="n">CreateDefaultBuilder</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">                <span class="p">.</span><span class="n">ConfigureServices</span><span class="p">((</span><span class="n">context</span><span class="p">,</span> <span class="n">services</span><span class="p">)</span> <span class="p">=&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 1. BASE DE DONNÉES (Scoped)</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">options</span><span class="p">.</span><span class="n">UseSqlServer</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">                            <span class="s">@&#34;Server=(localdb)\mssqllocaldb;
-</span></span></span><span class="line"><span class="cl"><span class="s">                              Database=MonAppDb;
-</span></span></span><span class="line"><span class="cl"><span class="s">                              Trusted_Connection=True;&#34;</span>
-</span></span><span class="line"><span class="cl">                        <span class="p">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="p">});</span>
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 2. REPOSITORIES (Scoped)</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ITacheRepository</span><span class="p">,</span> <span class="n">TacheRepository</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ICategorieRepository</span><span class="p">,</span> <span class="n">CategorieRepository</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 3. SERVICES MÉTIER (Scoped)</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ITacheService</span><span class="p">,</span> <span class="n">TacheService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 4. VIEWMODELS (Transient)</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">TachesViewModel</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">CategoriesViewModel</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">StatistiquesViewModel</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 5. VIEWS (Transient)</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// 6. SERVICES SINGLETON</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// ═══════════════════════════════════════════</span>
-</span></span><span class="line"><span class="cl">                    <span class="c1">// services.AddSingleton&lt;ILogger, FileLogger&gt;();</span>
-</span></span><span class="line"><span class="cl">                <span class="p">})</span>
-</span></span><span class="line"><span class="cl">                <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// Démarrer le host</span>
-</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">_host</span><span class="p">.</span><span class="n">StartAsync</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">            
-</span></span><span class="line"><span class="cl">            <span class="c1">// Résoudre et afficher MainWindow</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">mainWindow</span> <span class="p">=</span> <span class="n">_host</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">            <span class="n">mainWindow</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">            
 </span></span><span class="line"><span class="cl">            <span class="k">base</span><span class="p">.</span><span class="n">OnStartup</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// 1. Créer la collection de services</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">services</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 2. BASE DE DONNÉES (Scoped)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">options</span><span class="p">.</span><span class="n">UseSqlite</span><span class="p">(</span><span class="s">&#34;Data Source=monapp.db&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 3. REPOSITORIES (Scoped)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ITacheRepository</span><span class="p">,</span> <span class="n">TacheRepository</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ICategorieRepository</span><span class="p">,</span> <span class="n">CategorieRepository</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 4. SERVICES MÉTIER (Scoped)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">ITacheService</span><span class="p">,</span> <span class="n">TacheService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">INotificationService</span><span class="p">,</span> <span class="n">EmailService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 5. VIEWMODELS (Transient)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">TachesViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">CategoriesViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">StatistiquesViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 6. VIEWS (Transient)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 7. SINGLETONS (ex. : Logger)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// ═══════════════════════════════════════════</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// services.AddSingleton&lt;ILogger, FileLogger&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// 8. Construire le provider et l&#39;exposer</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// On construit le &#34;conteneur&#34; (celui qui fabrique les objets)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ServiceProvider</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// 9. Résoudre et afficher MainWindow</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">mainWindow</span> <span class="p">=</span> <span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mainWindow</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">OnExit</span><span class="p">(</span><span class="n">ExitEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnExit</span><span class="p">(</span><span class="n">ExitEventArgs</span> <span class="n">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// Nettoyer proprement</span>
-</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">_host</span><span class="p">.</span><span class="n">StopAsync</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_host</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Libérer les ressources si nécessaire</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ServiceProvider</span> <span class="k">is</span> <span class="n">IDisposable</span> <span class="n">disposable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">disposable</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl">            <span class="k">base</span><span class="p">.</span><span class="n">OnExit</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <hr>
 <h3 id="architecture-complète-avec-di">Architecture complète avec DI<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>App.xaml.cs (Configuration DI)
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>App.xaml.cs (ServiceCollection — configuration DI)
     ↓ résout
 MainWindow (reçoit ViewModel injecté)
     ↓ utilise
@@ -708,9 +672,7 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ApplicationDbContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <h4 id="3-repository">3. Repository<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Repositories/ITacheRepository.cs</span>
@@ -720,7 +682,7 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Repositories/TacheRepository.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -732,10 +694,7 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">        <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
@@ -761,7 +720,7 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">MarquerCommeTerminee</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Services/TacheService.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -769,28 +728,19 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Repository et NotificationService injectés</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTachesNonTerminees</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTout</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTout</span><span class="p">().</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> 
-</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
-</span></span><span class="line"><span class="cl">            <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">            <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> 
-</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Nouvelle tâche créée&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -809,17 +759,14 @@ DbContext</code></pre></div>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ViewModels/TachesViewModel.cs</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows.Input</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheService</span> <span class="n">_tacheService</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">MarquerTermineeCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
@@ -827,9 +774,7 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">ITacheService</span> <span class="n">tacheService</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_tacheService</span> <span class="p">=</span> <span class="n">tacheService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">AjouterTache</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">MarquerTermineeCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="n">MarquerTerminee</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -843,7 +788,6 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">titre</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="n">_tacheService</span><span class="p">.</span><span class="n">AjouterTache</span><span class="p">(</span><span class="n">titre</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -856,18 +800,13 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <h4 id="6-view">6. View<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Views/MainWindow.xaml.cs</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp.Views</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ ViewModel injecté automatiquement</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">(</span><span class="n">TachesViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ ViewModel injecté automatiquement</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">(</span><span class="n">TachesViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">InitializeComponent</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">            <span class="n">DataContext</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DataContext</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- Views/MainWindow.xaml --&gt;</span>
@@ -882,7 +821,6 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
 </span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Zone d&#39;ajout --&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&#34;txtTitre&#34;</span> <span class="na">Width=</span><span class="s">&#34;400&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span>
@@ -890,15 +828,14 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">                    <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Text, ElementName=txtTitre}&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
 </span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- Liste des tâches --&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&lt;ListBox</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">ItemsSource=</span><span class="s">&#34;{Binding Taches}&#34;</span><span class="nt">&gt;</span>
 </span></span><span class="line"><span class="cl">            <span class="nt">&lt;ListBox.ItemTemplate&gt;</span>
 </span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate&gt;</span>
 </span></span><span class="line"><span class="cl">                    <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;CheckBox</span> <span class="na">IsChecked=</span><span class="s">&#34;{Binding EstTerminee}&#34;</span> 
-</span></span><span class="line"><span class="cl">                                 <span class="na">Command=</span><span class="s">&#34;{Binding DataContext.MarquerTermineeCommand, 
-</span></span></span><span class="line"><span class="cl"><span class="s">                                          RelativeSource={RelativeSource AncestorType=Window}}&#34;</span>
-</span></span><span class="line"><span class="cl">                                 <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Id}&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;CheckBox</span> <span class="na">IsChecked=</span><span class="s">&#34;{Binding EstTerminee}&#34;</span>
+</span></span><span class="line"><span class="cl">                                  <span class="na">Command=</span><span class="s">&#34;{Binding DataContext.MarquerTermineeCommand,
+</span></span></span><span class="line"><span class="cl"><span class="s">                                           RelativeSource={RelativeSource AncestorType=Window}}&#34;</span>
+</span></span><span class="line"><span class="cl">                                  <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Id}&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">                        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Titre}&#34;</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span><span class="nt">/&gt;</span>
 </span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/StackPanel&gt;</span>
 </span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
@@ -925,14 +862,13 @@ DbContext</code></pre></div>
 <li>Enregistrer <code>ILogger</code> comme Singleton dans <code>App.xaml.cs</code></li>
 <li>Injecter <code>ILogger</code> dans <code>TacheService</code> et logger chaque action</li>
 </ol>
-<details>
-<summary>📖 Voir la solution</summary>
+<p><strong>Solution :</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Services/ILogger.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ILogger</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Services/FileLogger.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">FileLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -944,19 +880,17 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">AppendAllText</span><span class="p">(</span><span class="n">_filePath</span><span class="p">,</span> <span class="n">logEntry</span> <span class="p">+</span> <span class="n">Environment</span><span class="p">.</span><span class="n">NewLine</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Services/ConsoleLogger.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ConsoleLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Dans App.xaml.cs</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">FileLogger</span><span class="p">&gt;();</span> <span class="c1">// ou ConsoleLogger</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Dans TacheService.cs</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -964,10 +898,9 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ILogger</span> <span class="n">_logger</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span> <span class="c1">// ✅ Logger injecté</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
@@ -977,32 +910,24 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&#34;Ajout de la tâche: {titre}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> 
-</span></span><span class="line"><span class="cl">        <span class="p">{</span> 
-</span></span><span class="line"><span class="cl">            <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">            <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> 
-</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Nouvelle tâche créée&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="n">_logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&#34;Tâche &#39;{titre}&#39; ajoutée avec succès&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-</details>
 <hr>
 <h3 id="exercice-2--créer-un-service-de-configuration">Exercice 2 : Créer un service de configuration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Créez un service de configuration qui lit les paramètres depuis <code>appsettings.json</code>.</p>
 <p><strong>Tâches :</strong></p>
 <ol>
 <li>Créer <code>appsettings.json</code> avec des paramètres (titre de l&rsquo;app, email admin, etc.)</li>
-<li>Créer l&rsquo;interface <code>IConfiguration</code> avec des propriétés</li>
+<li>Créer l&rsquo;interface <code>IAppConfiguration</code> avec des propriétés</li>
 <li>Créer <code>AppConfiguration</code> qui lit le fichier JSON</li>
 <li>Enregistrer comme Singleton</li>
 <li>Utiliser dans les services</li>
 </ol>
-<details>
-<summary>📖 Voir la solution</summary>
+<p><strong>Solution :</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// appsettings.json
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;AppTitle&#34;</span><span class="p">:</span> <span class="s2">&#34;Gestionnaire de Tâches Pro&#34;</span><span class="p">,</span>
@@ -1018,11 +943,8 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">NotificationsEnabled</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">DatabasePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Services/AppConfiguration.cs</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text.Json</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">AppConfiguration</span> <span class="p">:</span> <span class="n">IAppConfiguration</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">AppTitle</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -1041,20 +963,20 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">        <span class="n">DatabasePath</span> <span class="p">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#34;DatabasePath&#34;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Dans App.xaml.cs</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IAppConfiguration</span><span class="p">,</span> <span class="n">AppConfiguration</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1">// Utilisation dans TacheService</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IAppConfiguration</span> <span class="n">_config</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">_repository</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IAppConfiguration</span> <span class="n">_config</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">IAppConfiguration</span> <span class="n">config</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">IAppConfiguration</span> <span class="n">config</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
@@ -1067,15 +989,9 @@ DbContext</code></pre></div>
 </span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">NotificationsEnabled</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">                <span class="n">_config</span><span class="p">.</span><span class="n">AdminEmail</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">                <span class="s">$&#34;Nouvelle tâche: {titre}&#34;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">AdminEmail</span><span class="p">,</span> <span class="s">$&#34;Nouvelle tâche: {titre}&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-</details>
 <hr>
 <h2 id="résumé">Résumé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="principes-clés">Principes clés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
@@ -1088,30 +1004,37 @@ DbContext</code></pre></div>
 <li><code>Scoped</code> : Une instance par scope (DbContext, Repository)</li>
 <li><code>Transient</code> : Nouvelle instance à chaque fois (ViewModel, View)</li>
 </ul>
-<h3 id="configuration-wpf">Configuration WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// App.xaml.cs - Template de base</span>
-</span></span><span class="line"><span class="cl"><span class="n">_host</span> <span class="p">=</span> <span class="n">Host</span><span class="p">.</span><span class="n">CreateDefaultBuilder</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">ConfigureServices</span><span class="p">((</span><span class="n">context</span><span class="p">,</span> <span class="n">services</span><span class="p">)</span> <span class="p">=&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// DbContext (Scoped)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">MonDbContext</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// Repositories (Scoped)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IMonRepository</span><span class="p">,</span> <span class="n">MonRepository</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// Services (Scoped)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IMonService</span><span class="p">,</span> <span class="n">MonService</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// ViewModels (Transient)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MonViewModel</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// Views (Transient)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// Singletons</span>
-</span></span><span class="line"><span class="cl">        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">FileLogger</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">})</span>
-</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">Build</span><span class="p">();</span></span></span></code></pre></div>
+<h3 id="configuration-wpf-avec-servicecollection">Configuration WPF avec ServiceCollection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// App.xaml.cs — Template de base</span>
+</span></span><span class="line"><span class="cl"><span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">base</span><span class="p">.</span><span class="n">OnStartup</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">services</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// DbContext (Scoped)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">MonDbContext</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// Repositories (Scoped)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IMonRepository</span><span class="p">,</span> <span class="n">MonRepository</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// Services (Scoped)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IMonService</span><span class="p">,</span> <span class="n">MonService</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// ViewModels (Transient)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MonViewModel</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// Views (Transient)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// Singletons</span>
+</span></span><span class="line"><span class="cl">    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">FileLogger</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="n">ServiceProvider</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">mainWindow</span> <span class="p">=</span> <span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">MainWindow</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mainWindow</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <h3 id="architecture-complète">Architecture complète<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>App.xaml.cs
     → MainWindow (+ ViewModel)
@@ -1192,8 +1115,8 @@ DbContext</code></pre></div>
             <li class="" data-nav-id="/420-413/mvvm/index.html"><a class="padding" href="/420-413/mvvm/index.html">MVVM</a></li>
             <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
             <li class="" data-nav-id="/420-413/efcore/index.html"><a class="padding" href="/420-413/efcore/index.html">Entity Framework Core</a></li>
-            <li class="active " data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
             <li class="" data-nav-id="/420-413/patron_repository_efcore/index.html"><a class="padding" href="/420-413/patron_repository_efcore/index.html">Patron Repository et EF Core</a></li>
+            <li class="active " data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
             <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
             <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">SCRUM</a></li>
             <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Epics et User Stories</a></li>
@@ -1233,8 +1156,8 @@ DbContext</code></pre></div>
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773977968" defer></script>
-    <script src="/420-413/js/theme.js?1773977968" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773984925" defer></script>
+    <script src="/420-413/js/theme.js?1773984925" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
