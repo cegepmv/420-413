@@ -19,29 +19,29 @@
     <meta property="article:section" content="Développement d&#39;applications pour entreprise">
     <meta itemprop="name" content="Patron commande :: Développement d&#39;applications pour entreprises">
     <meta itemprop="description" content="🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :">
-    <meta itemprop="wordCount" content="3673">
+    <meta itemprop="wordCount" content="3988">
     <title>Patron commande :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1773647888" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773647888" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773647888" defer></script>
-    <script src="/420-413/js/search-lunr.js?1773647888" defer></script>
-    <script src="/420-413/js/search.js?1773647888" defer></script>
+    <link href="/420-413/images/favicon.png?1773978056" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773978056" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773978056" defer></script>
+    <script src="/420-413/js/search-lunr.js?1773978056" defer></script>
+    <script src="/420-413/js/search.js?1773978056" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1773647888";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1773978056";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1773647888" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773647888" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1773647888" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1773647888" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1773978056" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773978056" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1773978056" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1773978056" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773647888" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773647888" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773647888" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1773647888" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1773647888" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773978056" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773978056" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773978056" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1773978056" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1773978056" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -151,6 +151,8 @@
         <li><a href="#différences-avec-notre-version">Différences avec notre version</a></li>
         <li><a href="#-relaycommand---cest-quoi-">🔧 RelayCommand - C&rsquo;est quoi ?</a></li>
         <li><a href="#exemple-complet-en-wpf">Exemple complet en WPF</a></li>
+        <li><a href="#-approche-moderne--source-generators-avec-relaycommand">🚀 Approche moderne : Source Generators avec [RelayCommand]</a></li>
+        <li><a href="#-encore-plus-moderne--observableproperty">✨ Encore plus moderne : [ObservableProperty]</a></li>
       </ul>
     </li>
     <li><a href="#-exercices-pratiques">📝 Exercices pratiques</a>
@@ -1198,6 +1200,103 @@ Résultat initial : 0
 <li><strong>Le bouton se désactive automatiquement</strong> quand <code>Resultat &gt;= 100</code> ✨</li>
 </ol>
 <hr>
+<h3 id="-approche-moderne--source-generators-avec-relaycommand">🚀 Approche moderne : Source Generators avec [RelayCommand]<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>La méthode la plus moderne et recommandée !</strong> Le package <code>CommunityToolkit.Mvvm</code> peut <strong>générer automatiquement</strong> le code des commandes grâce aux <strong>Source Generators</strong>.</p>
+<p><strong>Après (avec [RelayCommand]) :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.ComponentModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MonViewModel</span> <span class="p">:</span> <span class="n">ObservableObject</span> <span class="c1">// ⚠️ partial est obligatoire</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="n">Calculatrice</span> <span class="n">calculatrice</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Calculatrice</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">Resultat</span> <span class="p">=&gt;</span> <span class="n">calculatrice</span><span class="p">.</span><span class="n">Resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ L&#39;attribut génère automatiquement la propriété AjouterCommand !</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [RelayCommand(CanExecute = nameof(PeutAjouter))]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">calculatrice</span><span class="p">.</span><span class="n">Additionner</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OnPropertyChanged</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">Resultat</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AjouterCommand</span><span class="p">.</span><span class="n">NotifyCanExecuteChanged</span><span class="p">();</span> <span class="c1">// Mettre à jour l&#39;état du bouton</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">bool</span> <span class="n">PeutAjouter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">calculatrice</span><span class="p">.</span><span class="n">Resultat</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Ce qui est généré automatiquement par le compilateur :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✨ Code généré automatiquement (vous n&#39;avez pas à l&#39;écrire)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MonViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IRelayCommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructeur généré</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MonViewModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">(</span><span class="n">Ajouter</span><span class="p">,</span> <span class="n">PeutAjouter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>✅ Moins de code à écrire</li>
+<li>✅ Pas de risque d&rsquo;oubli</li>
+<li>✅ Vérification à la compilation</li>
+<li>✅ Code plus lisible</li>
+</ul>
+<p><strong>⚠️ Points importants :</strong></p>
+<ol>
+<li>La classe <strong>doit</strong> être <code>partial</code></li>
+<li>Les méthodes peuvent être <code>private</code></li>
+<li>Le nom de la commande générée = <code>NomMéthode</code> + <code>Command</code> (ex: <code>Ajouter</code> → <code>AjouterCommand</code>)</li>
+</ol>
+<hr>
+<h3 id="-encore-plus-moderne--observableproperty">✨ Encore plus moderne : [ObservableProperty]<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>On peut aussi générer automatiquement les propriétés avec notification :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.ComponentModel</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">MonApp</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MonViewModel</span> <span class="p">:</span> <span class="n">ObservableObject</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">readonly</span> <span class="n">Calculatrice</span> <span class="n">_calculatrice</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Calculatrice</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ✅ Génère automatiquement la propriété Resultat avec notification</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [ObservableProperty]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">int</span> <span class="n">resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">        
+</span></span></span><span class="line"><span class="cl"><span class="na">        [RelayCommand(CanExecute = nameof(PeutAjouter))]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_calculatrice</span><span class="p">.</span><span class="n">Additionner</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Resultat</span> <span class="p">=</span> <span class="n">_calculatrice</span><span class="p">.</span><span class="n">Resultat</span><span class="p">;</span> <span class="c1">// ✅ Notification automatique !</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AjouterCommand</span><span class="p">.</span><span class="n">NotifyCanExecuteChanged</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">bool</span> <span class="n">PeutAjouter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Resultat</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Code généré automatiquement :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ✨ Propriété publique générée avec notification</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">Resultat</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">resultat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">SetProperty</span><span class="p">(</span><span class="k">ref</span> <span class="n">resultat</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="c1">// Notification automatique</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Convention de nommage :</strong></p>
+<ul>
+<li>Champ <code>private</code> : <code>resultat</code> (minuscule)</li>
+<li>Propriété générée : <code>Resultat</code> (majuscule)</li>
+</ul>
+<hr>
 <h2 id="-exercices-pratiques">📝 Exercices pratiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="exercice-1--éditeur-de-texte-simple-15-min">Exercice 1 : Éditeur de texte simple (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Créez un éditeur de texte qui peut :</p>
@@ -2047,8 +2146,8 @@ Résultat initial : 0
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773647888" defer></script>
-    <script src="/420-413/js/theme.js?1773647888" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773978056" defer></script>
+    <script src="/420-413/js/theme.js?1773978056" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

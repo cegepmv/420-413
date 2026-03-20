@@ -1069,6 +1069,121 @@ public class MonViewModel : INotifyPropertyChanged
 4. **Le bouton se désactive automatiquement** quand `Resultat >= 100` ✨
 ---
 
+### 🚀 Approche moderne : Source Generators avec [RelayCommand]
+ 
+**La méthode la plus moderne et recommandée !** Le package `CommunityToolkit.Mvvm` peut **générer automatiquement** le code des commandes grâce aux **Source Generators**.
+ 
+**Après (avec [RelayCommand]) :**
+ 
+```csharp
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+ 
+namespace MonApp
+{
+    public partial class MonViewModel : ObservableObject // ⚠️ partial est obligatoire
+    {
+        private Calculatrice calculatrice = new Calculatrice();
+        
+        public int Resultat => calculatrice.Resultat;
+        
+        // ✅ L'attribut génère automatiquement la propriété AjouterCommand !
+        [RelayCommand(CanExecute = nameof(PeutAjouter))]
+        private void Ajouter()
+        {
+            calculatrice.Additionner(10);
+            OnPropertyChanged(nameof(Resultat));
+            AjouterCommand.NotifyCanExecuteChanged(); // Mettre à jour l'état du bouton
+        }
+        
+        private bool PeutAjouter()
+        {
+            return calculatrice.Resultat < 100;
+        }
+    }
+}
+```
+ 
+**Ce qui est généré automatiquement par le compilateur :**
+ 
+```csharp
+// ✨ Code généré automatiquement (vous n'avez pas à l'écrire)
+public partial class MonViewModel
+{
+    public IRelayCommand AjouterCommand { get; }
+    
+    // Constructeur généré
+    public MonViewModel()
+    {
+        AjouterCommand = new RelayCommand(Ajouter, PeutAjouter);
+    }
+}
+```
+ 
+**Avantages :**
+- ✅ Moins de code à écrire
+- ✅ Pas de risque d'oubli
+- ✅ Vérification à la compilation
+- ✅ Code plus lisible
+ 
+**⚠️ Points importants :**
+1. La classe **doit** être `partial`
+2. Les méthodes peuvent être `private`
+3. Le nom de la commande générée = `NomMéthode` + `Command` (ex: `Ajouter` → `AjouterCommand`)
+ 
+---
+ 
+### ✨ Encore plus moderne : [ObservableProperty]
+ 
+On peut aussi générer automatiquement les propriétés avec notification :
+ 
+```csharp
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+ 
+namespace MonApp
+{
+    public partial class MonViewModel : ObservableObject
+    {
+        private readonly Calculatrice _calculatrice = new Calculatrice();
+        
+        // ✅ Génère automatiquement la propriété Resultat avec notification
+        [ObservableProperty]
+        private int resultat;
+        
+        [RelayCommand(CanExecute = nameof(PeutAjouter))]
+        private void Ajouter()
+        {
+            _calculatrice.Additionner(10);
+            Resultat = _calculatrice.Resultat; // ✅ Notification automatique !
+            AjouterCommand.NotifyCanExecuteChanged();
+        }
+        
+        private bool PeutAjouter()
+        {
+            return Resultat < 100;
+        }
+    }
+}
+```
+ 
+**Code généré automatiquement :**
+ 
+```csharp
+// ✨ Propriété publique générée avec notification
+public int Resultat
+{
+    get => resultat;
+    set => SetProperty(ref resultat, value); // Notification automatique
+}
+```
+ 
+**Convention de nommage :**
+- Champ `private` : `resultat` (minuscule)
+- Propriété générée : `Resultat` (majuscule)
+ 
+---
+
 ## 📝 Exercices pratiques
 
 ### Exercice 1 : Éditeur de texte simple (15 min)
