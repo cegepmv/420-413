@@ -1,9 +1,110 @@
 ---
-title: "Injection de dépendance"
+title: "Patron Singleton et injection de dépendance"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
 weight: 20
+---
+
+## 1. Le patron Singleton
+ 
+### Définition
+ 
+Le **patron Singleton** garantit qu'une classe ne possède qu'**une seule instance** dans toute l'application, avec un point d'accès global à cette instance.
+ 
+> Peu importe combien de fois vous demandez l'objet, vous obtenez toujours le même.
+ 
+---
+ 
+### Analogie : l'imprimante de la classe
+ 
+Il y a **une seule imprimante** dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à **la même imprimante** — personne n'en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.
+ 
+C'est exactement ça, le Singleton.
+ 
+---
+ 
+### Cas d'usage typiques
+ 
+| Cas | Pourquoi un Singleton ? |
+|---|---|
+| Imprimante | Une seule file d'attente partagée entre tous |
+| Logger | Tous les modules écrivent dans le même fichier |
+| Configuration | Les paramètres sont lus une seule fois au démarrage |
+| Cache | Un seul cache partagé dans toute l'application |
+ 
+---
+ 
+### Implémentation en C#
+ 
+```csharp
+public class Imprimante
+{
+    // 1. Champ statique privé — l'instance unique
+    private static Imprimante _instance;
+ 
+    // 2. Verrou thread-safe — évite les problèmes si deux threads demandent
+    //    l'instance en même temps
+    private static readonly object _lock = new object();
+ 
+    private Queue<string> _fileAttente = new Queue<string>();
+ 
+    // 3. Constructeur PRIVÉ — new Imprimante() est interdit de l'extérieur
+    private Imprimante()
+    {
+        Console.WriteLine("🖨️ Imprimante initialisée (une seule fois !)");
+    }
+ 
+    // 4. Propriété statique publique — seul point d'accès
+    public static Imprimante Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                        _instance = new Imprimante();
+                }
+            }
+            return _instance;
+        }
+    }
+ 
+    public void Imprimer(string document)
+    {
+        _fileAttente.Enqueue(document);
+        Console.WriteLine($"📄 [{document}] ajouté à la file ({_fileAttente.Count} en attente)");
+    }
+}
+```
+ 
+**Utilisation — 3 étudiants, 1 seule imprimante :**
+ 
+```csharp
+Imprimante.Instance.Imprimer("Travail de Alexandre");
+Imprimante.Instance.Imprimer("Travail de Hamza");
+Imprimante.Instance.Imprimer("Travail de Kira");
+Imprimante.Instance.Imprimer("Travail de Ellyn");
+
+ 
+// Les 3 accèdent au MÊME objet Imprimante — même file d'attente
+bool memeObjet = ReferenceEquals(Imprimante.Instance, Imprimante.Instance); // true
+```
+ 
+---
+ 
+### Avantages et inconvénients
+ 
+| ✅ Avantages | ⚠️ Inconvénients |
+|---|---|
+| Une seule instance garantie | Couplage fort (accès global statique) |
+| Économie de ressources | Difficile à remplacer dans les tests |
+| Initialisation paresseuse | Problèmes potentiels en multi-thread |
+ 
+> **Note :** le Singleton classique est pratique, mais la solution moderne est de confier cette responsabilité au **conteneur IoC** (voir section 3), ce qui préserve la testabilité.
+ 
 ---
 
 ## Injection de dépendances (Contexte général)
@@ -186,9 +287,9 @@ public class FakeNotificationService : INotificationService
 
 **Étape 3 : Injection de dépendances**
 
-Il existe **3 types d'injection** :
+Il existe **3 types d'injection**, mais on va couvrir seulement le premier:
 
-**Type 1 : Injection par constructeur (recommandée)**
+**Injection par constructeur**
 
 ```csharp
 public class ServiceUtilisateur
@@ -222,62 +323,6 @@ INotificationService fakeService = new FakeNotificationService();
 ServiceUtilisateur serviceTest = new ServiceUtilisateur(fakeService);
 serviceTest.EnregistrerUtilisateur("Bob", "bob@test.com");
 ```
-
-**Type 2 : Injection par propriété**
-
-```csharp
-public class ServiceUtilisateur
-{
-    // Propriété publique
-    public INotificationService NotificationService { get; set; }
-    
-    public void EnregistrerUtilisateur(string nom, string contact)
-    {
-        Console.WriteLine($"✓ Utilisateur {nom} enregistré");
-        NotificationService.Envoyer(contact, "Bienvenue !");
-    }
-}
-```
-
-**Utilisation :**
-
-```csharp
-ServiceUtilisateur service = new ServiceUtilisateur();
-service.NotificationService = new EmailService();  // Injection
-service.EnregistrerUtilisateur("Alice", "alice@email.com");
-```
-
-**Type 3 : Injection par méthode**
-
-```csharp
-public class ServiceUtilisateur
-{
-    public void EnregistrerUtilisateur(string nom, string contact, 
-                                      INotificationService notificationService)
-    {
-        Console.WriteLine($"✓ Utilisateur {nom} enregistré");
-        notificationService.Envoyer(contact, "Bienvenue !");
-    }
-}
-```
-
-**Utilisation :**
-
-```csharp
-ServiceUtilisateur service = new ServiceUtilisateur();
-service.EnregistrerUtilisateur("Alice", "alice@email.com", new EmailService());
-```
-
----
-
-### Comparaison des types d'injection
-
-| Type | Avantages | Inconvénients | Quand utiliser |
-|------|-----------|---------------|----------------|
-| **Constructeur** | - Dépendances obligatoires<br>- Immutabilité (`readonly`)<br>- Dépendances claires | - Constructeur peut devenir long | **Par défaut** (99% des cas) |
-| **Propriété** | - Dépendances optionnelles<br>- Flexible | - Risque d'oubli<br>- Mutable | Dépendances optionnelles |
-| **Méthode** | - Dépendance ponctuelle | - Répétitif<br>- Pas de contrôle | Dépendance change souvent |
-
 ---
 
 ### Conteneur d'injection de dépendances (IoC Container)
@@ -426,7 +471,7 @@ Install-Package Microsoft.Extensions.Configuration.Json
  
 ### Configuration complète d'une application WPF
  
-On configure l'injection de dépendances dans `App.xaml.cs` en utilisant directement **`ServiceCollection`**, sans passer par `Host`.
+On configure l'injection de dépendances dans `App.xaml.cs` en utilisant directement **`ServiceCollection`**.
  
 ---
  
@@ -441,10 +486,26 @@ On configure l'injection de dépendances dans `App.xaml.cs` en utilisant directe
 ```
  
 ---
+### `App.xaml.cs` avec `appsettings.json`
+ 
+**`appsettings.json`** — propriété *Copy to Output Directory* = **Copy always** :
+ 
+```json
+{
+  "AppTitle": "Gestionnaire de tâches",
+  "AdminEmail": "admin@monapp.com",
+  "NotificationsEnabled": true,
+  "ConnectionStrings": {
+    "Default": "Data Source=app.db"
+  }
+}
+
+```
  
 ### App.xaml.cs — Configuration du conteneur IoC avec ServiceCollection
  
 ```csharp
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
@@ -464,6 +525,13 @@ namespace MonApp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            // Lire appsettings.json
+        IConfiguration config = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false)
+            .Build();
+ 
  
             // 1. Créer la collection de services
             var services = new ServiceCollection();
@@ -545,225 +613,7 @@ DbContext
 ```
  
 ---
- 
-### Exemple complet : Application de gestion de tâches
- 
-#### 1. Modèle
- 
-```csharp
-// Models/Tache.cs
-public class Tache
-{
-    public int Id { get; set; }
-    public string Titre { get; set; }
-    public bool EstTerminee { get; set; }
-    public DateTime DateCreation { get; set; }
-}
-```
- 
-#### 2. DbContext
- 
-```csharp
-// Data/ApplicationDbContext.cs
-public class ApplicationDbContext : DbContext
-{
-    public DbSet<Tache> Taches { get; set; }
-    
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options) { }
-}
-```
- 
-#### 3. Repository
- 
-```csharp
-// Repositories/ITacheRepository.cs
-public interface ITacheRepository
-{
-    List<Tache> ObtenirTout();
-    void Ajouter(Tache tache);
-    void Supprimer(int id);
-}
- 
-// Repositories/TacheRepository.cs
-public class TacheRepository : ITacheRepository
-{
-    private readonly ApplicationDbContext _context;
-    
-    // ✅ DbContext injecté automatiquement
-    public TacheRepository(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-    
-    public List<Tache> ObtenirTout() => _context.Taches.ToList();
-    
-    public void Ajouter(Tache tache)
-    {
-        _context.Taches.Add(tache);
-        _context.SaveChanges();
-    }
-    
-    public void Supprimer(int id)
-    {
-        var tache = _context.Taches.Find(id);
-        if (tache != null)
-        {
-            _context.Taches.Remove(tache);
-            _context.SaveChanges();
-        }
-    }
-}
-```
- 
-#### 4. Service métier
- 
-```csharp
-// Services/ITacheService.cs
-public interface ITacheService
-{
-    List<Tache> ObtenirTachesNonTerminees();
-    void AjouterTache(string titre);
-    void MarquerCommeTerminee(int id);
-}
- 
-// Services/TacheService.cs
-public class TacheService : ITacheService
-{
-    private readonly ITacheRepository _repository;
-    private readonly INotificationService _notificationService;
-    
-    // ✅ Repository et NotificationService injectés
-    public TacheService(ITacheRepository repository,
-                        INotificationService notificationService)
-    {
-        _repository = repository;
-        _notificationService = notificationService;
-    }
-    
-    public List<Tache> ObtenirTachesNonTerminees()
-        => _repository.ObtenirTout().Where(t => !t.EstTerminee).ToList();
-    
-    public void AjouterTache(string titre)
-    {
-        var tache = new Tache { Titre = titre, DateCreation = DateTime.Now };
-        _repository.Ajouter(tache);
-        _notificationService.Envoyer("admin@app.com", "Nouvelle tâche créée");
-    }
-    
-    public void MarquerCommeTerminee(int id)
-    {
-        var tache = _repository.ObtenirTout().FirstOrDefault(t => t.Id == id);
-        if (tache != null)
-        {
-            tache.EstTerminee = true;
-            _notificationService.Envoyer("admin@app.com", "Tâche terminée");
-        }
-    }
-}
-```
- 
-#### 5. ViewModel
- 
-```csharp
-// ViewModels/TachesViewModel.cs
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
- 
-public class TachesViewModel : INotifyPropertyChanged
-{
-    private readonly ITacheService _tacheService;
-    
-    public event PropertyChangedEventHandler PropertyChanged;
-    public ObservableCollection<Tache> Taches { get; set; }
-    public ICommand AjouterCommand { get; set; }
-    public ICommand MarquerTermineeCommand { get; set; }
-    
-    // ✅ Service injecté automatiquement
-    public TachesViewModel(ITacheService tacheService)
-    {
-        _tacheService = tacheService;
-        ChargerTaches();
-        AjouterCommand = new RelayCommand<string>(AjouterTache);
-        MarquerTermineeCommand = new RelayCommand<int>(MarquerTerminee);
-    }
-    
-    private void ChargerTaches()
-    {
-        var taches = _tacheService.ObtenirTachesNonTerminees();
-        Taches = new ObservableCollection<Tache>(taches);
-    }
-    
-    private void AjouterTache(string titre)
-    {
-        if (string.IsNullOrWhiteSpace(titre)) return;
-        _tacheService.AjouterTache(titre);
-        ChargerTaches();
-    }
-    
-    private void MarquerTerminee(int id)
-    {
-        _tacheService.MarquerCommeTerminee(id);
-        ChargerTaches();
-    }
-}
-```
- 
-#### 6. View
- 
-```csharp
-// Views/MainWindow.xaml.cs
-public partial class MainWindow : Window
-{
-    // ✅ ViewModel injecté automatiquement
-    public MainWindow(TachesViewModel viewModel)
-    {
-        InitializeComponent();
-        DataContext = viewModel;
-    }
-}
-```
- 
-```xml
-<!-- Views/MainWindow.xaml -->
-<Window x:Class="MonApp.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Gestion de tâches" Height="400" Width="600">
-    
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBox x:Name="txtTitre" Width="400" Height="30"/>
-            <Button Content="Ajouter" Width="100" Margin="10,0,0,0"
-                    Command="{Binding AjouterCommand}"
-                    CommandParameter="{Binding Text, ElementName=txtTitre}"/>
-        </StackPanel>
-        
-        <ListBox Grid.Row="1" ItemsSource="{Binding Taches}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding EstTerminee}"
-                                  Command="{Binding DataContext.MarquerTermineeCommand,
-                                           RelativeSource={RelativeSource AncestorType=Window}}"
-                                  CommandParameter="{Binding Id}"/>
-                        <TextBlock Text="{Binding Titre}" Margin="10,0,0,0"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
-</Window>
-```
- 
----
- 
+
 ### Avantages de cette architecture
  
 ✅ **Séparation des responsabilités** : Chaque couche a un rôle précis
@@ -777,168 +627,7 @@ public partial class MainWindow : Window
 ✅ **Pas de création manuelle** : Le conteneur IoC gère tout
  
 ---
- 
-## Exercices pratiques
- 
-### Exercice 1 : Ajouter un service de logging
- 
-Créez un service de logging qui enregistre toutes les actions dans un fichier.
- 
-**Tâches :**
- 
-1. Créer l'interface `ILogger` avec une méthode `Log(string message)`
-2. Créer `FileLogger` qui écrit dans un fichier texte
-3. Créer `ConsoleLogger` qui écrit dans la console
-4. Enregistrer `ILogger` comme Singleton dans `App.xaml.cs`
-5. Injecter `ILogger` dans `TacheService` et logger chaque action
- 
-**Solution :**
- 
-```csharp
-// Services/ILogger.cs
-public interface ILogger
-{
-    void Log(string message);
-}
- 
-// Services/FileLogger.cs
-public class FileLogger : ILogger
-{
-    private readonly string _filePath = "app.log";
-    
-    public void Log(string message)
-    {
-        var logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}";
-        File.AppendAllText(_filePath, logEntry + Environment.NewLine);
-    }
-}
- 
-// Services/ConsoleLogger.cs
-public class ConsoleLogger : ILogger
-{
-    public void Log(string message)
-        => Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}");
-}
- 
-// Dans App.xaml.cs
-services.AddSingleton<ILogger, FileLogger>(); // ou ConsoleLogger
- 
-// Dans TacheService.cs
-public class TacheService : ITacheService
-{
-    private readonly ITacheRepository _repository;
-    private readonly INotificationService _notificationService;
-    private readonly ILogger _logger;
-    
-    public TacheService(ITacheRepository repository,
-                        INotificationService notificationService,
-                        ILogger logger)
-    {
-        _repository = repository;
-        _notificationService = notificationService;
-        _logger = logger;
-    }
-    
-    public void AjouterTache(string titre)
-    {
-        _logger.Log($"Ajout de la tâche: {titre}");
-        var tache = new Tache { Titre = titre, DateCreation = DateTime.Now };
-        _repository.Ajouter(tache);
-        _notificationService.Envoyer("admin@app.com", "Nouvelle tâche créée");
-        _logger.Log($"Tâche '{titre}' ajoutée avec succès");
-    }
-}
-```
- 
----
- 
-### Exercice 2 : Créer un service de configuration
- 
-Créez un service de configuration qui lit les paramètres depuis `appsettings.json`.
- 
-**Tâches :**
- 
-1. Créer `appsettings.json` avec des paramètres (titre de l'app, email admin, etc.)
-2. Créer l'interface `IAppConfiguration` avec des propriétés
-3. Créer `AppConfiguration` qui lit le fichier JSON
-4. Enregistrer comme Singleton
-5. Utiliser dans les services
- 
-**Solution :**
- 
-```json
-// appsettings.json
-{
-  "AppTitle": "Gestionnaire de Tâches Pro",
-  "AdminEmail": "admin@monapp.com",
-  "NotificationsEnabled": true,
-  "DatabasePath": "Data Source=taches.db"
-}
-```
- 
-```csharp
-// Services/IAppConfiguration.cs
-public interface IAppConfiguration
-{
-    string AppTitle { get; }
-    string AdminEmail { get; }
-    bool NotificationsEnabled { get; }
-    string DatabasePath { get; }
-}
- 
-// Services/AppConfiguration.cs
-public class AppConfiguration : IAppConfiguration
-{
-    public string AppTitle { get; private set; }
-    public string AdminEmail { get; private set; }
-    public bool NotificationsEnabled { get; private set; }
-    public string DatabasePath { get; private set; }
-    
-    public AppConfiguration()
-    {
-        var json = File.ReadAllText("appsettings.json");
-        var config = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
-        
-        AppTitle = config["AppTitle"].ToString();
-        AdminEmail = config["AdminEmail"].ToString();
-        NotificationsEnabled = bool.Parse(config["NotificationsEnabled"].ToString());
-        DatabasePath = config["DatabasePath"].ToString();
-    }
-}
- 
-// Dans App.xaml.cs
-services.AddSingleton<IAppConfiguration, AppConfiguration>();
- 
-// Utilisation dans TacheService
-public class TacheService : ITacheService
-{
-    private readonly ITacheRepository _repository;
-    private readonly INotificationService _notificationService;
-    private readonly IAppConfiguration _config;
-    
-    public TacheService(ITacheRepository repository,
-                        INotificationService notificationService,
-                        IAppConfiguration config)
-    {
-        _repository = repository;
-        _notificationService = notificationService;
-        _config = config;
-    }
-    
-    public void AjouterTache(string titre)
-    {
-        var tache = new Tache { Titre = titre, DateCreation = DateTime.Now };
-        _repository.Ajouter(tache);
-        
-        if (_config.NotificationsEnabled)
-            _notificationService.Envoyer(_config.AdminEmail, $"Nouvelle tâche: {titre}");
-    }
-}
-```
- 
----
- 
-## Résumé
+ ## Résumé
  
 ### Principes clés
  

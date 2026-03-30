@@ -5,55 +5,51 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.148.2">
     <meta name="generator" content="Relearn 9.0.3+8bb66fa674351f3a0b0917a7552caac686eca920">
-    <meta name="description" content="Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
-Vous développez une application qui doit envoyer des notifications :
-Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :
-public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :">
+    <meta name="description" content="1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.
+Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.
+Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
-    <meta name="twitter:description" content="Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
-Vous développez une application qui doit envoyer des notifications :
-Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :
-public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :">
+    <meta name="twitter:title" content="Patron Singleton et injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta name="twitter:description" content="1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.
+Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.
+Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.">
     <meta property="og:url" content="http://localhost:1313/420-413/injection_dependance/index.html">
     <meta property="og:site_name" content="Développement d&#39;applications pour entreprises">
-    <meta property="og:title" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
-    <meta property="og:description" content="Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
-Vous développez une application qui doit envoyer des notifications :
-Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :
-public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :">
+    <meta property="og:title" content="Patron Singleton et injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta property="og:description" content="1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.
+Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.
+Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.">
     <meta property="og:locale" content="fr_ca">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Développement d&#39;applications pour entreprise">
-    <meta itemprop="name" content="Injection de dépendance :: Développement d&#39;applications pour entreprises">
-    <meta itemprop="description" content="Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification
-Vous développez une application qui doit envoyer des notifications :
-Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :
-public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :">
-    <meta itemprop="wordCount" content="2447">
-    <title>Injection de dépendance :: Développement d&#39;applications pour entreprises</title>
-    <link href="/420-413/images/favicon.png?1773984925" rel="icon" type="image/png">
-    <link href="/420-413/css/auto-complete/auto-complete.min.css?1773984925" rel="stylesheet">
-    <script src="/420-413/js/auto-complete/auto-complete.min.js?1773984925" defer></script>
-    <script src="/420-413/js/search-lunr.js?1773984925" defer></script>
-    <script src="/420-413/js/search.js?1773984925" defer></script>
+    <meta itemprop="name" content="Patron Singleton et injection de dépendance :: Développement d&#39;applications pour entreprises">
+    <meta itemprop="description" content="1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.
+Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.
+Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.">
+    <meta itemprop="wordCount" content="1821">
+    <title>Patron Singleton et injection de dépendance :: Développement d&#39;applications pour entreprises</title>
+    <link href="/420-413/images/favicon.png?1774844156" rel="icon" type="image/png">
+    <link href="/420-413/css/auto-complete/auto-complete.min.css?1774844156" rel="stylesheet">
+    <script src="/420-413/js/auto-complete/auto-complete.min.js?1774844156" defer></script>
+    <script src="/420-413/js/search-lunr.js?1774844156" defer></script>
+    <script src="/420-413/js/search.js?1774844156" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/420-413/searchindex.en.js?1773984925";
+      window.relearn.index_js_url="/420-413/searchindex.en.js?1774844156";
     </script>
-    <script src="/420-413/js/lunr/lunr.min.js?1773984925" defer></script>
-    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1773984925" defer></script>
-    <script src="/420-413/js/lunr/lunr.multi.min.js?1773984925" defer></script>
-    <script src="/420-413/js/lunr/lunr.fr.min.js?1773984925" defer></script>
+    <script src="/420-413/js/lunr/lunr.min.js?1774844156" defer></script>
+    <script src="/420-413/js/lunr/lunr.stemmer.support.min.js?1774844156" defer></script>
+    <script src="/420-413/js/lunr/lunr.multi.min.js?1774844156" defer></script>
+    <script src="/420-413/js/lunr/lunr.fr.min.js?1774844156" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1773984925" rel="stylesheet"></noscript>
-    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1773984925" rel="stylesheet">
-    <link href="/420-413/css/theme.css?1773984925" rel="stylesheet">
-    <link href="/420-413/css/format-html.css?1773984925" rel="stylesheet" id="R-format-style">
+    <link href="/420-413/fonts/fontawesome/css/all.min.css?1774844156" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-413/fonts/fontawesome/css/all.min.css?1774844156" rel="stylesheet"></noscript>
+    <link href="/420-413/css/perfect-scrollbar/perfect-scrollbar.min.css?1774844156" rel="stylesheet">
+    <link href="/420-413/css/theme.css?1774844156" rel="stylesheet">
+    <link href="/420-413/css/format-html.css?1774844156" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -125,12 +121,20 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
+    <li><a href="#1-le-patron-singleton">1. Le patron Singleton</a>
+      <ul>
+        <li><a href="#définition">Définition</a></li>
+        <li><a href="#analogie--limprimante-de-la-classe">Analogie : l&rsquo;imprimante de la classe</a></li>
+        <li><a href="#cas-dusage-typiques">Cas d&rsquo;usage typiques</a></li>
+        <li><a href="#implémentation-en-c">Implémentation en C#</a></li>
+        <li><a href="#avantages-et-inconvénients">Avantages et inconvénients</a></li>
+      </ul>
+    </li>
     <li><a href="#injection-de-dépendances-contexte-général">Injection de dépendances (Contexte général)</a>
       <ul>
         <li><a href="#le-problème-des-dépendances">Le problème des dépendances</a></li>
         <li><a href="#le-principe-dinversion-de-dépendance-dip">Le principe d&rsquo;inversion de dépendance (DIP)</a></li>
         <li><a href="#implémentation-complète">Implémentation complète</a></li>
-        <li><a href="#comparaison-des-types-dinjection">Comparaison des types d&rsquo;injection</a></li>
         <li><a href="#conteneur-dinjection-de-dépendances-ioc-container">Conteneur d&rsquo;injection de dépendances (IoC Container)</a></li>
         <li><a href="#comprendre-les-durées-de-vie">Comprendre les durées de vie</a></li>
         <li><a href="#avantages-de-linjection-de-dépendances">Avantages de l&rsquo;injection de dépendances</a></li>
@@ -141,16 +145,10 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
         <li><a href="#installation-des-packages-nuget">Installation des packages NuGet</a></li>
         <li><a href="#configuration-complète-dune-application-wpf">Configuration complète d&rsquo;une application WPF</a></li>
         <li><a href="#appxaml--retirer-le-startupuri">App.xaml — Retirer le StartupUri</a></li>
+        <li><a href="#appxamlcs-avec-appsettingsjson"><code>App.xaml.cs</code> avec <code>appsettings.json</code></a></li>
         <li><a href="#appxamlcs--configuration-du-conteneur-ioc-avec-servicecollection">App.xaml.cs — Configuration du conteneur IoC avec ServiceCollection</a></li>
         <li><a href="#architecture-complète-avec-di">Architecture complète avec DI</a></li>
-        <li><a href="#exemple-complet--application-de-gestion-de-tâches">Exemple complet : Application de gestion de tâches</a></li>
         <li><a href="#avantages-de-cette-architecture">Avantages de cette architecture</a></li>
-      </ul>
-    </li>
-    <li><a href="#exercices-pratiques">Exercices pratiques</a>
-      <ul>
-        <li><a href="#exercice-1--ajouter-un-service-de-logging">Exercice 1 : Ajouter un service de logging</a></li>
-        <li><a href="#exercice-2--créer-un-service-de-configuration">Exercice 2 : Créer un service de configuration</a></li>
       </ul>
     </li>
     <li><a href="#résumé">Résumé</a>
@@ -166,7 +164,7 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Injection de dépendance</span><meta itemprop="position" content="2"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/420-413/index.html"><span itemprop="name">Développement d&#39;applications pour entreprise</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Patron Singleton et injection de dépendance</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
@@ -194,8 +192,123 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
   <header class="headline">
   </header>
 
-<h1 id="injection-de-dépendance">Injection de dépendance</h1>
+<h1 id="patron-singleton-et-injection-de-dépendance">Patron Singleton et injection de dépendance</h1>
 
+<h2 id="1-le-patron-singleton">1. Le patron Singleton<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="définition">Définition<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le <strong>patron Singleton</strong> garantit qu&rsquo;une classe ne possède qu&rsquo;<strong>une seule instance</strong> dans toute l&rsquo;application, avec un point d&rsquo;accès global à cette instance.</p>
+<blockquote>
+<p>Peu importe combien de fois vous demandez l&rsquo;objet, vous obtenez toujours le même.</p></blockquote>
+<hr>
+<h3 id="analogie--limprimante-de-la-classe">Analogie : l&rsquo;imprimante de la classe<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Il y a <strong>une seule imprimante</strong> dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à <strong>la même imprimante</strong> — personne n&rsquo;en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.</p>
+<p>C&rsquo;est exactement ça, le Singleton.</p>
+<hr>
+<h3 id="cas-dusage-typiques">Cas d&rsquo;usage typiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Cas</th>
+          <th>Pourquoi un Singleton ?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Imprimante</td>
+          <td>Une seule file d&rsquo;attente partagée entre tous</td>
+      </tr>
+      <tr>
+          <td>Logger</td>
+          <td>Tous les modules écrivent dans le même fichier</td>
+      </tr>
+      <tr>
+          <td>Configuration</td>
+          <td>Les paramètres sont lus une seule fois au démarrage</td>
+      </tr>
+      <tr>
+          <td>Cache</td>
+          <td>Un seul cache partagé dans toute l&rsquo;application</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="implémentation-en-c">Implémentation en C#<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Imprimante</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. Champ statique privé — l&#39;instance unique</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Imprimante</span> <span class="n">_instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. Verrou thread-safe — évite les problèmes si deux threads demandent</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//    l&#39;instance en même temps</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="k">readonly</span> <span class="kt">object</span> <span class="n">_lock</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Queue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">_fileAttente</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Queue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// 3. Constructeur PRIVÉ — new Imprimante() est interdit de l&#39;extérieur</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Imprimante</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;🖨️ Imprimante initialisée (une seule fois !)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="c1">// 4. Propriété statique publique — seul point d&#39;accès</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Imprimante</span> <span class="n">Instance</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">get</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">lock</span> <span class="p">(</span><span class="n">_lock</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">_instance</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Imprimante</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Imprimer</span><span class="p">(</span><span class="kt">string</span> <span class="n">document</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_fileAttente</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;📄 [{document}] ajouté à la file ({_fileAttente.Count} en attente)&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Utilisation — 3 étudiants, 1 seule imprimante :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Imprimer</span><span class="p">(</span><span class="s">&#34;Travail de Alexandre&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Imprimer</span><span class="p">(</span><span class="s">&#34;Travail de Hamza&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Imprimer</span><span class="p">(</span><span class="s">&#34;Travail de Kira&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Imprimer</span><span class="p">(</span><span class="s">&#34;Travail de Ellyn&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c1">// Les 3 accèdent au MÊME objet Imprimante — même file d&#39;attente</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">memeObjet</span> <span class="p">=</span> <span class="n">ReferenceEquals</span><span class="p">(</span><span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">,</span> <span class="n">Imprimante</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span> <span class="c1">// true</span></span></span></code></pre></div>
+<hr>
+<h3 id="avantages-et-inconvénients">Avantages et inconvénients<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>✅ Avantages</th>
+          <th>⚠️ Inconvénients</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Une seule instance garantie</td>
+          <td>Couplage fort (accès global statique)</td>
+      </tr>
+      <tr>
+          <td>Économie de ressources</td>
+          <td>Difficile à remplacer dans les tests</td>
+      </tr>
+      <tr>
+          <td>Initialisation paresseuse</td>
+          <td>Problèmes potentiels en multi-thread</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Note :</strong> le Singleton classique est pratique, mais la solution moderne est de confier cette responsabilité au <strong>conteneur IoC</strong> (voir section 3), ce qui préserve la testabilité.</p></blockquote>
+<hr>
 <h2 id="injection-de-dépendances-contexte-général">Injection de dépendances (Contexte général)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="le-problème-des-dépendances">Le problème des dépendances<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p><strong>Mise en situation : Un système de notification</strong></p>
@@ -342,8 +455,8 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p><strong>Étape 3 : Injection de dépendances</strong></p>
-<p>Il existe <strong>3 types d&rsquo;injection</strong> :</p>
-<p><strong>Type 1 : Injection par constructeur (recommandée)</strong></p>
+<p>Il existe <strong>3 types d&rsquo;injection</strong>, mais on va couvrir seulement le premier:</p>
+<p><strong>Injection par constructeur</strong></p>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">;</span>
@@ -370,67 +483,6 @@ public class ServiceUtilisateur { private EmailService emailService; private SMS
 </span></span><span class="line"><span class="cl"><span class="n">INotificationService</span> <span class="n">fakeService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FakeNotificationService</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">serviceTest</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">(</span><span class="n">fakeService</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">serviceTest</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;bob@test.com&#34;</span><span class="p">);</span></span></span></code></pre></div>
-<p><strong>Type 2 : Injection par propriété</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Propriété publique</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">INotificationService</span> <span class="n">NotificationService</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contact</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✓ Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">NotificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<p><strong>Utilisation :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">NotificationService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">();</span>  <span class="c1">// Injection</span>
-</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">);</span></span></span></code></pre></div>
-<p><strong>Type 3 : Injection par méthode</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ServiceUtilisateur</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">string</span> <span class="n">contact</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">                                      <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;✓ Utilisateur {nom} enregistré&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="s">&#34;Bienvenue !&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<p><strong>Utilisation :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ServiceUtilisateur</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceUtilisateur</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="n">service</span><span class="p">.</span><span class="n">EnregistrerUtilisateur</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;alice@email.com&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">EmailService</span><span class="p">());</span></span></span></code></pre></div>
-<hr>
-<h3 id="comparaison-des-types-dinjection">Comparaison des types d&rsquo;injection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Avantages</th>
-          <th>Inconvénients</th>
-          <th>Quand utiliser</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Constructeur</strong></td>
-          <td>- Dépendances obligatoires<br>- Immutabilité (<code>readonly</code>)<br>- Dépendances claires</td>
-          <td>- Constructeur peut devenir long</td>
-          <td><strong>Par défaut</strong> (99% des cas)</td>
-      </tr>
-      <tr>
-          <td><strong>Propriété</strong></td>
-          <td>- Dépendances optionnelles<br>- Flexible</td>
-          <td>- Risque d&rsquo;oubli<br>- Mutable</td>
-          <td>Dépendances optionnelles</td>
-      </tr>
-      <tr>
-          <td><strong>Méthode</strong></td>
-          <td>- Dépendance ponctuelle</td>
-          <td>- Répétitif<br>- Pas de contrôle</td>
-          <td>Dépendance change souvent</td>
-      </tr>
-  </tbody>
-</table>
 <hr>
 <h3 id="conteneur-dinjection-de-dépendances-ioc-container">Conteneur d&rsquo;injection de dépendances (IoC Container)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p><strong>Problème :</strong> Créer toutes les dépendances manuellement devient fastidieux.</p>
@@ -552,7 +604,7 @@ Install-Package Microsoft.EntityFrameworkCore.Design</code></pre></div>
 Install-Package Microsoft.Extensions.Configuration.Json</code></pre></div>
 <hr>
 <h3 id="configuration-complète-dune-application-wpf">Configuration complète d&rsquo;une application WPF<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>On configure l&rsquo;injection de dépendances dans <code>App.xaml.cs</code> en utilisant directement <strong><code>ServiceCollection</code></strong>, sans passer par <code>Host</code>.</p>
+<p>On configure l&rsquo;injection de dépendances dans <code>App.xaml.cs</code> en utilisant directement <strong><code>ServiceCollection</code></strong>.</p>
 <hr>
 <h3 id="appxaml--retirer-le-startupuri">App.xaml — Retirer le StartupUri<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Application</span> <span class="na">x:Class=</span><span class="s">&#34;MonApp.App&#34;</span>
@@ -561,8 +613,19 @@ Install-Package Microsoft.Extensions.Configuration.Json</code></pre></div>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- ✅ Pas de StartupUri — on gère le démarrage manuellement --&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/Application&gt;</span></span></span></code></pre></div>
 <hr>
+<h3 id="appxamlcs-avec-appsettingsjson"><code>App.xaml.cs</code> avec <code>appsettings.json</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong><code>appsettings.json</code></strong> — propriété <em>Copy to Output Directory</em> = <strong>Copy always</strong> :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;AppTitle&#34;</span><span class="p">:</span> <span class="s2">&#34;Gestionnaire de tâches&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;AdminEmail&#34;</span><span class="p">:</span> <span class="s2">&#34;admin@monapp.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;NotificationsEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ConnectionStrings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Default&#34;</span><span class="p">:</span> <span class="s2">&#34;Data Source=app.db&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <h3 id="appxamlcs--configuration-du-conteneur-ioc-avec-servicecollection">App.xaml.cs — Configuration du conteneur IoC avec ServiceCollection<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MonApp.Data</span><span class="p">;</span>
@@ -581,6 +644,13 @@ Install-Package Microsoft.Extensions.Configuration.Json</code></pre></div>
 </span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">OnStartup</span><span class="p">(</span><span class="n">StartupEventArgs</span> <span class="n">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">base</span><span class="p">.</span><span class="n">OnStartup</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// Lire appsettings.json</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IConfiguration</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConfigurationBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">SetBasePath</span><span class="p">(</span><span class="n">AppDomain</span><span class="p">.</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">BaseDirectory</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">AddJsonFile</span><span class="p">(</span><span class="s">&#34;appsettings.json&#34;</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl">            <span class="c1">// 1. Créer la collection de services</span>
 </span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">services</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
@@ -655,343 +725,12 @@ Repository (reçoit DbContext injecté)
     ↓ utilise
 DbContext</code></pre></div>
 <hr>
-<h3 id="exemple-complet--application-de-gestion-de-tâches">Exemple complet : Application de gestion de tâches<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<h4 id="1-modèle">1. Modèle<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Models/Tache.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Tache</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">Titre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">EstTerminee</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DateTime</span> <span class="n">DateCreation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<h4 id="2-dbcontext">2. DbContext<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Data/ApplicationDbContext.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ApplicationDbContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<h4 id="3-repository">3. Repository<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Repositories/ITacheRepository.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ITacheRepository</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Repositories/TacheRepository.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheRepository</span> <span class="p">:</span> <span class="n">ITacheRepository</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ DbContext injecté automatiquement</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheRepository</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTout</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Ajouter</span><span class="p">(</span><span class="n">Tache</span> <span class="n">tache</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Supprimer</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">tache</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">Taches</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<h4 id="4-service-métier">4. Service métier<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Services/ITacheService.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ITacheService</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTachesNonTerminees</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">MarquerCommeTerminee</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Services/TacheService.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">_repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Repository et NotificationService injectés</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">ObtenirTachesNonTerminees</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTout</span><span class="p">().</span><span class="n">Where</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">t</span><span class="p">.</span><span class="n">EstTerminee</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Nouvelle tâche créée&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">MarquerCommeTerminee</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="n">ObtenirTout</span><span class="p">().</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">tache</span> <span class="p">!=</span> <span class="kc">null</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">tache</span><span class="p">.</span><span class="n">EstTerminee</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Tâche terminée&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<h4 id="5-viewmodel">5. ViewModel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// ViewModels/TachesViewModel.cs</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TachesViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheService</span> <span class="n">_tacheService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;</span> <span class="n">Taches</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">AjouterCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ICommand</span> <span class="n">MarquerTermineeCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ Service injecté automatiquement</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TachesViewModel</span><span class="p">(</span><span class="n">ITacheService</span> <span class="n">tacheService</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_tacheService</span> <span class="p">=</span> <span class="n">tacheService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">AjouterCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">AjouterTache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">MarquerTermineeCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RelayCommand</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="n">MarquerTerminee</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">ChargerTaches</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">taches</span> <span class="p">=</span> <span class="n">_tacheService</span><span class="p">.</span><span class="n">ObtenirTachesNonTerminees</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Taches</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableCollection</span><span class="p">&lt;</span><span class="n">Tache</span><span class="p">&gt;(</span><span class="n">taches</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">titre</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_tacheService</span><span class="p">.</span><span class="n">AjouterTache</span><span class="p">(</span><span class="n">titre</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">MarquerTerminee</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_tacheService</span><span class="p">.</span><span class="n">MarquerCommeTerminee</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ChargerTaches</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<h4 id="6-view">6. View<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Views/MainWindow.xaml.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// ✅ ViewModel injecté automatiquement</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MainWindow</span><span class="p">(</span><span class="n">TachesViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">DataContext</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- Views/MainWindow.xaml --&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&#34;MonApp.Views.MainWindow&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml/presentation&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">xmlns:x=</span><span class="s">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">Title=</span><span class="s">&#34;Gestion de tâches&#34;</span> <span class="na">Height=</span><span class="s">&#34;400&#34;</span> <span class="na">Width=</span><span class="s">&#34;600&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Grid</span> <span class="na">Margin=</span><span class="s">&#34;10&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;*&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;0&#34;</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span> <span class="na">Margin=</span><span class="s">&#34;0,0,0,10&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&#34;txtTitre&#34;</span> <span class="na">Width=</span><span class="s">&#34;400&#34;</span> <span class="na">Height=</span><span class="s">&#34;30&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&#34;Ajouter&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">Command=</span><span class="s">&#34;{Binding AjouterCommand}&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Text, ElementName=txtTitre}&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/StackPanel&gt;</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ListBox</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">ItemsSource=</span><span class="s">&#34;{Binding Taches}&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;ListBox.ItemTemplate&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;DataTemplate&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;CheckBox</span> <span class="na">IsChecked=</span><span class="s">&#34;{Binding EstTerminee}&#34;</span>
-</span></span><span class="line"><span class="cl">                                  <span class="na">Command=</span><span class="s">&#34;{Binding DataContext.MarquerTermineeCommand,
-</span></span></span><span class="line"><span class="cl"><span class="s">                                           RelativeSource={RelativeSource AncestorType=Window}}&#34;</span>
-</span></span><span class="line"><span class="cl">                                  <span class="na">CommandParameter=</span><span class="s">&#34;{Binding Id}&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Titre}&#34;</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/StackPanel&gt;</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/DataTemplate&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/ListBox.ItemTemplate&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/ListBox&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/Grid&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Window&gt;</span></span></span></code></pre></div>
-<hr>
 <h3 id="avantages-de-cette-architecture">Avantages de cette architecture<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>✅ <strong>Séparation des responsabilités</strong> : Chaque couche a un rôle précis</p>
 <p>✅ <strong>Testabilité</strong> : Chaque couche peut être testée indépendamment</p>
 <p>✅ <strong>Maintenabilité</strong> : Changements localisés dans une seule couche</p>
 <p>✅ <strong>Réutilisabilité</strong> : Services et repositories réutilisables</p>
 <p>✅ <strong>Pas de création manuelle</strong> : Le conteneur IoC gère tout</p>
-<hr>
-<h2 id="exercices-pratiques">Exercices pratiques<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<h3 id="exercice-1--ajouter-un-service-de-logging">Exercice 1 : Ajouter un service de logging<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Créez un service de logging qui enregistre toutes les actions dans un fichier.</p>
-<p><strong>Tâches :</strong></p>
-<ol>
-<li>Créer l&rsquo;interface <code>ILogger</code> avec une méthode <code>Log(string message)</code></li>
-<li>Créer <code>FileLogger</code> qui écrit dans un fichier texte</li>
-<li>Créer <code>ConsoleLogger</code> qui écrit dans la console</li>
-<li>Enregistrer <code>ILogger</code> comme Singleton dans <code>App.xaml.cs</code></li>
-<li>Injecter <code>ILogger</code> dans <code>TacheService</code> et logger chaque action</li>
-</ol>
-<p><strong>Solution :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Services/ILogger.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">ILogger</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Services/FileLogger.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">FileLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">_filePath</span> <span class="p">=</span> <span class="s">&#34;app.log&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">logEntry</span> <span class="p">=</span> <span class="s">$&#34;[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">AppendAllText</span><span class="p">(</span><span class="n">_filePath</span><span class="p">,</span> <span class="n">logEntry</span> <span class="p">+</span> <span class="n">Environment</span><span class="p">.</span><span class="n">NewLine</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Services/ConsoleLogger.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">ConsoleLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Dans App.xaml.cs</span>
-</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">FileLogger</span><span class="p">&gt;();</span> <span class="c1">// ou ConsoleLogger</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Dans TacheService.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">_repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ILogger</span> <span class="n">_logger</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">ILogger</span> <span class="n">logger</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&#34;Ajout de la tâche: {titre}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="s">&#34;admin@app.com&#34;</span><span class="p">,</span> <span class="s">&#34;Nouvelle tâche créée&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&#34;Tâche &#39;{titre}&#39; ajoutée avec succès&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<hr>
-<h3 id="exercice-2--créer-un-service-de-configuration">Exercice 2 : Créer un service de configuration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Créez un service de configuration qui lit les paramètres depuis <code>appsettings.json</code>.</p>
-<p><strong>Tâches :</strong></p>
-<ol>
-<li>Créer <code>appsettings.json</code> avec des paramètres (titre de l&rsquo;app, email admin, etc.)</li>
-<li>Créer l&rsquo;interface <code>IAppConfiguration</code> avec des propriétés</li>
-<li>Créer <code>AppConfiguration</code> qui lit le fichier JSON</li>
-<li>Enregistrer comme Singleton</li>
-<li>Utiliser dans les services</li>
-</ol>
-<p><strong>Solution :</strong></p>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// appsettings.json
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;AppTitle&#34;</span><span class="p">:</span> <span class="s2">&#34;Gestionnaire de Tâches Pro&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;AdminEmail&#34;</span><span class="p">:</span> <span class="s2">&#34;admin@monapp.com&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;NotificationsEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;DatabasePath&#34;</span><span class="p">:</span> <span class="s2">&#34;Data Source=taches.db&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
-<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Services/IAppConfiguration.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">interface</span> <span class="nc">IAppConfiguration</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">AppTitle</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">AdminEmail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">NotificationsEnabled</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">DatabasePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Services/AppConfiguration.cs</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">AppConfiguration</span> <span class="p">:</span> <span class="n">IAppConfiguration</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">AppTitle</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">AdminEmail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">bool</span> <span class="n">NotificationsEnabled</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">string</span> <span class="n">DatabasePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="kd">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">AppConfiguration</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">json</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="s">&#34;appsettings.json&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">&lt;</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;&gt;(</span><span class="n">json</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="n">AppTitle</span> <span class="p">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#34;AppTitle&#34;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">AdminEmail</span> <span class="p">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#34;AdminEmail&#34;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">NotificationsEnabled</span> <span class="p">=</span> <span class="kt">bool</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">&#34;NotificationsEnabled&#34;</span><span class="p">].</span><span class="n">ToString</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">DatabasePath</span> <span class="p">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#34;DatabasePath&#34;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Dans App.xaml.cs</span>
-</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IAppConfiguration</span><span class="p">,</span> <span class="n">AppConfiguration</span><span class="p">&gt;();</span>
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl"><span class="c1">// Utilisation dans TacheService</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TacheService</span> <span class="p">:</span> <span class="n">ITacheService</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">ITacheRepository</span> <span class="n">_repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">INotificationService</span> <span class="n">_notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">readonly</span> <span class="n">IAppConfiguration</span> <span class="n">_config</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">TacheService</span><span class="p">(</span><span class="n">ITacheRepository</span> <span class="n">repository</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">INotificationService</span> <span class="n">notificationService</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">IAppConfiguration</span> <span class="n">config</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_notificationService</span> <span class="p">=</span> <span class="n">notificationService</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_config</span> <span class="p">=</span> <span class="n">config</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">AjouterTache</span><span class="p">(</span><span class="kt">string</span> <span class="n">titre</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tache</span> <span class="p">{</span> <span class="n">Titre</span> <span class="p">=</span> <span class="n">titre</span><span class="p">,</span> <span class="n">DateCreation</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl">        <span class="n">_repository</span><span class="p">.</span><span class="n">Ajouter</span><span class="p">(</span><span class="n">tache</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">NotificationsEnabled</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_notificationService</span><span class="p">.</span><span class="n">Envoyer</span><span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">AdminEmail</span><span class="p">,</span> <span class="s">$&#34;Nouvelle tâche: {titre}&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <hr>
 <h2 id="résumé">Résumé<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <h3 id="principes-clés">Principes clés<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
@@ -1116,7 +855,7 @@ DbContext</code></pre></div>
             <li class="" data-nav-id="/420-413/patron_commande/index.html"><a class="padding" href="/420-413/patron_commande/index.html">Patron commande</a></li>
             <li class="" data-nav-id="/420-413/efcore/index.html"><a class="padding" href="/420-413/efcore/index.html">Entity Framework Core</a></li>
             <li class="" data-nav-id="/420-413/patron_repository_efcore/index.html"><a class="padding" href="/420-413/patron_repository_efcore/index.html">Patron Repository et EF Core</a></li>
-            <li class="active " data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Injection de dépendance</a></li>
+            <li class="active " data-nav-id="/420-413/injection_dependance/index.html"><a class="padding" href="/420-413/injection_dependance/index.html">Patron Singleton et injection de dépendance</a></li>
             <li class="" data-nav-id="/420-413/mini_projets/index.html"><a class="padding" href="/420-413/mini_projets/index.html">Mini-projets</a></li>
             <li class="" data-nav-id="/420-413/agile_scrum/index.html"><a class="padding" href="/420-413/agile_scrum/index.html">SCRUM</a></li>
             <li class="" data-nav-id="/420-413/projets/index.html"><a class="padding" href="/420-413/projets/index.html">Epics et User Stories</a></li>
@@ -1156,8 +895,8 @@ DbContext</code></pre></div>
 <div id="R-footer" class="default-animation"></div>
       </div>
     </aside>
-    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1773984925" defer></script>
-    <script src="/420-413/js/theme.js?1773984925" defer></script>
+    <script src="/420-413/js/perfect-scrollbar/perfect-scrollbar.min.js?1774844156" defer></script>
+    <script src="/420-413/js/theme.js?1774844156" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

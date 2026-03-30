@@ -58,10 +58,10 @@
     <loc>http://localhost:1313/420-413/efcore/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/420-413/injection_dependance/index.html</loc>
+    <loc>http://localhost:1313/420-413/patron_repository_efcore/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/420-413/patron_repository_efcore/index.html</loc>
+    <loc>http://localhost:1313/420-413/injection_dependance/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/420-413/mini_projets/index.html</loc>

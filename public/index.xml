@@ -148,11 +148,11 @@
       <description>🎯 Objectifs du cours À la fin de ce cours, vous serez capable de :&#xA;Comprendre le patron Repository et son utilité Utiliser Entity Framework Core pour accéder à une base de données Créer et appliquer des migrations Générer automatiquement le schéma de base de données Intégrer le tout dans une architecture MVVM 📌 Partie 1 : Le problème sans Repository Scénario : Une application de gestion de tâches Vous développez une application WPF pour gérer des tâches. Sans le patron Repository, votre ViewModel pourrait ressembler à ceci :</description>
     </item>
     <item>
-      <title>Injection de dépendance</title>
+      <title>Patron Singleton et injection de dépendance</title>
       <link>http://localhost:1313/420-413/injection_dependance/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/injection_dependance/index.html</guid>
-      <description>Injection de dépendances (Contexte général) Le problème des dépendances Mise en situation : Un système de notification&#xA;Vous développez une application qui doit envoyer des notifications :&#xA;Par email Par SMS Par notification push ❌ Approche naïve (dépendances câblées en dur) :&#xA;public class ServiceUtilisateur { private EmailService emailService; private SMSService smsService; public ServiceUtilisateur() { // Créer les dépendances directement emailService = new EmailService(); smsService = new SMSService(); } public void EnregistrerUtilisateur(string nom, string email, string telephone) { // Logique d&#39;enregistrement Console.WriteLine($&#34;Utilisateur {nom} enregistré&#34;); // Envoyer notifications emailService.Envoyer(email, &#34;Bienvenue !&#34;); smsService.Envoyer(telephone, &#34;Compte créé&#34;); } } Problèmes de cette approche :</description>
+      <description>1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.&#xA;Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.&#xA;Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.</description>
     </item>
     <item>
       <title>Mini-projets</title>
