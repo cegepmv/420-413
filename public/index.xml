@@ -155,6 +155,20 @@
       <description>1. Le patron Singleton Définition Le patron Singleton garantit qu’une classe ne possède qu’une seule instance dans toute l’application, avec un point d’accès global à cette instance.&#xA;Peu importe combien de fois vous demandez l’objet, vous obtenez toujours le même.&#xA;Analogie : l’imprimante de la classe Il y a une seule imprimante dans le local. Quand 30 étudiants veulent imprimer, ils envoient tous leurs travaux à la même imprimante — personne n’en crée une nouvelle pour lui tout seul. Si chacun instanciait sa propre imprimante, ce serait le chaos.</description>
     </item>
     <item>
+      <title>Async/Await</title>
+      <link>http://localhost:1313/420-413/async_await/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/async_await/index.html</guid>
+      <description>Programmation asynchrone — async / await 1. Pourquoi la programmation asynchrone ? Le problème du code synchrone Dans une application WPF, tout le code s’exécute sur le thread UI. Si ce thread est occupé (ex : attente d’une réponse réseau), l’interface gèle complètement — l’utilisateur ne peut plus rien faire.</description>
+    </item>
+    <item>
+      <title>Tests unitaires</title>
+      <link>http://localhost:1313/420-413/unit_tests/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/unit_tests/index.html</guid>
+      <description>Introduction aux tests unitaires — xUnit &amp; Moq Table des matières Pourquoi tester son code ? Mise en place du projet de tests Anatomie d’un test — le patron AAA Tester la classe Calculatrice Les assertions xUnit Introduction à Moq — tester UserInputViewModel Tester du code async Fake vs Mock — quand utiliser quoi ? Bonnes pratiques Résumé 1. Pourquoi tester son code ? Le contexte — notre projet WpfApp2 Le projet contient deux éléments principaux à tester :</description>
+    </item>
+    <item>
       <title>Mini-projets</title>
       <link>http://localhost:1313/420-413/mini_projets/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

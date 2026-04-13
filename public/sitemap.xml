@@ -64,6 +64,12 @@
     <loc>http://localhost:1313/420-413/injection_dependance/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/420-413/async_await/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/420-413/unit_tests/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/420-413/mini_projets/index.html</loc>
   </url>
   <url>
