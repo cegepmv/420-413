@@ -230,7 +230,25 @@ foreach (var p in produits)
 Utilisez cette liste de données pour tous les exercices LINQ :
 
 ```csharp
-public record Etudiant(int Id, string Nom, string Programme, int Age, double MoyenneGenerale);
+public class Etudiant
+{
+    public int Id { get; set; }
+    public string Nom { get; set; }
+    public string Programme { get; set; }
+    public int Age { get; set; }
+    public double MoyenneGenerale { get; set; }
+
+    public Etudiant() { } // Constructeur vide souvent nécessaire pour la sérialisation
+
+    public Etudiant(int id, string nom, string programme, int age, double moyenneGenerale)
+    {
+        Id = id;
+        Nom = nom;
+        Programme = programme;
+        Age = age;
+        MoyenneGenerale = moyenneGenerale;
+    }
+}
 
 var etudiants = new List<Etudiant>
 {
