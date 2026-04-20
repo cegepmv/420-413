@@ -162,6 +162,13 @@
       <description>Programmation asynchrone — async / await 1. Pourquoi la programmation asynchrone ? Le problème du code synchrone Dans une application WPF, tout le code s’exécute sur le thread UI. Si ce thread est occupé (ex : attente d’une réponse réseau), l’interface gèle complètement — l’utilisateur ne peut plus rien faire.</description>
     </item>
     <item>
+      <title>Pratique - Exam 2</title>
+      <link>http://localhost:1313/420-413/pratique_exam2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/420-413/pratique_exam2/index.html</guid>
+      <description>Exercices de révision - Examen 2 Table des matières POO — Partie 1 : Classes, encapsulation, héritage POO — Partie 2 : virtual, abstract, interfaces, sealed LINQ Patron Observateur Entity Framework Core Patron Repository avec EF Core Injection de dépendances Async / Await Exercice intégrateur 1. POO — Partie 1 : Classes, encapsulation, héritage Questions théoriques Q1. Quelle est la différence entre une classe et un objet ?</description>
+    </item>
+    <item>
       <title>Tests unitaires</title>
       <link>http://localhost:1313/420-413/unit_tests/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -3,7 +3,7 @@ title: "Tests unitaires"
 course_code: 420-413
 session: Hiver 2026
 author: Samuel Fostiné
-weight: 22
+weight: 23
 ---
 
 # Introduction aux tests unitaires — xUnit & Moq
