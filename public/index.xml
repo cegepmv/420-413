@@ -173,7 +173,7 @@
       <link>http://localhost:1313/420-413/unit_tests/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/420-413/unit_tests/index.html</guid>
-      <description>Introduction aux tests unitaires — xUnit &amp; Moq Table des matières Pourquoi tester son code ? Mise en place du projet de tests Anatomie d’un test — le patron AAA Tester la classe Calculatrice Les assertions xUnit Introduction à Moq — tester UserInputViewModel Tester du code async Fake vs Mock — quand utiliser quoi ? Bonnes pratiques Résumé 1. Pourquoi tester son code ? Le contexte — notre projet WpfApp2 Le projet contient deux éléments principaux à tester :</description>
+      <description>Introduction aux tests unitaires — xUnit &amp; Moq Table des matières Pourquoi tester ? Mise en place du projet de tests Anatomie d’un test — patron AAA Les assertions xUnit Tester un modèle — Utilisateur Tester une classe sans dépendance — Calculatrice Interfaces et testabilité — le problème du couplage Fake Repository — tester sans base de données Tester le Repository réel avec une BD en mémoire Introduction à Moq Tester le ViewModel — UserInputViewModel Rendre le ViewModel testable — refactoring Tester du code async Fake vs Mock — quand utiliser quoi ? Bonnes pratiques Résumé 1. Pourquoi tester ? Le problème sans tests Dans WpfApp2, pour vérifier que la Calculatrice fonctionne, on doit :</description>
     </item>
     <item>
       <title>Mini-projets</title>
